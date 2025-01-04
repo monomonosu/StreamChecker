@@ -11,7 +11,8 @@
     "check": "biome check ./src",
     "lint:fix": "biome lint --apply ./src",
     "format:fix": "biome format ./src --write",
-    "check:fix": "biome check --apply ./src"
+    "check:fix": "biome check --apply ./src",
+    "tsc": "tsc --noEmit"
   },
   "dependencies": {
     "next": "15.1.3",
