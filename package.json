@@ -12,7 +12,9 @@
     "lint:fix": "biome lint --apply ./src",
     "format:fix": "biome format ./src --write",
     "check:fix": "biome check --apply ./src",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "next": "15.1.4",
@@ -21,10 +23,19 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@chromatic-com/storybook": "^3.2.3",
+    "@storybook/addon-essentials": "^8.4.7",
+    "@storybook/addon-interactions": "^8.4.7",
+    "@storybook/addon-onboarding": "^8.4.7",
+    "@storybook/blocks": "^8.4.7",
+    "@storybook/nextjs": "^8.4.7",
+    "@storybook/react": "^8.4.7",
+    "@storybook/test": "^8.4.7",
     "@types/node": "^22.0.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "lefthook": "^1.10.1",
+    "storybook": "^8.4.7",
     "typescript": "^5"
   },
   "volta": {
