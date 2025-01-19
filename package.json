@@ -35,7 +35,9 @@
     "@types/node": "^22.0.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "happy-css-modules": "^3.2.0",
     "lefthook": "^1.10.1",
+    "sass": "^1.83.4",
     "storybook": "^8.4.7",
     "typescript": "^5"
   },
