@@ -14,7 +14,8 @@
     "check:fix": "biome check --apply ./src",
     "tsc": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "typed-styled": "hcm src/**/*.module.scss --watch"
   },
   "dependencies": {
     "@radix-ui/themes": "^3.1.6",
