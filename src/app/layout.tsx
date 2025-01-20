@@ -1,3 +1,4 @@
+import "@/styles/reset.css";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
 import type { Metadata } from "next";
