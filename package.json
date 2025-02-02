@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@radix-ui/themes": "^3.1.6",
-    "next": "15.1.5",
+    "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -45,6 +45,6 @@
     "typescript": "^5"
   },
   "volta": {
-    "node": "22.13.0"
+    "node": "22.13.1"
   }
 }
