@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev & npm run typed-styled",
     "build": "next build",
     "start": "next start",
     "lint": "biome lint ./src",
@@ -14,7 +14,9 @@
     "check:fix": "biome check --apply ./src",
     "tsc": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "watch:clean-css-types": "node chokidar.js",
+    "typed-styled": "npm run watch:clean-css-types & hcm src/**/*.module.scss --watch"
   },
   "dependencies": {
     "@radix-ui/themes": "^3.1.6",
@@ -35,7 +37,10 @@
     "@types/node": "^22.0.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "chokidar": "^4.0.3",
+    "happy-css-modules": "^3.2.0",
     "lefthook": "^1.10.1",
+    "sass": "^1.83.4",
     "storybook": "^8.4.7",
     "typescript": "^5"
   },

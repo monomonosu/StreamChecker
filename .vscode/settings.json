@@ -14,4 +14,9 @@
     "[typescriptreact]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/*.module.scss.d.ts": true,
+        "**/*.module.scss.d.ts.map": true,
+    },
 }
