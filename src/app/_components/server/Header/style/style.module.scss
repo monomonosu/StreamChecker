@@ -1,13 +1,17 @@
 .header {
+    z-index: 1000;
     display: flex;
+    position: fixed;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    width: 100%;
+    padding: 16px 40px;
+    height: 56px;
 }
 
 .header_inner {
     display:flex;
-    gap: 20px;
+    gap: 24px;
     align-items: center;
 }
 
