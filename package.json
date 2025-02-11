@@ -19,6 +19,7 @@
     "typed-styled": "npm run watch:clean-css-types & hcm src/**/*.module.scss --watch"
   },
   "dependencies": {
+    "@radix-ui/react-icons": "^1.3.2",
     "@radix-ui/themes": "^3.1.6",
     "next": "15.1.6",
     "react": "^19.0.0",
