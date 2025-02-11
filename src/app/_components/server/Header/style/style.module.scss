@@ -3,7 +3,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    border-bottom: 1px solid #e0e0e0;
 }
 
 .header_inner {
@@ -15,9 +14,9 @@
 .link {
     transition: font-weight 0.3s ease, transform 0.3s ease;
     color: --gray;
+    font-weight: 700;
 }
 
 .link:hover {
-    font-weight: 700;
-    transform: scale(1.1);
+    transform: scale(1.2);
 }

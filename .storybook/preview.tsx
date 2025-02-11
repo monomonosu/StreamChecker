@@ -1,6 +1,8 @@
 import React from "react";
 import type { Preview } from "@storybook/react";
-import '@/styles/radix-ui-styles.css'
+import "@/styles/reset.css";
+import "@radix-ui/themes/styles.css";
+import "@/styles/global.css";
 import { Theme } from "@radix-ui/themes";
 
 const preview: Preview = {
