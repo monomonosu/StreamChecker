@@ -1,0 +1,26 @@
+.header {
+    z-index: 1000;
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 16px 40px;
+    height: 56px;
+}
+
+.header_inner {
+    display:flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.link {
+    transition: font-weight 0.3s ease, transform 0.3s ease;
+    color: --gray;
+    font-weight: 700;
+}
+
+.link:hover {
+    transform: scale(1.2);
+}
