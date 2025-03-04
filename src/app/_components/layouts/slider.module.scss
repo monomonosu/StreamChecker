@@ -1,5 +1,5 @@
 .jacketSlider {
-    display: flex;
+    display: -webkit-box;
     overflow-x: scroll;
     gap: 24px;
     scrollbar-width: none; /* Firefoxでスクロールバーを非表示 */

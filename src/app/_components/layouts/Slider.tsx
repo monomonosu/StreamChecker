@@ -1,9 +1,9 @@
 import style from "@/app/_components/layouts/slider.module.scss";
 
-interface SectionProps {
+interface SliderProps {
 	children: React.ReactNode;
 }
 
-export const JacketSlider = ({ children }: SectionProps) => {
+export const JacketSlider = ({ children }: SliderProps) => {
 	return <div className={style.jacketSlider}>{children}</div>;
 };
