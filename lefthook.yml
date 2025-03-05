@@ -38,12 +38,10 @@ pre-commit:
   commands:
     check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      exclude: "*.scss.d.ts"
       run: npx biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true ./src && git update-index --again
 
 pre-push:
   commands:
     check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      exclude: "*.scss.d.ts"
       run: npx biome check --no-errors-on-unmatched --files-ignore-unknown=true ./src
