@@ -3,7 +3,7 @@
 import Image, { type ImageProps } from "next/image";
 import { useRouter } from "next/navigation";
 
-import style from "@/app/_components/client/Jacket/style.module.scss";
+import style from "@/app/_components/client/Jacket/jacket.module.scss";
 
 type JacketProps = ImageProps & {
 	href: string;
