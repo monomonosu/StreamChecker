@@ -1,7 +1,6 @@
-import Image from "next/image";
-
 import { randomUUID } from "node:crypto";
-import { Jacket } from "@/app/_components/client/Jacket";
+
+import { Jacket } from "@/app/_components/client/Jacket/Jacket";
 import { Section, SectionWrapper } from "@/app/_components/layouts/Section";
 import { JacketSlider } from "@/app/_components/layouts/Slider";
 

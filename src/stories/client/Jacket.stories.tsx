@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Jacket } from "@/app/_components/client/Jacket";
+import { Jacket } from "@/app/_components/client/Jacket/Jacket";
 import { JacketSlider } from "@/app/_components/layouts/Slider";
 
 const meta = {

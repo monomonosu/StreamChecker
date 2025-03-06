@@ -3,7 +3,7 @@ import { Theme } from "@radix-ui/themes";
 import Image from "next/image";
 import Link from "next/link";
 
-import style from "@/app/_components/server/Header/style/style.module.scss";
+import style from "@/app/_components/server/Header/header.module.scss";
 
 export const Header = () => {
 	return (

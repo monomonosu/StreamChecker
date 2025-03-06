@@ -5,7 +5,7 @@ import { Theme } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import { Header } from "@/app/_components/server/Header";
+import { Header } from "@/app/_components/server/Header/Header";
 import style from "@/app/_styles/layout.module.scss";
 
 const geistSans = Geist({

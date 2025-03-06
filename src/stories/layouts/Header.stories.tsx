@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Header } from "@/app/_components/server/Header";
+import { Header } from "@/app/_components/server/Header/Header";
 
 const meta = {
 	title: "Layouts/Header",
