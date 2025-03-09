@@ -2,7 +2,17 @@ const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 
-export async function getAccessToken() {
+type SpotifyAuthResponse = {
+	access_token: string;
+	token_type: string;
+	expires_in: number;
+};
+
+/**
+ * SpotifyAPIのアクセストークンを取得する
+ * @returns {Promise<SpotifyAuthResponse>}
+ */
+export async function getAccessToken(): Promise<SpotifyAuthResponse> {
 	const response = await fetch(TOKEN_ENDPOINT, {
 		method: "POST",
 		headers: {
@@ -14,10 +24,19 @@ export async function getAccessToken() {
 		}),
 	});
 
+	if (!response.ok) {
+		throw new Error("Failed to get access token");
+	}
+
 	return response.json();
 }
 
-export async function fetchSpotifyData(endpoint: string) {
+/**
+ * SpotifyAPIからデータを取得するラッパー
+ * @param {string} endpoint
+ * @returns {Promise<T>}
+ */
+export async function fetchSpotifyData<T>(endpoint: string): Promise<T> {
 	const { access_token } = await getAccessToken();
 
 	const res = await fetch(`https://api.spotify.com/v1/${endpoint}`, {
@@ -25,6 +44,10 @@ export async function fetchSpotifyData(endpoint: string) {
 			Authorization: `Bearer ${access_token}`,
 		},
 	});
+
+	if (!res.ok) {
+		throw new Error(`Failed to fetch data from Spotify API: ${res.status}`);
+	}
 
 	return res.json();
 }
