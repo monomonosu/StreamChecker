@@ -1,5 +1,6 @@
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
+const BASE_URL = process.env.SPOTIFY_API_BASE_URL;
 const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 
 type SpotifyAuthResponse = {
@@ -39,7 +40,7 @@ export async function getAccessToken(): Promise<SpotifyAuthResponse> {
 export async function fetchSpotifyData<T>(endpoint: string): Promise<T> {
 	const { access_token } = await getAccessToken();
 
-	const res = await fetch(`https://api.spotify.com/v1/${endpoint}`, {
+	const res = await fetch(`${BASE_URL}/${endpoint}`, {
 		headers: {
 			Authorization: `Bearer ${access_token}`,
 		},
