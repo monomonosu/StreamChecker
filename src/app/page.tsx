@@ -1,25 +1,31 @@
-import { randomUUID } from "node:crypto";
-
 import { Jacket } from "@/app/_components/client/Jacket/Jacket";
 import { Section, SectionWrapper } from "@/app/_components/layouts/Section";
 import { JacketSlider } from "@/app/_components/layouts/Slider";
 
+import { getNewReleases } from "@/app/_fetchers/getNewReleases";
+import { getPopularityAlbums } from "@/app/_fetchers/getPopularityAlbums";
+
 export default async function Home() {
-	const DUMMY_IMAGE_COUNT = 10;
+	// 最新のおすすめ
+	const newReleaseData = await getNewReleases();
+	// 人気アルバム
+	const popularityData = await getPopularityAlbums();
+	// TODO：ジャンル（ジャンルはAPIRouteから取得予定）
+
 	return (
 		<SectionWrapper>
 			<Section>
 				<h1>新着</h1>
 				<JacketSlider>
-					{Array.from({ length: DUMMY_IMAGE_COUNT }).map((_, _index) => (
+					{newReleaseData.albums.items.map((item) => (
 						<Jacket
 							href="/"
-							key={randomUUID()}
+							key={item.id}
 							priority
-							src={"https://placehold.jp/31a07b/ffffff/200x200.png"}
+							src={item.images[0].url}
 							width={200}
 							height={200}
-							alt="dummy"
+							alt="最新リリースアルバム画像"
 						/>
 					))}
 				</JacketSlider>
@@ -28,32 +34,15 @@ export default async function Home() {
 			<Section>
 				<h1>人気</h1>
 				<JacketSlider>
-					{Array.from({ length: DUMMY_IMAGE_COUNT }).map((_, _index) => (
+					{popularityData.albums.items.map((item) => (
 						<Jacket
 							href="/"
-							key={randomUUID()}
+							key={item.id}
 							priority
-							src={"https://placehold.jp/31a07b/ffffff/200x200.png"}
+							src={item.images[0].url}
 							width={200}
 							height={200}
-							alt="dummy"
-						/>
-					))}
-				</JacketSlider>
-			</Section>
-
-			<Section>
-				<h1>ジャンル</h1>
-				<JacketSlider>
-					{Array.from({ length: DUMMY_IMAGE_COUNT }).map((_, _index) => (
-						<Jacket
-							href="/"
-							key={randomUUID()}
-							priority
-							src={"https://placehold.jp/31a07b/ffffff/200x200.png"}
-							width={200}
-							height={200}
-							alt="dummy"
+							alt="国内人気アルバム画像"
 						/>
 					))}
 				</JacketSlider>
