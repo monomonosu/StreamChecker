@@ -5,6 +5,8 @@ import { JacketSlider } from "@/app/_components/layouts/Slider";
 import { getNewReleases } from "@/app/_fetchers/getNewReleases";
 import { getPopularityAlbums } from "@/app/_fetchers/getPopularityAlbums";
 
+import { genres } from "@/app/(static)/_utils/_constants";
+
 export default async function Home() {
 	// 最新のおすすめ
 	const newReleaseData = await getNewReleases();
@@ -43,6 +45,23 @@ export default async function Home() {
 							width={200}
 							height={200}
 							alt="国内人気アルバム画像"
+						/>
+					))}
+				</JacketSlider>
+			</Section>
+
+			<Section>
+				<h1>ジャンル</h1>
+				<JacketSlider>
+					{genres.map((genre) => (
+						<Jacket
+							href="/"
+							key={genre.id}
+							priority
+							src={genre.src}
+							width={200}
+							height={200}
+							alt="ジャンル画像"
 						/>
 					))}
 				</JacketSlider>
