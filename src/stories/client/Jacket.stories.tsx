@@ -19,16 +19,16 @@ export default meta;
 type Story = StoryObj<typeof Jacket>;
 
 const DUMMY_IMAGES = [
-	{ id: 1, src: "https://placehold.jp/31a07b/ffffff/200x200.png" },
-	{ id: 2, src: "https://placehold.jp/31a07b/ffffff/200x200.png" },
-	{ id: 3, src: "https://placehold.jp/31a07b/ffffff/200x200.png" },
-	{ id: 4, src: "https://placehold.jp/31a07b/ffffff/200x200.png" },
-	{ id: 5, src: "https://placehold.jp/31a07b/ffffff/200x200.png" },
-	{ id: 6, src: "https://placehold.jp/31a07b/ffffff/200x200.png" },
-	{ id: 7, src: "https://placehold.jp/31a07b/ffffff/200x200.png" },
-	{ id: 7, src: "https://placehold.jp/31a07b/ffffff/200x200.png" },
-	{ id: 7, src: "https://placehold.jp/31a07b/ffffff/200x200.png" },
-	{ id: 7, src: "https://placehold.jp/31a07b/ffffff/200x200.png" },
+	{ id: 1, src: "/images/dummy-image.png" },
+	{ id: 2, src: "/images/dummy-image.png" },
+	{ id: 3, src: "/images/dummy-image.png" },
+	{ id: 4, src: "/images/dummy-image.png" },
+	{ id: 5, src: "/images/dummy-image.png" },
+	{ id: 6, src: "/images/dummy-image.png" },
+	{ id: 7, src: "/images/dummy-image.png" },
+	{ id: 7, src: "/images/dummy-image.png" },
+	{ id: 7, src: "/images/dummy-image.png" },
+	{ id: 7, src: "/images/dummy-image.png" },
 ];
 
 export const Primary: Story = {
@@ -36,7 +36,7 @@ export const Primary: Story = {
 		<Jacket
 			href="/"
 			priority
-			src={"https://placehold.jp/31a07b/ffffff/200x200.png"}
+			src={"/images/dummy-image.png"}
 			width={200}
 			height={200}
 			alt="dummy"
