@@ -25,6 +25,8 @@ export default async function Home() {
 							key={item.id}
 							priority
 							src={item.images[0].url}
+							music={{ name: item.name, href: item.external_urls.spotify }}
+							artist={{ name: item.artists[0].name, href: "/" }}
 							width={200}
 							height={200}
 							alt="最新リリースアルバム画像"
@@ -38,10 +40,12 @@ export default async function Home() {
 				<JacketSlider>
 					{popularityData.albums.items.map((item) => (
 						<Jacket
-							href="/"
 							key={item.id}
+							href="/"
 							priority
 							src={item.images[0].url}
+							music={{ name: item.name, href: item.external_urls.spotify }}
+							artist={{ name: item.artists[0].name, href: "/" }}
 							width={200}
 							height={200}
 							alt="国内人気アルバム画像"
@@ -55,8 +59,8 @@ export default async function Home() {
 				<JacketSlider>
 					{genres.map((genre) => (
 						<Jacket
-							href="/"
 							key={genre.id}
+							href="/"
 							priority
 							src={genre.src}
 							width={200}
