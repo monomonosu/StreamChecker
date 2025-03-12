@@ -26,9 +26,6 @@ const DUMMY_IMAGES = [
 	{ id: 5, src: "/images/dummy-image.png" },
 	{ id: 6, src: "/images/dummy-image.png" },
 	{ id: 7, src: "/images/dummy-image.png" },
-	{ id: 7, src: "/images/dummy-image.png" },
-	{ id: 7, src: "/images/dummy-image.png" },
-	{ id: 7, src: "/images/dummy-image.png" },
 ];
 
 export const Primary: Story = {
