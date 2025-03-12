@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Jacket } from "@/app/_components/client/Jacket/Jacket";
-import { JacketSlider } from "@/app/_components/layouts/Slider";
+import { Slider } from "@/app/_components/layouts/Slider";
 
 const meta = {
 	title: "Client/Jacket",
@@ -81,7 +81,7 @@ export const Primary: Story = {
 export const WithSlider: Story = {
 	render: () => (
 		<div style={{ width: "1000px" }}>
-			<JacketSlider>
+			<Slider>
 				{DUMMY_IMAGES.map((image) => (
 					<Jacket
 						key={image.id}
@@ -95,7 +95,7 @@ export const WithSlider: Story = {
 						alt="dummy"
 					/>
 				))}
-			</JacketSlider>
+			</Slider>
 		</div>
 	),
 };

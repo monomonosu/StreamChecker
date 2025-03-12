@@ -1,6 +1,6 @@
 import { Jacket } from "@/app/_components/client/Jacket/Jacket";
 import { Section, SectionWrapper } from "@/app/_components/layouts/Section";
-import { JacketSlider } from "@/app/_components/layouts/Slider";
+import { Slider } from "@/app/_components/layouts/Slider";
 
 import { getNewReleases } from "@/app/_fetchers/getNewReleases";
 import { getPopularityAlbums } from "@/app/_fetchers/getPopularityAlbums";
@@ -19,7 +19,7 @@ export default async function Home() {
 		<SectionWrapper>
 			<Section>
 				<h1>新着</h1>
-				<JacketSlider>
+				<Slider>
 					{newReleaseData.albums.items.map((item) => (
 						<Jacket
 							href="/"
@@ -33,12 +33,12 @@ export default async function Home() {
 							alt="最新リリースアルバム画像"
 						/>
 					))}
-				</JacketSlider>
+				</Slider>
 			</Section>
 
 			<Section>
 				<h1>人気</h1>
-				<JacketSlider>
+				<Slider>
 					{popularityData.albums.items.map((item) => (
 						<Jacket
 							key={item.id}
@@ -52,12 +52,12 @@ export default async function Home() {
 							alt="国内人気アルバム画像"
 						/>
 					))}
-				</JacketSlider>
+				</Slider>
 			</Section>
 
 			<Section>
 				<h1>ジャンル</h1>
-				<JacketSlider>
+				<Slider>
 					{genres.map((genre) => (
 						<Genre
 							key={genre.id}
@@ -70,7 +70,7 @@ export default async function Home() {
 							alt="ジャンル画像"
 						/>
 					))}
-				</JacketSlider>
+				</Slider>
 			</Section>
 		</SectionWrapper>
 	);

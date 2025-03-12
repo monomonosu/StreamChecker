@@ -1,4 +1,4 @@
-.jacketSlider {
+.slider {
     display: -webkit-box;
     overflow-x: scroll;
     gap: 24px;
@@ -7,6 +7,6 @@
     mask-image: linear-gradient(90deg, #060d17 90%, transparent);
 }
 
-.jacketSlider::-webkit-scrollbar {
+.slider::-webkit-scrollbar {
     display: none; /* Chrome, Safariでスクロールバーを非表示 */
   }
