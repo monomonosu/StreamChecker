@@ -24,8 +24,12 @@ export const Jacket = ({ href, music, artist, ...props }: JacketProps) => {
 				<Image className={style.jacketImg} {...props} alt="image" />
 			</div>
 			<div className={style.jacketInfo}>
-				<a href={music?.href}>{music?.name}</a>
-				<a href={artist?.href}>{artist?.name}</a>
+				<a className={style["--threeLine"]} href={music?.href}>
+					{music?.name}
+				</a>
+				<a className={style["--gray"]} href={artist?.href}>
+					{artist?.name}
+				</a>
 			</div>
 		</div>
 	);
