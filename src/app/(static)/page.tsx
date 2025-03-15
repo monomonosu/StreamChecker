@@ -13,7 +13,6 @@ export default async function Home() {
 	const newReleaseData = await getNewReleases();
 	// 人気アルバム
 	const popularityData = await getPopularityAlbums();
-	// TODO：ジャンル（ジャンルはAPIRouteから取得予定）
 
 	return (
 		<SectionWrapper>
