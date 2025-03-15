@@ -4,6 +4,6 @@ interface SliderProps {
 	children: React.ReactNode;
 }
 
-export const JacketSlider = ({ children }: SliderProps) => {
-	return <div className={style.jacketSlider}>{children}</div>;
+export const Slider = ({ children }: SliderProps) => {
+	return <div className={style.slider}>{children}</div>;
 };
