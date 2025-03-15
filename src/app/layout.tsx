@@ -5,8 +5,10 @@ import { Theme } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
+import { Loading } from "@/app/_components/layouts/Loading";
 import { Header } from "@/app/_components/server/Header/Header";
 import style from "@/app/_styles/layout.module.scss";
+import { Suspense } from "react";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -34,7 +36,11 @@ export default function RootLayout({
 				<Theme appearance="dark">
 					<Header />
 					<div className={style.main}>
-						<div className={style["main-inner"]}>{children}</div>
+						<Suspense
+							fallback={<Loading height="calc(100vh - 56px - 48px * 2)" />}
+						>
+							<div className={style["main-inner"]}>{children}</div>
+						</Suspense>
 					</div>
 				</Theme>
 			</body>
