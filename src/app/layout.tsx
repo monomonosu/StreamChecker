@@ -7,7 +7,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import { Loading } from "@/app/_components/layouts/Loading";
 import { Header } from "@/app/_components/server/Header/Header";
-import style from "@/app/_styles/layout.module.scss";
+import style from "@/app/layout.module.scss";
 import { Suspense } from "react";
 
 const geistSans = Geist({
