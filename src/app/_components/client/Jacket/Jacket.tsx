@@ -4,6 +4,7 @@ import Image, { type ImageProps } from "next/image";
 import { useRouter } from "next/navigation";
 
 import style from "@/app/_components/client/Jacket/jacket.module.scss";
+import helper from "@/app/_styles/helper.module.scss";
 
 type JacketProps = ImageProps & {
 	href: string;
@@ -24,7 +25,7 @@ export const Jacket = ({ href, music, artist, ...props }: JacketProps) => {
 				<Image className={style.jacketImg} {...props} alt="image" />
 			</div>
 			<div className={style.jacketInfo}>
-				<a className={style["--threeLine"]} href={music?.href}>
+				<a className={helper.textEllipsis} href={music?.href}>
 					{music?.name}
 				</a>
 				<a className={style["--gray"]} href={artist?.href}>
