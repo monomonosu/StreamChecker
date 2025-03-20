@@ -25,3 +25,28 @@ type SpotifyAlbumItem = {
 	images: { url: string; width: number; height: number }[];
 	external_urls: { spotify: string };
 };
+
+/**
+ * アーティストの情報
+ */
+export type SpotifyArtistResponse = {
+	external_urls: {
+		spotify: string;
+	};
+	followers: {
+		href: string | null; // `href` は通常 null になることが多い
+		total: number;
+	};
+	genres: string[];
+	href: string;
+	id: string;
+	images: {
+		url: string;
+		height: number;
+		width: number;
+	}[];
+	name: string;
+	popularity: number;
+	type: "artist";
+	uri: string;
+};
