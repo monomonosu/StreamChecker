@@ -26,7 +26,10 @@ export default async function Home() {
 							priority
 							src={item.images[0].url}
 							music={{ name: item.name, href: item.external_urls.spotify }}
-							artist={{ name: item.artists[0].name, href: "/" }}
+							artist={{
+								name: item.artists[0].name,
+								href: `artists/${item.artists[0].id}`,
+							}}
 							width={200}
 							height={200}
 							alt="最新リリースアルバム画像"
@@ -45,7 +48,10 @@ export default async function Home() {
 							priority
 							src={item.images[0].url}
 							music={{ name: item.name, href: item.external_urls.spotify }}
-							artist={{ name: item.artists[0].name, href: "/" }}
+							artist={{
+								name: item.artists[0].name,
+								href: `artists/${item.artists[0].id}`,
+							}}
 							width={200}
 							height={200}
 							alt="国内人気アルバム画像"
