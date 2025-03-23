@@ -1,5 +1,7 @@
 /**
- * Spotify API から取得したアルバム一覧情報のレスポンスを表す型
+ * おすすめニューリリース情報
+ * @see /browse/new-releases
+ * @see /search?q=album&type=album&market=jp&language=ja-JP&limit=10
  */
 export type SpotifyAlbumsResponse = {
 	albums: {
@@ -28,6 +30,7 @@ type SpotifyAlbumItem = {
 
 /**
  * アーティストの情報
+ * @see /artists/[id]
  */
 export type SpotifyArtistResponse = {
 	external_urls: {
@@ -49,4 +52,18 @@ export type SpotifyArtistResponse = {
 	popularity: number;
 	type: "artist";
 	uri: string;
+};
+
+/**
+ * アーティストのアルバアム情報
+ * @see /artists/[id]/albums
+ */
+export type SpotifyArtistAlbumsResponse = {
+	href: string;
+	items: SpotifyAlbumItem[];
+	limit: number;
+	next: string | null;
+	offset: number;
+	previous: string | null;
+	total: number;
 };
