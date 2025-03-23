@@ -6,5 +6,8 @@ import { fetchSpotifyData } from "@/libs/spotify";
  * @returns {Promise<SpotifyAlbumsResponse>}
  */
 export async function getNewReleases() {
-	return fetchSpotifyData<SpotifyAlbumsResponse>("browse/new-releases");
+	const res = await fetchSpotifyData<SpotifyAlbumsResponse>(
+		"browse/new-releases",
+	);
+	return res;
 }
