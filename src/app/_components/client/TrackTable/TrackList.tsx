@@ -24,8 +24,6 @@ export const TrackList = ({ tracks }: Props) => {
 		(_, i) => tracks.slice(i * 3, i * 3 + 3),
 	);
 
-	console.log(chunkedTracks);
-
 	return (
 		<div className={styles.scrollWrapper}>
 			<div className={styles.gridContainer}>
