@@ -1,3 +1,36 @@
+/* ========================================
+   共通Types
+   ======================================== */
+
+/**
+ * アルバムの情報
+ */
+type SpotifyAlbumItem = {
+	id: string;
+	name: string;
+	artists: { id: string; name: string }[];
+	release_date: string;
+	total_tracks: number;
+	images: { url: string; width: number; height: number }[];
+	external_urls: { spotify: string };
+};
+
+/**
+ * トラックの情報
+ */
+type SpotifyTrackItem = {
+	id: string;
+	name: string;
+	duration_ms: number;
+	artists: { id: string; name: string }[];
+	album: { id: string; name: string; images: { url: string }[] };
+	external_urls: { spotify: string };
+};
+
+/* ========================================
+   レスポンスTypes
+   ======================================== */
+
 /**
  * おすすめニューリリース情報
  * @see /browse/new-releases
@@ -13,19 +46,6 @@ export type SpotifyAlbumsResponse = {
 		total: number;
 		items: SpotifyAlbumItem[];
 	};
-};
-
-/**
- * アルバムの情報
- */
-type SpotifyAlbumItem = {
-	id: string;
-	name: string;
-	artists: { id: string; name: string }[];
-	release_date: string;
-	total_tracks: number;
-	images: { url: string; width: number; height: number }[];
-	external_urls: { spotify: string };
 };
 
 /**
@@ -66,4 +86,12 @@ export type SpotifyArtistAlbumsResponse = {
 	offset: number;
 	previous: string | null;
 	total: number;
+};
+
+/**
+ * アーティストのトップトラック情報
+ * @see /artists/[id]/top-tracks
+ */
+export type SpotifyArtistTopTracksResponse = {
+	tracks: SpotifyTrackItem[];
 };
