@@ -3,6 +3,7 @@ import style from "@/app/(static)/artists/[artist_id]/_components/track-area.mod
 import { useArtist } from "@/app/(static)/artists/[artist_id]/hook";
 import { TrackList } from "@/app/_components/client/TrackTable/TrackList";
 import type { SpotifyArtistTopTracksResponse } from "@/app/_fetchers/types";
+import { formatMsToMinSec } from "@/utils/helpers/formatDate";
 
 type Props = {
 	topTracks: SpotifyArtistTopTracksResponse;
@@ -18,7 +19,7 @@ export const TrackArea = ({ topTracks }: Props) => {
 		title: track.name,
 		album: track.album.name,
 		artist: track.artists[0].name,
-		duration: track.duration_ms,
+		duration: formatMsToMinSec(track.duration_ms),
 	}));
 
 	const chunkedTracks = Array.from(

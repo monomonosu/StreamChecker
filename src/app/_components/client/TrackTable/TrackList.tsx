@@ -11,7 +11,7 @@ type Track = {
 	image: string;
 	title: string;
 	album: string;
-	duration: number;
+	duration: string;
 	onClick: () => void;
 };
 
