@@ -23,11 +23,15 @@ export async function GET(request: Request) {
 	const searchRes = await fetch(searchUrl);
 	const searchData = await searchRes.json();
 
-	if (searchData.items.length === 0)
-		return NextResponse.json({ error: "No video found" }, { status: 404 });
+	try {
+		if (searchData.items.length === 0)
+			return NextResponse.json({ error: "No video found" }, { status: 404 });
 
-	const videoId = searchData.items[0].id.videoId;
-	const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+		const videoId = searchData.items[0].id.videoId;
+		const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
 
-	return NextResponse.json({ url: videoUrl });
+		return NextResponse.json({ url: videoUrl });
+	} catch (error) {
+		return NextResponse.json({ error: error }, { status: 500 });
+	}
 }
