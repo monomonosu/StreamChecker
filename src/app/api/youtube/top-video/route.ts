@@ -12,10 +12,7 @@ export async function GET(request: Request) {
 	const query = searchParams.get("q");
 
 	if (!query) {
-		return NextResponse.json(
-			{ error: "Missing search query" },
-			{ status: 400 },
-		);
+		return new Response(null, { status: 400 });
 	}
 
 	const searchUrl = `${BASE_URL}/search?part=snippet&q=${encodeURIComponent(query)}&key=${API_KEY}&type=video&maxResults=1`;
