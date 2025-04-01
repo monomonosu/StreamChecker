@@ -10,12 +10,17 @@ export async function getTopMovieBySearch(
 	// apiRouterから取得
 	const url = `/api/youtube/top-video?q=${encodeQuery}`;
 
-	const res = await fetch(url);
-	const data: {
-		url: string;
-	} = await res.json();
+	try {
+		const res = await fetch(url);
+		const data: {
+			url: string;
+		} = await res.json();
 
-	if (!data.url) return null;
+		if (!data.url) return null;
 
-	return data.url;
+		return data.url;
+	} catch (error) {
+		console.error(error);
+		return null;
+	}
 }
