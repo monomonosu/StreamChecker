@@ -12,7 +12,10 @@ export async function GET(request: Request) {
 	const query = searchParams.get("q");
 
 	if (!query) {
-		return new Response(null, { status: 400 });
+		return NextResponse.json(
+			{ error: "Missing search query" },
+			{ status: 400 },
+		);
 	}
 
 	const searchUrl = `${BASE_URL}/search?part=snippet&q=${encodeURIComponent(query)}&key=${API_KEY}&type=video&maxResults=1`;
@@ -20,7 +23,8 @@ export async function GET(request: Request) {
 	const searchRes = await fetch(searchUrl);
 	const searchData = await searchRes.json();
 
-	if (searchData.items.length === 0) return null;
+	if (searchData.items.length === 0)
+		return NextResponse.json({ error: "No video found" }, { status: 404 });
 
 	const videoId = searchData.items[0].id.videoId;
 	const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
