@@ -15,7 +15,7 @@ type Props = {
 export const FooterPlayer = ({ height = 280, width = 140 }: Props) => {
 	const isOpenFooter = useAtomValue(isOpenFooterAtom);
 	const videoId = useAtomValue(videoIdAtom);
-	const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+	const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
 
 	return (
 		<>
