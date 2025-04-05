@@ -4,7 +4,7 @@ const API_KEY = process.env.YOUTUBE_API_KEY;
 const BASE_URL = process.env.YOUTUBE_API_BASE_URL;
 
 /**
- * Youtubeの検索結果トップの動画URLを取得
+ * Youtubeの検索結果トップの動画IDを取得
  * @query q {string} 検索クエリ
  */
 export async function GET(request: Request) {
@@ -28,9 +28,8 @@ export async function GET(request: Request) {
 			return NextResponse.json({ error: "No video found" }, { status: 404 });
 
 		const videoId = searchData.items[0].id.videoId;
-		const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
 
-		return NextResponse.json({ url: videoUrl });
+		return NextResponse.json({ videoId: videoId }, { status: 200 });
 	} catch (error) {
 		return NextResponse.json({ error: error }, { status: 500 });
 	}

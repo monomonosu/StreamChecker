@@ -13,12 +13,12 @@ export async function getTopMovieBySearch(
 	try {
 		const res = await fetch(url);
 		const data: {
-			url: string;
+			videoId: string;
 		} = await res.json();
 
-		if (!data.url) return null;
+		if (!data.videoId) return null;
 
-		return data.url;
+		return data.videoId;
 	} catch (error) {
 		console.error(error);
 		return null;
