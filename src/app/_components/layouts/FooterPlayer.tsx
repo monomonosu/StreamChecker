@@ -1,10 +1,14 @@
 "use client";
 
 import { Theme } from "@radix-ui/themes";
-import { useAtomValue } from "jotai";
+import { useAtomValue, useSetAtom } from "jotai";
 import { useEffect, useRef } from "react";
 
-import { isOpenFooterAtom, videoIdAtom } from "@/libs/stores/video";
+import {
+	isOpenFooterAtom,
+	playStateAtom,
+	videoIdAtom,
+} from "@/libs/stores/video";
 
 import style from "@/app/_components/layouts/footer-player.module.scss";
 
@@ -18,6 +22,7 @@ declare global {
 export const FooterPlayer = () => {
 	const isOpenFooter = useAtomValue(isOpenFooterAtom);
 	const videoId = useAtomValue(videoIdAtom);
+	const setPlayState = useSetAtom(playStateAtom);
 	const playerRef = useRef<YT.Player | null>(null);
 
 	useEffect(() => {
@@ -41,13 +46,13 @@ export const FooterPlayer = () => {
 					onStateChange: (event: YT.OnStateChangeEvent) => {
 						switch (event.data) {
 							case window.YT.PlayerState.PLAYING:
-								console.log("▶️ 再生中");
+								setPlayState("playing");
 								break;
 							case window.YT.PlayerState.PAUSED:
-								console.log("⏸ 一時停止");
+								setPlayState("paused");
 								break;
 							case window.YT.PlayerState.ENDED:
-								console.log("⏹ 再生終了");
+								setPlayState("ended");
 								break;
 							default:
 								console.log("📺 状態:", event.data);
@@ -56,7 +61,7 @@ export const FooterPlayer = () => {
 				},
 			});
 		};
-	}, [videoId, isOpenFooter]);
+	}, [videoId, isOpenFooter, setPlayState]);
 
 	useEffect(() => {
 		if (
