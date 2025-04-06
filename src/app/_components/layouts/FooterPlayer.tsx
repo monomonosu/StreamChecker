@@ -1,7 +1,8 @@
 "use client";
 
-import { Theme } from "@radix-ui/themes";
-import { useAtomValue, useSetAtom } from "jotai";
+import { Cross1Icon } from "@radix-ui/react-icons";
+import { Button, Theme } from "@radix-ui/themes";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { useEffect, useRef } from "react";
 
 import {
@@ -22,7 +23,7 @@ declare global {
 }
 
 export const FooterPlayer = () => {
-	const isOpenFooter = useAtomValue(isOpenFooterAtom);
+	const [isOpenFooter, setIsOpenFooter] = useAtom(isOpenFooterAtom);
 	const videoId = useAtomValue(videoIdAtom);
 	const videoTitle = useAtomValue(videoTitleAtom);
 	const videoDescription = useAtomValue(videoDescriptionAtom);
@@ -32,7 +33,12 @@ export const FooterPlayer = () => {
 	useEffect(() => {
 		if (!videoId || !isOpenFooter) return;
 
-		// 既にスクリプトがある場合は再追加しない
+		// NOTE:再生停止中の動画がある場合は同じ動画を再生する（Footerを閉じた時など）
+		if (playerRef.current) {
+			playerRef.current.playVideo();
+		}
+
+		// NOTE:既にスクリプトがある場合は再追加しない
 		if (!window.YT) {
 			const tag = document.createElement("script");
 			tag.id = "youtube-iframe-api";
@@ -74,19 +80,40 @@ export const FooterPlayer = () => {
 		) {
 			playerRef.current.loadVideoById(videoId);
 		}
+		// NOTE: 閉じられたFooterを再度開いた時に動画が再生されるように
+		if (playerRef.current) {
+			playerRef.current.playVideo();
+		}
 	}, [videoId]);
 
+	// NOTE: Footerを閉じた時は動画を停止
+	const onClickClose = () => {
+		if (playerRef.current) {
+			playerRef.current.pauseVideo();
+		}
+		setPlayState("paused");
+		setIsOpenFooter(false);
+	};
+
 	return (
-		<>
-			{isOpenFooter && (
-				<Theme className={style.footer} appearance="dark">
-					<div className={style.footerMovie} id="youtube-player" />
-					<div className={style.footerContent}>
-						<p>{videoTitle}</p>
-						<p>{videoDescription}</p>
-					</div>
-				</Theme>
-			)}
-		</>
+		<Theme
+			className={style.footer}
+			appearance="dark"
+			style={{ visibility: isOpenFooter ? "visible" : "hidden" }}
+		>
+			<div className={style.footerMovie} id="youtube-player" />
+			<div className={style.footerContent}>
+				<p>{videoTitle}</p>
+				<p>{videoDescription}</p>
+			</div>
+			<Button
+				color="gray"
+				variant="outline"
+				radius="full"
+				onClick={onClickClose}
+			>
+				<Cross1Icon />
+			</Button>
+		</Theme>
 	);
 };
