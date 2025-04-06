@@ -1,10 +1,11 @@
+import type { YouTubeSearchResponse } from "@/app/api/youtube/top-video/types";
 import { NextResponse } from "next/server";
 
 const API_KEY = process.env.YOUTUBE_API_KEY;
 const BASE_URL = process.env.YOUTUBE_API_BASE_URL;
 
 /**
- * Youtubeの検索結果トップの動画URLを取得
+ * Youtubeの検索結果トップの動画IDを取得
  * @query q {string} 検索クエリ
  */
 export async function GET(request: Request) {
@@ -21,16 +22,24 @@ export async function GET(request: Request) {
 	const searchUrl = `${BASE_URL}/search?part=snippet&q=${encodeURIComponent(query)}&key=${API_KEY}&type=video&maxResults=1`;
 
 	const searchRes = await fetch(searchUrl);
-	const searchData = await searchRes.json();
+	const searchData: YouTubeSearchResponse = await searchRes.json();
 
 	try {
 		if (searchData.items.length === 0)
 			return NextResponse.json({ error: "No video found" }, { status: 404 });
 
 		const videoId = searchData.items[0].id.videoId;
-		const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+		const videoTitle = searchData.items[0].snippet.title;
+		const videoDescription = searchData.items[0].snippet.description;
 
-		return NextResponse.json({ url: videoUrl });
+		return NextResponse.json(
+			{
+				videoId: videoId,
+				videoTitle: videoTitle,
+				videoDescription: videoDescription,
+			},
+			{ status: 200 },
+		);
 	} catch (error) {
 		return NextResponse.json({ error: error }, { status: 500 });
 	}
