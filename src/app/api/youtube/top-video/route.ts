@@ -1,4 +1,4 @@
-import type { YouTubeSearchResponse } from "@/app/_fetchers/youtube/types";
+import type { YouTubeSearchResponse } from "@/app/api/youtube/top-video/types";
 import { NextResponse } from "next/server";
 
 const API_KEY = process.env.YOUTUBE_API_KEY;
