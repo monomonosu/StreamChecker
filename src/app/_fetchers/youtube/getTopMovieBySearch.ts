@@ -3,9 +3,7 @@
  * @param {string} query
  * @returns {Promise<string|null>}
  */
-export async function getTopMovieBySearch(
-	query: string,
-): Promise<{
+export async function getTopMovieBySearch(query: string): Promise<{
 	videoId: string;
 	videoTitle: string;
 	videoDescription: string;
