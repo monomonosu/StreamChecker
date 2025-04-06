@@ -7,7 +7,9 @@ import { useEffect, useRef } from "react";
 import {
 	isOpenFooterAtom,
 	playStateAtom,
+	videoDescriptionAtom,
 	videoIdAtom,
+	videoTitleAtom,
 } from "@/libs/stores/video";
 
 import style from "@/app/_components/layouts/footer-player.module.scss";
@@ -22,6 +24,8 @@ declare global {
 export const FooterPlayer = () => {
 	const isOpenFooter = useAtomValue(isOpenFooterAtom);
 	const videoId = useAtomValue(videoIdAtom);
+	const videoTitle = useAtomValue(videoTitleAtom);
+	const videoDescription = useAtomValue(videoDescriptionAtom);
 	const setPlayState = useSetAtom(playStateAtom);
 	const playerRef = useRef<YT.Player | null>(null);
 
@@ -75,8 +79,12 @@ export const FooterPlayer = () => {
 	return (
 		<>
 			{isOpenFooter && (
-				<Theme appearance="dark" className={style.footer}>
-					<div id="youtube-player" />
+				<Theme className={style.footer} appearance="dark">
+					<div className={style.footerMovie} id="youtube-player" />
+					<div className={style.footerContent}>
+						<p>{videoTitle}</p>
+						<p>{videoDescription}</p>
+					</div>
 				</Theme>
 			)}
 		</>

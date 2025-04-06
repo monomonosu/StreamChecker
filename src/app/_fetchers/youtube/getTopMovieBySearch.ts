@@ -5,7 +5,11 @@
  */
 export async function getTopMovieBySearch(
 	query: string,
-): Promise<string | null> {
+): Promise<{
+	videoId: string;
+	videoTitle: string;
+	videoDescription: string;
+} | null> {
 	const encodeQuery = encodeURIComponent(query);
 	// apiRouterから取得
 	const url = `/api/youtube/top-video?q=${encodeQuery}`;
@@ -14,11 +18,13 @@ export async function getTopMovieBySearch(
 		const res = await fetch(url);
 		const data: {
 			videoId: string;
+			videoTitle: string;
+			videoDescription: string;
 		} = await res.json();
 
 		if (!data.videoId) return null;
 
-		return data.videoId;
+		return data;
 	} catch (error) {
 		console.error(error);
 		return null;

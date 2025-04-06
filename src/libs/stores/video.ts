@@ -3,6 +3,10 @@ import { atom } from "jotai";
 // 再生中の動画ID
 export const videoIdAtom = atom("");
 
+// 再生中の動画のタイトル・説明
+export const videoTitleAtom = atom("");
+export const videoDescriptionAtom = atom("");
+
 // 開閉状態
 export const isOpenFooterAtom = atom(false);
 

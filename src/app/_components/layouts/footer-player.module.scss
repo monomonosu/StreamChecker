@@ -1,6 +1,23 @@
 .footer {
+	z-index: 1000;
+	display: flex;
 	position: fixed;
+	height: 20vh;
+	width: 100%;
 	bottom: 0;
-	left: 0;
-	z-index: 9999;
+}
+
+.footerMovie {
+	width: auto;
+	min-width: 300px;
+	height: 100%;
+}
+
+.footerContent {
+	white-space: wrap;
+	width: 100%;
+	padding: 16px 32px;
+	display:flex;
+	flex-direction: column;
+	gap: 16px;
 }
