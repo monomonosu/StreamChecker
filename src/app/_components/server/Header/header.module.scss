@@ -9,6 +9,13 @@
     height: 56px;
 }
 
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 8px 32px;
+    }
+    
+}
+
 .header_inner {
     display:flex;
     gap: 24px;
@@ -23,4 +30,40 @@
 
 .link:hover {
     transform: scale(1.2);
+}
+
+.logo {
+    display: inline;
+}
+
+.logoSmall {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        display: none;
+    }
+
+    .logoSmall {
+        display: inline;
+    }
+}
+
+.label {
+    display:block;
+}
+
+.icon {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .label {
+        display: none;
+    }
+
+    .icon {
+        display:  block;
+    }
 }
