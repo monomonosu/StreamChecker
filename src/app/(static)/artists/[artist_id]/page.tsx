@@ -5,7 +5,7 @@ import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 
 import { getAlbumsByArtist } from "@/app/_fetchers/getAlbumsByArtist";
 import { getArtist } from "@/app/_fetchers/getArtist";
-import { getTopTracksByArtist } from "@/app/_fetchers/getTopTraksByArtist";
+import { getTopTracksByArtist } from "@/app/_fetchers/getTopTracksByArtist";
 
 import { TrackArea } from "@/app/(static)/artists/[artist_id]/_components/TrackArea";
 
