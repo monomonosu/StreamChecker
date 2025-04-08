@@ -6,11 +6,16 @@ import helper from "@/app/_styles/helper.module.scss";
 
 type JacketProps = ImageProps & {
 	href: string;
-	music?: { name: string; href: string };
+	album?: { name: string; href: string };
 	artist?: { name: string; href: string };
 };
 
-export const Jacket = ({ href, music, artist, ...props }: JacketProps) => {
+export const Jacket = ({
+	href,
+	album: music,
+	artist,
+	...props
+}: JacketProps) => {
 	return (
 		<div className={style.jacketWrapper}>
 			<Link
