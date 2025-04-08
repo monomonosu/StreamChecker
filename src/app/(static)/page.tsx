@@ -1,12 +1,12 @@
-import { Jacket } from "@/app/_components/client/Jacket/Jacket";
 import { Section, SectionWrapper } from "@/app/_components/layouts/Section";
 import { Slider } from "@/app/_components/layouts/Slider";
+import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 
 import { getNewReleases } from "@/app/_fetchers/getNewReleases";
 import { getPopularityAlbums } from "@/app/_fetchers/getPopularityAlbums";
 
 import { genres } from "@/app/(static)/_utils/_constants";
-import { Genre } from "@/app/_components/client/Genre/Genre";
+import { Genre } from "@/app/_components/server/Genre/Genre";
 
 export default async function Home() {
 	// 最新のおすすめ

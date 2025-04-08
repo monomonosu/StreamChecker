@@ -1,7 +1,7 @@
 import Image, { type ImageProps } from "next/image";
 import Link from "next/link";
 
-import style from "@/app/_components/client/Jacket/jacket.module.scss";
+import style from "@/app/_components/server/Jacket/jacket.module.scss";
 import helper from "@/app/_styles/helper.module.scss";
 
 type JacketProps = ImageProps & {

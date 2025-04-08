@@ -1,7 +1,7 @@
 import Image, { type ImageProps } from "next/image";
 import Link from "next/link";
 
-import style from "@/app/_components/client/Genre/genre.module.scss";
+import style from "@/app/_components/server/Genre/genre.module.scss";
 
 type GenreProps = ImageProps & {
 	href: string;

@@ -1,7 +1,7 @@
 import { ArtistHeader } from "@/app/(static)/artists/[artist_id]/_components/ArtistHeader";
-import { Jacket } from "@/app/_components/client/Jacket/Jacket";
 import { Section, SectionWrapper } from "@/app/_components/layouts/Section";
 import { Slider } from "@/app/_components/layouts/Slider";
+import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 
 import { getAlbumsByArtist } from "@/app/_fetchers/getAlbumsByArtist";
 import { getArtist } from "@/app/_fetchers/getArtist";
