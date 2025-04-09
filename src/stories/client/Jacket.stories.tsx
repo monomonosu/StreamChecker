@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Jacket } from "@/app/_components/client/Jacket/Jacket";
 import { Slider } from "@/app/_components/layouts/Slider";
+import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 
 const meta = {
 	title: "Client/Jacket",
@@ -22,43 +22,43 @@ const DUMMY_IMAGES = [
 	{
 		id: 1,
 		src: "/images/dummy-image.png",
-		musicName: "music",
+		albumName: "music",
 		artistName: "artist",
 	},
 	{
 		id: 2,
 		src: "/images/dummy-image.png",
-		musicName: "music",
+		albumName: "music",
 		artistName: "artist",
 	},
 	{
 		id: 3,
 		src: "/images/dummy-image.png",
-		musicName: "music",
+		albumName: "music",
 		artistName: "artist",
 	},
 	{
 		id: 4,
 		src: "/images/dummy-image.png",
-		musicName: "music",
+		albumName: "music",
 		artistName: "artist",
 	},
 	{
 		id: 5,
 		src: "/images/dummy-image.png",
-		musicName: "music",
+		albumName: "music",
 		artistName: "artist",
 	},
 	{
 		id: 6,
 		src: "/images/dummy-image.png",
-		musicName: "music",
+		albumName: "music",
 		artistName: "artist",
 	},
 	{
 		id: 7,
 		src: "/images/dummy-image.png",
-		musicName: "music",
+		albumName: "music",
 		artistName: "artist",
 	},
 ];
@@ -69,7 +69,7 @@ export const Primary: Story = {
 			href="/"
 			priority
 			src={"/images/dummy-image.png"}
-			music={{ name: "music", href: "/" }}
+			album={{ name: "music", href: "/" }}
 			artist={{ name: "artist", href: "/" }}
 			width={200}
 			height={200}
@@ -88,7 +88,7 @@ export const WithSlider: Story = {
 						href="/"
 						priority
 						src={image.src}
-						music={{ name: image.musicName, href: "/" }}
+						album={{ name: image.albumName, href: "/" }}
 						artist={{ name: image.artistName, href: "/" }}
 						width={200}
 						height={200}

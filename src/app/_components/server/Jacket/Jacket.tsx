@@ -1,30 +1,30 @@
-"use client";
-
 import Image, { type ImageProps } from "next/image";
-import { useRouter } from "next/navigation";
-
-import style from "@/app/_components/client/Jacket/jacket.module.scss";
-import helper from "@/app/_styles/helper.module.scss";
 import Link from "next/link";
+
+import style from "@/app/_components/server/Jacket/jacket.module.scss";
+import helper from "@/app/_styles/helper.module.scss";
 
 type JacketProps = ImageProps & {
 	href: string;
-	music?: { name: string; href: string };
+	album?: { name: string; href: string };
 	artist?: { name: string; href: string };
 };
 
-export const Jacket = ({ href, music, artist, ...props }: JacketProps) => {
-	const router = useRouter();
+export const Jacket = ({
+	href,
+	album: music,
+	artist,
+	...props
+}: JacketProps) => {
 	return (
 		<div className={style.jacketWrapper}>
-			<div
+			<Link
+				href={href}
 				style={{ width: `${props.width}px`, height: `${props.height}px` }}
 				className={style.jacket}
-				onClick={() => router.push(href)}
-				onKeyDown={() => router.push(href)}
 			>
 				<Image className={style.jacketImg} {...props} alt="image" />
-			</div>
+			</Link>
 			<div className={style.jacketInfo}>
 				<Link className={helper.textEllipsis} href={music?.href || "/404"}>
 					{music?.name}

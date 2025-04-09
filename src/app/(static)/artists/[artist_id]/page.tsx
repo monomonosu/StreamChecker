@@ -1,11 +1,11 @@
 import { ArtistHeader } from "@/app/(static)/artists/[artist_id]/_components/ArtistHeader";
-import { Jacket } from "@/app/_components/client/Jacket/Jacket";
 import { Section, SectionWrapper } from "@/app/_components/layouts/Section";
 import { Slider } from "@/app/_components/layouts/Slider";
+import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 
 import { getAlbumsByArtist } from "@/app/_fetchers/getAlbumsByArtist";
 import { getArtist } from "@/app/_fetchers/getArtist";
-import { getTopTracksByArtist } from "@/app/_fetchers/getTopTraksByArtist";
+import { getTopTracksByArtist } from "@/app/_fetchers/getTopTracksByArtist";
 
 import { TrackArea } from "@/app/(static)/artists/[artist_id]/_components/TrackArea";
 
@@ -45,7 +45,7 @@ export default async function Artist({ params }: Props) {
 							href="/"
 							priority
 							src={item.images[0].url}
-							music={{ name: item.name, href: item.external_urls.spotify }}
+							album={{ name: item.name, href: item.external_urls.spotify }}
 							width={200}
 							height={200}
 							alt="アルバム画像"

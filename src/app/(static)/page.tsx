@@ -1,12 +1,12 @@
-import { Jacket } from "@/app/_components/client/Jacket/Jacket";
 import { Section, SectionWrapper } from "@/app/_components/layouts/Section";
 import { Slider } from "@/app/_components/layouts/Slider";
+import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 
 import { getNewReleases } from "@/app/_fetchers/getNewReleases";
 import { getPopularityAlbums } from "@/app/_fetchers/getPopularityAlbums";
 
 import { genres } from "@/app/(static)/_utils/_constants";
-import { Genre } from "@/app/_components/client/Genre/Genre";
+import { Genre } from "@/app/_components/server/Genre/Genre";
 
 export default async function Home() {
 	// 最新のおすすめ
@@ -25,7 +25,7 @@ export default async function Home() {
 							key={item.id}
 							priority
 							src={item.images[0].url}
-							music={{ name: item.name, href: item.external_urls.spotify }}
+							album={{ name: item.name, href: item.external_urls.spotify }}
 							artist={{
 								name: item.artists[0].name,
 								href: `artists/${item.artists[0].id}`,
@@ -47,7 +47,7 @@ export default async function Home() {
 							href="/"
 							priority
 							src={item.images[0].url}
-							music={{ name: item.name, href: item.external_urls.spotify }}
+							album={{ name: item.name, href: item.external_urls.spotify }}
 							artist={{
 								name: item.artists[0].name,
 								href: `artists/${item.artists[0].id}`,
