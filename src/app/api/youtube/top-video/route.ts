@@ -1,4 +1,5 @@
 import type { YouTubeSearchResponse } from "@/app/api/youtube/top-video/types";
+import { REVALIDATE_ONE_MONTH } from "@/utils/constants/revalidate";
 import { NextResponse } from "next/server";
 
 const API_KEY = process.env.YOUTUBE_API_KEY;
@@ -21,7 +22,9 @@ export async function GET(request: Request) {
 
 	const searchUrl = `${BASE_URL}/search?part=snippet&q=${encodeURIComponent(query)}&key=${API_KEY}&type=video&maxResults=1`;
 
-	const searchRes = await fetch(searchUrl);
+	const searchRes = await fetch(searchUrl, {
+		next: { revalidate: REVALIDATE_ONE_MONTH },
+	});
 	const searchData: YouTubeSearchResponse = await searchRes.json();
 
 	try {
