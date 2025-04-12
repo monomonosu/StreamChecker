@@ -9,6 +9,7 @@ export async function getTopMovieBySearch(query: string): Promise<{
 	videoId: string;
 	videoTitle: string;
 	videoDescription: string;
+	channel: string;
 } | null> {
 	const encodeQuery = encodeURIComponent(query);
 	// apiRouterから取得
@@ -22,6 +23,7 @@ export async function getTopMovieBySearch(query: string): Promise<{
 			videoId: string;
 			videoTitle: string;
 			videoDescription: string;
+			channel: string;
 		} = await res.json();
 
 		if (!data.videoId) return null;
