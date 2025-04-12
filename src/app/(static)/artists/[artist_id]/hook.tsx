@@ -3,6 +3,7 @@ import { useSetAtom } from "jotai";
 import { getTopMovieBySearch } from "@/app/_fetchers/youtube/getTopMovieBySearch";
 import {
 	isOpenFooterAtom,
+	videoChannelAtom,
 	videoDescriptionAtom,
 	videoIdAtom,
 	videoTitleAtom,
@@ -13,6 +14,7 @@ export const useArtist = () => {
 	const setVideoId = useSetAtom(videoIdAtom);
 	const setVideoTitle = useSetAtom(videoTitleAtom);
 	const setVideoDescription = useSetAtom(videoDescriptionAtom);
+	const setVideoChannel = useSetAtom(videoChannelAtom);
 
 	/**
 	 * トラックをクリックした時にYoutubeの動画を開く
@@ -36,6 +38,7 @@ export const useArtist = () => {
 		setIsOpenFooter(true);
 		setVideoId(res.videoId);
 		setVideoTitle(res.videoTitle);
+		setVideoChannel(res.channel);
 		setVideoDescription(res.videoDescription);
 	};
 
