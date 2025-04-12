@@ -32,6 +32,8 @@ export const FooterPlayer = () => {
 
 	useEffect(() => {
 		if (!videoId || !isOpenFooter) return;
+		// WARNING:ダミー音声
+		const audio = new Audio("/soundless.mp3");
 
 		// NOTE:再生停止中の動画がある場合は同じ動画を再生する（Footerを閉じた時など）
 		if (playerRef.current) {
@@ -51,27 +53,65 @@ export const FooterPlayer = () => {
 				videoId,
 				playerVars: {
 					autoplay: 1,
+					enablejsapi: 1,
 				},
 				events: {
 					onStateChange: (event: YT.OnStateChangeEvent) => {
 						switch (event.data) {
 							case window.YT.PlayerState.PLAYING:
+								// ２回目の動画再生後にActionHandlerが動作しなくなるのを防ぐ
+								audio.play();
 								setPlayState("playing");
 								break;
 							case window.YT.PlayerState.PAUSED:
 								setPlayState("paused");
 								break;
 							case window.YT.PlayerState.ENDED:
+								// Youtube動画再生終了後にシークバーが復活するのを防ぐ
+								audio.pause();
 								setPlayState("ended");
 								break;
 							default:
 								console.log("📺 状態:", event.data);
 						}
 					},
+					onReady: () => {
+						// HACK: Youtubeiframeではメディアセッションの制御が不可能なのでダミー音声で擬似的に制御可能とさせる
+						audio.loop = true;
+						audio.play();
+
+						// HACK: シークバーを擬似的に停止状態にするため再生完了後にpausedステートにする
+						audio.addEventListener("ended", () => {
+							navigator.mediaSession.playbackState = "paused";
+						});
+
+						if ("mediaSession" in navigator) {
+							navigator.mediaSession.metadata = new MediaMetadata({
+								title: videoTitle,
+								artist: "Test Artist",
+								album: "Test Album",
+								artwork: [
+									{
+										src: "/images/dummy-image.png",
+										sizes: "512x512",
+										type: "image/png",
+									},
+								],
+							});
+
+							navigator.mediaSession.setActionHandler("previoustrack", () => {
+								console.log("⏮ Prev Track Triggered");
+							});
+
+							navigator.mediaSession.setActionHandler("nexttrack", () => {
+								console.log("⏭ Next Track Triggered");
+							});
+						}
+					},
 				},
 			});
 		};
-	}, [videoId, isOpenFooter, setPlayState]);
+	}, [videoId, videoTitle, isOpenFooter, setPlayState]);
 
 	useEffect(() => {
 		if (
