@@ -8,6 +8,7 @@ import { useEffect, useRef } from "react";
 import {
 	isOpenFooterAtom,
 	playStateAtom,
+	videoChannelAtom,
 	videoDescriptionAtom,
 	videoIdAtom,
 	videoTitleAtom,
@@ -27,6 +28,7 @@ export const FooterPlayer = () => {
 	const videoId = useAtomValue(videoIdAtom);
 	const videoTitle = useAtomValue(videoTitleAtom);
 	const videoDescription = useAtomValue(videoDescriptionAtom);
+	const videoChannel = useAtomValue(videoChannelAtom);
 	const setPlayState = useSetAtom(playStateAtom);
 	const playerRef = useRef<YT.Player | null>(null);
 
@@ -64,6 +66,7 @@ export const FooterPlayer = () => {
 								setPlayState("playing");
 								break;
 							case window.YT.PlayerState.PAUSED:
+								audio.pause();
 								setPlayState("paused");
 								break;
 							case window.YT.PlayerState.ENDED:
@@ -88,8 +91,7 @@ export const FooterPlayer = () => {
 						if ("mediaSession" in navigator) {
 							navigator.mediaSession.metadata = new MediaMetadata({
 								title: videoTitle,
-								artist: "Test Artist",
-								album: "Test Album",
+								artist: videoChannel,
 								artwork: [
 									{
 										src: "/images/dummy-image.png",
@@ -111,7 +113,7 @@ export const FooterPlayer = () => {
 				},
 			});
 		};
-	}, [videoId, videoTitle, isOpenFooter, setPlayState]);
+	}, [videoId, videoTitle, videoChannel, isOpenFooter, setPlayState]);
 
 	useEffect(() => {
 		if (
