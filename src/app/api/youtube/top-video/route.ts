@@ -34,6 +34,7 @@ export async function GET(request: Request) {
 		const videoId = searchData.items[0].id.videoId;
 		const videoTitle = searchData.items[0].snippet.title;
 		const videoDescription = searchData.items[0].snippet.description;
+		const thumbnail = searchData.items[0].snippet.thumbnails.default.url;
 		const channel = searchData.items[0].snippet.channelTitle;
 
 		return NextResponse.json(
@@ -41,6 +42,7 @@ export async function GET(request: Request) {
 				videoId: videoId,
 				videoTitle: videoTitle,
 				videoDescription: videoDescription,
+				thumbnail: thumbnail,
 				channel: channel,
 			},
 			{ status: 200 },
