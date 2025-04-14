@@ -41,3 +41,14 @@ export const isOpenFooterAtom = atom(false);
 export const playStateAtom = atom<"playing" | "paused" | "ended" | "none">(
 	"none",
 );
+
+/**
+ * 連続再生キュー情報
+ * @type {object[]}
+ * @constant {object[]}
+ * @description 連続再生キュー情報を管理する
+ * @property {string} artistName アーティスト名
+ * @property {string} musicName 曲名
+ * @property {string} albumName アルバム名
+ */
+export const trackQueueAtom = atom<Track[]>([]);
