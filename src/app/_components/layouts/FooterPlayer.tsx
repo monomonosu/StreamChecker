@@ -11,7 +11,6 @@ import {
 	videoChannelAtom,
 	videoDescriptionAtom,
 	videoIdAtom,
-	videoThumbnailAtom,
 	videoTitleAtom,
 } from "@/libs/stores/video";
 
@@ -29,7 +28,6 @@ export const FooterPlayer = () => {
 	const videoId = useAtomValue(videoIdAtom);
 	const videoTitle = useAtomValue(videoTitleAtom);
 	const videoDescription = useAtomValue(videoDescriptionAtom);
-	const videoThumbnail = useAtomValue(videoThumbnailAtom);
 	const videoChannel = useAtomValue(videoChannelAtom);
 	const setPlayState = useSetAtom(playStateAtom);
 	const playerRef = useRef<YT.Player | null>(null);
@@ -96,7 +94,8 @@ export const FooterPlayer = () => {
 								artist: videoChannel,
 								artwork: [
 									{
-										src: videoThumbnail,
+										src: "/images/dummy-image.png",
+										sizes: "512x512",
 										type: "image/png",
 									},
 								],
@@ -114,14 +113,7 @@ export const FooterPlayer = () => {
 				},
 			});
 		};
-	}, [
-		videoId,
-		videoTitle,
-		videoThumbnail,
-		videoChannel,
-		isOpenFooter,
-		setPlayState,
-	]);
+	}, [videoId, videoTitle, videoChannel, isOpenFooter, setPlayState]);
 
 	useEffect(() => {
 		if (

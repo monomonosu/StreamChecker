@@ -9,7 +9,6 @@ export async function getTopMovieBySearch(query: string): Promise<{
 	videoId: string;
 	videoTitle: string;
 	videoDescription: string;
-	thumbnail: string;
 	channel: string;
 } | null> {
 	const encodeQuery = encodeURIComponent(query);
@@ -24,7 +23,6 @@ export async function getTopMovieBySearch(query: string): Promise<{
 			videoId: string;
 			videoTitle: string;
 			videoDescription: string;
-			thumbnail: string;
 			channel: string;
 		} = await res.json();
 

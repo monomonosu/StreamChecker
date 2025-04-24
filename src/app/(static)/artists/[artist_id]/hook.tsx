@@ -7,7 +7,6 @@ import {
 	videoChannelAtom,
 	videoDescriptionAtom,
 	videoIdAtom,
-	videoThumbnailAtom,
 	videoTitleAtom,
 } from "@/libs/stores/video";
 
@@ -16,7 +15,6 @@ export const useArtist = () => {
 	const setIsOpenFooter = useSetAtom(isOpenFooterAtom);
 	const setVideoId = useSetAtom(videoIdAtom);
 	const setVideoTitle = useSetAtom(videoTitleAtom);
-	const setVideoThumbnail = useSetAtom(videoThumbnailAtom);
 	const setVideoDescription = useSetAtom(videoDescriptionAtom);
 	const setVideoChannel = useSetAtom(videoChannelAtom);
 
@@ -50,7 +48,6 @@ export const useArtist = () => {
 		setIsOpenFooter(true);
 		setVideoId(res.videoId);
 		setVideoTitle(res.videoTitle);
-		setVideoThumbnail(res.thumbnail);
 		setVideoChannel(res.channel);
 		setVideoDescription(res.videoDescription);
 	};
