@@ -41,8 +41,8 @@ export default function RootLayout({
 							fallback={<Loading height="calc(100vh - 56px - 48px * 2)" />}
 						>
 							<div className={style["main-inner"]}>{children}</div>
-							<FooterPlayer />
 						</Suspense>
+						<FooterPlayer />
 					</div>
 				</Theme>
 			</body>
