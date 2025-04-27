@@ -39,9 +39,7 @@ export const TrackArea = ({ topTracks }: Props) => {
 							onClick: () =>
 								handleClickTrack({
 									tracks,
-									artistName: track.artist,
-									musicName: track.title,
-									albumName: track.album,
+									trackId: track.id,
 								}),
 						}))}
 					/>

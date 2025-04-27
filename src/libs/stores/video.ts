@@ -37,6 +37,8 @@ export const playStateAtom = atom<"playing" | "paused" | "ended" | "none">(
 	"none",
 );
 
+export const trackIdAtom = atom<string>("");
+
 /**
  * 連続再生キュー情報
  * @type {object[]}
