@@ -37,6 +37,10 @@ export const playStateAtom = atom<"playing" | "paused" | "ended" | "none">(
 	"none",
 );
 
+/**
+ * トラックテーブルで選択されたトラックのID
+ * @type {string}
+ */
 export const trackIdAtom = atom<string>("");
 
 /**

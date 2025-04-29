@@ -2,7 +2,7 @@
 
 import { Cross1Icon } from "@radix-ui/react-icons";
 import { Button, Theme } from "@radix-ui/themes";
-import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import { useEffect, useRef, useState } from "react";
 
 import {
@@ -25,15 +25,14 @@ declare global {
 
 export const FooterPlayer = () => {
 	const trackQueue = useAtomValue(trackQueueAtom);
-	const [globalTrackId, _setGlobalTrackId] = useAtom(trackIdAtom);
+	const trackId = useAtomValue(trackIdAtom);
 	const [isOpenFooter, setIsOpenFooter] = useAtom(isOpenFooterAtom);
 
 	const [startVideoId, setStartVideoId] = useState<string | null>();
 	const [nextVideoId, setNextVideoId] = useState<string>();
 	const [prevVideoId, setPrevVideoId] = useState<string>();
 
-	const [initTrackId, setInitTrackId] = useState<string>("");
-	const trackIdRef = useRef<string>(null);
+	const playingTrackIdRef = useRef<string>(null);
 	const playerRef = useRef<YT.Player | null>(null);
 	const videoListRef = useRef<string[]>([]);
 
@@ -97,16 +96,10 @@ export const FooterPlayer = () => {
 		};
 	}, []);
 
-	// トラックID初期化
-	useEffect(() => {
-		if (!globalTrackId) return;
-		setInitTrackId(globalTrackId);
-	}, [globalTrackId]);
-
 	useEffect(() => {
 		if (currentIndex && currentIndex + 1 === totalVideos) {
 			const beforeTrackIndex = trackQueue.findIndex(
-				(track) => track.id === trackIdRef.current,
+				(track) => track.id === playingTrackIdRef.current,
 			);
 
 			const nextTrack = trackQueue[beforeTrackIndex + 1];
@@ -116,7 +109,7 @@ export const FooterPlayer = () => {
 					`${nextTrack.artist} ${nextTrack.title} ${nextTrack.album}`,
 				).then((res) => {
 					if (!res) return;
-					trackIdRef.current = nextTrack.id;
+					playingTrackIdRef.current = nextTrack.id;
 					videoListRef.current.push(res.videoId);
 					playerRef.current?.loadPlaylist(videoListRef.current, currentIndex);
 				});
@@ -124,9 +117,10 @@ export const FooterPlayer = () => {
 		}
 	}, [trackQueue, currentIndex, totalVideos]);
 
+	// 初回再生時
 	useEffect(() => {
 		const currentTrackIndex = trackQueue.findIndex(
-			(track) => track.id === initTrackId,
+			(track) => track.id === trackId,
 		);
 		if (currentTrackIndex === -1) return;
 		const currentTrack = trackQueue[currentTrackIndex];
@@ -139,7 +133,7 @@ export const FooterPlayer = () => {
 		).then((res) => {
 			if (!res) return;
 			videoListRef.current.push(res.videoId);
-			trackIdRef.current = nextTrack.id;
+			playingTrackIdRef.current = nextTrack.id;
 			setStartVideoId(res.videoId);
 		});
 
@@ -164,7 +158,7 @@ export const FooterPlayer = () => {
 				setPrevVideoId(res.videoId);
 			});
 		}
-	}, [trackQueue, initTrackId]);
+	}, [trackQueue, trackId]);
 
 	useEffect(() => {
 		if (!startVideoId || !nextVideoId || !prevVideoId) return;
