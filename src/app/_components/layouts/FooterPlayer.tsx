@@ -32,8 +32,6 @@ export const FooterPlayer = () => {
 	const [nextVideoId, setNextVideoId] = useState<string>();
 	const [prevVideoId, setPrevVideoId] = useState<string>();
 
-	const trackQueueRef = useRef<Track[]>([]);
-
 	const [initTrackId, setInitTrackId] = useState<string>("");
 	const trackIdRef = useRef<string>(null);
 	const playerRef = useRef<YT.Player | null>(null);
@@ -105,18 +103,13 @@ export const FooterPlayer = () => {
 		setInitTrackId(globalTrackId);
 	}, [globalTrackId]);
 
-	// トラックキューの初期化
-	useEffect(() => {
-		trackQueueRef.current = trackQueue;
-	}, [trackQueue]);
-
 	useEffect(() => {
 		if (currentIndex && currentIndex + 1 === totalVideos) {
 			const beforeTrackIndex = trackQueue.findIndex(
 				(track) => track.id === trackIdRef.current,
 			);
 
-			const nextTrack = trackQueueRef.current[beforeTrackIndex + 1];
+			const nextTrack = trackQueue[beforeTrackIndex + 1];
 			if (nextTrack) {
 				// 次の動画のVideoIdをセット
 				getTopMovieBySearch(
