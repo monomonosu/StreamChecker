@@ -28,11 +28,9 @@ export const FooterPlayer = () => {
 	const trackId = useAtomValue(trackIdAtom);
 	const [isOpenFooter, setIsOpenFooter] = useAtom(isOpenFooterAtom);
 
-	const [startVideoId, setStartVideoId] = useState<string | null>();
-	const [nextVideoId, setNextVideoId] = useState<string>();
-	const [prevVideoId, setPrevVideoId] = useState<string>();
+	const [isInitLoad, setIsInitLoad] = useState(false);
 
-	const playingTrackIdRef = useRef<string>(null);
+	const playingTrackIdRef = useRef<string>(undefined);
 	const playerRef = useRef<YT.Player | null>(null);
 	const videoListRef = useRef<string[]>([]);
 
@@ -119,49 +117,49 @@ export const FooterPlayer = () => {
 
 	// 初回再生時
 	useEffect(() => {
-		const currentTrackIndex = trackQueue.findIndex(
-			(track) => track.id === trackId,
-		);
-		if (currentTrackIndex === -1) return;
-		const currentTrack = trackQueue[currentTrackIndex];
-		const nextTrack = trackQueue[currentTrackIndex + 1];
-		const prevTrack = trackQueue[currentTrackIndex - 1];
+		const initSettingPlaylist = async () => {
+			const currentTrackIndex = trackQueue.findIndex(
+				(track) => track.id === trackId,
+			);
+			if (currentTrackIndex === -1) return;
+			const currentTrack = trackQueue[currentTrackIndex];
+			const nextTrack = trackQueue[currentTrackIndex + 1];
+			const prevTrack = trackQueue[currentTrackIndex - 1];
 
-		// 現在再生中のVideoIdをセット
-		getTopMovieBySearch(
-			`${currentTrack.artist} ${currentTrack.title} ${currentTrack.album}`,
-		).then((res) => {
+			// 現在再生中のVideoIdをセット
+			const res = await getTopMovieBySearch(
+				`${currentTrack.artist} ${currentTrack.title} ${currentTrack.album}`,
+			);
 			if (!res) return;
 			videoListRef.current.push(res.videoId);
 			playingTrackIdRef.current = nextTrack.id;
-			setStartVideoId(res.videoId);
-		});
 
-		if (nextTrack) {
-			// 次の動画のVideoIdをセット
-			getTopMovieBySearch(
-				`${nextTrack.artist} ${nextTrack.title} ${nextTrack.album}`,
-			).then((res) => {
+			if (nextTrack) {
+				// 次の動画のVideoIdをセット
+				const res = await getTopMovieBySearch(
+					`${nextTrack.artist} ${nextTrack.title} ${nextTrack.album}`,
+				);
 				if (!res) return;
 				videoListRef.current.push(res.videoId);
-				setNextVideoId(res.videoId);
-			});
-		}
+			}
 
-		if (prevTrack) {
-			// 前の動画のVideoIdをセット
-			getTopMovieBySearch(
-				`${prevTrack.artist} ${prevTrack.title} ${prevTrack.album}`,
-			).then((res) => {
+			if (prevTrack) {
+				// 前の動画のVideoIdをセット
+				const res = await getTopMovieBySearch(
+					`${prevTrack.artist} ${prevTrack.title} ${prevTrack.album}`,
+				);
 				if (!res) return;
 				videoListRef.current.unshift(res.videoId);
-				setPrevVideoId(res.videoId);
-			});
-		}
+			}
+
+			setIsInitLoad(true);
+		};
+
+		initSettingPlaylist();
 	}, [trackQueue, trackId]);
 
 	useEffect(() => {
-		if (!startVideoId || !nextVideoId || !prevVideoId) return;
+		if (!isInitLoad) return;
 		if (
 			playerRef.current &&
 			typeof playerRef.current.loadVideoById === "function"
@@ -172,7 +170,7 @@ export const FooterPlayer = () => {
 		if (playerRef.current) {
 			playerRef.current.playVideo();
 		}
-	}, [startVideoId, nextVideoId, prevVideoId]);
+	}, [isInitLoad]);
 
 	// NOTE: Footerを閉じた時は動画を停止
 	const onClickClose = () => {
