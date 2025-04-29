@@ -68,11 +68,6 @@ export const FooterPlayer = () => {
 								const currentIndex = player.getPlaylistIndex();
 								const totalVideos = player.getPlaylist()?.length ?? 0;
 
-								// NOTE: 無限レンダリング回避
-								if (currentIndex + 1 < totalVideos) {
-									return;
-								}
-
 								// 次の動画のストックがない場合（nextTack）
 								if (currentIndex + 1 === totalVideos) {
 									setCurrentIndex(currentIndex);
