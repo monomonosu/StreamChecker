@@ -24,18 +24,26 @@ declare global {
 }
 
 export const FooterPlayer = () => {
-	const [isOpenFooter, setIsOpenFooter] = useAtom(isOpenFooterAtom);
-	const [videoId, setVideoId] = useState<string>("");
-	const [nextVideoId, setNextVideoId] = useState<string>("");
 	const trackQueue = useAtomValue(trackQueueAtom);
 	const [globalTrackId, _setGlobalTrackId] = useAtom(trackIdAtom);
-	const [trackId, setTrackId] = useState<string>("");
-	const [_nextTrackId, setNextTrackId] = useState<string>("");
-	const nextTrackIdRef = useRef<string>("");
-	const videoIdRef = useRef<string>("");
+	const [isOpenFooter, setIsOpenFooter] = useAtom(isOpenFooterAtom);
+
+	const [startVideoId, setStartVideoId] = useState<string | null>();
+	const [nextVideoId, setNextVideoId] = useState<string>();
+	const [prevVideoId, setPrevVideoId] = useState<string>();
+
+	const trackQueueRef = useRef<Track[]>([]);
+
+	const [initTrackId, setInitTrackId] = useState<string>("");
+	const trackIdRef = useRef<string>(null);
+	const playerRef = useRef<YT.Player | null>(null);
+	const videoListRef = useRef<string[]>([]);
+
 	const videoTitle = useAtomValue(videoTitleAtom);
 	const videoDescription = useAtomValue(videoDescriptionAtom);
-	const playerRef = useRef<YT.Player | null>(null);
+
+	const [currentIndex, setCurrentIndex] = useState<number | null>();
+	const [totalVideos, setTotalVideos] = useState<number>(0);
 
 	// NOTE:既にスクリプトがある場合は再追加しない
 	useEffect(() => {
@@ -69,14 +77,14 @@ export const FooterPlayer = () => {
 								if (currentIndex + 1 < totalVideos) {
 									return;
 								}
-								const url = playerRef.current?.getVideoUrl();
-								// query取得
-								const id = url?.split("?v=")[1];
-								if (videoIdRef.current !== id) {
-									setTrackId(nextTrackIdRef.current);
+
+								// 次の動画のストックがない場合（nextTack）
+								if (currentIndex + 1 === totalVideos) {
+									setCurrentIndex(currentIndex);
+									setTotalVideos(totalVideos);
 								}
 
-								break;
+								return;
 							}
 							case window.YT.PlayerState.ENDED: {
 								// TODO：動画が再生終了した時に次の動画を再生する処理を追加する
@@ -91,58 +99,93 @@ export const FooterPlayer = () => {
 		};
 	}, []);
 
+	// トラックID初期化
 	useEffect(() => {
 		if (!globalTrackId) return;
-		setTrackId(globalTrackId);
+		setInitTrackId(globalTrackId);
 	}, [globalTrackId]);
 
+	// トラックキューの初期化
 	useEffect(() => {
-		if (
-			playerRef.current &&
-			typeof playerRef.current.loadVideoById === "function"
-		) {
-			// TODO: prevTrackボタンが押された時,動画が終了した時の考慮を追加する
-			if (videoId === "") return;
-			if (nextVideoId === "") return;
-			playerRef.current.loadPlaylist(["bnofYmfKLeo", videoId, nextVideoId], 1);
-			// 前回の値が残るのを防止
-			videoIdRef.current = videoId;
-			setVideoId("");
-			setNextVideoId("");
+		trackQueueRef.current = trackQueue;
+	}, [trackQueue]);
+
+	useEffect(() => {
+		if (currentIndex && currentIndex + 1 === totalVideos) {
+			const beforeTrackIndex = trackQueue.findIndex(
+				(track) => track.id === trackIdRef.current,
+			);
+
+			const nextTrack = trackQueueRef.current[beforeTrackIndex + 1];
+			if (nextTrack) {
+				// 次の動画のVideoIdをセット
+				getTopMovieBySearch(
+					`${nextTrack.artist} ${nextTrack.title} ${nextTrack.album}`,
+				).then((res) => {
+					if (!res) return;
+					trackIdRef.current = nextTrack.id;
+					videoListRef.current.push(res.videoId);
+					playerRef.current?.loadPlaylist(videoListRef.current, currentIndex);
+				});
+			}
 		}
-		// NOTE: 閉じられたFooterを再度開いた時に動画が再生されるように
-		if (playerRef.current) {
-			playerRef.current.playVideo();
-		}
-	}, [videoId, nextVideoId]);
+	}, [trackQueue, currentIndex, totalVideos]);
 
 	useEffect(() => {
 		const currentTrackIndex = trackQueue.findIndex(
-			(track) => track.id === trackId,
+			(track) => track.id === initTrackId,
 		);
 		if (currentTrackIndex === -1) return;
 		const currentTrack = trackQueue[currentTrackIndex];
 		const nextTrack = trackQueue[currentTrackIndex + 1];
-		if (!nextTrack) return;
+		const prevTrack = trackQueue[currentTrackIndex - 1];
 
 		// 現在再生中のVideoIdをセット
 		getTopMovieBySearch(
 			`${currentTrack.artist} ${currentTrack.title} ${currentTrack.album}`,
 		).then((res) => {
 			if (!res) return;
-			setVideoId(res.videoId);
+			videoListRef.current.push(res.videoId);
+			trackIdRef.current = nextTrack.id;
+			setStartVideoId(res.videoId);
 		});
 
-		// 次の動画のVideoIdをセット
-		getTopMovieBySearch(
-			`${nextTrack.artist} ${nextTrack.title} ${nextTrack.album}`,
-		).then((res) => {
-			if (!res) return;
-			setNextVideoId(res.videoId);
-			nextTrackIdRef.current = nextTrack.id;
-			setNextTrackId(nextTrack.id);
-		});
-	}, [trackId, trackQueue]);
+		if (nextTrack) {
+			// 次の動画のVideoIdをセット
+			getTopMovieBySearch(
+				`${nextTrack.artist} ${nextTrack.title} ${nextTrack.album}`,
+			).then((res) => {
+				if (!res) return;
+				videoListRef.current.push(res.videoId);
+				setNextVideoId(res.videoId);
+			});
+		}
+
+		if (prevTrack) {
+			// 前の動画のVideoIdをセット
+			getTopMovieBySearch(
+				`${prevTrack.artist} ${prevTrack.title} ${prevTrack.album}`,
+			).then((res) => {
+				if (!res) return;
+				videoListRef.current.unshift(res.videoId);
+				setPrevVideoId(res.videoId);
+			});
+		}
+	}, [trackQueue, initTrackId]);
+
+	useEffect(() => {
+		if (!startVideoId || !nextVideoId || !prevVideoId) return;
+		if (
+			playerRef.current &&
+			typeof playerRef.current.loadVideoById === "function"
+		) {
+			playerRef.current.loadPlaylist(videoListRef.current, 1);
+		}
+		// NOTE: 閉じられたFooterを再度開いた時に動画が再生されるように
+		if (playerRef.current) {
+			playerRef.current.playVideo();
+		}
+	}, [startVideoId, nextVideoId, prevVideoId]);
 
 	// NOTE: Footerを閉じた時は動画を停止
 	const onClickClose = () => {
