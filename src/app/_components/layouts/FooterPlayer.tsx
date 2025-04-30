@@ -89,25 +89,31 @@ export const FooterPlayer = () => {
 		};
 	}, []);
 
+	// プレイリストの動画が終了した時に次の動画を追加する
 	useEffect(() => {
-		if (currentIndex && currentIndex + 1 === totalVideos) {
-			const beforeTrackIndex = trackQueue.findIndex(
-				(track) => track.id === playingTrackIdRef.current,
-			);
+		const addPlaylist = async () => {
+			if (currentIndex && currentIndex + 1 === totalVideos) {
+				const beforeTrackIndex = trackQueue.findIndex(
+					(track) => track.id === playingTrackIdRef.current,
+				);
+				const nextTrack = trackQueue[beforeTrackIndex + 1];
 
-			const nextTrack = trackQueue[beforeTrackIndex + 1];
-			if (nextTrack) {
+				if (!nextTrack) return;
+
 				// 次の動画のVideoIdをセット
-				getTopMovieBySearch(
+				const res = await getTopMovieBySearch(
 					`${nextTrack.artist} ${nextTrack.title} ${nextTrack.album}`,
-				).then((res) => {
-					if (!res) return;
-					playingTrackIdRef.current = nextTrack.id;
-					videoListRef.current.push(res.videoId);
-					playerRef.current?.loadPlaylist(videoListRef.current, currentIndex);
-				});
+				);
+
+				if (!res) return;
+
+				playingTrackIdRef.current = nextTrack.id;
+				videoListRef.current.push(res.videoId);
+				playerRef.current?.loadPlaylist(videoListRef.current, currentIndex);
 			}
-		}
+		};
+
+		addPlaylist();
 	}, [trackQueue, currentIndex, totalVideos]);
 
 	// 初回再生時
@@ -153,6 +159,7 @@ export const FooterPlayer = () => {
 		initSettingPlaylist();
 	}, [trackQueue, trackId]);
 
+	// 初回再生分のプレイリストをセット
 	useEffect(() => {
 		if (!isInitLoad) return;
 		if (
