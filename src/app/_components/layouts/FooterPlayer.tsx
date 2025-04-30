@@ -116,6 +116,7 @@ export const FooterPlayer = () => {
 		addPlaylist();
 	}, [trackQueue, currentIndex, totalVideos]);
 
+	// ------------------------------ 動画セットアップ ------------------------------
 	// 初回再生時
 	useEffect(() => {
 		const initSettingPlaylist = async () => {
@@ -166,7 +167,11 @@ export const FooterPlayer = () => {
 			playerRef.current &&
 			typeof playerRef.current.loadVideoById === "function"
 		) {
-			playerRef.current.loadPlaylist(videoListRef.current, 1);
+			// trackQueueの先頭のインデックスが選択された時・それ以外のインデックスが選択された時の考慮
+			playerRef.current.loadPlaylist(
+				videoListRef.current,
+				videoListRef.current.length > 2 ? 1 : 0,
+			);
 		}
 		// NOTE: 閉じられたFooterを再度開いた時に動画が再生されるように
 		if (playerRef.current) {
