@@ -30,7 +30,8 @@ export const FooterPlayer = () => {
 
 	const [isInitLoad, setIsInitLoad] = useState(false);
 
-	const playingTrackIdRef = useRef<string>(undefined);
+	const currentTrackIdRef = useRef<string>(undefined);
+	const beforeTrackIdRef = useRef<string>(undefined);
 	const playerRef = useRef<YT.Player | null>(null);
 	const videoListRef = useRef<string[]>([]);
 
@@ -62,8 +63,9 @@ export const FooterPlayer = () => {
 				},
 				events: {
 					onStateChange: (event: YT.OnStateChangeEvent) => {
+						console.log("📺 状態:", event.data);
 						switch (event.data) {
-							case window.YT.PlayerState.PLAYING: {
+							case window.YT.PlayerState.BUFFERING: {
 								const player = event.target;
 								const currentIndex = player.getPlaylistIndex();
 								const totalVideos = player.getPlaylist()?.length ?? 0;
@@ -74,14 +76,16 @@ export const FooterPlayer = () => {
 									setTotalVideos(totalVideos);
 								}
 
+								if (currentIndex === 0) {
+									setCurrentIndex(currentIndex);
+								}
+
 								return;
 							}
 							case window.YT.PlayerState.ENDED: {
 								// TODO：動画が再生終了した時に次の動画を再生する処理を追加する
 								break;
 							}
-							default:
-								console.log("📺 状態:", event.data);
 						}
 					},
 				},
@@ -93,10 +97,10 @@ export const FooterPlayer = () => {
 	useEffect(() => {
 		const addPlaylist = async () => {
 			if (currentIndex && currentIndex + 1 === totalVideos) {
-				const beforeTrackIndex = trackQueue.findIndex(
-					(track) => track.id === playingTrackIdRef.current,
+				const currentTrackIndex = trackQueue.findIndex(
+					(track) => track.id === currentTrackIdRef.current,
 				);
-				const nextTrack = trackQueue[beforeTrackIndex + 1];
+				const nextTrack = trackQueue[currentTrackIndex + 1];
 
 				if (!nextTrack) return;
 
@@ -107,9 +111,30 @@ export const FooterPlayer = () => {
 
 				if (!res) return;
 
-				playingTrackIdRef.current = nextTrack.id;
+				currentTrackIdRef.current = nextTrack.id;
 				videoListRef.current.push(res.videoId);
 				playerRef.current?.loadPlaylist(videoListRef.current, currentIndex);
+			}
+
+			if (currentIndex === 0) {
+				const currentTrackIndex = trackQueue.findIndex(
+					(track) => track.id === beforeTrackIdRef.current,
+				);
+				const prevTrack = trackQueue[currentTrackIndex - 1];
+
+				if (!prevTrack) return;
+
+				// 次の動画のVideoIdをセット
+				const res = await getTopMovieBySearch(
+					`${prevTrack.artist} ${prevTrack.title} ${prevTrack.album}`,
+				);
+
+				if (!res) return;
+
+				beforeTrackIdRef.current = prevTrack.id;
+				videoListRef.current.unshift(res.videoId);
+				playerRef.current?.loadPlaylist(videoListRef.current, 1);
+				setCurrentIndex(1);
 			}
 		};
 
@@ -134,7 +159,8 @@ export const FooterPlayer = () => {
 			);
 			if (!res) return;
 			videoListRef.current.push(res.videoId);
-			playingTrackIdRef.current = nextTrack.id;
+			currentTrackIdRef.current = nextTrack.id;
+			beforeTrackIdRef.current = prevTrack.id;
 
 			if (nextTrack) {
 				// 次の動画のVideoIdをセット
