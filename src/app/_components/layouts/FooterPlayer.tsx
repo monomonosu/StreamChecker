@@ -70,17 +70,21 @@ export const FooterPlayer = () => {
 								const currentIndex = player.getPlaylistIndex();
 								const totalVideos = player.getPlaylist()?.length ?? 0;
 
+								if (!currentTrackIdRef.current && currentIndex !== 0) return;
+
 								// 次の動画のストックがない場合（nextTack）
 								if (currentIndex + 1 === totalVideos) {
 									setCurrentIndex(currentIndex);
 									setTotalVideos(totalVideos);
+									return;
 								}
 
 								if (currentIndex === 0) {
 									setCurrentIndex(currentIndex);
+									return;
 								}
 
-								return;
+								break;
 							}
 							case window.YT.PlayerState.ENDED: {
 								// TODO：動画が再生終了した時に次の動画を再生する処理を追加する
@@ -159,10 +163,9 @@ export const FooterPlayer = () => {
 			);
 			if (!res) return;
 			videoListRef.current.push(res.videoId);
-			currentTrackIdRef.current = nextTrack.id;
-			beforeTrackIdRef.current = prevTrack.id;
 
 			if (nextTrack) {
+				currentTrackIdRef.current = nextTrack.id;
 				// 次の動画のVideoIdをセット
 				const res = await getTopMovieBySearch(
 					`${nextTrack.artist} ${nextTrack.title} ${nextTrack.album}`,
@@ -172,6 +175,7 @@ export const FooterPlayer = () => {
 			}
 
 			if (prevTrack) {
+				beforeTrackIdRef.current = prevTrack.id;
 				// 前の動画のVideoIdをセット
 				const res = await getTopMovieBySearch(
 					`${prevTrack.artist} ${prevTrack.title} ${prevTrack.album}`,
@@ -196,7 +200,7 @@ export const FooterPlayer = () => {
 			// trackQueueの先頭のインデックスが選択された時・それ以外のインデックスが選択された時の考慮
 			playerRef.current.loadPlaylist(
 				videoListRef.current,
-				videoListRef.current.length > 2 ? 1 : 0,
+				videoListRef.current.length > 2 || !currentTrackIdRef.current ? 1 : 0,
 			);
 		}
 		// NOTE: 閉じられたFooterを再度開いた時に動画が再生されるように
