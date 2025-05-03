@@ -5,7 +5,7 @@ import { Theme } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import { FooterPlayer } from "@/app/_components/layouts/FooterPlayer";
+import { FooterPlayer } from "@/app/_components/client/FooterPlayer/FooterPlayer";
 import { Loading } from "@/app/_components/layouts/Loading";
 import { Header } from "@/app/_components/server/Header/Header";
 import style from "@/app/layout.module.scss";
