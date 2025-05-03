@@ -11,11 +11,6 @@ export const videoIdAtom = atom("");
 export const videoTitleAtom = atom("");
 
 /**
- * 再生中の動画の説明
- */
-export const videoDescriptionAtom = atom("");
-
-/**
  * 再生中の動画のチャンネル名
  */
 export const videoChannelAtom = atom("");

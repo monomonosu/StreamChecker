@@ -9,7 +9,6 @@ import {
 	isOpenFooterAtom,
 	trackIdAtom,
 	trackQueueAtom,
-	videoDescriptionAtom,
 	videoTitleAtom,
 } from "@/libs/stores/video";
 
@@ -20,6 +19,14 @@ declare global {
 	interface Window {
 		YT: typeof YT;
 		onYouTubeIframeAPIReady: () => void;
+	}
+
+	interface YTPlayerWithVideoData extends YT.Player {
+		getVideoData: () => {
+			title: string;
+			author: string;
+			video_id: string;
+		};
 	}
 }
 
@@ -35,8 +42,7 @@ export const FooterPlayer = () => {
 	const playerRef = useRef<YT.Player | null>(null);
 	const videoListRef = useRef<string[]>([]);
 
-	const videoTitle = useAtomValue(videoTitleAtom);
-	const videoDescription = useAtomValue(videoDescriptionAtom);
+	const [videoTitle, setVideoTitle] = useAtom(videoTitleAtom);
 
 	const [currentIndex, setCurrentIndex] = useState<number | null>();
 	const [totalVideos, setTotalVideos] = useState<number>(0);
@@ -63,13 +69,16 @@ export const FooterPlayer = () => {
 				},
 				events: {
 					onStateChange: (event: YT.OnStateChangeEvent) => {
+						const player = event.target as YTPlayerWithVideoData;
+						const currentIndex = player.getPlaylistIndex();
+						const totalVideos = player.getPlaylist()?.length ?? 0;
+						const playVideoData = player.getVideoData();
+
+						setVideoTitle(playVideoData.title);
 						console.log("📺 状態:", event.data);
+
 						switch (event.data) {
 							case window.YT.PlayerState.BUFFERING: {
-								const player = event.target;
-								const currentIndex = player.getPlaylistIndex();
-								const totalVideos = player.getPlaylist()?.length ?? 0;
-
 								if (!currentTrackIdRef.current && currentIndex !== 0) return;
 
 								// 次の動画のストックがない場合（nextTack）
@@ -86,16 +95,12 @@ export const FooterPlayer = () => {
 
 								break;
 							}
-							case window.YT.PlayerState.ENDED: {
-								// TODO：動画が再生終了した時に次の動画を再生する処理を追加する
-								break;
-							}
 						}
 					},
 				},
 			});
 		};
-	}, []);
+	}, [setVideoTitle]);
 
 	// プレイリストの動画が終了した時に次の動画を追加する
 	useEffect(() => {
@@ -226,7 +231,6 @@ export const FooterPlayer = () => {
 			<div className={style.footerMovie} id="youtube-player" />
 			<div className={style.footerContent}>
 				<p>{videoTitle}</p>
-				<p>{videoDescription}</p>
 			</div>
 			<Button
 				color="gray"
