@@ -150,6 +150,8 @@ export const useFooterPlayer = () => {
 	// ------------------------------ 動画セットアップ ------------------------------
 	// 初回再生時
 	useEffect(() => {
+		initialization();
+
 		const initSettingPlaylist = async () => {
 			const currentTrackIndex = trackQueue.findIndex(
 				(track) => track.id === trackId,
@@ -210,6 +212,16 @@ export const useFooterPlayer = () => {
 			playerRef.current.playVideo();
 		}
 	}, [isInitLoad]);
+
+	// パラメータ初期化（曲変更時）
+	const initialization = () => {
+		setIsInitLoad(false);
+		currentTrackIdRef.current = undefined;
+		beforeTrackIdRef.current = undefined;
+		videoListRef.current = [];
+		setCurrentIndex(null);
+		setTotalVideos(0);
+	};
 
 	// NOTE: Footerを閉じた時は動画を停止
 	const onClickClose = () => {
