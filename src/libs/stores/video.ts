@@ -1,16 +1,34 @@
 import { atom } from "jotai";
 
-// 再生中の動画ID
-export const videoIdAtom = atom("");
+/**
+ * 再生中の動画のタイトル
+ */
+export const videoTitleAtom = atom<string>("");
 
-// 再生中の動画のタイトル・説明
-export const videoTitleAtom = atom("");
-export const videoDescriptionAtom = atom("");
+/**
+ * 再生中の動画のURL
+ */
+export const videoUrlAtom = atom<string>("");
 
-// 開閉状態
-export const isOpenFooterAtom = atom(false);
+/**
+ * Footerの表示・非表示
+ * @type {boolean}
+ */
+export const isOpenFooterAtom = atom<boolean>(false);
 
-// 再生ステータス（次の動画に飛ぶ・停止中など）
-export const playStateAtom = atom<"playing" | "paused" | "ended" | "none">(
-	"none",
-);
+/**
+ * トラックテーブルで選択されたトラックのID
+ * @type {string}
+ */
+export const trackIdAtom = atom<string>("");
+
+/**
+ * 連続再生キュー情報
+ * @type {object[]}
+ * @constant {object[]}
+ * @description 連続再生キュー情報を管理する
+ * @property {string} artistName アーティスト名
+ * @property {string} musicName 曲名
+ * @property {string} albumName アルバム名
+ */
+export const trackQueueAtom = atom<Track[]>([]);

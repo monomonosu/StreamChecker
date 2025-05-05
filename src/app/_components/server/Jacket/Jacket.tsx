@@ -29,7 +29,7 @@ export const Jacket = ({
 				<Link className={helper.textEllipsis} href={music?.href || "/404"}>
 					{music?.name}
 				</Link>
-				<Link className={style["--gray"]} href={artist?.href || "/404"}>
+				<Link className={helper.link} href={artist?.href || "/404"}>
 					{artist?.name}
 				</Link>
 			</div>
