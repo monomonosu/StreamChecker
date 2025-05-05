@@ -80,7 +80,7 @@ export const useFooterPlayer = () => {
 						console.log("📺 状態:", event.data);
 
 						switch (event.data) {
-							case window.YT.PlayerState.BUFFERING: {
+							case window.YT.PlayerState.UNSTARTED: {
 								if (!currentTrackIdRef.current && currentIndex !== 0) return;
 
 								// 次の動画のストックがない場合（nextTack）
@@ -117,7 +117,7 @@ export const useFooterPlayer = () => {
 
 				// 次の動画のVideoIdをセット
 				const res = await getTopMovieBySearch(
-					`${nextTrack.artist} ${nextTrack.title} ${nextTrack.album}`,
+					`${nextTrack.artist} ${nextTrack.title}`,
 				);
 
 				if (!res) return;
@@ -137,7 +137,7 @@ export const useFooterPlayer = () => {
 
 				// 次の動画のVideoIdをセット
 				const res = await getTopMovieBySearch(
-					`${prevTrack.artist} ${prevTrack.title} ${prevTrack.album}`,
+					`${prevTrack.artist} ${prevTrack.title}`,
 				);
 
 				if (!res) return;
@@ -168,7 +168,7 @@ export const useFooterPlayer = () => {
 
 			// 現在再生中のVideoIdをセット
 			const res = await getTopMovieBySearch(
-				`${currentTrack.artist} ${currentTrack.title} ${currentTrack.album}`,
+				`${currentTrack.artist} ${currentTrack.title}`,
 			);
 			if (!res) return;
 			videoListRef.current.push(res.videoId);
@@ -177,7 +177,7 @@ export const useFooterPlayer = () => {
 				currentTrackIdRef.current = nextTrack.id;
 				// 次の動画のVideoIdをセット
 				const res = await getTopMovieBySearch(
-					`${nextTrack.artist} ${nextTrack.title} ${nextTrack.album}`,
+					`${nextTrack.artist} ${nextTrack.title}`,
 				);
 				if (!res) return;
 				videoListRef.current.push(res.videoId);
@@ -187,7 +187,7 @@ export const useFooterPlayer = () => {
 				beforeTrackIdRef.current = prevTrack.id;
 				// 前の動画のVideoIdをセット
 				const res = await getTopMovieBySearch(
-					`${prevTrack.artist} ${prevTrack.title} ${prevTrack.album}`,
+					`${prevTrack.artist} ${prevTrack.title}`,
 				);
 				if (!res) return;
 				videoListRef.current.unshift(res.videoId);
