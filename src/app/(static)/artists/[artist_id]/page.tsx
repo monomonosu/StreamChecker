@@ -45,7 +45,7 @@ export default async function Artist({ params }: Props) {
 							href="/"
 							priority
 							src={item.images[0].url}
-							album={{ name: item.name, href: item.external_urls.spotify }}
+							album={{ name: item.name, href: `/albums/${item.id}` }}
 							width={200}
 							height={200}
 							alt="アルバム画像"

@@ -25,7 +25,7 @@ export default async function Home() {
 							key={item.id}
 							priority
 							src={item.images[0].url}
-							album={{ name: item.name, href: item.external_urls.spotify }}
+							album={{ name: item.name, href: `/albums/${item.id}` }}
 							artist={{
 								name: item.artists[0].name,
 								href: `artists/${item.artists[0].id}`,
@@ -47,7 +47,7 @@ export default async function Home() {
 							href="/"
 							priority
 							src={item.images[0].url}
-							album={{ name: item.name, href: item.external_urls.spotify }}
+							album={{ name: item.name, href: `/albums/${item.id}` }}
 							artist={{
 								name: item.artists[0].name,
 								href: `artists/${item.artists[0].id}`,
