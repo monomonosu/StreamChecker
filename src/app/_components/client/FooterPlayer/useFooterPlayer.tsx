@@ -30,7 +30,7 @@ declare global {
 
 export const useFooterPlayer = () => {
 	const trackQueue = useAtomValue(trackQueueAtom);
-	const trackId = useAtomValue(trackIdAtom);
+	const [trackId, setTrackId] = useAtom(trackIdAtom);
 	const [isOpenFooter, setIsOpenFooter] = useAtom(isOpenFooterAtom);
 
 	const [isInitLoad, setIsInitLoad] = useState(false);
@@ -48,11 +48,6 @@ export const useFooterPlayer = () => {
 
 	// NOTE:既にスクリプトがある場合は再追加しない
 	useEffect(() => {
-		// NOTE:再生停止中の動画がある場合は同じ動画を再生する（Footerを閉じた時など）
-		if (playerRef.current && playerRef.current.getPlayerState() === 2) {
-			playerRef.current.playVideo();
-		}
-
 		if (window && !window.YT) {
 			const tag = document.createElement("script");
 			tag.id = "youtube-iframe-api";
@@ -64,7 +59,6 @@ export const useFooterPlayer = () => {
 			playerRef.current = new window.YT.Player("youtube-player", {
 				playerVars: {
 					autoplay: 1,
-					enablejsapi: 1,
 				},
 				events: {
 					onStateChange: (event: YT.OnStateChangeEvent) => {
@@ -80,7 +74,7 @@ export const useFooterPlayer = () => {
 						console.log("📺 状態:", event.data);
 
 						switch (event.data) {
-							case window.YT.PlayerState.BUFFERING: {
+							case window.YT.PlayerState.UNSTARTED: {
 								if (!currentTrackIdRef.current && currentIndex !== 0) return;
 
 								// 次の動画のストックがない場合（nextTack）
@@ -117,7 +111,7 @@ export const useFooterPlayer = () => {
 
 				// 次の動画のVideoIdをセット
 				const res = await getTopMovieBySearch(
-					`${nextTrack.artist} ${nextTrack.title} ${nextTrack.album}`,
+					`${nextTrack.artist} ${nextTrack.title}`,
 				);
 
 				if (!res) return;
@@ -137,7 +131,7 @@ export const useFooterPlayer = () => {
 
 				// 次の動画のVideoIdをセット
 				const res = await getTopMovieBySearch(
-					`${prevTrack.artist} ${prevTrack.title} ${prevTrack.album}`,
+					`${prevTrack.artist} ${prevTrack.title}`,
 				);
 
 				if (!res) return;
@@ -155,6 +149,7 @@ export const useFooterPlayer = () => {
 	// ------------------------------ 動画セットアップ ------------------------------
 	// 初回再生時
 	useEffect(() => {
+		if (!trackId) return;
 		initialization();
 
 		const initSettingPlaylist = async () => {
@@ -168,7 +163,7 @@ export const useFooterPlayer = () => {
 
 			// 現在再生中のVideoIdをセット
 			const res = await getTopMovieBySearch(
-				`${currentTrack.artist} ${currentTrack.title} ${currentTrack.album}`,
+				`${currentTrack.artist} ${currentTrack.title}`,
 			);
 			if (!res) return;
 			videoListRef.current.push(res.videoId);
@@ -177,7 +172,7 @@ export const useFooterPlayer = () => {
 				currentTrackIdRef.current = nextTrack.id;
 				// 次の動画のVideoIdをセット
 				const res = await getTopMovieBySearch(
-					`${nextTrack.artist} ${nextTrack.title} ${nextTrack.album}`,
+					`${nextTrack.artist} ${nextTrack.title}`,
 				);
 				if (!res) return;
 				videoListRef.current.push(res.videoId);
@@ -187,35 +182,28 @@ export const useFooterPlayer = () => {
 				beforeTrackIdRef.current = prevTrack.id;
 				// 前の動画のVideoIdをセット
 				const res = await getTopMovieBySearch(
-					`${prevTrack.artist} ${prevTrack.title} ${prevTrack.album}`,
+					`${prevTrack.artist} ${prevTrack.title}`,
 				);
 				if (!res) return;
 				videoListRef.current.unshift(res.videoId);
 			}
 
 			setIsInitLoad(true);
+			setTrackId(null);
 		};
 
 		initSettingPlaylist();
-	}, [trackQueue, trackId]);
+	}, [trackQueue, trackId, setTrackId]);
 
 	// 初回再生分のプレイリストをセット
 	useEffect(() => {
-		if (!isInitLoad) return;
-		if (
-			playerRef.current &&
-			typeof playerRef.current.loadVideoById === "function"
-		) {
-			// trackQueueの先頭のインデックスが選択された時・それ以外のインデックスが選択された時の考慮
-			playerRef.current.loadPlaylist(
-				videoListRef.current,
-				videoListRef.current.length > 2 || !currentTrackIdRef.current ? 1 : 0,
-			);
-		}
-		// NOTE: 閉じられたFooterを再度開いた時に動画が再生されるように
-		if (playerRef.current) {
-			playerRef.current.playVideo();
-		}
+		if (!isInitLoad || !playerRef.current) return;
+
+		// trackQueueの先頭のインデックスが選択された時・それ以外のインデックスが選択された時の考慮
+		playerRef.current.loadPlaylist(
+			videoListRef.current,
+			videoListRef.current.length > 2 || !currentTrackIdRef.current ? 1 : 0,
+		);
 	}, [isInitLoad]);
 
 	// パラメータ初期化（曲変更時）
@@ -234,6 +222,7 @@ export const useFooterPlayer = () => {
 			playerRef.current.pauseVideo();
 		}
 		setIsOpenFooter(false);
+		setTrackId(null);
 	};
 
 	return {

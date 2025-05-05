@@ -20,15 +20,18 @@ export const isOpenFooterAtom = atom<boolean>(false);
  * トラックテーブルで選択されたトラックのID
  * @type {string}
  */
-export const trackIdAtom = atom<string>("");
+export const trackIdAtom = atom<string | null>(null);
 
 /**
  * 連続再生キュー情報
- * @type {object[]}
- * @constant {object[]}
+ * @type {Track[]}
+ * @property {string} id - 曲のID
+ * @property {number} index - テーブル出力時の曲のインデックス
+ * @property {string} image - 曲の画像URL
+ * @property {string} title - 曲のタイトル
+ * @property {string} album - アルバム名
+ * @property {string} artist - アーティスト名
+ * @property {string} duration - 曲の再生時間
  * @description 連続再生キュー情報を管理する
- * @property {string} artistName アーティスト名
- * @property {string} musicName 曲名
- * @property {string} albumName アルバム名
  */
 export const trackQueueAtom = atom<Track[]>([]);
