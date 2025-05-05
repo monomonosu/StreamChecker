@@ -20,7 +20,7 @@ export const isOpenFooterAtom = atom<boolean>(false);
  * トラックテーブルで選択されたトラックのID
  * @type {string}
  */
-export const trackIdAtom = atom<string>("");
+export const trackIdAtom = atom<string | null>(null);
 
 /**
  * 連続再生キュー情報
