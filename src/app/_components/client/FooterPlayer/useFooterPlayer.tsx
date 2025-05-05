@@ -8,6 +8,7 @@ import {
 	trackIdAtom,
 	trackQueueAtom,
 	videoTitleAtom,
+	videoUrlAtom,
 } from "@/libs/stores/video";
 
 import { getTopMovieBySearch } from "@/app/_fetchers/youtube/getTopMovieBySearch";
@@ -40,6 +41,7 @@ export const useFooterPlayer = () => {
 	const videoListRef = useRef<string[]>([]);
 
 	const [videoTitle, setVideoTitle] = useAtom(videoTitleAtom);
+	const [videoUrl, setVideoUrl] = useAtom(videoUrlAtom);
 
 	const [currentIndex, setCurrentIndex] = useState<number | null>();
 	const [totalVideos, setTotalVideos] = useState<number>(0);
@@ -72,6 +74,9 @@ export const useFooterPlayer = () => {
 						const playVideoData = player.getVideoData();
 
 						setVideoTitle(playVideoData.title);
+						setVideoUrl(
+							`https://www.youtube.com/watch?v=${playVideoData.video_id}`,
+						);
 						console.log("📺 状態:", event.data);
 
 						switch (event.data) {
@@ -97,7 +102,7 @@ export const useFooterPlayer = () => {
 				},
 			});
 		};
-	}, [setVideoTitle]);
+	}, [setVideoTitle, setVideoUrl]);
 
 	// プレイリストの動画が終了した時に次の動画を追加する
 	useEffect(() => {
@@ -234,6 +239,7 @@ export const useFooterPlayer = () => {
 	return {
 		isOpenFooter,
 		videoTitle,
+		videoUrl,
 		onClickClose,
 	};
 };

@@ -3,13 +3,18 @@ import { atom } from "jotai";
 /**
  * 再生中の動画のタイトル
  */
-export const videoTitleAtom = atom("");
+export const videoTitleAtom = atom<string>("");
+
+/**
+ * 再生中の動画のURL
+ */
+export const videoUrlAtom = atom<string>("");
 
 /**
  * Footerの表示・非表示
  * @type {boolean}
  */
-export const isOpenFooterAtom = atom(false);
+export const isOpenFooterAtom = atom<boolean>(false);
 
 /**
  * トラックテーブルで選択されたトラックのID
