@@ -1,6 +1,6 @@
 "use client";
+import { TopTrackList } from "@/app/(static)/artists/[artist_id]/_components/TrackTable/TopTrackList";
 import { useArtist } from "@/app/(static)/artists/[artist_id]/hook";
-import { TrackList } from "@/app/_components/client/TrackTable/TrackList";
 import type { SpotifyArtistTopTracksResponse } from "@/app/_fetchers/types";
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
 
@@ -32,7 +32,7 @@ export const TrackArea = ({ topTracks }: Props) => {
 		<div className={style.scrollWrapper}>
 			<div className={style.gridContainer}>
 				{chunkedTracks.map((group, columnIndex) => (
-					<TrackList
+					<TopTrackList
 						key={String(columnIndex)}
 						tracks={group.map((track) => ({
 							...track,

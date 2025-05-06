@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import styles from "@/app/_components/client/TrackTable/track-list.module.scss";
+import styles from "@/app/(static)/artists/[artist_id]/_components/TrackTable/top-track-list.module.scss";
 import helper from "@/app/_styles/helper.module.scss";
 
 type Track = {
@@ -19,7 +19,7 @@ type Props = {
 	tracks: Track[];
 };
 
-export const TrackList = ({ tracks }: Props) => {
+export const TopTrackList = ({ tracks }: Props) => {
 	return (
 		<>
 			<div className={styles.column}>
