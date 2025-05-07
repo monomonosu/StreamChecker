@@ -34,11 +34,11 @@ export const TrackArea = ({ topTracks }: Props) => {
 				{chunkedTracks.map((group, columnIndex) => (
 					<TopTrackList
 						key={String(columnIndex)}
-						tracks={group.map((track) => ({
+						topTracks={group.map((track) => ({
 							...track,
 							onClick: () =>
 								handleClickTrack({
-									tracks,
+									trackQueue: tracks,
 									trackId: track.id,
 								}),
 						}))}

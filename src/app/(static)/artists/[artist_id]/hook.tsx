@@ -17,14 +17,14 @@ export const useArtist = () => {
 	 * @param {string} trackId
 	 */
 	const handleClickTrack = async ({
-		tracks,
+		trackQueue,
 		trackId,
 	}: {
-		tracks: Track[];
+		trackQueue: Track[];
 		trackId: string;
 	}) => {
 		// NOTE:再生キューのstore
-		setTrackQueue(tracks);
+		setTrackQueue(trackQueue);
 		setTrackId(trackId);
 		// NOTE:Footerエリア用のstore
 		setIsOpenFooter(true);

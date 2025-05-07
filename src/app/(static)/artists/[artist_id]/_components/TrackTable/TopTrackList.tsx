@@ -5,26 +5,20 @@ import Image from "next/image";
 import styles from "@/app/(static)/artists/[artist_id]/_components/TrackTable/top-track-list.module.scss";
 import helper from "@/app/_styles/helper.module.scss";
 
-type Track = {
-	id: string;
-	index: number;
-	image: string;
-	title: string;
-	album: string;
-	duration: string;
+type TopTrack = Track & {
 	onClick: () => void;
 };
 
 type Props = {
-	tracks: Track[];
+	topTracks: TopTrack[];
 };
 
-export const TopTrackList = ({ tracks }: Props) => {
+export const TopTrackList = ({ topTracks }: Props) => {
 	return (
 		<>
 			<div className={styles.column}>
 				<ul className={styles.list}>
-					{tracks.map((track) => (
+					{topTracks.map((track) => (
 						<li
 							key={track.id}
 							className={styles.row}
@@ -35,7 +29,7 @@ export const TopTrackList = ({ tracks }: Props) => {
 							<span>
 								<Image
 									className={styles.image}
-									src={track.image}
+									src={track.image ? track.image : ""}
 									alt="トラック画像"
 									width={40}
 									height={40}

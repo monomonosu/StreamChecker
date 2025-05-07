@@ -15,12 +15,12 @@ declare global {
 	 */
 	type Track = {
 		id: string;
-		index: number;
-		image: string;
+		index?: number;
+		image?: string;
 		title: string;
-		album: string;
-		artist: string;
-		duration: string;
+		album?: string;
+		artist?: string;
+		duration?: string;
 	};
 
 	// 必要に応じて他の共通型もここに追加
