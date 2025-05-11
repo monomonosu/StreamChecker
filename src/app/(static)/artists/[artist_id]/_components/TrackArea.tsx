@@ -1,10 +1,12 @@
 "use client";
-import { TopTrackList } from "@/app/(static)/artists/[artist_id]/_components/TrackTable/TopTrackList";
+import Image from "next/image";
+
 import { useArtist } from "@/app/(static)/artists/[artist_id]/hook";
 import type { SpotifyArtistTopTracksResponse } from "@/app/_fetchers/types";
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
 
 import style from "@/app/(static)/artists/[artist_id]/_components/track-area.module.scss";
+import helper from "@/app/_styles/helper.module.scss";
 
 type Props = {
 	topTracks: SpotifyArtistTopTracksResponse;
@@ -31,18 +33,45 @@ export const TrackArea = ({ topTracks }: Props) => {
 	return (
 		<div className={style.scrollWrapper}>
 			<div className={style.gridContainer}>
-				{chunkedTracks.map((group, columnIndex) => (
-					<TopTrackList
-						key={String(columnIndex)}
-						topTracks={group.map((track) => ({
-							...track,
-							onClick: () =>
-								handleClickTrack({
-									trackQueue: tracks,
-									trackId: track.id,
-								}),
-						}))}
-					/>
+				{chunkedTracks.map((group) => (
+					<div key={group[0].id} className={style.column}>
+						<ul className={style.list}>
+							{group.map((track) => (
+								<li
+									key={track.id}
+									className={style.row}
+									onClick={() =>
+										handleClickTrack({
+											trackQueue: tracks,
+											trackId: track.id,
+										})
+									}
+									onKeyDown={(e) => {
+										if (e.key === "Enter") {
+											handleClickTrack({
+												trackQueue: tracks,
+												trackId: track.id,
+											});
+										}
+									}}
+								>
+									<span className={helper.textEllipsis}>{track.index}</span>
+									<span>
+										<Image
+											className={style.image}
+											src={track.image ? track.image : ""}
+											alt="トラック画像"
+											width={40}
+											height={40}
+										/>
+									</span>
+									<span className={helper.textEllipsis}>{track.title}</span>
+									<span className={helper.textEllipsis}>{track.album}</span>
+									<span className={helper.textEllipsis}>{track.duration}</span>
+								</li>
+							))}
+						</ul>
+					</div>
 				))}
 			</div>
 		</div>

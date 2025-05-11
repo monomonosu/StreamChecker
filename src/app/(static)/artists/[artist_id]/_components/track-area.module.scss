@@ -11,3 +11,40 @@
 	gap: 24px;
 	min-width: max-content;
   }
+
+  .column {
+	background-color: var(--gray-3);
+	border-radius: 8px;
+	padding: 8px;
+	width: 45vw;
+	flex-shrink: 0;
+  }
+  
+  .list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+  }
+  
+  .row {
+	display: grid;
+	gap: 16px;
+	grid-template-columns: auto auto 1fr 1fr auto;
+	font-size: var(--font-size-2);
+	padding: 10px 12px;
+	border-radius: 8px;
+	transition: background-color 0.2s ease;
+	cursor: pointer;
+  
+	span {
+	  margin: auto 0;
+	}
+  
+	&:hover {
+	  background-color: var(--gray-5);
+	}
+  }
+  
+  .image {
+	border-radius: 5px;
+  }
