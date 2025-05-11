@@ -7,7 +7,7 @@ import { getAlbumsByArtist } from "@/app/_fetchers/getAlbumsByArtist";
 import { getArtist } from "@/app/_fetchers/getArtist";
 import { getTopTracksByArtist } from "@/app/_fetchers/getTopTracksByArtist";
 
-import { TrackArea } from "@/app/(static)/artists/[artist_id]/_components/TrackArea";
+import { TopTrackList } from "@/app/(static)/artists/[artist_id]/_components/TopTrackList";
 
 type Props = {
 	params: Promise<{ artist_id: string }>;
@@ -33,7 +33,7 @@ export default async function Artist({ params }: Props) {
 
 			<Section>
 				<h2>人気曲</h2>
-				<TrackArea topTracks={topTracks} />
+				<TopTrackList topTracks={topTracks} />
 			</Section>
 
 			<Section>

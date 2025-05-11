@@ -5,14 +5,14 @@ import { useArtist } from "@/app/(static)/artists/[artist_id]/hook";
 import type { SpotifyArtistTopTracksResponse } from "@/app/_fetchers/types";
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
 
-import style from "@/app/(static)/artists/[artist_id]/_components/track-area.module.scss";
+import style from "@/app/(static)/artists/[artist_id]/_components/top-track-list.module.scss";
 import helper from "@/app/_styles/helper.module.scss";
 
 type Props = {
 	topTracks: SpotifyArtistTopTracksResponse;
 };
 
-export const TrackArea = ({ topTracks }: Props) => {
+export const TopTrackList = ({ topTracks }: Props) => {
 	const { handleClickTrack } = useArtist();
 
 	const tracks: Track[] = topTracks.tracks.map((track, index) => ({
