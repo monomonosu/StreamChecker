@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Slider } from "@/app/_components/layouts/Slider";
-import { Genre } from "@/app/_components/server/Genre/Genre";
+import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 
 const meta = {
-	title: "Client/Genre",
-	component: Genre,
+	title: "Server/Jacket",
+	component: Jacket,
 	parameters: {
 		layout: "centered",
 		nextjs: {
@@ -13,56 +13,64 @@ const meta = {
 		},
 	},
 	tags: ["autodocs"],
-} satisfies Meta<typeof Genre>;
+} satisfies Meta<typeof Jacket>;
 
 export default meta;
-type Story = StoryObj<typeof Genre>;
+type Story = StoryObj<typeof Jacket>;
 
-const DUMMY_GENRES = [
+const DUMMY_IMAGES = [
 	{
 		id: 1,
 		src: "/images/dummy-image.png",
-		genreName: "genre",
+		albumName: "music",
+		artistName: "artist",
 	},
 	{
 		id: 2,
 		src: "/images/dummy-image.png",
-		genreName: "genre",
+		albumName: "music",
+		artistName: "artist",
 	},
 	{
 		id: 3,
 		src: "/images/dummy-image.png",
-		genreName: "genre",
+		albumName: "music",
+		artistName: "artist",
 	},
 	{
 		id: 4,
 		src: "/images/dummy-image.png",
-		genreName: "genre",
+		albumName: "music",
+		artistName: "artist",
 	},
 	{
 		id: 5,
 		src: "/images/dummy-image.png",
-		genreName: "genre",
+		albumName: "music",
+		artistName: "artist",
 	},
 	{
 		id: 6,
 		src: "/images/dummy-image.png",
-		genreName: "genre",
+		albumName: "music",
+		artistName: "artist",
 	},
 	{
 		id: 7,
 		src: "/images/dummy-image.png",
-		genreName: "genre",
+		albumName: "music",
+		artistName: "artist",
 	},
 ];
 
 export const Primary: Story = {
 	render: () => (
-		<Genre
+		<Jacket
 			href="/"
 			priority
 			src={"/images/dummy-image.png"}
-			genreName="genre"
+			album={{ name: "music", href: "/" }}
+			artist={{ name: "artist", href: "/" }}
 			width={200}
 			height={200}
 			alt="dummy"
@@ -74,13 +82,14 @@ export const WithSlider: Story = {
 	render: () => (
 		<div style={{ width: "1000px" }}>
 			<Slider>
-				{DUMMY_GENRES.map((genre) => (
-					<Genre
-						key={genre.id}
+				{DUMMY_IMAGES.map((image) => (
+					<Jacket
+						key={image.id}
 						href="/"
 						priority
-						src={genre.src}
-						genreName={genre.genreName}
+						src={image.src}
+						album={{ name: image.albumName, href: "/" }}
+						artist={{ name: image.artistName, href: "/" }}
 						width={200}
 						height={200}
 						alt="dummy"

@@ -26,12 +26,12 @@ export const trackIdAtom = atom<string | null>(null);
  * 連続再生キュー情報
  * @type {Track[]}
  * @property {string} id - 曲のID
- * @property {number} index - テーブル出力時の曲のインデックス
- * @property {string} image - 曲の画像URL
+ * @property {number} [index] - テーブル出力時の曲のインデックス
+ * @property {string} [image] - 曲の画像URL
  * @property {string} title - 曲のタイトル
- * @property {string} album - アルバム名
- * @property {string} artist - アーティスト名
- * @property {string} duration - 曲の再生時間
+ * @property {string} [album] - アルバム名
+ * @property {string} [artist] - アーティスト名
+ * @property {string} [duration] - 曲の再生時間
  * @description 連続再生キュー情報を管理する
  */
 export const trackQueueAtom = atom<Track[]>([]);

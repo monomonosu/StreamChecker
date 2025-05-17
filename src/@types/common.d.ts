@@ -15,13 +15,31 @@ declare global {
 	 */
 	type Track = {
 		id: string;
-		index: number;
-		image: string;
+		index?: number;
+		image?: string;
 		title: string;
-		album: string;
-		artist: string;
-		duration: string;
+		album?: string;
+		artist?: string;
+		duration?: string;
 	};
 
-	// 必要に応じて他の共通型もここに追加
+	/**
+	 * @type {object}
+	 * @property {string} id - アルバムのID
+	 * @property {string} name - アルバムの名前
+	 * @property {Array<{ id: string; name: string }>} artists - アルバムのアーティスト情報
+	 * @property {string} release_date - アルバムのリリース日
+	 * @property {object} image - アルバムの画像情報
+	 * @property {string} image.url - アルバムの画像URL
+	 * @property {number} image.width - アルバムの画像の幅
+	 * @property {number} image.height - アルバムの画像の高さ
+	 * @description アルバムの情報を管理する型
+	 */
+	export type Album = {
+		id: string;
+		name: string;
+		artists: { id: string; name: string }[];
+		release_date: string;
+		image: { url: string; width: number | null; height: number | null };
+	};
 }

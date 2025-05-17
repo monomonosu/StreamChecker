@@ -21,11 +21,11 @@ export default async function Home() {
 				<Slider>
 					{newReleaseData.albums.items.map((item) => (
 						<Jacket
-							href="/"
+							href={`/albums/${item.id}`}
 							key={item.id}
 							priority
 							src={item.images[0].url}
-							album={{ name: item.name, href: item.external_urls.spotify }}
+							album={{ name: item.name, href: `/albums/${item.id}` }}
 							artist={{
 								name: item.artists[0].name,
 								href: `artists/${item.artists[0].id}`,
@@ -44,10 +44,10 @@ export default async function Home() {
 					{popularityData.albums.items.map((item) => (
 						<Jacket
 							key={item.id}
-							href="/"
+							href={`/albums/${item.id}`}
 							priority
 							src={item.images[0].url}
-							album={{ name: item.name, href: item.external_urls.spotify }}
+							album={{ name: item.name, href: `/albums/${item.id}` }}
 							artist={{
 								name: item.artists[0].name,
 								href: `artists/${item.artists[0].id}`,

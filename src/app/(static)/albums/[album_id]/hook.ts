@@ -6,7 +6,8 @@ import {
 	trackQueueAtom,
 } from "@/libs/stores/video";
 
-export const useArtist = () => {
+export const useAlbum = () => {
+	// TODO: 共通のhooksとして切り出せそう
 	const setTrackQueue = useSetAtom(trackQueueAtom);
 	const setTrackId = useSetAtom(trackIdAtom);
 	const setIsOpenFooter = useSetAtom(isOpenFooterAtom);

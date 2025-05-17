@@ -10,12 +10,7 @@ type JacketProps = ImageProps & {
 	artist?: { name: string; href: string };
 };
 
-export const Jacket = ({
-	href,
-	album: music,
-	artist,
-	...props
-}: JacketProps) => {
+export const Jacket = ({ href, album, artist, ...props }: JacketProps) => {
 	return (
 		<div className={style.jacketWrapper}>
 			<Link
@@ -26,8 +21,8 @@ export const Jacket = ({
 				<Image className={style.jacketImg} {...props} alt="image" />
 			</Link>
 			<div className={style.jacketInfo}>
-				<Link className={helper.textEllipsis} href={music?.href || "/404"}>
-					{music?.name}
+				<Link className={helper.textEllipsis} href={album?.href || "/404"}>
+					{album?.name}
 				</Link>
 				<Link className={helper.link} href={artist?.href || "/404"}>
 					{artist?.name}
