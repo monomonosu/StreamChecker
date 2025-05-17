@@ -42,7 +42,7 @@ export default async function Artist({ params }: Props) {
 					{albums.items.map((item) => (
 						<Jacket
 							key={item.id}
-							href="/"
+							href={`/albums/${item.id}`}
 							priority
 							src={item.images[0].url}
 							album={{ name: item.name, href: `/albums/${item.id}` }}

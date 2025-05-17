@@ -21,7 +21,7 @@ export default async function Home() {
 				<Slider>
 					{newReleaseData.albums.items.map((item) => (
 						<Jacket
-							href="/"
+							href={`/albums/${item.id}`}
 							key={item.id}
 							priority
 							src={item.images[0].url}
@@ -44,7 +44,7 @@ export default async function Home() {
 					{popularityData.albums.items.map((item) => (
 						<Jacket
 							key={item.id}
-							href="/"
+							href={`/albums/${item.id}`}
 							priority
 							src={item.images[0].url}
 							album={{ name: item.name, href: `/albums/${item.id}` }}
