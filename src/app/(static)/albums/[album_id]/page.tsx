@@ -1,7 +1,10 @@
 import { AlbumHeader } from "@/app/(static)/albums/[album_id]/_components/AlbumHeader";
 import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
 import { Section, SectionWrapper } from "@/app/_components/layouts/Section";
+import { Slider } from "@/app/_components/layouts/Slider";
+import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 import { getAlbum } from "@/app/_fetchers/getAlbum";
+import { getAlbumsByArtist } from "@/app/_fetchers/getAlbumsByArtist";
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
 
 type Props = {
@@ -11,6 +14,7 @@ type Props = {
 export default async function Album({ params }: Props) {
 	const { album_id } = await params;
 	const data = await getAlbum(album_id);
+	const artistAlbumsData = await getAlbumsByArtist(data.artists[0].id);
 
 	const album: Album = {
 		id: data.id,
@@ -46,6 +50,24 @@ export default async function Album({ params }: Props) {
 
 				<Section>
 					<TrackArea tracks={tracks} />
+				</Section>
+
+				<Section>
+					<h2>アーティストのその他のアルバム</h2>
+					<Slider>
+						{artistAlbumsData.items.map((item) => (
+							<Jacket
+								key={item.id}
+								href={`/albums/${item.id}`}
+								priority
+								src={item.images[0].url}
+								album={{ name: item.name, href: `/albums/${item.id}` }}
+								width={200}
+								height={200}
+								alt="アルバム画像"
+							/>
+						))}
+					</Slider>
 				</Section>
 			</SectionWrapper>
 		</>

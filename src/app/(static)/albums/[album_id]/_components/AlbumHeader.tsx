@@ -19,7 +19,7 @@ export const AlbumHeader = ({ name, artists, release_date, image }: Props) => {
 				height={image.height ? image.height : 0}
 			/>
 			<div className={style.contentWrapper}>
-				<h2>{name}</h2>
+				<h1>{name}</h1>
 				<div className={style.contentInner}>
 					<div>
 						{artists.map((artist, index) => (
