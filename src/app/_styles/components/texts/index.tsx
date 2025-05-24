@@ -1,4 +1,5 @@
-import Link from "next/link";
+import Link, { type LinkProps } from "next/link";
+import React from "react";
 
 interface BasicTextProps {
 	size?: string | number;
@@ -26,31 +27,36 @@ export const BasicText = ({
 	);
 };
 
-interface LinkTextProps {
+interface LinkTextProps
+	extends LinkProps,
+		React.AnchorHTMLAttributes<HTMLAnchorElement> {
 	href: string;
 	size?: string | number;
 	color?: string;
 	isBold?: boolean;
-	children: React.ReactNode;
 }
 
-export const LinkText = ({
-	href,
-	size = "var(--font-size-2)",
-	color = "var(--gray-10)",
-	isBold,
-	children,
-}: LinkTextProps) => {
-	return (
-		<Link
-			href={href}
-			style={{
-				color: color,
-				fontSize: size,
-				fontWeight: isBold ? 600 : 400,
-			}}
-		>
-			{children}
-		</Link>
-	);
-};
+export const LinkText = React.forwardRef<HTMLAnchorElement, LinkTextProps>(
+	(
+		{
+			href,
+			size = "var(--font-size-2)",
+			color = "var(--gray-10)",
+			isBold,
+			children,
+			...props
+		},
+		ref,
+	) => {
+		return (
+			<Link
+				href={href}
+				ref={ref}
+				style={{ color, fontSize: size, fontWeight: isBold ? 600 : 400 }}
+				{...props}
+			>
+				{children}
+			</Link>
+		);
+	},
+);
