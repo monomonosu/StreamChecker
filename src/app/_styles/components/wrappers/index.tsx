@@ -11,7 +11,7 @@ export const PageWrapper = ({ children }: PageWrapperProps) => {
 	return <div className={style.pageWrapper}>{children}</div>;
 };
 
-interface GapWrapperProps {
+interface GapWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 	children: React.ReactNode;
 	direction?: DirectionType;
 	gap?: GapValue;
@@ -21,9 +21,11 @@ export const GapWrapper = ({
 	children,
 	direction = "row",
 	gap = 0,
+	...props
 }: GapWrapperProps) => {
 	return (
 		<div
+			{...props}
 			style={{
 				display: "flex",
 				flexDirection: direction,
