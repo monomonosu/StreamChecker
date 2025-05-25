@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Slider } from "@/app/_components/layouts/Slider";
 import { Genre } from "@/app/_components/server/Genre/Genre";
+import { Slider } from "@/app/_styles/components/blocks";
 
 const meta = {
 	title: "Server/Genre",

@@ -1,8 +1,7 @@
 import { AlbumHeader } from "@/app/(static)/albums/[album_id]/_components/AlbumHeader";
 import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
-import { Slider } from "@/app/_components/layouts/Slider";
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
-import { Section } from "@/app/_styles/components/blocks";
+import { Section, Slider } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
 
 import { getAlbum } from "@/app/_fetchers/getAlbum";

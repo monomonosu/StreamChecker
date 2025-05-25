@@ -1,4 +1,4 @@
-import style from "@/app/_components/layouts/loading.module.scss";
+import style from "@/app/_components/server/Loading/loading.module.scss";
 
 type LoadingProps = {
 	height?: string;
