@@ -1,11 +1,12 @@
 import Link, { type LinkProps } from "next/link";
 import React from "react";
 
-interface BasicTextProps {
+interface BasicTextProps extends React.HTMLAttributes<HTMLParagraphElement> {
 	size?: string | number;
 	color?: string;
 	isBold?: boolean;
 	children: React.ReactNode;
+	style?: React.CSSProperties;
 }
 
 export const BasicText = ({
@@ -13,13 +14,17 @@ export const BasicText = ({
 	color,
 	isBold,
 	children,
+	style,
+	...props
 }: BasicTextProps) => {
 	return (
 		<p
+			{...props}
 			style={{
 				color: color,
 				fontSize: size,
 				fontWeight: isBold ? 600 : 400,
+				...style,
 			}}
 		>
 			{children}
