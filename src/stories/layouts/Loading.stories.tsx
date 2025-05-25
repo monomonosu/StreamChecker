@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Loading } from "@/app/_components/layouts/Loading";
+import { Loading } from "@/app/_components/server/Loading/Loading";
 
 const meta = {
 	title: "Layouts/Loading",
