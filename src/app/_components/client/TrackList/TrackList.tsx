@@ -1,5 +1,7 @@
 "use client";
 
+import { BasicText } from "@/app/_styles/components/texts";
+
 import style from "@/app/_components/client/TrackList/track-list.module.scss";
 
 type TrackOnList = Track & {
@@ -26,9 +28,9 @@ export const TrackList = ({ tracks }: Props) => {
 						}
 					}}
 				>
-					<span>{track.index}</span>
-					<span>{track.title}</span>
-					<span>{track.duration}</span>
+					<BasicText>{track.index}</BasicText>
+					<BasicText>{track.title}</BasicText>
+					<BasicText>{track.duration}</BasicText>
 				</div>
 			))}
 		</div>

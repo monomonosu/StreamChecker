@@ -2,12 +2,11 @@
 
 import { Cross1Icon } from "@radix-ui/react-icons";
 import { Button, Theme } from "@radix-ui/themes";
-import Link from "next/link";
 
 import { useFooterPlayer } from "@/app/_components/client/FooterPlayer/useFooterPlayer";
+import { BasicText, LinkText } from "@/app/_styles/components/texts";
 
 import style from "@/app/_components/client/FooterPlayer/footer-player.module.scss";
-import helper from "@/app/_styles/helper.module.scss";
 
 export const FooterPlayer = () => {
 	const { isOpenFooter, videoTitle, videoUrl, onClickClose } =
@@ -21,10 +20,10 @@ export const FooterPlayer = () => {
 		>
 			<div className={style.footerMovie} id="youtube-player" />
 			<div className={style.footerContent}>
-				<p>{videoTitle}</p>
-				<Link href={videoUrl} target="_blank" className={helper.link}>
+				<BasicText>{videoTitle}</BasicText>
+				<LinkText href={videoUrl} target="_blank" rel="noopener noreferrer">
 					{videoUrl}
-				</Link>
+				</LinkText>
 			</div>
 			<Button
 				color="gray"
