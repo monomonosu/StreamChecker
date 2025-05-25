@@ -1,18 +1,19 @@
-import Image from "next/image";
-import Link from "next/link";
-
 import { HamburgerMenuIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Theme } from "@radix-ui/themes";
 import { House } from "lucide-react";
 import { Bell } from "lucide-react";
 import { ChartNoAxesCombined } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+
+import { GapWrapper } from "@/app/_styles/components/wrappers";
 
 import style from "@/app/_components/server/Header/header.module.scss";
 
 export const Header = () => {
 	return (
 		<Theme appearance="dark" className={style.header}>
-			<div className={style.header_inner}>
+			<GapWrapper gap={24}>
 				<Link className={style.link} style={{ height: "24px" }} href="/">
 					<Image
 						className={style.logo}
@@ -41,11 +42,12 @@ export const Header = () => {
 					<span className={style.label}>人気</span>
 					<ChartNoAxesCombined className={style.icon} size="24px" />
 				</Link>
-			</div>
-			<div className={style.header_inner}>
+			</GapWrapper>
+
+			<GapWrapper gap={24}>
 				<MagnifyingGlassIcon width={24} height={24} />
 				<HamburgerMenuIcon width={24} height={24} />
-			</div>
+			</GapWrapper>
 		</Theme>
 	);
 };

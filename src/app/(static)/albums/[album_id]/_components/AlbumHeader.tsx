@@ -1,43 +1,40 @@
 import Image from "next/image";
-
-import Link from "next/link";
 import { Fragment } from "react";
 
-import style from "@/app/(static)/albums/[album_id]/_components/album-header.module.scss";
-import helper from "@/app/_styles/helper.module.scss";
+import { BasicText, LinkText } from "@/app/_styles/components/texts";
+import { GapWrapper } from "@/app/_styles/components/wrappers";
 
 type Props = Album;
 
 export const AlbumHeader = ({ name, artists, release_date, image }: Props) => {
 	return (
-		<div className={style.albumHeader}>
+		<GapWrapper gap={16}>
 			<Image
-				className={style.img}
+				style={{
+					borderRadius: "var(--border-radius-2)",
+				}}
 				src={image.url}
 				alt={name}
 				width={image.width ? image.width : 0}
 				height={image.height ? image.height : 0}
 			/>
-			<div className={style.contentWrapper}>
+
+			<GapWrapper style={{ justifyContent: "end" }} gap={8} direction="column">
 				<h1>{name}</h1>
-				<div className={style.contentInner}>
-					<div>
+				<GapWrapper direction="column">
+					<GapWrapper direction="row">
 						{artists.map((artist, index) => (
 							<Fragment key={artist.id}>
-								<Link
-									key={artist.id}
-									href={`/artists/${artist.id}`}
-									className={helper.link}
-								>
+								<LinkText href={`/artists/${artist.id}`}>
 									{artist.name}
-								</Link>
-								{index < artists.length - 1 && ","}
+								</LinkText>
+								{index < artists.length - 1 && <BasicText>,</BasicText>}
 							</Fragment>
 						))}
-					</div>
-					<span>{release_date}</span>
-				</div>
-			</div>
-		</div>
+					</GapWrapper>
+					<BasicText>{release_date}</BasicText>
+				</GapWrapper>
+			</GapWrapper>
+		</GapWrapper>
 	);
 };

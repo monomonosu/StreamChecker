@@ -1,8 +1,10 @@
 import { AlbumHeader } from "@/app/(static)/albums/[album_id]/_components/AlbumHeader";
 import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
-import { Section, SectionWrapper } from "@/app/_components/layouts/Section";
 import { Slider } from "@/app/_components/layouts/Slider";
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
+import { Section } from "@/app/_styles/components/blocks";
+import { PageWrapper } from "@/app/_styles/components/wrappers";
+
 import { getAlbum } from "@/app/_fetchers/getAlbum";
 import { getAlbumsByArtist } from "@/app/_fetchers/getAlbumsByArtist";
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
@@ -33,7 +35,7 @@ export default async function Album({ params }: Props) {
 
 	return (
 		<>
-			<SectionWrapper>
+			<PageWrapper>
 				<Section>
 					<AlbumHeader
 						id={album.id}
@@ -69,7 +71,7 @@ export default async function Album({ params }: Props) {
 						))}
 					</Slider>
 				</Section>
-			</SectionWrapper>
+			</PageWrapper>
 		</>
 	);
 }

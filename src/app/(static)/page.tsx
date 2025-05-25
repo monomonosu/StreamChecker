@@ -1,12 +1,12 @@
-import { Section, SectionWrapper } from "@/app/_components/layouts/Section";
 import { Slider } from "@/app/_components/layouts/Slider";
+import { Genre } from "@/app/_components/server/Genre/Genre";
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
-
-import { getNewReleases } from "@/app/_fetchers/getNewReleases";
-import { getPopularityAlbums } from "@/app/_fetchers/getPopularityAlbums";
+import { Section } from "@/app/_styles/components/blocks";
+import { PageWrapper } from "@/app/_styles/components/wrappers";
 
 import { genres } from "@/app/(static)/_utils/_constants";
-import { Genre } from "@/app/_components/server/Genre/Genre";
+import { getNewReleases } from "@/app/_fetchers/getNewReleases";
+import { getPopularityAlbums } from "@/app/_fetchers/getPopularityAlbums";
 
 export default async function Home() {
 	// 最新のおすすめ
@@ -15,7 +15,7 @@ export default async function Home() {
 	const popularityData = await getPopularityAlbums();
 
 	return (
-		<SectionWrapper>
+		<PageWrapper>
 			<Section>
 				<h1>新着</h1>
 				<Slider>
@@ -77,6 +77,6 @@ export default async function Home() {
 					))}
 				</Slider>
 			</Section>
-		</SectionWrapper>
+		</PageWrapper>
 	);
 }
