@@ -1,7 +1,6 @@
-import { Slider } from "@/app/_components/layouts/Slider";
 import { Genre } from "@/app/_components/server/Genre/Genre";
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
-import { Section } from "@/app/_styles/components/blocks";
+import { Section, Slider } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
 
 import { genres } from "@/app/(static)/_utils/_constants";
