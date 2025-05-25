@@ -1,11 +1,3 @@
-.jacketWrapper {
-    display: flex;
-    flex-direction: column;
-    width:200px;
-    gap: 8px;
-    font-size: 14px;
-}
-
 .jacket {
     position: relative;
     cursor: pointer;
@@ -30,21 +22,4 @@
 
 .jacket:hover::after {
     opacity: 1;
-}
-
-.jacketInfo {
-    display: flex;
-    flex-direction: column;
-}
-
-.--threeLine {
-    display: -webkit-box;
-    line-clamp: 2;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.--gray {
-    color: var(--gray-10);
 }
