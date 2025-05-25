@@ -15,12 +15,14 @@ interface GapWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 	children: React.ReactNode;
 	direction?: DirectionType;
 	gap?: GapValue;
+	style?: React.CSSProperties;
 }
 
 export const GapWrapper = ({
 	children,
 	direction = "row",
 	gap = 0,
+	style,
 	...props
 }: GapWrapperProps) => {
 	return (
@@ -31,6 +33,7 @@ export const GapWrapper = ({
 				flexDirection: direction,
 				gap: `${gap}px`,
 				flexWrap: "wrap",
+				...style,
 			}}
 		>
 			{children}
