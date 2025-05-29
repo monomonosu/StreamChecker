@@ -10,7 +10,7 @@ export const Search = () => {
 	return (
 		<Popover.Root>
 			<Popover.Trigger>
-				<IconButton variant="ghost">
+				<IconButton color="gray" variant="ghost">
 					<MagnifyingGlassIcon color="white" width={24} height={24} />
 				</IconButton>
 			</Popover.Trigger>
@@ -28,7 +28,7 @@ export const Search = () => {
 							</TextField.Slot>
 						</TextField.Root>
 
-						<IconButton type="submit" color="gray">
+						<IconButton type="submit" color="gray" variant="solid" highContrast>
 							<PaperPlaneIcon width={16} height={16} />
 						</IconButton>
 					</GapWrapper>
