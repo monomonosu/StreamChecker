@@ -49,6 +49,40 @@ export type SpotifyAlbumsResponse = {
 };
 
 /**
+ * 検索結果の情報
+ * @see /search?q=
+ */
+export type SpotifySearchResponse = {
+	tracks: {
+		href: string;
+		limit: number;
+		next: string | null;
+		offset: number;
+		previous: string | null;
+		total: number;
+		items: SpotifyTrackItem[];
+	};
+	albums: {
+		href: string;
+		limit: number;
+		next: string | null;
+		offset: number;
+		previous: string | null;
+		total: number;
+		items: SpotifyAlbumItem[];
+	};
+	artists: {
+		href: string;
+		limit: number;
+		next: string | null;
+		offset: number;
+		previous: string | null;
+		total: number;
+		items: SpotifyArtistResponse[];
+	};
+};
+
+/**
  * アーティストの情報
  * @see /artists/[id]
  */
