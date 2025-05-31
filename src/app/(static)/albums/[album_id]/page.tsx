@@ -42,9 +42,9 @@ export default async function Album({ params }: Props) {
 						artists={album.artists}
 						release_date={album.release_date}
 						image={{
-							url: album.image.url,
-							width: album.image.width,
-							height: album.image.height,
+							url: album.image.url ? album.image.url : "/images/no-image.png",
+							width: 300,
+							height: 300,
 						}}
 					/>
 				</Section>
@@ -61,7 +61,11 @@ export default async function Album({ params }: Props) {
 								key={item.id}
 								href={`/albums/${item.id}`}
 								priority
-								src={item.images[0].url}
+								src={
+									item.images.length
+										? item.images[0].url
+										: "/images/no-image.png"
+								}
 								album={{ name: item.name, href: `/albums/${item.id}` }}
 								width={200}
 								height={200}

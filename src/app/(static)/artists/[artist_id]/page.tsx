@@ -22,10 +22,12 @@ export default async function Artist({ params }: Props) {
 		<PageWrapper>
 			<Section>
 				<ArtistHeader
-					src={artist.images[0].url}
+					src={
+						artist.images.length ? artist.images[0].url : "/images/no-image.png"
+					}
 					alt={artist.name}
-					width={artist.images[0].width}
-					height={artist.images[0].height}
+					width={640}
+					height={640}
 					artistName={artist.name}
 				/>
 			</Section>
@@ -43,7 +45,9 @@ export default async function Artist({ params }: Props) {
 							key={item.id}
 							href={`/albums/${item.id}`}
 							priority
-							src={item.images[0].url}
+							src={
+								item.images.length ? item.images[0].url : "/images/no-image.png"
+							}
 							album={{ name: item.name, href: `/albums/${item.id}` }}
 							width={200}
 							height={200}

@@ -60,7 +60,11 @@ export default async function Search({ searchParams }: Props) {
 								<h3>アーティスト</h3>
 								<Artist
 									href={`artists/${artists[0].id}`}
-									src={artists[0].images[0].url}
+									src={
+										artists[0].images.length
+											? artists[0].images[0].url
+											: "/images/no-image.png"
+									}
 									artist={{
 										name: artists[0].name,
 										href: `/artists/${artists[0].id}`,
@@ -75,7 +79,11 @@ export default async function Search({ searchParams }: Props) {
 								<h3>アルバム</h3>
 								<Jacket
 									href={`/albums/${albums[0].id}`}
-									src={albums[0].images[0].url}
+									src={
+										albums[0].images.length
+											? albums[0].images[0].url
+											: "/images/no-image.png"
+									}
 									album={{
 										name: albums[0].name,
 										href: `/albums/${albums[0].id}`,
@@ -121,7 +129,11 @@ export default async function Search({ searchParams }: Props) {
 								<Jacket
 									key={album.id}
 									href={`/albums/${album.id}`}
-									src={album.images[0].url}
+									src={
+										album.images.length
+											? album.images[0].url
+											: "/images/no-image.png"
+									}
 									album={{ name: album.name, href: `/albums/${album.id}` }}
 									width={200}
 									height={200}
