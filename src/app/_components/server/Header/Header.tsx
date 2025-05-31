@@ -8,6 +8,7 @@ import Link from "next/link";
 
 import { GapWrapper } from "@/app/_styles/components/wrappers";
 
+import { Search } from "@/app/_components/server/Header/client/SearchButton";
 import style from "@/app/_components/server/Header/header.module.scss";
 
 export const Header = () => {
@@ -45,7 +46,7 @@ export const Header = () => {
 			</GapWrapper>
 
 			<GapWrapper gap={24}>
-				<MagnifyingGlassIcon width={24} height={24} />
+				<Search />
 				<HamburgerMenuIcon width={24} height={24} />
 			</GapWrapper>
 		</Theme>
