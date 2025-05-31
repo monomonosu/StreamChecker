@@ -26,9 +26,9 @@ export default async function Search({ searchParams }: Props) {
 	const data = query ? await getSearchItems(query) : null;
 	if (
 		!data ||
-		(data.artists.items.length > 0 &&
-			data.albums.items.length > 0 &&
-			data.tracks.items.length > 0)
+		(data.artists.items.length === 0 &&
+			data.albums.items.length === 0 &&
+			data.tracks.items.length === 0)
 	) {
 		return (
 			<Section>
