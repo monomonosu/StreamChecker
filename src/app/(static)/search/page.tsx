@@ -1,11 +1,8 @@
-import { MagnifyingGlassIcon, PaperPlaneIcon } from "@radix-ui/react-icons";
-import { IconButton, TextField } from "@radix-ui/themes";
-import Form from "next/form";
-
 import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
+import { SearchForm } from "@/app/(static)/search/_components/SearchForm";
 import { Artist } from "@/app/_components/server/Artist/Artist";
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
-import { Section } from "@/app/_styles/components/blocks";
+import { Section, Slider } from "@/app/_styles/components/blocks";
 import { GapWrapper, PageWrapper } from "@/app/_styles/components/wrappers";
 
 import { getSearchItems } from "@/app/_fetchers/getSearchItems";
@@ -17,19 +14,30 @@ type Props = {
 
 export default async function Search({ searchParams }: Props) {
 	const { query } = await searchParams;
+	if (!query) {
+		return (
+			<Section>
+				<h1>お気に入りのアーティスト・曲・アルバムを探しましょう！</h1>
+				<SearchForm />
+			</Section>
+		);
+	}
 
 	const data = query ? await getSearchItems(query) : null;
 	if (!data) {
 		return (
-			<h1>
-				お探しのものが見つからないようです。条件を変更して再度検索してください。
-			</h1>
+			<Section>
+				<h1>
+					お探しのものが見つからないようです。条件を変更して再度検索してください。
+				</h1>
+				<SearchForm />
+			</Section>
 		);
 	}
 
 	const artists = data.artists.items;
 	const albums = data.albums.items;
-	const tracks = data.tracks.items.slice(0, 5).map((track) => ({
+	const tracks = data.tracks.items.map((track) => ({
 		id: track.id,
 		title: track.name,
 		artist: track.artists[0].name,
@@ -80,39 +88,54 @@ export default async function Search({ searchParams }: Props) {
 
 							<GapWrapper gap={8} direction="column">
 								<h3>トラック</h3>
-								<TrackArea tracks={tracks} />
+								<TrackArea tracks={tracks.slice(0, 5)} />
 							</GapWrapper>
 						</GapWrapper>
 					</Section>
+
+					<Section>
+						<h2>アーティスト</h2>
+						<Slider>
+							{artists.map((artist) => (
+								<Artist
+									key={artist.id}
+									href={`/artists/${artist.id}`}
+									src={
+										artist.images.length
+											? artist.images[0].url
+											: "/images/no-image.png"
+									}
+									artist={{ name: artist.name, href: `/artists/${artist.id}` }}
+									width={150}
+									height={150}
+									alt="アーティスト画像"
+								/>
+							))}
+						</Slider>
+					</Section>
+
+					<Section>
+						<h2>アルバム</h2>
+						<Slider>
+							{albums.map((album) => (
+								<Jacket
+									key={album.id}
+									href={`/albums/${album.id}`}
+									src={album.images[0].url}
+									album={{ name: album.name, href: `/albums/${album.id}` }}
+									width={200}
+									height={200}
+									alt="アルバム画像"
+								/>
+							))}
+						</Slider>
+					</Section>
+
+					<Section>
+						<h2>トラック</h2>
+						<TrackArea tracks={tracks} />
+					</Section>
 				</>
-			)}
-
-			{!query && (
-				<Section>
-					<h1>お気に入りのアーティスト・曲・アルバムを探しましょう！</h1>
-					<Form action="/search">
-						<GapWrapper gap={8} direction="row">
-							<TextField.Root
-								placeholder="何をお探しですか？"
-								name="query"
-								style={{ width: "500px" }}
-							>
-								<TextField.Slot>
-									<MagnifyingGlassIcon height="16" width="16" />
-								</TextField.Slot>
-							</TextField.Root>
-
-							<IconButton
-								type="submit"
-								color="gray"
-								variant="solid"
-								highContrast
-							>
-								<PaperPlaneIcon width={16} height={16} />
-							</IconButton>
-						</GapWrapper>
-					</Form>
-				</Section>
 			)}
 		</PageWrapper>
 	);
