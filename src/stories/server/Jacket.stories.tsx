@@ -21,43 +21,43 @@ type Story = StoryObj<typeof Jacket>;
 const DUMMY_IMAGES = [
 	{
 		id: 1,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		albumName: "music",
 		artistName: "artist",
 	},
 	{
 		id: 2,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		albumName: "music",
 		artistName: "artist",
 	},
 	{
 		id: 3,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		albumName: "music",
 		artistName: "artist",
 	},
 	{
 		id: 4,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		albumName: "music",
 		artistName: "artist",
 	},
 	{
 		id: 5,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		albumName: "music",
 		artistName: "artist",
 	},
 	{
 		id: 6,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		albumName: "music",
 		artistName: "artist",
 	},
 	{
 		id: 7,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		albumName: "music",
 		artistName: "artist",
 	},
@@ -68,7 +68,7 @@ export const Primary: Story = {
 		<Jacket
 			href="/"
 			priority
-			src={"/images/dummy-image.png"}
+			src={"/images/no-image.png"}
 			album={{ name: "music", href: "/" }}
 			artist={{ name: "artist", href: "/" }}
 			width={200}

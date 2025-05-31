@@ -21,37 +21,37 @@ type Story = StoryObj<typeof Genre>;
 const DUMMY_GENRES = [
 	{
 		id: 1,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		genreName: "genre",
 	},
 	{
 		id: 2,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		genreName: "genre",
 	},
 	{
 		id: 3,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		genreName: "genre",
 	},
 	{
 		id: 4,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		genreName: "genre",
 	},
 	{
 		id: 5,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		genreName: "genre",
 	},
 	{
 		id: 6,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		genreName: "genre",
 	},
 	{
 		id: 7,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		genreName: "genre",
 	},
 ];
@@ -61,7 +61,7 @@ export const Primary: Story = {
 		<Genre
 			href="/"
 			priority
-			src={"/images/dummy-image.png"}
+			src={"/images/no-image.png"}
 			genreName="genre"
 			width={200}
 			height={200}

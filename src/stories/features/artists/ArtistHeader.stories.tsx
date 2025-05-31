@@ -23,7 +23,7 @@ export const Primary: Story = {
 		<Theme appearance="dark">
 			<div style={{ width: "800px" }}>
 				<ArtistHeader
-					src="/images/dummy-image.png"
+					src="/images/no-image.png"
 					alt="artist"
 					width={600}
 					height={600}
@@ -39,7 +39,7 @@ export const AtLightTheme: Story = {
 		<Theme>
 			<div style={{ width: "800px" }}>
 				<ArtistHeader
-					src="/images/dummy-image.png"
+					src="/images/no-image.png"
 					alt="artist"
 					width={600}
 					height={600}
@@ -55,7 +55,7 @@ export const AtSP: Story = {
 		<Theme appearance="dark">
 			<div style={{ width: "375px" }}>
 				<ArtistHeader
-					src="/images/dummy-image.png"
+					src="/images/no-image.png"
 					alt="artist"
 					width={600}
 					height={600}
