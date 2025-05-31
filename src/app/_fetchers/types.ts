@@ -27,6 +27,22 @@ type SpotifyTrackItem = {
 	external_urls: { spotify: string };
 };
 
+/**
+ * アーティストの情報
+ */
+type SpotifyArtistItem = {
+	id: string;
+	name: string;
+	images: { url: string; width: number; height: number }[];
+	external_urls: { spotify: string };
+	href: string;
+	type: "artist";
+	uri: string;
+	followers?: { total: number; href: string | null };
+	genres?: string[];
+	popularity?: number;
+};
+
 /* ========================================
    レスポンスTypes
    ======================================== */
@@ -78,7 +94,7 @@ export type SpotifySearchResponse = {
 		offset: number;
 		previous: string | null;
 		total: number;
-		items: SpotifyArtistResponse[];
+		items: SpotifyArtistItem[];
 	};
 };
 
@@ -86,27 +102,7 @@ export type SpotifySearchResponse = {
  * アーティストの情報
  * @see /artists/[id]
  */
-export type SpotifyArtistResponse = {
-	external_urls: {
-		spotify: string;
-	};
-	followers: {
-		href: string | null; // `href` は通常 null になることが多い
-		total: number;
-	};
-	genres: string[];
-	href: string;
-	id: string;
-	images: {
-		url: string;
-		height: number;
-		width: number;
-	}[];
-	name: string;
-	popularity: number;
-	type: "artist";
-	uri: string;
-};
+export type SpotifyArtistResponse = SpotifyArtistItem;
 
 /**
  * アーティストのアルバアム情報
