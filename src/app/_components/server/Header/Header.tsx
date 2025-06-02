@@ -6,16 +6,22 @@ import { ChartNoAxesCombined } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Search } from "@/app/_components/server/Header/client/SearchButton";
 import { GapWrapper } from "@/app/_styles/components/wrappers";
 
-import { Search } from "@/app/_components/server/Header/client/SearchButton";
 import style from "@/app/_components/server/Header/header.module.scss";
+
+import { PATH } from "@/utils/constants/path";
 
 export const Header = () => {
 	return (
 		<Theme appearance="dark" className={style.header}>
 			<GapWrapper gap={24}>
-				<Link className={style.link} style={{ height: "24px" }} href="/">
+				<Link
+					className={style.link}
+					style={{ height: "24px" }}
+					href={PATH.HOME}
+				>
 					<Image
 						className={style.logo}
 						src="/test-logo.svg"
@@ -31,15 +37,15 @@ export const Header = () => {
 						width={24}
 					/>
 				</Link>
-				<Link className={style.link} href="/">
+				<Link className={style.link} href={PATH.HOME}>
 					<span className={style.label}>ホーム</span>
 					<House className={style.icon} size="24px" />
 				</Link>
-				<Link className={style.link} href="/new">
+				<Link className={style.link} href={PATH.NEW}>
 					<span className={style.label}>新着</span>
 					<Bell className={style.icon} size="24px" />
 				</Link>
-				<Link className={style.link} href="/pick-up">
+				<Link className={style.link} href={PATH.PICK_UP}>
 					<span className={style.label}>人気</span>
 					<ChartNoAxesCombined className={style.icon} size="24px" />
 				</Link>

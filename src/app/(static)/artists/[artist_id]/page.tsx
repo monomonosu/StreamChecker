@@ -7,6 +7,7 @@ import { PageWrapper } from "@/app/_styles/components/wrappers";
 import { getAlbumsByArtist } from "@/app/_fetchers/getAlbumsByArtist";
 import { getArtist } from "@/app/_fetchers/getArtist";
 import { getTopTracksByArtist } from "@/app/_fetchers/getTopTracksByArtist";
+import { PATH } from "@/utils/constants/path";
 
 type Props = {
 	params: Promise<{ artist_id: string }>;
@@ -43,12 +44,12 @@ export default async function Artist({ params }: Props) {
 					{albums.items.map((item) => (
 						<Jacket
 							key={item.id}
-							href={`/albums/${item.id}`}
+							href={PATH.ALBUMS(item.id)}
 							priority
 							src={
 								item.images.length ? item.images[0].url : "/images/no-image.png"
 							}
-							album={{ name: item.name, href: `/albums/${item.id}` }}
+							album={{ name: item.name, href: PATH.ALBUMS(item.id) }}
 							width={200}
 							height={200}
 							alt="アルバム画像"

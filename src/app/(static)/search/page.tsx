@@ -6,6 +6,7 @@ import { Section, Slider } from "@/app/_styles/components/blocks";
 import { GapWrapper, PageWrapper } from "@/app/_styles/components/wrappers";
 
 import { getSearchItems } from "@/app/_fetchers/getSearchItems";
+import { PATH } from "@/utils/constants/path";
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
 
 type Props = {
@@ -65,7 +66,7 @@ export default async function Search({ searchParams }: Props) {
 								<GapWrapper gap={8} direction="column">
 									<h3>アーティスト</h3>
 									<Artist
-										href={`artists/${artists[0].id}`}
+										href={PATH.ARTISTS(artists[0].id)}
 										src={
 											artists[0].images.length
 												? artists[0].images[0].url
@@ -73,7 +74,7 @@ export default async function Search({ searchParams }: Props) {
 										}
 										artist={{
 											name: artists[0].name,
-											href: `/artists/${artists[0].id}`,
+											href: PATH.ARTISTS(artists[0].id),
 										}}
 										width={200}
 										height={200}
@@ -86,7 +87,7 @@ export default async function Search({ searchParams }: Props) {
 								<GapWrapper gap={8} direction="column">
 									<h3>アルバム</h3>
 									<Jacket
-										href={`/albums/${albums[0].id}`}
+										href={PATH.ALBUMS(albums[0].id)}
 										src={
 											albums[0].images.length
 												? albums[0].images[0].url
@@ -94,7 +95,7 @@ export default async function Search({ searchParams }: Props) {
 										}
 										album={{
 											name: albums[0].name,
-											href: `/albums/${albums[0].id}`,
+											href: PATH.ALBUMS(albums[0].id),
 										}}
 										width={200}
 										height={200}
@@ -119,7 +120,7 @@ export default async function Search({ searchParams }: Props) {
 								{artists.map((artist) => (
 									<Artist
 										key={artist.id}
-										href={`/artists/${artist.id}`}
+										href={PATH.ARTISTS(artist.id)}
 										src={
 											artist.images.length
 												? artist.images[0].url
@@ -127,7 +128,7 @@ export default async function Search({ searchParams }: Props) {
 										}
 										artist={{
 											name: artist.name,
-											href: `/artists/${artist.id}`,
+											href: PATH.ARTISTS(artist.id),
 										}}
 										width={150}
 										height={150}
@@ -145,13 +146,13 @@ export default async function Search({ searchParams }: Props) {
 								{albums.map((album) => (
 									<Jacket
 										key={album.id}
-										href={`/albums/${album.id}`}
+										href={PATH.ALBUMS(album.id)}
 										src={
 											album.images.length
 												? album.images[0].url
 												: "/images/no-image.png"
 										}
-										album={{ name: album.name, href: `/albums/${album.id}` }}
+										album={{ name: album.name, href: PATH.ALBUMS(album.id) }}
 										width={200}
 										height={200}
 										alt="アルバム画像"
