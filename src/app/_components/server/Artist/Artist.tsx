@@ -7,6 +7,8 @@ import { GapWrapper } from "@/app/_styles/components/wrappers";
 import style from "@/app/_components/server/Artist/artist.module.scss";
 import helper from "@/app/_styles/helper.module.scss";
 
+import { PATH } from "@/utils/constants/path";
+
 type ArtistProps = ImageProps & {
 	href: string;
 	artist?: { name: string; href: string };
@@ -27,7 +29,10 @@ export const Artist = ({ href, artist, ...props }: ArtistProps) => {
 				<Image className={style.artistImg} {...props} alt="image" />
 			</Link>
 			<GapWrapper direction="column">
-				<LinkText className={helper.textEllipsis} href={artist?.href || "/404"}>
+				<LinkText
+					className={helper.textEllipsis}
+					href={artist?.href || PATH[404]}
+				>
 					{artist?.name}
 				</LinkText>
 			</GapWrapper>

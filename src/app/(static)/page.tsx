@@ -6,6 +6,7 @@ import { PageWrapper } from "@/app/_styles/components/wrappers";
 import { genres } from "@/app/(static)/_utils/_constants";
 import { getNewReleases } from "@/app/_fetchers/getNewReleases";
 import { getPopularityAlbums } from "@/app/_fetchers/getPopularityAlbums";
+import { PATH } from "@/utils/constants/path";
 
 export default async function Home() {
 	// 最新のおすすめ
@@ -20,14 +21,14 @@ export default async function Home() {
 				<Slider>
 					{newReleaseData.albums.items.map((item) => (
 						<Jacket
-							href={`/albums/${item.id}`}
+							href={PATH.ALBUMS(item.id)}
 							key={item.id}
 							priority
 							src={item.images[0].url}
-							album={{ name: item.name, href: `/albums/${item.id}` }}
+							album={{ name: item.name, href: PATH.ALBUMS(item.id) }}
 							artist={{
 								name: item.artists[0].name,
-								href: `artists/${item.artists[0].id}`,
+								href: PATH.ARTISTS(item.artists[0].id),
 							}}
 							width={200}
 							height={200}
@@ -43,13 +44,13 @@ export default async function Home() {
 					{popularityData.albums.items.map((item) => (
 						<Jacket
 							key={item.id}
-							href={`/albums/${item.id}`}
+							href={PATH.ALBUMS(item.id)}
 							priority
 							src={item.images[0].url}
-							album={{ name: item.name, href: `/albums/${item.id}` }}
+							album={{ name: item.name, href: PATH.ALBUMS(item.id) }}
 							artist={{
 								name: item.artists[0].name,
-								href: `artists/${item.artists[0].id}`,
+								href: PATH.ARTISTS(item.artists[0].id),
 							}}
 							width={200}
 							height={200}

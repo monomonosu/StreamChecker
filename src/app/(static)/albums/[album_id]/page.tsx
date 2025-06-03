@@ -6,6 +6,7 @@ import { PageWrapper } from "@/app/_styles/components/wrappers";
 
 import { getAlbum } from "@/app/_fetchers/getAlbum";
 import { getAlbumsByArtist } from "@/app/_fetchers/getAlbumsByArtist";
+import { PATH } from "@/utils/constants/path";
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
 
 type Props = {
@@ -59,14 +60,14 @@ export default async function Album({ params }: Props) {
 						{artistAlbumsData.items.map((item) => (
 							<Jacket
 								key={item.id}
-								href={`/albums/${item.id}`}
+								href={PATH.ALBUMS(item.id)}
 								priority
 								src={
 									item.images.length
 										? item.images[0].url
 										: "/images/no-image.png"
 								}
-								album={{ name: item.name, href: `/albums/${item.id}` }}
+								album={{ name: item.name, href: PATH.ALBUMS(item.id) }}
 								width={200}
 								height={200}
 								alt="アルバム画像"

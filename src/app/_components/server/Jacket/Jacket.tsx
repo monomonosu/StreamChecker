@@ -7,6 +7,8 @@ import { GapWrapper } from "@/app/_styles/components/wrappers";
 import style from "@/app/_components/server/Jacket/jacket.module.scss";
 import helper from "@/app/_styles/helper.module.scss";
 
+import { PATH } from "@/utils/constants/path";
+
 type JacketProps = ImageProps & {
 	href: string;
 	album?: { name: string; href: string };
@@ -29,13 +31,13 @@ export const Jacket = ({ href, album, artist, ...props }: JacketProps) => {
 			</Link>
 			<GapWrapper direction="column">
 				<LinkText
-					href={album?.href || "/404"}
+					href={album?.href || PATH[404]}
 					className={helper.textEllipsis}
 					color="var(--slate-12)"
 				>
 					{album?.name}
 				</LinkText>
-				<LinkText href={artist?.href || "/404"}>{artist?.name}</LinkText>
+				<LinkText href={artist?.href || PATH[404]}>{artist?.name}</LinkText>
 			</GapWrapper>
 		</GapWrapper>
 	);
