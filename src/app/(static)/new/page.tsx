@@ -1,5 +1,6 @@
 "use client";
 
+import { Skeleton } from "@radix-ui/themes";
 import React from "react";
 
 import { useNewRelease } from "@/app/(static)/new/hook";
@@ -8,7 +9,7 @@ import { InfiniteGrid, Section } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
 
 export default function New() {
-	const { data, lastElementRef } = useNewRelease();
+	const { data, isValidating, lastElementRef } = useNewRelease();
 
 	return (
 		<PageWrapper>
@@ -37,7 +38,19 @@ export default function New() {
 					))}
 				</InfiniteGrid>
 
-				<div ref={lastElementRef}>最後の要素</div>
+				{isValidating && (
+					<InfiniteGrid>
+						{[...Array(24).keys()].map((i) => (
+							<Skeleton key={i} loading style={{ aspectRatio: "1 / 1" }}>
+								<div>
+									<br />
+								</div>
+							</Skeleton>
+						))}
+					</InfiniteGrid>
+				)}
+
+				<div ref={lastElementRef} />
 			</Section>
 		</PageWrapper>
 	);

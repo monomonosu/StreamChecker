@@ -45,6 +45,7 @@ export const useNewRelease = () => {
 
 	return {
 		data,
+		isValidating,
 		lastElementRef,
 	};
 };
