@@ -58,15 +58,16 @@ const DUMMY_GENRES = [
 
 export const Primary: Story = {
 	render: () => (
-		<Genre
-			href="/"
-			priority
-			src={"/images/no-image.png"}
-			genreName="genre"
-			width={200}
-			height={200}
-			alt="dummy"
-		/>
+		<div style={{ width: "200px" }}>
+			<Genre
+				href="/"
+				fill
+				priority
+				src={"/images/no-image.png"}
+				genreName="genre"
+				alt="dummy"
+			/>
+		</div>
 	),
 };
 
@@ -75,16 +76,16 @@ export const WithSlider: Story = {
 		<div style={{ width: "1000px" }}>
 			<Slider>
 				{DUMMY_GENRES.map((genre) => (
-					<Genre
-						key={genre.id}
-						href="/"
-						priority
-						src={genre.src}
-						genreName={genre.genreName}
-						width={200}
-						height={200}
-						alt="dummy"
-					/>
+					<div style={{ width: "200px" }} key={genre.id}>
+						<Genre
+							href="/"
+							fill
+							priority
+							src={genre.src}
+							genreName={genre.genreName}
+							alt="dummy"
+						/>
+					</div>
 				))}
 			</Slider>
 		</div>
