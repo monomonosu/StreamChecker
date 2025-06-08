@@ -65,21 +65,23 @@ export default async function Search({ searchParams }: Props) {
 							{artists?.length > 0 && (
 								<GapWrapper gap={8} direction="column">
 									<h3>アーティスト</h3>
-									<Artist
-										href={PATH.ARTISTS(artists[0].id)}
-										src={
-											artists[0].images.length
-												? artists[0].images[0].url
-												: "/images/no-image.png"
-										}
-										artist={{
-											name: artists[0].name,
-											href: PATH.ARTISTS(artists[0].id),
-										}}
-										width={200}
-										height={200}
-										alt="アーティスト画像"
-									/>
+									<div style={{ width: "200px" }}>
+										<Artist
+											href={PATH.ARTISTS(artists[0].id)}
+											fill
+											priority
+											src={
+												artists[0].images.length
+													? artists[0].images[0].url
+													: "/images/no-image.png"
+											}
+											artist={{
+												name: artists[0].name,
+												href: PATH.ARTISTS(artists[0].id),
+											}}
+											alt="アーティスト画像"
+										/>
+									</div>
 								</GapWrapper>
 							)}
 
@@ -120,22 +122,23 @@ export default async function Search({ searchParams }: Props) {
 							<h2>アーティスト</h2>
 							<Slider>
 								{artists.map((artist) => (
-									<Artist
-										key={artist.id}
-										href={PATH.ARTISTS(artist.id)}
-										src={
-											artist.images.length
-												? artist.images[0].url
-												: "/images/no-image.png"
-										}
-										artist={{
-											name: artist.name,
-											href: PATH.ARTISTS(artist.id),
-										}}
-										width={150}
-										height={150}
-										alt="アーティスト画像"
-									/>
+									<div style={{ width: "150px" }} key={artist.id}>
+										<Artist
+											href={PATH.ARTISTS(artist.id)}
+											fill
+											priority
+											src={
+												artist.images.length
+													? artist.images[0].url
+													: "/images/no-image.png"
+											}
+											artist={{
+												name: artist.name,
+												href: PATH.ARTISTS(artist.id),
+											}}
+											alt="アーティスト画像"
+										/>
+									</div>
 								))}
 							</Slider>
 						</Section>
