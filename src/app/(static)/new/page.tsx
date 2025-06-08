@@ -18,22 +18,26 @@ export default function New() {
 
 				<InfiniteGrid>
 					{data?.map((items) => (
-						<React.Fragment key={`parent-${items[0].id}`}>
-							{items.map((item) => (
-								<Jacket
-									key={item.id}
-									href={`/albums/${item.id}`}
-									fill
-									priority
-									src={item.images[0].url}
-									album={{ name: item.name, href: `/albums/${item.id}` }}
-									artist={{
-										name: item.artists[0].name,
-										href: `/artists/${item.artists[0].id}`,
-									}}
-									alt="最新リリースアルバム画像"
-								/>
-							))}
+						<React.Fragment key={items && `data-${items[0].id}`}>
+							{items && (
+								<React.Fragment key={`parent-${items[0].id}`}>
+									{items?.map((item) => (
+										<Jacket
+											key={item.id}
+											href={`/albums/${item.id}`}
+											fill
+											priority
+											src={item.images[0].url}
+											album={{ name: item.name, href: `/albums/${item.id}` }}
+											artist={{
+												name: item.artists[0].name,
+												href: `/artists/${item.artists[0].id}`,
+											}}
+											alt="最新リリースアルバム画像"
+										/>
+									))}
+								</React.Fragment>
+							)}
 						</React.Fragment>
 					))}
 				</InfiniteGrid>

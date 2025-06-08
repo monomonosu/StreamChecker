@@ -13,10 +13,16 @@ export const useNewRelease = () => {
 		const res = await fetch(url);
 
 		const data = (await res.json()) as SpotifyAlbumsResponse;
-		if (!data || !data.albums || data.albums.items.length === 0) {
+		if (
+			res.status === 404 ||
+			!data ||
+			!data.albums ||
+			data.albums.items.length === 0
+		) {
 			setHasMore(false);
-			return [];
+			return;
 		}
+
 		return data.albums.items;
 	};
 
