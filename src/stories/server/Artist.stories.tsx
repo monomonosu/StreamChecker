@@ -58,15 +58,16 @@ const DUMMY_IMAGES = [
 
 export const Primary: Story = {
 	render: () => (
-		<Artist
-			href="/"
-			priority
-			src={"/images/no-image.png"}
-			artist={{ name: "artist", href: "/" }}
-			width={150}
-			height={150}
-			alt="dummy"
-		/>
+		<div style={{ width: "150px" }}>
+			<Artist
+				href="/"
+				fill
+				priority
+				src={"/images/no-image.png"}
+				artist={{ name: "artist", href: "/" }}
+				alt="dummy"
+			/>
+		</div>
 	),
 };
 
@@ -75,16 +76,16 @@ export const WithSlider: Story = {
 		<div style={{ width: "1000px" }}>
 			<Slider>
 				{DUMMY_IMAGES.map((image) => (
-					<Artist
-						key={image.id}
-						href="/"
-						priority
-						src={image.src}
-						artist={{ name: image.artistName, href: "/" }}
-						width={150}
-						height={150}
-						alt="dummy"
-					/>
+					<div style={{ width: "150px" }} key={image.id}>
+						<Artist
+							href="/"
+							fill
+							priority
+							src={image.src}
+							artist={{ name: image.artistName, href: "/" }}
+							alt="dummy"
+						/>
+					</div>
 				))}
 			</Slider>
 		</div>

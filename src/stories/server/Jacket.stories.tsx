@@ -65,16 +65,17 @@ const DUMMY_IMAGES = [
 
 export const Primary: Story = {
 	render: () => (
-		<Jacket
-			href="/"
-			priority
-			src={"/images/no-image.png"}
-			album={{ name: "music", href: "/" }}
-			artist={{ name: "artist", href: "/" }}
-			width={200}
-			height={200}
-			alt="dummy"
-		/>
+		<div style={{ width: "200px" }}>
+			<Jacket
+				href="/"
+				fill
+				priority
+				src={"/images/no-image.png"}
+				album={{ name: "music", href: "/" }}
+				artist={{ name: "artist", href: "/" }}
+				alt="dummy"
+			/>
+		</div>
 	),
 };
 
@@ -83,17 +84,17 @@ export const WithSlider: Story = {
 		<div style={{ width: "1000px" }}>
 			<Slider>
 				{DUMMY_IMAGES.map((image) => (
-					<Jacket
-						key={image.id}
-						href="/"
-						priority
-						src={image.src}
-						album={{ name: image.albumName, href: "/" }}
-						artist={{ name: image.artistName, href: "/" }}
-						width={200}
-						height={200}
-						alt="dummy"
-					/>
+					<div style={{ width: "200px" }} key={image.id}>
+						<Jacket
+							href="/"
+							fill
+							priority
+							src={image.src}
+							album={{ name: image.albumName, href: "/" }}
+							artist={{ name: image.artistName, href: "/" }}
+							alt="dummy"
+						/>
+					</div>
 				))}
 			</Slider>
 		</div>
