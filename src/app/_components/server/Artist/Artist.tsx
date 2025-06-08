@@ -16,22 +16,14 @@ type ArtistProps = ImageProps & {
 
 export const Artist = ({ href, artist, ...props }: ArtistProps) => {
 	return (
-		<GapWrapper
-			gap={8}
-			direction="column"
-			style={{ width: `${props.width}px` }}
-		>
-			<Link
-				href={href}
-				style={{ width: `${props.width}px`, height: `${props.height}px` }}
-				className={style.artist}
-			>
-				<Image className={style.artistImg} {...props} alt="image" />
+		<GapWrapper gap={8} direction="column">
+			<Link href={href} className={style.artist}>
+				<Image className={style.artistImg} {...props} />
 			</Link>
 			<GapWrapper direction="column">
 				<LinkText
-					className={helper.textEllipsis}
 					href={artist?.href || PATH[404]}
+					className={helper.textEllipsis}
 				>
 					{artist?.name}
 				</LinkText>
