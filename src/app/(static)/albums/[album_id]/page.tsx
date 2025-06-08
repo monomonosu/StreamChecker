@@ -58,20 +58,20 @@ export default async function Album({ params }: Props) {
 					<h2>アーティストのその他のアルバム</h2>
 					<Slider>
 						{artistAlbumsData.items.map((item) => (
-							<Jacket
-								key={item.id}
-								href={PATH.ALBUMS(item.id)}
-								priority
-								src={
-									item.images.length
-										? item.images[0].url
-										: "/images/no-image.png"
-								}
-								album={{ name: item.name, href: PATH.ALBUMS(item.id) }}
-								width={200}
-								height={200}
-								alt="アルバム画像"
-							/>
+							<div style={{ width: "200px" }} key={item.id}>
+								<Jacket
+									href={PATH.ALBUMS(item.id)}
+									fill
+									priority
+									src={
+										item.images.length
+											? item.images[0].url
+											: "/images/no-image.png"
+									}
+									album={{ name: item.name, href: PATH.ALBUMS(item.id) }}
+									alt="アルバム画像"
+								/>
+							</div>
 						))}
 					</Slider>
 				</Section>

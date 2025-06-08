@@ -86,21 +86,23 @@ export default async function Search({ searchParams }: Props) {
 							{albums?.length > 0 && (
 								<GapWrapper gap={8} direction="column">
 									<h3>アルバム</h3>
-									<Jacket
-										href={PATH.ALBUMS(albums[0].id)}
-										src={
-											albums[0].images.length
-												? albums[0].images[0].url
-												: "/images/no-image.png"
-										}
-										album={{
-											name: albums[0].name,
-											href: PATH.ALBUMS(albums[0].id),
-										}}
-										width={200}
-										height={200}
-										alt="アルバム画像"
-									/>
+									<div style={{ width: "200px" }}>
+										<Jacket
+											href={PATH.ALBUMS(albums[0].id)}
+											fill
+											priority
+											src={
+												albums[0].images.length
+													? albums[0].images[0].url
+													: "/images/no-image.png"
+											}
+											album={{
+												name: albums[0].name,
+												href: PATH.ALBUMS(albums[0].id),
+											}}
+											alt="アルバム画像"
+										/>
+									</div>
 								</GapWrapper>
 							)}
 
@@ -144,19 +146,20 @@ export default async function Search({ searchParams }: Props) {
 							<h2>アルバム</h2>
 							<Slider>
 								{albums.map((album) => (
-									<Jacket
-										key={album.id}
-										href={PATH.ALBUMS(album.id)}
-										src={
-											album.images.length
-												? album.images[0].url
-												: "/images/no-image.png"
-										}
-										album={{ name: album.name, href: PATH.ALBUMS(album.id) }}
-										width={200}
-										height={200}
-										alt="アルバム画像"
-									/>
+									<div style={{ width: "200px" }} key={album.id}>
+										<Jacket
+											href={PATH.ALBUMS(album.id)}
+											fill
+											priority
+											src={
+												album.images.length
+													? album.images[0].url
+													: "/images/no-image.png"
+											}
+											album={{ name: album.name, href: PATH.ALBUMS(album.id) }}
+											alt="アルバム画像"
+										/>
+									</div>
 								))}
 							</Slider>
 						</Section>
