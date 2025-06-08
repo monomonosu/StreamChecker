@@ -16,3 +16,9 @@
 .slider::-webkit-scrollbar {
     display: none; /* Chrome, Safariでスクロールバーを非表示 */
   }
+
+.infiniteGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}

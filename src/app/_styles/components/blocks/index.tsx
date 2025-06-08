@@ -15,3 +15,11 @@ interface SliderProps {
 export const Slider = ({ children }: SliderProps) => {
 	return <div className={style.slider}>{children}</div>;
 };
+
+interface InfiniteGridProps {
+	children: React.ReactNode;
+}
+
+export const InfiniteGrid = ({ children }: InfiniteGridProps) => {
+	return <div className={style.infiniteGrid}>{children}</div>;
+};
