@@ -10,12 +10,8 @@ type GenreProps = ImageProps & {
 
 export const Genre = ({ href, genreName, ...props }: GenreProps) => {
 	return (
-		<Link
-			href={href}
-			style={{ width: `${props.width}px`, height: `${props.height}px` }}
-			className={style.genre}
-		>
-			<Image className={style.genreImg} {...props} alt="image" />
+		<Link href={href} className={style.genre}>
+			<Image className={style.genreImg} {...props} />
 			<div className={style.genreText}>{genreName}</div>
 		</Link>
 	);
