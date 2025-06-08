@@ -21,7 +21,7 @@ export const useNewRelease = () => {
 	};
 
 	const getKey = (page: number) => {
-		return `/api/spotify/new-release?offset=${page * 20}&limit=20`;
+		return `/api/spotify/new-release?offset=${page * 24}&limit=24`;
 	};
 
 	const { data, size, setSize, isValidating } = useSWRInfinite(getKey, fetcher);
