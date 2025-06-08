@@ -18,7 +18,7 @@ export default function New() {
 
 				<InfiniteGrid>
 					{data?.map((items) => (
-						<React.Fragment key={items && `parent-${items[0].id}`}>
+						<React.Fragment key={items ? `parent-${items[0].id}` : "no-items"}>
 							{items?.map((item) => (
 								<Jacket
 									key={item.id}
