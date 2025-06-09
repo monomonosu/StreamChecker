@@ -1,6 +1,7 @@
+import { NextResponse } from "next/server";
+
 import { getPopularityAlbums } from "@/app/_fetchers/getPopularityAlbums";
 import type { SpotifyAlbumsResponse } from "@/app/_fetchers/types";
-import { NextResponse } from "next/server";
 
 /**
  * Spotifyの人気のアルバムを取得するAPIエンドポイント
