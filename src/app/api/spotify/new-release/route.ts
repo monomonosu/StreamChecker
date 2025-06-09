@@ -1,6 +1,7 @@
+import { NextResponse } from "next/server";
+
 import { getNewReleases } from "@/app/_fetchers/getNewReleases";
 import type { SpotifyAlbumsResponse } from "@/app/_fetchers/types";
-import { NextResponse } from "next/server";
 
 /**
  * Spotifyの新着リリースを取得するAPIエンドポイント
