@@ -1,17 +1,17 @@
 import { NextResponse } from "next/server";
 
-import { getNewReleases } from "@/app/_fetchers/getNewReleases";
+import { getPopularityAlbums } from "@/app/_fetchers/getPopularityAlbums";
 import type { SpotifyAlbumsResponse } from "@/app/_fetchers/types";
 
 /**
- * Spotifyの新着リリースを取得するAPIエンドポイント
+ * Spotifyの人気のアルバムを取得するAPIエンドポイント
  */
 export async function GET(request: Request) {
 	const { searchParams } = new URL(request.url);
 	const offset = Number(searchParams.get("offset") || 0);
 	const limit = Number(searchParams.get("limit") || 24);
 
-	const res = await getNewReleases({
+	const res = await getPopularityAlbums({
 		offset,
 		limit,
 	});
@@ -20,7 +20,7 @@ export async function GET(request: Request) {
 	try {
 		if (!data.albums || data.albums.items.length === 0) {
 			return NextResponse.json(
-				{ error: "No new releases found" },
+				{ error: "No popular albums found" },
 				{ status: 404 },
 			);
 		}

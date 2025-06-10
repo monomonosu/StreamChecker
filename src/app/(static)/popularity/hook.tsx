@@ -5,7 +5,7 @@ import useSWRInfinite from "swr/infinite";
 
 import type { SpotifyAlbumsResponse } from "@/app/_fetchers/types";
 
-export const useNewRelease = () => {
+export default function usePopularity() {
 	const [hasMore, setHasMore] = useState(true);
 	const lastElementRef = useRef<HTMLDivElement>(null);
 
@@ -20,14 +20,14 @@ export const useNewRelease = () => {
 			data.albums.items.length === 0
 		) {
 			setHasMore(false);
-			return;
+			return [];
 		}
 
 		return data.albums.items;
 	};
 
 	const getKey = (page: number) => {
-		return `/api/spotify/new-release?offset=${page * 24}&limit=24`;
+		return `/api/spotify/albums-popularity?offset=${page * 24}&limit=24`;
 	};
 
 	const { data, size, setSize, isValidating } = useSWRInfinite(getKey, fetcher);
@@ -54,4 +54,4 @@ export const useNewRelease = () => {
 		isValidating,
 		lastElementRef,
 	};
-};
+}

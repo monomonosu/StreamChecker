@@ -45,7 +45,7 @@ export const Header = () => {
 					<span className={style.label}>新着</span>
 					<Bell className={style.icon} size="24px" />
 				</Link>
-				<Link className={style.link} href={PATH.PICK_UP}>
+				<Link className={style.link} href={PATH.POPULARITY}>
 					<span className={style.label}>人気</span>
 					<ChartNoAxesCombined className={style.icon} size="24px" />
 				</Link>

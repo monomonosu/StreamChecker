@@ -7,21 +7,23 @@ import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 import { InfiniteGrid, Section } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
 
-import { useNewRelease } from "@/app/(static)/new/hook";
+import usePopularity from "@/app/(static)/popularity/hook";
 import { PATH } from "@/utils/constants/path";
 
-export default function New() {
-	const { data, isValidating, lastElementRef } = useNewRelease();
+export default function Popularity() {
+	const { data, isValidating, lastElementRef } = usePopularity();
 
 	return (
 		<PageWrapper>
 			<Section>
-				<h1>新着アルバム・シングル</h1>
+				<h1>人気アルバム・シングル</h1>
 
 				<InfiniteGrid>
-					{data?.map((items) => (
-						<React.Fragment key={items ? `parent-${items[0].id}` : "no-items"}>
-							{items?.map((item) => (
+					{data?.map((items, index) => (
+						<React.Fragment
+							key={items ? `parent-${items[0].id + index}` : "no-items"}
+						>
+							{items.map((item) => (
 								<Jacket
 									key={item.id}
 									href={PATH.ALBUMS(item.id)}
@@ -33,7 +35,7 @@ export default function New() {
 										name: item.artists[0].name,
 										href: PATH.ARTISTS(item.artists[0].id),
 									}}
-									alt="最新リリースアルバム画像"
+									alt="人気アルバム画像"
 								/>
 							))}
 						</React.Fragment>
