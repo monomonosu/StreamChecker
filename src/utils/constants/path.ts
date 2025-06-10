@@ -1,7 +1,7 @@
 export const PATH = {
 	HOME: "/",
 	NEW: "/new",
-	PICK_UP: "/pick-up",
+	POPULARITY: "/popularity",
 	SEARCH: "/search",
 
 	ALBUMS: (album_id: string) => `/albums/${album_id}`,
