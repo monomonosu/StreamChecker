@@ -16,7 +16,7 @@ export default function Popularity() {
 	return (
 		<PageWrapper>
 			<Section>
-				<h1>人気アルバム</h1>
+				<h1>人気アルバム・シングル</h1>
 
 				<InfiniteGrid>
 					{data?.map((items, index) => (
