@@ -11,8 +11,8 @@ export const useNewRelease = () => {
 
 	const fetcher = async (url: string) => {
 		const res = await fetch(url);
-
 		const data = (await res.json()) as SpotifyAlbumsResponse;
+
 		if (
 			res.status === 404 ||
 			!data ||

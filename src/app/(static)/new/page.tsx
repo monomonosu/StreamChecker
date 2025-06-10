@@ -3,10 +3,12 @@
 import { Skeleton } from "@radix-ui/themes";
 import React from "react";
 
-import { useNewRelease } from "@/app/(static)/new/hook";
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 import { InfiniteGrid, Section } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
+
+import { useNewRelease } from "@/app/(static)/new/hook";
+import { PATH } from "@/utils/constants/path";
 
 export default function New() {
 	const { data, isValidating, lastElementRef } = useNewRelease();
@@ -22,14 +24,14 @@ export default function New() {
 							{items?.map((item) => (
 								<Jacket
 									key={item.id}
-									href={`/albums/${item.id}`}
+									href={PATH.ALBUMS(item.id)}
 									fill
 									priority
 									src={item.images[0].url}
-									album={{ name: item.name, href: `/albums/${item.id}` }}
+									album={{ name: item.name, href: PATH.ALBUMS(item.id) }}
 									artist={{
 										name: item.artists[0].name,
-										href: `/artists/${item.artists[0].id}`,
+										href: PATH.ARTISTS(item.artists[0].id),
 									}}
 									alt="最新リリースアルバム画像"
 								/>
