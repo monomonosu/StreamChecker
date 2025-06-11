@@ -8,7 +8,9 @@ type PopupProps = Popover.ContentProps & {
 export const Popup = ({ triggerContent, children, ...props }: PopupProps) => {
 	return (
 		<Popover.Root>
-			<Popover.Trigger>{triggerContent}</Popover.Trigger>
+			<Popover.Trigger style={{ cursor: "pointer" }}>
+				{triggerContent}
+			</Popover.Trigger>
 
 			<Popover.Content {...props}>{children}</Popover.Content>
 		</Popover.Root>
