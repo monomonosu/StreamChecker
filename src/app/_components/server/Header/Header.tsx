@@ -1,21 +1,27 @@
-import { HamburgerMenuIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import { Theme } from "@radix-ui/themes";
+import {
+	HamburgerMenuIcon,
+	MagnifyingGlassIcon,
+	PaperPlaneIcon,
+} from "@radix-ui/react-icons";
+import { IconButton, TextField } from "@radix-ui/themes";
 import { House } from "lucide-react";
 import { Bell } from "lucide-react";
 import { ChartNoAxesCombined } from "lucide-react";
+import Form from "next/form";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Search } from "@/app/_components/server/Header/client/SearchButton";
+import { Popup } from "@/app/_components/server/Popup/Popup";
 import { GapWrapper } from "@/app/_styles/components/wrappers";
 
 import style from "@/app/_components/server/Header/header.module.scss";
 
+import { ThemeToggle } from "@/app/_components/server/Header/client/ThemeToggle";
 import { PATH } from "@/utils/constants/path";
 
 export const Header = () => {
 	return (
-		<Theme appearance="dark" className={style.header}>
+		<div className={style.header}>
 			<GapWrapper gap={24}>
 				<Link
 					className={style.link}
@@ -52,9 +58,59 @@ export const Header = () => {
 			</GapWrapper>
 
 			<GapWrapper gap={24}>
-				<Search />
-				<HamburgerMenuIcon width={24} height={24} />
+				<Popup
+					align="end"
+					side="bottom"
+					triggerContent={
+						<IconButton color="gray" variant="ghost">
+							<MagnifyingGlassIcon
+								color="var(--slate-12)"
+								width={24}
+								height={24}
+							/>
+						</IconButton>
+					}
+				>
+					<Form action="/search">
+						<GapWrapper gap={8} direction="row">
+							<TextField.Root
+								placeholder="何をお探しですか？"
+								name="query"
+								style={{ width: "300px" }}
+							>
+								<TextField.Slot>
+									<MagnifyingGlassIcon height="16" width="16" />
+								</TextField.Slot>
+							</TextField.Root>
+
+							<IconButton
+								type="submit"
+								color="gray"
+								variant="solid"
+								highContrast
+							>
+								<PaperPlaneIcon width={16} height={16} />
+							</IconButton>
+						</GapWrapper>
+					</Form>
+				</Popup>
+
+				<Popup
+					align="end"
+					side="bottom"
+					triggerContent={
+						<IconButton color="gray" variant="ghost">
+							<HamburgerMenuIcon
+								color="var(--slate-12)"
+								width={24}
+								height={24}
+							/>
+						</IconButton>
+					}
+				>
+					<ThemeToggle />
+				</Popup>
 			</GapWrapper>
-		</Theme>
+		</div>
 	);
 };
