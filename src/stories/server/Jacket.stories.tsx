@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 import { Slider } from "@/app/_styles/components/blocks";

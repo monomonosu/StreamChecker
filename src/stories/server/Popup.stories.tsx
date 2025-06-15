@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import { Popup } from "@/app/_components/server/Popup/Popup";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";

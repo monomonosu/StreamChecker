@@ -1,5 +1,5 @@
 import { Theme } from "@radix-ui/themes";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import { ArtistHeader } from "@/app/(static)/artists/[artist_id]/_components/ArtistHeader";
 
