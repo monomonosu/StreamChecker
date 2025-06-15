@@ -4,15 +4,15 @@ import { Fragment } from "react";
 import { BasicText, LinkText } from "@/app/_styles/components/texts";
 import { GapWrapper } from "@/app/_styles/components/wrappers";
 
+import { PATH } from "@/utils/constants/path";
+
 type Props = Album;
 
 export const AlbumHeader = ({ name, artists, release_date, image }: Props) => {
 	return (
 		<GapWrapper gap={16}>
 			<Image
-				style={{
-					borderRadius: "var(--border-radius-2)",
-				}}
+				style={{ borderRadius: "var(--radius-4)" }}
 				src={image.url}
 				alt={name}
 				width={image.width ? image.width : 0}
@@ -25,7 +25,7 @@ export const AlbumHeader = ({ name, artists, release_date, image }: Props) => {
 					<GapWrapper direction="row">
 						{artists.map((artist, index) => (
 							<Fragment key={artist.id}>
-								<LinkText href={`/artists/${artist.id}`}>
+								<LinkText href={PATH.ARTISTS(artist.id)}>
 									{artist.name}
 								</LinkText>
 								{index < artists.length - 1 && <BasicText>,</BasicText>}

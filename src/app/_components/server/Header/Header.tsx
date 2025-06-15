@@ -1,20 +1,33 @@
-import { HamburgerMenuIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import { Theme } from "@radix-ui/themes";
+import {
+	HamburgerMenuIcon,
+	MagnifyingGlassIcon,
+	PaperPlaneIcon,
+} from "@radix-ui/react-icons";
+import { IconButton, TextField } from "@radix-ui/themes";
 import { House } from "lucide-react";
 import { Bell } from "lucide-react";
 import { ChartNoAxesCombined } from "lucide-react";
+import Form from "next/form";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Popup } from "@/app/_components/server/Popup/Popup";
 import { GapWrapper } from "@/app/_styles/components/wrappers";
 
 import style from "@/app/_components/server/Header/header.module.scss";
 
+import { ThemeToggle } from "@/app/_components/server/Header/client/ThemeToggle";
+import { PATH } from "@/utils/constants/path";
+
 export const Header = () => {
 	return (
-		<Theme appearance="dark" className={style.header}>
+		<div className={style.header}>
 			<GapWrapper gap={24}>
-				<Link className={style.link} style={{ height: "24px" }} href="/">
+				<Link
+					className={style.link}
+					style={{ height: "24px" }}
+					href={PATH.HOME}
+				>
 					<Image
 						className={style.logo}
 						src="/test-logo.svg"
@@ -30,24 +43,74 @@ export const Header = () => {
 						width={24}
 					/>
 				</Link>
-				<Link className={style.link} href="/">
+				<Link className={style.link} href={PATH.HOME}>
 					<span className={style.label}>ホーム</span>
 					<House className={style.icon} size="24px" />
 				</Link>
-				<Link className={style.link} href="/new">
+				<Link className={style.link} href={PATH.NEW}>
 					<span className={style.label}>新着</span>
 					<Bell className={style.icon} size="24px" />
 				</Link>
-				<Link className={style.link} href="/pick-up">
+				<Link className={style.link} href={PATH.POPULARITY}>
 					<span className={style.label}>人気</span>
 					<ChartNoAxesCombined className={style.icon} size="24px" />
 				</Link>
 			</GapWrapper>
 
 			<GapWrapper gap={24}>
-				<MagnifyingGlassIcon width={24} height={24} />
-				<HamburgerMenuIcon width={24} height={24} />
+				<Popup
+					align="end"
+					side="bottom"
+					triggerContent={
+						<IconButton color="gray" variant="ghost">
+							<MagnifyingGlassIcon
+								color="var(--slate-12)"
+								width={24}
+								height={24}
+							/>
+						</IconButton>
+					}
+				>
+					<Form action="/search">
+						<GapWrapper gap={8} direction="row">
+							<TextField.Root
+								placeholder="何をお探しですか？"
+								name="query"
+								style={{ width: "300px" }}
+							>
+								<TextField.Slot>
+									<MagnifyingGlassIcon height="16" width="16" />
+								</TextField.Slot>
+							</TextField.Root>
+
+							<IconButton
+								type="submit"
+								color="gray"
+								variant="solid"
+								highContrast
+							>
+								<PaperPlaneIcon width={16} height={16} />
+							</IconButton>
+						</GapWrapper>
+					</Form>
+				</Popup>
+
+				<Popup
+					align="end"
+					side="bottom"
+					triggerContent={
+						<IconButton color="gray" variant="ghost">
+							<HamburgerMenuIcon
+								color="var(--slate-12)"
+								width={24}
+								height={24}
+							/>
+						</IconButton>
+					}
+				>
+					<ThemeToggle />
+				</Popup>
 			</GapWrapper>
-		</Theme>
+		</div>
 	);
 };

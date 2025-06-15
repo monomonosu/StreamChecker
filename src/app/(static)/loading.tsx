@@ -1,12 +1,11 @@
-import style from "@/app/_components/server/Loading/loading.module.scss";
+import style from "@/app/(static)/loading.module.scss";
 
-type LoadingProps = {
-	height?: string;
-};
-
-export const Loading = ({ height }: LoadingProps) => {
+export default function Loading() {
 	return (
-		<div className={style.loadingWrapper} style={{ height: `${height}` }}>
+		<div
+			className={style.loadingWrapper}
+			style={{ height: "calc(100vh - 56px - 48px * 2)" }}
+		>
 			<div>
 				<div className={style.loading}>
 					<div className={style.bar} />
@@ -19,4 +18,4 @@ export const Loading = ({ height }: LoadingProps) => {
 			</div>
 		</div>
 	);
-};
+}

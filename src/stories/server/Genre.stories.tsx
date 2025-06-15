@@ -21,52 +21,53 @@ type Story = StoryObj<typeof Genre>;
 const DUMMY_GENRES = [
 	{
 		id: 1,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		genreName: "genre",
 	},
 	{
 		id: 2,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		genreName: "genre",
 	},
 	{
 		id: 3,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		genreName: "genre",
 	},
 	{
 		id: 4,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		genreName: "genre",
 	},
 	{
 		id: 5,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		genreName: "genre",
 	},
 	{
 		id: 6,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		genreName: "genre",
 	},
 	{
 		id: 7,
-		src: "/images/dummy-image.png",
+		src: "/images/no-image.png",
 		genreName: "genre",
 	},
 ];
 
 export const Primary: Story = {
 	render: () => (
-		<Genre
-			href="/"
-			priority
-			src={"/images/dummy-image.png"}
-			genreName="genre"
-			width={200}
-			height={200}
-			alt="dummy"
-		/>
+		<div style={{ width: "200px" }}>
+			<Genre
+				href="/"
+				fill
+				priority
+				src={"/images/no-image.png"}
+				genreName="genre"
+				alt="dummy"
+			/>
+		</div>
 	),
 };
 
@@ -75,16 +76,16 @@ export const WithSlider: Story = {
 		<div style={{ width: "1000px" }}>
 			<Slider>
 				{DUMMY_GENRES.map((genre) => (
-					<Genre
-						key={genre.id}
-						href="/"
-						priority
-						src={genre.src}
-						genreName={genre.genreName}
-						width={200}
-						height={200}
-						alt="dummy"
-					/>
+					<div style={{ width: "200px" }} key={genre.id}>
+						<Genre
+							href="/"
+							fill
+							priority
+							src={genre.src}
+							genreName={genre.genreName}
+							alt="dummy"
+						/>
+					</div>
 				))}
 			</Slider>
 		</div>

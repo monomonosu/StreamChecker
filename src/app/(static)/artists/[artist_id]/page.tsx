@@ -7,6 +7,7 @@ import { PageWrapper } from "@/app/_styles/components/wrappers";
 import { getAlbumsByArtist } from "@/app/_fetchers/getAlbumsByArtist";
 import { getArtist } from "@/app/_fetchers/getArtist";
 import { getTopTracksByArtist } from "@/app/_fetchers/getTopTracksByArtist";
+import { PATH } from "@/utils/constants/path";
 
 type Props = {
 	params: Promise<{ artist_id: string }>;
@@ -22,10 +23,12 @@ export default async function Artist({ params }: Props) {
 		<PageWrapper>
 			<Section>
 				<ArtistHeader
-					src={artist.images[0].url}
+					src={
+						artist.images.length ? artist.images[0].url : "/images/no-image.png"
+					}
 					alt={artist.name}
-					width={artist.images[0].width}
-					height={artist.images[0].height}
+					width={640}
+					height={640}
 					artistName={artist.name}
 				/>
 			</Section>
@@ -39,16 +42,20 @@ export default async function Artist({ params }: Props) {
 				<h2>アルバム</h2>
 				<Slider>
 					{albums.items.map((item) => (
-						<Jacket
-							key={item.id}
-							href={`/albums/${item.id}`}
-							priority
-							src={item.images[0].url}
-							album={{ name: item.name, href: `/albums/${item.id}` }}
-							width={200}
-							height={200}
-							alt="アルバム画像"
-						/>
+						<div style={{ width: "200px" }} key={item.id}>
+							<Jacket
+								href={PATH.ALBUMS(item.id)}
+								fill
+								priority
+								src={
+									item.images.length
+										? item.images[0].url
+										: "/images/no-image.png"
+								}
+								album={{ name: item.name, href: PATH.ALBUMS(item.id) }}
+								alt="アルバム画像"
+							/>
+						</div>
 					))}
 				</Slider>
 			</Section>

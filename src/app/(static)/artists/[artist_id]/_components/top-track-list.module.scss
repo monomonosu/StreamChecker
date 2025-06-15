@@ -14,7 +14,7 @@
 
   .column {
 	background-color: var(--gray-3);
-	border-radius: 8px;
+	border-radius: var(--radius-4);
 	padding: 8px;
 	width: 45vw;
 	flex-shrink: 0;
@@ -32,7 +32,7 @@
 	grid-template-columns: auto auto 1fr 1fr auto;
 	font-size: var(--font-size-2);
 	padding: 10px 12px;
-	border-radius: 8px;
+	border-radius: var(--radius-4);
 	transition: background-color 0.2s ease;
 	cursor: pointer;
   
@@ -46,5 +46,5 @@
   }
   
   .image {
-	border-radius: 5px;
+	border-radius: var(--radius-2);;
   }
