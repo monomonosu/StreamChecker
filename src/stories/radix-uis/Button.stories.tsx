@@ -1,5 +1,5 @@
 import { Button } from "@radix-ui/themes";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 const meta = {
 	title: "RadixUi/Button",
