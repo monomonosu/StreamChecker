@@ -15,7 +15,6 @@ export const FooterPlayer = () => {
 	return (
 		<Theme
 			className={style.footer}
-			appearance="dark"
 			style={{ visibility: isOpenFooter ? "visible" : "hidden" }}
 		>
 			<div className={style.footerMovie} id="youtube-player" />

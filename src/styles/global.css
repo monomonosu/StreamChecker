@@ -6,3 +6,7 @@ a {
 h1 {
 	font-size: 32px;
 }
+
+:where(.radix-themes) {
+	--color-background: #fdfdfd;
+}
