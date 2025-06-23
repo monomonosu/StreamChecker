@@ -12,5 +12,6 @@ const RESPONSE_CODE: { [key: string]: { status: StatusName } } = {
  * @returns {StatusName} ステータスカテゴリ名
  */
 export const formatStatusCategory = (statusCode: number): StatusName => {
-	return RESPONSE_CODE[statusCode?.toString().slice(0, 1)]?.status;
+	return RESPONSE_CODE[statusCode?.toString().slice(0, 1)]
+		?.status as StatusName;
 };
