@@ -1,3 +1,21 @@
+/* ========================================
+   カスタム型定義
+   ======================================== */
+
+/**
+ * YouTube動画検索結果のトップ情報レスポンス
+ */
+export type TopVideoDataResponse = {
+	videoId: string;
+	videoTitle: string;
+	videoDescription: string;
+	channel: string;
+};
+
+/* ========================================
+   YouTube固有
+   ======================================== */
+
 /**
  * 検索結果レスポンスのJSON
  */

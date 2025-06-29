@@ -12,6 +12,7 @@ import {
 } from "@/libs/stores/video";
 
 import { getTopMovieBySearch } from "@/app/_fetchers/youtube/getTopMovieBySearch";
+import { useErrorHandle } from "@/utils/hooks/useErrorHandle";
 
 declare global {
 	interface Window {
@@ -29,6 +30,8 @@ declare global {
 }
 
 export const useFooterPlayer = () => {
+	const { errorHandling } = useErrorHandle();
+
 	const trackQueue = useAtomValue(trackQueueAtom);
 	const [trackId, setTrackId] = useAtom(trackIdAtom);
 	const [isOpenFooter, setIsOpenFooter] = useAtom(isOpenFooterAtom);
@@ -99,6 +102,7 @@ export const useFooterPlayer = () => {
 	}, [setVideoTitle, setVideoUrl]);
 
 	// プレイリストの動画が終了した時に次の動画を追加する
+	// biome-ignore lint/correctness/useExhaustiveDependencies: 無限レンダリング防止のため
 	useEffect(() => {
 		const addPlaylist = async () => {
 			if (currentIndex && currentIndex + 1 === totalVideos) {
@@ -112,6 +116,7 @@ export const useFooterPlayer = () => {
 				// 次の動画のVideoIdをセット
 				const res = await getTopMovieBySearch(
 					`${nextTrack.artist} ${nextTrack.title}`,
+					errorHandling,
 				);
 
 				if (!res) return;
@@ -132,6 +137,7 @@ export const useFooterPlayer = () => {
 				// 次の動画のVideoIdをセット
 				const res = await getTopMovieBySearch(
 					`${prevTrack.artist} ${prevTrack.title}`,
+					errorHandling,
 				);
 
 				if (!res) return;
@@ -148,6 +154,7 @@ export const useFooterPlayer = () => {
 
 	// ------------------------------ 動画セットアップ ------------------------------
 	// 初回再生時
+	// biome-ignore lint/correctness/useExhaustiveDependencies: 無限レンダリング防止のため
 	useEffect(() => {
 		if (!trackId) return;
 		initialization();
@@ -164,6 +171,7 @@ export const useFooterPlayer = () => {
 			// 現在再生中のVideoIdをセット
 			const res = await getTopMovieBySearch(
 				`${currentTrack.artist} ${currentTrack.title}`,
+				errorHandling,
 			);
 			if (!res) return;
 			videoListRef.current.push(res.videoId);
@@ -173,6 +181,7 @@ export const useFooterPlayer = () => {
 				// 次の動画のVideoIdをセット
 				const res = await getTopMovieBySearch(
 					`${nextTrack.artist} ${nextTrack.title}`,
+					errorHandling,
 				);
 				if (!res) return;
 				videoListRef.current.push(res.videoId);
@@ -183,6 +192,7 @@ export const useFooterPlayer = () => {
 				// 前の動画のVideoIdをセット
 				const res = await getTopMovieBySearch(
 					`${prevTrack.artist} ${prevTrack.title}`,
+					errorHandling,
 				);
 				if (!res) return;
 				videoListRef.current.unshift(res.videoId);

@@ -9,6 +9,7 @@ import { cookies } from "next/headers";
 import { FooterPlayer } from "@/app/_components/client/FooterPlayer/FooterPlayer";
 import { Header } from "@/app/_components/server/Header/Header";
 
+import { GlobalSnackbar } from "@/app/_providers/GlobalSnackbar";
 import style from "@/app/layout.module.scss";
 
 const geistSans = Geist({
@@ -32,13 +33,14 @@ export default async function RootLayout({
 	children: React.ReactNode;
 }>) {
 	const cookie = await cookies();
-	const theme = cookie.get("theme")?.value === "dark" ? "dark" : "light";
+	const theme = cookie.get("theme")?.value === "light" ? "light" : "dark";
 
 	return (
 		<html lang="en">
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				<Theme appearance={theme}>
 					<Header />
+					<GlobalSnackbar />
 					<div className={style.main}>
 						<div className={style["main-inner"]}>{children}</div>
 						<FooterPlayer />
