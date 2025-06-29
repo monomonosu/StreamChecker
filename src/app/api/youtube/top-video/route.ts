@@ -1,7 +1,8 @@
-import { NextResponse } from "next/server";
-
-import type { CustomResponse } from "@/app/api/type";
-import type { YouTubeSearchResponse } from "@/app/api/youtube/top-video/types";
+import type {
+	TopVideoDataResponse,
+	YouTubeSearchResponse,
+} from "@/app/api/youtube/top-video/types";
+import { createResponse } from "@/libs/next/response";
 import { REVALIDATE_ONE_MONTH } from "@/utils/constants/revalidate";
 
 const API_KEY = process.env.YOUTUBE_API_KEY;
@@ -16,13 +17,13 @@ export async function GET(request: Request) {
 	const query = searchParams.get("q");
 
 	if (!query) {
-		return NextResponse.json(
+		return createResponse(
 			{
 				status: {
 					code: 400,
 					message: "検索クエリが指定されていません",
 				},
-			} as CustomResponse,
+			},
 			{ status: 400 },
 		);
 	}
@@ -36,44 +37,41 @@ export async function GET(request: Request) {
 
 	try {
 		if (searchData.items.length === 0)
-			return NextResponse.json(
+			return createResponse(
 				{
 					status: {
 						code: 404,
 						message: "動画情報が見つかりませんでした",
 					},
-				} as CustomResponse,
+				},
 				{ status: 404 },
 			);
 
-		const videoId = searchData.items[0].id.videoId;
-		const videoTitle = searchData.items[0].snippet.title;
-		const videoDescription = searchData.items[0].snippet.description;
-		const channel = searchData.items[0].snippet.channelTitle;
-
-		return NextResponse.json(
+		return createResponse<TopVideoDataResponse>(
 			{
 				data: {
-					videoId: videoId,
-					videoTitle: videoTitle,
-					videoDescription: videoDescription,
-					channel: channel,
+					videoId: searchData.items[0].id.videoId,
+					videoTitle: searchData.items[0].snippet.title,
+					videoDescription: searchData.items[0].snippet.description,
+					channel: searchData.items[0].snippet.channelTitle,
 				},
 				status: {
 					code: 200,
 					message: "動画情報が見つかりました",
 				},
-			} as CustomResponse,
-			{ status: 200 },
+			},
+			{
+				status: 200,
+			},
 		);
-	} catch (error) {
-		return NextResponse.json(
+	} catch (_error) {
+		return createResponse(
 			{
 				status: {
 					code: 500,
-					message: error,
+					message: "動画情報の取得に失敗しました",
 				},
-			} as CustomResponse,
+			},
 			{ status: 500 },
 		);
 	}

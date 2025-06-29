@@ -1,6 +1,7 @@
 "use client";
 
 import type { CustomResponse } from "@/app/api/type";
+import type { TopVideoDataResponse } from "@/app/api/youtube/top-video/types";
 import { REVALIDATE_ONE_MONTH } from "@/utils/constants/revalidate";
 
 /**
@@ -11,12 +12,7 @@ import { REVALIDATE_ONE_MONTH } from "@/utils/constants/revalidate";
 export async function getTopMovieBySearch(
 	query: string,
 	errorHandling?: (res: CustomResponse) => void,
-): Promise<{
-	videoId: string;
-	videoTitle: string;
-	videoDescription: string;
-	channel: string;
-} | null> {
+): Promise<TopVideoDataResponse | null> {
 	const encodeQuery = encodeURIComponent(query);
 	// apiRouterから取得
 	const url = `/api/youtube/top-video?q=${encodeQuery}`;
@@ -26,7 +22,7 @@ export async function getTopMovieBySearch(
 			next: { revalidate: REVALIDATE_ONE_MONTH },
 		});
 
-		const res: CustomResponse = await fetcher.json();
+		const res: CustomResponse<TopVideoDataResponse> = await fetcher.json();
 
 		if (errorHandling) {
 			errorHandling(res);
