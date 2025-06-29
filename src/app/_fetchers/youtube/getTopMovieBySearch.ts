@@ -1,3 +1,6 @@
+"use client";
+
+import type { CustomResponse } from "@/app/api/type";
 import { REVALIDATE_ONE_MONTH } from "@/utils/constants/revalidate";
 
 /**
@@ -5,7 +8,10 @@ import { REVALIDATE_ONE_MONTH } from "@/utils/constants/revalidate";
  * @param {string} query
  * @returns {Promise<string|null>}
  */
-export async function getTopMovieBySearch(query: string): Promise<{
+export async function getTopMovieBySearch(
+	query: string,
+	errorHandling?: (res: CustomResponse) => void,
+): Promise<{
 	videoId: string;
 	videoTitle: string;
 	videoDescription: string;
@@ -16,19 +22,20 @@ export async function getTopMovieBySearch(query: string): Promise<{
 	const url = `/api/youtube/top-video?q=${encodeQuery}`;
 
 	try {
-		const res = await fetch(url, {
+		const fetcher = await fetch(url, {
 			next: { revalidate: REVALIDATE_ONE_MONTH },
 		});
-		const data: {
-			videoId: string;
-			videoTitle: string;
-			videoDescription: string;
-			channel: string;
-		} = await res.json();
 
-		if (!data.videoId) return null;
+		const res: CustomResponse = await fetcher.json();
 
-		return data;
+		if (errorHandling) {
+			errorHandling(res);
+		}
+
+		if (!res.data) return null;
+		if (!res.data?.videoId) return null;
+
+		return res.data;
 	} catch (error) {
 		console.error(error);
 		return null;

@@ -1,6 +1,8 @@
+import { NextResponse } from "next/server";
+
+import type { CustomResponse } from "@/app/api/type";
 import type { YouTubeSearchResponse } from "@/app/api/youtube/top-video/types";
 import { REVALIDATE_ONE_MONTH } from "@/utils/constants/revalidate";
-import { NextResponse } from "next/server";
 
 const API_KEY = process.env.YOUTUBE_API_KEY;
 const BASE_URL = process.env.YOUTUBE_API_BASE_URL;
@@ -15,7 +17,12 @@ export async function GET(request: Request) {
 
 	if (!query) {
 		return NextResponse.json(
-			{ error: "Missing search query" },
+			{
+				status: {
+					code: 400,
+					message: "検索クエリが指定されていません",
+				},
+			} as CustomResponse,
 			{ status: 400 },
 		);
 	}
@@ -29,7 +36,15 @@ export async function GET(request: Request) {
 
 	try {
 		if (searchData.items.length === 0)
-			return NextResponse.json({ error: "No video found" }, { status: 404 });
+			return NextResponse.json(
+				{
+					status: {
+						code: 404,
+						message: "動画情報が見つかりませんでした",
+					},
+				} as CustomResponse,
+				{ status: 404 },
+			);
 
 		const videoId = searchData.items[0].id.videoId;
 		const videoTitle = searchData.items[0].snippet.title;
@@ -38,14 +53,28 @@ export async function GET(request: Request) {
 
 		return NextResponse.json(
 			{
-				videoId: videoId,
-				videoTitle: videoTitle,
-				videoDescription: videoDescription,
-				channel: channel,
-			},
+				data: {
+					videoId: videoId,
+					videoTitle: videoTitle,
+					videoDescription: videoDescription,
+					channel: channel,
+				},
+				status: {
+					code: 200,
+					message: "動画情報が見つかりました",
+				},
+			} as CustomResponse,
 			{ status: 200 },
 		);
 	} catch (error) {
-		return NextResponse.json({ error: error }, { status: 500 });
+		return NextResponse.json(
+			{
+				status: {
+					code: 500,
+					message: error,
+				},
+			} as CustomResponse,
+			{ status: 500 },
+		);
 	}
 }
