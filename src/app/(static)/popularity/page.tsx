@@ -23,7 +23,7 @@ export default function Popularity() {
 						<React.Fragment
 							key={items ? `parent-${items[0].id + index}` : "no-items"}
 						>
-							{items.map((item) => (
+							{items?.map((item) => (
 								<Jacket
 									key={item.id}
 									href={PATH.ALBUMS(item.id)}
