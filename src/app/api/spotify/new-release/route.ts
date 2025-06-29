@@ -1,7 +1,6 @@
-import { NextResponse } from "next/server";
-
 import { getNewReleases } from "@/app/_fetchers/getNewReleases";
 import type { SpotifyAlbumsResponse } from "@/app/_fetchers/types";
+import { createResponse } from "@/libs/next/response";
 
 /**
  * Spotifyの新着リリースを取得するAPIエンドポイント
@@ -19,14 +18,36 @@ export async function GET(request: Request) {
 
 	try {
 		if (!data.albums || data.albums.items.length === 0) {
-			return NextResponse.json(
-				{ error: "No new releases found" },
+			return createResponse(
+				{
+					status: {
+						code: 404,
+						message: "最新リリース情報が見つかりませんでした",
+					},
+				},
 				{ status: 404 },
 			);
 		}
 
-		return NextResponse.json(data, { status: 200 });
-	} catch (error) {
-		return NextResponse.json({ error: error }, { status: 500 });
+		return createResponse<SpotifyAlbumsResponse>(
+			{
+				data: data,
+				status: {
+					code: 200,
+					message: "新着リリース情報取得に成功しました",
+				},
+			},
+			{ status: 200 },
+		);
+	} catch (_error) {
+		return createResponse(
+			{
+				status: {
+					code: 500,
+					message: "新着リリース情報取得に失敗しました",
+				},
+			},
+			{ status: 500 },
+		);
 	}
 }

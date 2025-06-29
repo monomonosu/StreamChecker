@@ -4,26 +4,22 @@ import { useEffect, useRef, useState } from "react";
 import useSWRInfinite from "swr/infinite";
 
 import type { SpotifyAlbumsResponse } from "@/app/_fetchers/types";
+import type { CustomResponse } from "@/app/api/type";
 
 export const useNewRelease = () => {
 	const [hasMore, setHasMore] = useState(true);
 	const lastElementRef = useRef<HTMLDivElement>(null);
 
 	const fetcher = async (url: string) => {
-		const res = await fetch(url);
-		const data = (await res.json()) as SpotifyAlbumsResponse;
+		const fetcher = await fetch(url);
+		const res: CustomResponse<SpotifyAlbumsResponse> = await fetcher.json();
 
-		if (
-			res.status === 404 ||
-			!data ||
-			!data.albums ||
-			data.albums.items.length === 0
-		) {
+		if (res.status.code !== 200) {
 			setHasMore(false);
 			return;
 		}
 
-		return data.albums.items;
+		return res.data?.albums.items;
 	};
 
 	const getKey = (page: number) => {
