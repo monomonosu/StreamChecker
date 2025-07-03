@@ -13,6 +13,7 @@ import {
 
 import { getTopMovieBySearch } from "@/app/_fetchers/youtube/getTopMovieBySearch";
 import { useErrorHandle } from "@/utils/hooks/useErrorHandle";
+import { usePlayState } from "@/utils/hooks/usePlayState";
 
 declare global {
 	interface Window {
@@ -31,6 +32,7 @@ declare global {
 
 export const useFooterPlayer = () => {
 	const { errorHandling } = useErrorHandle();
+	const { isPlaying, setPlay, setPause } = usePlayState();
 
 	const trackQueue = useAtomValue(trackQueueAtom);
 	const [trackId, setTrackId] = useAtom(trackIdAtom);
@@ -94,12 +96,31 @@ export const useFooterPlayer = () => {
 
 								break;
 							}
+							case window.YT.PlayerState.ENDED: {
+								setPause();
+								break;
+							}
+							case window.YT.PlayerState.PLAYING: {
+								if (!currentTrackIdRef.current) return;
+								setPlay(currentTrackIdRef.current);
+								break;
+							}
+							case window.YT.PlayerState.PAUSED: {
+								if (!currentTrackIdRef.current) return;
+								setPause();
+								break;
+							}
+							case window.YT.PlayerState.BUFFERING: {
+								if (!currentTrackIdRef.current) return;
+								setPause();
+								break;
+							}
 						}
 					},
 				},
 			});
 		};
-	}, [setVideoTitle, setVideoUrl]);
+	}, [setVideoTitle, setVideoUrl, setPlay, setPause]);
 
 	// プレイリストの動画が終了した時に次の動画を追加する
 	// biome-ignore lint/correctness/useExhaustiveDependencies: 無限レンダリング防止のため
@@ -200,6 +221,7 @@ export const useFooterPlayer = () => {
 
 			setIsInitLoad(true);
 			setTrackId(null);
+			setPlay(currentTrack.id);
 		};
 
 		initSettingPlaylist();
@@ -237,6 +259,7 @@ export const useFooterPlayer = () => {
 
 	return {
 		isOpenFooter,
+		isPlaying,
 		videoTitle,
 		videoUrl,
 		onClickClose,
