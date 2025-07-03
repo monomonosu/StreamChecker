@@ -1,5 +1,10 @@
 import { atom } from "jotai";
 
+type PlayingInfo = {
+	isPlaying: boolean;
+	trackId: string | null;
+};
+
 /**
  * 再生中の動画のタイトル
  */
@@ -21,6 +26,18 @@ export const isOpenFooterAtom = atom<boolean>(false);
  * @type {string}
  */
 export const trackIdAtom = atom<string | null>(null);
+
+/**
+ * 再生中の動画情報
+ * @type {PlayingInfo}
+ * @property {boolean} isPlaying - 動画が再生中かどうか
+ * @property {string | null} trackId - 現在再生中のトラックのID
+ * @description 再生中の動画情報を管理する
+ */
+export const playingAtom = atom<PlayingInfo>({
+	isPlaying: false,
+	trackId: null,
+});
 
 /**
  * 連続再生キュー情報
