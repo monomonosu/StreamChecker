@@ -43,7 +43,7 @@ export default async function RootLayout({
 					<GlobalSnackbar />
 					<div className={style.main}>
 						<div className={style["main-inner"]}>{children}</div>
-						<FooterPlayer />
+						<FooterPlayer theme={theme} />
 					</div>
 				</Theme>
 			</body>
