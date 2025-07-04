@@ -1,8 +1,8 @@
 import { atom } from "jotai";
 
-type PlayingInfo = {
+export type PlayingState = {
 	isPlaying: boolean;
-	trackId: string | null;
+	trackId?: string | null;
 };
 
 /**
@@ -29,12 +29,12 @@ export const trackIdAtom = atom<string | null>(null);
 
 /**
  * 再生中の動画情報
- * @type {PlayingInfo}
+ * @type {PlayingState}
  * @property {boolean} isPlaying - 動画が再生中かどうか
  * @property {string | null} trackId - 現在再生中のトラックのID
  * @description 再生中の動画情報を管理する
  */
-export const playingAtom = atom<PlayingInfo>({
+export const playingAtom = atom<PlayingState>({
 	isPlaying: false,
 	trackId: null,
 });

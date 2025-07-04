@@ -102,7 +102,7 @@ export const useFooterPlayer = () => {
 							}
 							case window.YT.PlayerState.PLAYING: {
 								if (!currentTrackIdRef.current) return;
-								setPlay(currentTrackIdRef.current);
+								setPlay();
 								break;
 							}
 							case window.YT.PlayerState.PAUSED: {
@@ -127,6 +127,7 @@ export const useFooterPlayer = () => {
 	useEffect(() => {
 		const addPlaylist = async () => {
 			if (currentIndex && currentIndex + 1 === totalVideos) {
+				setPlay(currentTrackIdRef.current);
 				const currentTrackIndex = trackQueue.findIndex(
 					(track) => track.id === currentTrackIdRef.current,
 				);
