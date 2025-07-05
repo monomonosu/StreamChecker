@@ -7,7 +7,7 @@
   .row {
 	display: grid;
 	gap: 16px;
-	grid-template-columns: auto 1fr auto;
+	grid-template-columns: 24px 1fr auto;
 	padding: 10px 12px;
 	border-radius: var(--radius-4);
 	transition: background-color 0.2s ease;
