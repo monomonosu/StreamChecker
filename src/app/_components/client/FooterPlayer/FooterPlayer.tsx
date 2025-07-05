@@ -12,7 +12,7 @@ import { GapWrapper } from "@/app/_styles/components/wrappers";
 import style from "@/app/_components/client/FooterPlayer/footer-player.module.scss";
 
 type Props = {
-	theme: "dark" | "light";
+	theme: Theme;
 };
 
 export const FooterPlayer = ({ theme }: Props) => {
