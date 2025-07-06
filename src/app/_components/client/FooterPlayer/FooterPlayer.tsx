@@ -12,7 +12,7 @@ import { GapWrapper } from "@/app/_styles/components/wrappers";
 import style from "@/app/_components/client/FooterPlayer/footer-player.module.scss";
 
 export const FooterPlayer = () => {
-	const { isOpenFooter, videoTitle, videoUrl, onClickClose, getPlaySource } =
+	const { isOpenFooter, videoTitle, videoUrl, playSource, onClickClose } =
 		useFooterPlayer();
 
 	return (
@@ -26,7 +26,7 @@ export const FooterPlayer = () => {
 					<Image
 						width={24}
 						height={24}
-						src={getPlaySource()}
+						src={playSource}
 						alt="再生・停止アイコン"
 					/>
 					<BasicText>{videoTitle}</BasicText>
