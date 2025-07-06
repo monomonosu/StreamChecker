@@ -14,6 +14,7 @@ import {
 import { getTopMovieBySearch } from "@/app/_fetchers/youtube/getTopMovieBySearch";
 import { useErrorHandle } from "@/utils/hooks/useErrorHandle";
 import { usePlayState } from "@/utils/hooks/usePlayState";
+import { useTheme } from "@/utils/hooks/useTheme";
 
 declare global {
 	interface Window {
@@ -32,6 +33,7 @@ declare global {
 
 export const useFooterPlayer = () => {
 	const { errorHandling } = useErrorHandle();
+	const { theme } = useTheme();
 	const { isPlaying, setPlay, setPause } = usePlayState();
 
 	const trackQueue = useAtomValue(trackQueueAtom);
@@ -259,6 +261,7 @@ export const useFooterPlayer = () => {
 	};
 
 	return {
+		theme,
 		isOpenFooter,
 		isPlaying,
 		videoTitle,

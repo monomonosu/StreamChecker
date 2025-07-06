@@ -11,12 +11,8 @@ import { GapWrapper } from "@/app/_styles/components/wrappers";
 
 import style from "@/app/_components/client/FooterPlayer/footer-player.module.scss";
 
-type Props = {
-	theme: Theme;
-};
-
-export const FooterPlayer = ({ theme }: Props) => {
-	const { isOpenFooter, isPlaying, videoTitle, videoUrl, onClickClose } =
+export const FooterPlayer = () => {
+	const { theme, isOpenFooter, isPlaying, videoTitle, videoUrl, onClickClose } =
 		useFooterPlayer();
 
 	return (

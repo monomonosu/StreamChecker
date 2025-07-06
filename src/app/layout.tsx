@@ -9,8 +9,10 @@ import { cookies } from "next/headers";
 import { FooterPlayer } from "@/app/_components/client/FooterPlayer/FooterPlayer";
 import { Header } from "@/app/_components/server/Header/Header";
 
-import { GlobalSnackbar } from "@/app/_providers/GlobalSnackbar";
 import style from "@/app/layout.module.scss";
+
+import { ClientProvider } from "@/app/_providers/ClientProvider";
+import { GlobalSnackbar } from "@/app/_providers/GlobalSnackbar";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -39,11 +41,12 @@ export default async function RootLayout({
 		<html lang="en">
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				<Theme appearance={theme}>
-					<Header />
+					<ClientProvider />
 					<GlobalSnackbar />
+					<Header />
 					<div className={style.main}>
 						<div className={style["main-inner"]}>{children}</div>
-						<FooterPlayer theme={theme} />
+						<FooterPlayer />
 					</div>
 				</Theme>
 			</body>
