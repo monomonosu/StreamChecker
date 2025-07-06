@@ -12,7 +12,7 @@ import { GapWrapper } from "@/app/_styles/components/wrappers";
 import style from "@/app/_components/client/FooterPlayer/footer-player.module.scss";
 
 export const FooterPlayer = () => {
-	const { theme, isOpenFooter, isPlaying, videoTitle, videoUrl, onClickClose } =
+	const { isOpenFooter, videoTitle, videoUrl, onClickClose, getPlaySource } =
 		useFooterPlayer();
 
 	return (
@@ -23,42 +23,15 @@ export const FooterPlayer = () => {
 			<div className={style.footerMovie} id="youtube-player" />
 			<div className={style.footerContent}>
 				<GapWrapper gap={8}>
-					{theme === "dark" &&
-						(isPlaying ? (
-							<Image
-								width={24}
-								height={24}
-								src="/anime/wave_white.gif"
-								alt="再生中アニメーション白"
-							/>
-						) : (
-							<Image
-								width={24}
-								height={24}
-								src="/images/wave_white.png"
-								alt="停止中画像白"
-							/>
-						))}
-
-					{theme === "light" &&
-						(isPlaying ? (
-							<Image
-								width={24}
-								height={24}
-								src="/anime/wave_black.gif"
-								alt="再生中アニメーション黒"
-							/>
-						) : (
-							<Image
-								width={24}
-								height={24}
-								src="/images/wave_black.png"
-								alt="停止中画像黒"
-							/>
-						))}
-
+					<Image
+						width={24}
+						height={24}
+						src={getPlaySource()}
+						alt="再生・停止アイコン"
+					/>
 					<BasicText>{videoTitle}</BasicText>
 				</GapWrapper>
+
 				<LinkText href={videoUrl} target="_blank" rel="noopener noreferrer">
 					{videoUrl}
 				</LinkText>
