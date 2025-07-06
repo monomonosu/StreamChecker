@@ -5,11 +5,16 @@ import {
 	trackIdAtom,
 	trackQueueAtom,
 } from "@/libs/stores/video";
+import { usePlayIcon } from "@/utils/hooks/usePlayIcon";
+import { usePlayState } from "@/utils/hooks/usePlayState";
 
 export const useArtist = () => {
 	const setTrackQueue = useSetAtom(trackQueueAtom);
 	const setTrackId = useSetAtom(trackIdAtom);
 	const setIsOpenFooter = useSetAtom(isOpenFooterAtom);
+
+	const { playingTrackId } = usePlayState();
+	const { getPlaySource } = usePlayIcon();
 
 	/**
 	 * トラックをクリックした時にtrackIdのみセット
@@ -31,6 +36,8 @@ export const useArtist = () => {
 	};
 
 	return {
+		playingTrackId,
+		playSource: getPlaySource(),
 		handleClickTrack,
 	};
 };

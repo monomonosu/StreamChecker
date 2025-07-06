@@ -13,7 +13,7 @@ type Props = {
 };
 
 export const TopTrackList = ({ topTracks }: Props) => {
-	const { handleClickTrack } = useArtist();
+	const { playingTrackId, playSource, handleClickTrack } = useArtist();
 
 	const tracks: Track[] = topTracks.tracks.map((track, index) => ({
 		id: track.id,
@@ -55,7 +55,26 @@ export const TopTrackList = ({ topTracks }: Props) => {
 										}
 									}}
 								>
-									<span className={helper.textEllipsis}>{track.index}</span>
+									{track.id === playingTrackId && (
+										<span>
+											<Image
+												width={24}
+												height={24}
+												src={playSource}
+												alt="再生・停止アイコン"
+											/>
+										</span>
+									)}
+
+									{track.id !== playingTrackId && (
+										<span
+											className={helper.textEllipsis}
+											style={{ textAlign: "center" }}
+										>
+											{track.index}
+										</span>
+									)}
+
 									<span>
 										<Image
 											className={style.image}
