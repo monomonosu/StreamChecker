@@ -1,7 +1,7 @@
 import { atom } from "jotai";
 
 export type PlayingState = {
-	isPlaying: boolean;
+	isPlaying?: boolean;
 	trackId?: string | null;
 };
 
