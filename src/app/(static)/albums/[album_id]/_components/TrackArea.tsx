@@ -2,18 +2,18 @@
 
 import { TrackList } from "@/app/_components/client/TrackList/TrackList";
 
-import { useAlbum } from "@/app/(static)/albums/[album_id]/hook";
 import { usePlayIcon } from "@/utils/hooks/usePlayIcon";
 import { usePlayState } from "@/utils/hooks/usePlayState";
+import { useTrack } from "@/utils/hooks/useTrack";
 
 type Props = {
 	tracks: Track[];
 };
 
 export const TrackArea = ({ tracks }: Props) => {
+	const { handleClickTrack } = useTrack();
 	const { playingTrackId } = usePlayState();
 	const { getPlaySource } = usePlayIcon();
-	const { handleClickTrack } = useAlbum();
 
 	const trackList = tracks.map((track, index) => ({
 		id: track.id,

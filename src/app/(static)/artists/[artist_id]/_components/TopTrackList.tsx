@@ -1,9 +1,11 @@
 "use client";
 import Image from "next/image";
 
-import { useArtist } from "@/app/(static)/artists/[artist_id]/hook";
 import type { SpotifyArtistTopTracksResponse } from "@/app/_fetchers/types";
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
+import { usePlayIcon } from "@/utils/hooks/usePlayIcon";
+import { usePlayState } from "@/utils/hooks/usePlayState";
+import { useTrack } from "@/utils/hooks/useTrack";
 
 import style from "@/app/(static)/artists/[artist_id]/_components/top-track-list.module.scss";
 import helper from "@/app/_styles/helper.module.scss";
@@ -13,7 +15,9 @@ type Props = {
 };
 
 export const TopTrackList = ({ topTracks }: Props) => {
-	const { playingTrackId, playSource, handleClickTrack } = useArtist();
+	const { handleClickTrack } = useTrack();
+	const { playingTrackId } = usePlayState();
+	const { getPlaySource } = usePlayIcon();
 
 	const tracks: Track[] = topTracks.tracks.map((track, index) => ({
 		id: track.id,
@@ -60,7 +64,7 @@ export const TopTrackList = ({ topTracks }: Props) => {
 											<Image
 												width={24}
 												height={24}
-												src={playSource}
+												src={getPlaySource()}
 												alt="再生・停止アイコン"
 											/>
 										</span>
