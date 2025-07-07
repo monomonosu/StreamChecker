@@ -14,8 +14,8 @@ type TrackOnList = Track & {
 
 type Props = {
 	tracks: TrackOnList[];
-	playingState: PlayingState;
-	playSource: PlaySource;
+	playingState?: PlayingState;
+	playSource?: PlaySource;
 };
 
 export const TrackList = ({ tracks, playingState, playSource }: Props) => {
@@ -34,7 +34,7 @@ export const TrackList = ({ tracks, playingState, playSource }: Props) => {
 						}
 					}}
 				>
-					{track.id === playingState.trackId && (
+					{track.id === playingState?.trackId && playSource && (
 						<Image
 							width={24}
 							height={24}
@@ -43,7 +43,7 @@ export const TrackList = ({ tracks, playingState, playSource }: Props) => {
 						/>
 					)}
 
-					{track.id !== playingState.trackId && (
+					{track.id !== playingState?.trackId && (
 						<BasicText style={{ textAlign: "center" }}>{track.index}</BasicText>
 					)}
 
