@@ -7,7 +7,6 @@
  * @property {string} status.message - A message describing the status.
  */
 export type CustomResponse<T = unknown> = {
-	// biome-ignore lint: 汎用的に使用するため
 	status: {
 		code: number;
 		message: string;

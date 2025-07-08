@@ -1,20 +1,19 @@
-import { useSetAtom } from "jotai";
-
 import {
 	isOpenFooterAtom,
 	trackIdAtom,
 	trackQueueAtom,
 } from "@/libs/stores/video";
+import { useSetAtom } from "jotai";
 
-export const useArtist = () => {
+export const useTrack = () => {
 	const setTrackQueue = useSetAtom(trackQueueAtom);
 	const setTrackId = useSetAtom(trackIdAtom);
 	const setIsOpenFooter = useSetAtom(isOpenFooterAtom);
 
 	/**
-	 * トラックをクリックした時にtrackIdのみセット
 	 * @param {Track[]} tracks
 	 * @param {string} trackId
+	 * @description トラックをクリックした時に、トラックキューとトラックIDをセットし、フッターを開く
 	 */
 	const handleClickTrack = async ({
 		trackQueue,
@@ -23,10 +22,8 @@ export const useArtist = () => {
 		trackQueue: Track[];
 		trackId: string;
 	}) => {
-		// NOTE:再生キューのstore
 		setTrackQueue(trackQueue);
 		setTrackId(trackId);
-		// NOTE:Footerエリア用のstore
 		setIsOpenFooter(true);
 	};
 

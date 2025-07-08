@@ -3,6 +3,14 @@ export {};
 
 declare global {
 	/**
+	 * @type {string}
+	 * @description アプリケーション全体で使用するテーマの型
+	 * @property {'dark' | 'light'}
+	 * @description アプリケーションのテーマを表す型
+	 */
+	export type Theme = "dark" | "light";
+
+	/**
 	 * @type {object}
 	 * @property {string} id - 曲のID
 	 * @property {number} index - テーブル出力時の曲のインデックス

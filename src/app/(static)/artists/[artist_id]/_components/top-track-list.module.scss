@@ -29,7 +29,7 @@
   .row {
 	display: grid;
 	gap: 16px;
-	grid-template-columns: auto auto 1fr 1fr auto;
+	grid-template-columns: 24px auto 1fr 1fr auto;
 	font-size: var(--font-size-2);
 	padding: 10px 12px;
 	border-radius: var(--radius-4);
