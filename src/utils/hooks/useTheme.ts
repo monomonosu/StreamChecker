@@ -1,4 +1,5 @@
 import { useAtom } from "jotai";
+import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
 import { themeAtom } from "@/libs/stores/theme";
@@ -10,7 +11,7 @@ export const useTheme = () => {
 	const toggleTheme = () => {
 		const newTheme = theme === "dark" ? "light" : "dark";
 		setTheme(newTheme);
-		document.cookie = `theme=${newTheme}; path=/; max-age=31536000`; // 1 year expiration
+		Cookies.set("theme", newTheme, { expires: 365 }); // Set cookie with 1 year expiration
 		router.refresh(); // Refresh the page to apply the new theme
 	};
 

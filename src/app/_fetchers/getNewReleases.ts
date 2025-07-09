@@ -8,7 +8,10 @@ import { fetchSpotifyData } from "@/libs/spotify";
 export async function getNewReleases({
 	offset = 0,
 	limit = 20,
-}: { offset?: number; limit?: number } = {}) {
+}: {
+	offset?: number;
+	limit?: number;
+} = {}) {
 	const res = await fetchSpotifyData<SpotifyAlbumsResponse>(
 		`browse/new-releases?offset=${offset}&limit=${limit}&market=JP&language=ja-JP`,
 	);

@@ -22,7 +22,8 @@ export const TrackList = ({ tracks, playingState, playSource }: Props) => {
 	return (
 		<div className={style.column}>
 			{tracks.map((track) => (
-				<div
+				<button
+					type="button"
 					className={style.row}
 					key={track.id}
 					onClick={() => {
@@ -49,7 +50,7 @@ export const TrackList = ({ tracks, playingState, playSource }: Props) => {
 
 					<BasicText>{track.title}</BasicText>
 					<BasicText>{track.duration}</BasicText>
-				</div>
+				</button>
 			))}
 		</div>
 	);

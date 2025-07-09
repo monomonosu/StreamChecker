@@ -5,6 +5,8 @@
 }
 
   .row {
+	all: unset; // buttonスタイルのリセット
+	width: stretch;
 	display: grid;
 	gap: 16px;
 	grid-template-columns: 24px 1fr auto;
@@ -20,4 +22,9 @@
 	&:hover {
 	  background-color: var(--gray-5);
 	}
+
+	 &:focus {
+	  outline: 1px solid var(--gray-10)	;
+	  outline-offset: 1px;
+	 }
   }

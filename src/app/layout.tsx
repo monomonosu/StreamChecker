@@ -9,10 +9,10 @@ import { cookies } from "next/headers";
 import { FooterPlayer } from "@/app/_components/client/FooterPlayer/FooterPlayer";
 import { Header } from "@/app/_components/server/Header/Header";
 
-import style from "@/app/layout.module.scss";
-
 import { ClientProvider } from "@/app/_providers/ClientProvider";
 import { GlobalSnackbar } from "@/app/_providers/GlobalSnackbar";
+
+import style from "@/app/layout.module.scss";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",

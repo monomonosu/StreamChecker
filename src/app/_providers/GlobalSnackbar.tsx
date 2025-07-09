@@ -1,9 +1,9 @@
 "use client";
 
+import { useSetAtom } from "jotai";
 import { Snackbar } from "@/app/_components/client/Snackbar/Snackbar";
 import { snackbarAtom } from "@/libs/stores/snackbar";
 import { useSnackbar } from "@/utils/hooks/useSnackbar";
-import { useSetAtom } from "jotai";
 
 export const GlobalSnackbar = () => {
 	const { snackbar } = useSnackbar();

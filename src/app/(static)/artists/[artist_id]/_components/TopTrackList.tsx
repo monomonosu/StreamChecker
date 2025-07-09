@@ -1,14 +1,16 @@
 "use client";
+
 import Image from "next/image";
 
 import type { SpotifyArtistTopTracksResponse } from "@/app/_fetchers/types";
+
+import helper from "@/app/_styles/helper.module.scss";
+import style from "@/app/(static)/artists/[artist_id]/_components/top-track-list.module.scss";
+
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
 import { usePlayIcon } from "@/utils/hooks/usePlayIcon";
 import { usePlayState } from "@/utils/hooks/usePlayState";
 import { useTrack } from "@/utils/hooks/useTrack";
-
-import style from "@/app/(static)/artists/[artist_id]/_components/top-track-list.module.scss";
-import helper from "@/app/_styles/helper.module.scss";
 
 type Props = {
 	topTracks: SpotifyArtistTopTracksResponse;

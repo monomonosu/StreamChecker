@@ -1,11 +1,13 @@
-import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
-import { SearchForm } from "@/app/(static)/search/_components/SearchForm";
 import { Artist } from "@/app/_components/server/Artist/Artist";
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
-import { Section, Slider } from "@/app/_styles/components/blocks";
-import { GapWrapper, PageWrapper } from "@/app/_styles/components/wrappers";
 
 import { getSearchItems } from "@/app/_fetchers/getSearchItems";
+
+import { Section, Slider } from "@/app/_styles/components/blocks";
+import { GapWrapper, PageWrapper } from "@/app/_styles/components/wrappers";
+import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
+import { SearchForm } from "@/app/(static)/search/_components/SearchForm";
+
 import { PATH } from "@/utils/constants/path";
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
 

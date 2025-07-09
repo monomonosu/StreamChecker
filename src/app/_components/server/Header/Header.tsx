@@ -4,19 +4,19 @@ import {
 	PaperPlaneIcon,
 } from "@radix-ui/react-icons";
 import { IconButton, TextField } from "@radix-ui/themes";
-import { House } from "lucide-react";
-import { Bell } from "lucide-react";
-import { ChartNoAxesCombined } from "lucide-react";
+import { Bell, ChartNoAxesCombined, House } from "lucide-react";
+
 import Form from "next/form";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Popup } from "@/app/_components/server/Popup/Popup";
-import { GapWrapper } from "@/app/_styles/components/wrappers";
+import { ThemeToggle } from "@/app/_components/server/Header/client/ThemeToggle";
 
 import style from "@/app/_components/server/Header/header.module.scss";
 
-import { ThemeToggle } from "@/app/_components/server/Header/client/ThemeToggle";
+import { Popup } from "@/app/_components/server/Popup/Popup";
+import { GapWrapper } from "@/app/_styles/components/wrappers";
+
 import { PATH } from "@/utils/constants/path";
 
 export const Header = () => {

@@ -1,11 +1,14 @@
 import { Genre } from "@/app/_components/server/Genre/Genre";
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
+
+import { getNewReleases } from "@/app/_fetchers/getNewReleases";
+import { getPopularityAlbums } from "@/app/_fetchers/getPopularityAlbums";
+
 import { Section, Slider } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
 
 import { genres } from "@/app/(static)/_utils/_constants";
-import { getNewReleases } from "@/app/_fetchers/getNewReleases";
-import { getPopularityAlbums } from "@/app/_fetchers/getPopularityAlbums";
+
 import { PATH } from "@/utils/constants/path";
 
 export default async function Home() {

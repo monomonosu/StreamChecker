@@ -8,7 +8,10 @@ import { fetchSpotifyData } from "@/libs/spotify";
 export const getPopularityAlbums = async ({
 	offset = 0,
 	limit = 20,
-}: { offset?: number; limit?: number } = {}) => {
+}: {
+	offset?: number;
+	limit?: number;
+} = {}) => {
 	return fetchSpotifyData<SpotifyAlbumsResponse>(
 		`search?q=album&type=album&limit=${limit}&offset=${offset}&sort=popularity&language=ja-JP&market=JP`,
 	);
