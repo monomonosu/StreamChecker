@@ -3357,8 +3357,9 @@
 	--color-panel-translucent: rgba(255, 255, 255, 0.7);
 	--color-surface: rgba(255, 255, 255, 0.85);
 	--color-transparent: rgb(0 0 0 / 0);
-	--shadow-1: inset 0 0 0 1px var(--gray-a5), inset 0 1.5px 2px 0 var(--gray-a2),
-		inset 0 1.5px 2px 0 var(--black-a2);
+	--shadow-1:
+		inset 0 0 0 1px var(--gray-a5), inset 0 1.5px 2px 0 var(--gray-a2), inset 0
+		1.5px 2px 0 var(--black-a2);
 	--shadow-2:
 		0 0 0 1px var(--gray-a3), 0 0 0 0.5px var(--black-a1), 0 1px 1px 0 var(
 			--gray-a2
@@ -3367,20 +3368,23 @@
 		0 0 0 1px var(--gray-a3), 0 2px 3px -2px var(--gray-a3), 0 3px 12px -4px var(
 			--black-a2
 		), 0 4px 16px -8px var(--black-a2);
-	--shadow-4: 0 0 0 1px var(--gray-a3), 0 8px 40px var(--black-a1), 0 12px 32px
-		-16px var(--gray-a3);
-	--shadow-5: 0 0 0 1px var(--gray-a3), 0 12px 60px var(--black-a3), 0 12px 32px
-		-16px var(--gray-a5);
-	--shadow-6: 0 0 0 1px var(--gray-a3), 0 12px 60px var(--black-a3), 0 16px 64px
+	--shadow-4:
+		0 0 0 1px var(--gray-a3), 0 8px 40px var(--black-a1), 0 12px 32px -16px
+		var(--gray-a3);
+	--shadow-5:
+		0 0 0 1px var(--gray-a3), 0 12px 60px var(--black-a3), 0 12px 32px -16px
+		var(--gray-a5);
+	--shadow-6:
+		0 0 0 1px var(--gray-a3), 0 12px 60px var(--black-a3), 0 16px 64px
 		var(--gray-a2), 0 16px 36px -20px var(--gray-a7);
 	--base-button-classic-after-inset: 2px;
-	--base-button-classic-box-shadow-top: inset 0 0 0 1px var(--gray-a4), inset 0
-		-2px 1px var(--gray-a3);
-	--base-button-classic-box-shadow-bottom: inset 0 4px 2px -2px var(--white-a9),
-		inset 0 2px 1px -1px var(--white-a9);
-	--base-button-classic-disabled-box-shadow: var(
-			--base-button-classic-box-shadow-top
-		), var(--base-button-classic-box-shadow-bottom);
+	--base-button-classic-box-shadow-top:
+		inset 0 0 0 1px var(--gray-a4), inset 0 -2px 1px var(--gray-a3);
+	--base-button-classic-box-shadow-bottom:
+		inset 0 4px 2px -2px var(--white-a9), inset 0 2px 1px -1px var(--white-a9);
+	--base-button-classic-disabled-box-shadow:
+		var(--base-button-classic-box-shadow-top),
+		var(--base-button-classic-box-shadow-bottom);
 	--base-button-classic-active-filter: brightness(0.92) saturate(1.1);
 	--base-button-classic-high-contrast-hover-filter: contrast(0.88) saturate(1.1)
 		brightness(1.1);
@@ -3397,11 +3401,12 @@
 		), inset 0 -0.05em var(--gray-a6), 0 0 0 0.05em var(--gray-a5), 0 0.08em 0.17em var(
 			--gray-a7
 		);
-	--progress-indicator-after-linear-gradient: var(--white-a5), var(--white-a9),
-		var(--white-a5);
+	--progress-indicator-after-linear-gradient:
+		var(--white-a5), var(--white-a9), var(--white-a5);
 	--segmented-control-indicator-background-color: var(--color-background);
-	--select-trigger-classic-box-shadow: inset 0 0 0 1px var(--gray-a5), inset 0
-		2px 1px var(--white-a11), inset 0 -2px 1px var(--gray-a4);
+	--select-trigger-classic-box-shadow:
+		inset 0 0 0 1px var(--gray-a5), inset 0 2px 1px var(--white-a11), inset 0
+		-2px 1px var(--gray-a4);
 	--slider-range-high-contrast-background-image: linear-gradient(
 		var(--black-a8),
 		var(--black-a8)
@@ -3411,7 +3416,6 @@
 	--switch-high-contrast-checked-color-overlay: var(--black-a8);
 	--switch-high-contrast-checked-active-before-filter: contrast(0.82)
 		saturate(1.2) brightness(1.16);
-	--switch-surface-checked-active-filter: brightness(0.92) saturate(1.1);
 	--switch-surface-checked-active-filter: brightness(0.92) saturate(1.1);
 	--base-card-surface-box-shadow: 0 0 0 1px var(--gray-a5);
 	--base-card-surface-hover-box-shadow: 0 0 0 1px var(--gray-a7);
@@ -3476,11 +3480,14 @@
 		0 0 0 1px var(--gray-a6), 0 2px 3px -2px var(--black-a3), 0 3px 8px -2px var(
 			--black-a6
 		), 0 4px 12px -4px var(--black-a7);
-	--shadow-4: 0 0 0 1px var(--gray-a6), 0 8px 40px var(--black-a3), 0 12px 32px
-		-16px var(--black-a5);
-	--shadow-5: 0 0 0 1px var(--gray-a6), 0 12px 60px var(--black-a5), 0 12px 32px
-		-16px var(--black-a7);
-	--shadow-6: 0 0 0 1px var(--gray-a6), 0 12px 60px var(--black-a4), 0 16px 64px
+	--shadow-4:
+		0 0 0 1px var(--gray-a6), 0 8px 40px var(--black-a3), 0 12px 32px -16px
+		var(--black-a5);
+	--shadow-5:
+		0 0 0 1px var(--gray-a6), 0 12px 60px var(--black-a5), 0 12px 32px -16px
+		var(--black-a7);
+	--shadow-6:
+		0 0 0 1px var(--gray-a6), 0 12px 60px var(--black-a4), 0 16px 64px
 		var(--black-a6), 0 16px 36px -20px var(--black-a11);
 	--base-button-classic-after-inset: 1px;
 	--base-button-classic-box-shadow-top:
@@ -3508,17 +3515,17 @@
 		), inset 0 -0.1em var(--black-a11), 0 0 0 0.075em var(--gray-a7), 0 0.08em 0.17em var(
 			--black-a12
 		);
-	--progress-indicator-after-linear-gradient: var(--white-a3), var(--white-a6),
-		var(--white-a3);
+	--progress-indicator-after-linear-gradient:
+		var(--white-a3), var(--white-a6), var(--white-a3);
 	--segmented-control-indicator-background-color: var(--gray-a3);
-	--select-trigger-classic-box-shadow: inset 0 0 0 1px var(--white-a4), inset 0
-		1px 1px var(--white-a4), inset 0 -1px 1px var(--black-a9);
+	--select-trigger-classic-box-shadow:
+		inset 0 0 0 1px var(--white-a4), inset 0 1px 1px var(--white-a4), inset 0
+		-1px 1px var(--black-a9);
 	--slider-range-high-contrast-background-image: none;
 	--slider-disabled-blend-mode: screen;
 	--switch-disabled-blend-mode: screen;
 	--switch-high-contrast-checked-color-overlay: transparent;
 	--switch-high-contrast-checked-active-before-filter: brightness(1.08);
-	--switch-surface-checked-active-filter: brightness(1.08);
 	--switch-surface-checked-active-filter: brightness(1.08);
 	--base-card-classic-box-shadow-inner:
 		0 0 0 1px var(--base-card-classic-border-color), 0 0 0 1px var(
@@ -4642,8 +4649,9 @@
 	--letter-spacing-7: -0.0075em;
 	--letter-spacing-8: -0.01em;
 	--letter-spacing-9: -0.025em;
-	--default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI (Custom)",
-		Roboto, "Helvetica Neue", "Open Sans (Custom)", system-ui, sans-serif,
+	--default-font-family:
+		-apple-system, BlinkMacSystemFont, "Segoe UI (Custom)", Roboto,
+		"Helvetica Neue", "Open Sans (Custom)", system-ui, sans-serif,
 		"Apple Color Emoji", "Segoe UI Emoji";
 	--default-font-size: var(--font-size-3);
 	--default-font-style: normal;
@@ -4667,8 +4675,9 @@
 	--heading-line-height-7: calc(36px * var(--scaling));
 	--heading-line-height-8: calc(40px * var(--scaling));
 	--heading-line-height-9: calc(60px * var(--scaling));
-	--code-font-family: "Menlo", "Consolas (Custom)", "Bitstream Vera Sans Mono",
-		monospace, "Apple Color Emoji", "Segoe UI Emoji";
+	--code-font-family:
+		"Menlo", "Consolas (Custom)", "Bitstream Vera Sans Mono", monospace,
+		"Apple Color Emoji", "Segoe UI Emoji";
 	--code-font-size-adjust: 0.95;
 	--code-font-style: normal;
 	--code-font-weight: inherit;
@@ -4787,8 +4796,9 @@
 
 @supports (color: color-mix(in oklab, white, black)) {
 	:where(.radix-themes) {
-		--shadow-1: inset 0 0 0 1px var(--gray-a5), inset 0 1.5px 2px 0
-			var(--gray-a2), inset 0 1.5px 2px 0 var(--black-a2);
+		--shadow-1:
+			inset 0 0 0 1px var(--gray-a5), inset 0 1.5px 2px 0 var(--gray-a2), inset
+			0 1.5px 2px 0 var(--black-a2);
 		--shadow-2:
 			0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%), 0 0 0 0.5px var(
 				--black-a1
@@ -4799,12 +4809,15 @@
 			0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%), 0 2px 3px -2px var(
 				--gray-a3
 			), 0 3px 12px -4px var(--black-a2), 0 4px 16px -8px var(--black-a2);
-		--shadow-4: 0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%),
-			0 8px 40px var(--black-a1), 0 12px 32px -16px var(--gray-a3);
-		--shadow-5: 0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%),
-			0 12px 60px var(--black-a3), 0 12px 32px -16px var(--gray-a5);
-		--shadow-6: 0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%),
-			0 12px 60px var(--black-a3), 0 16px 64px var(--gray-a2), 0 16px 36px -20px
+		--shadow-4:
+			0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%), 0 8px
+			40px var(--black-a1), 0 12px 32px -16px var(--gray-a3);
+		--shadow-5:
+			0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%), 0 12px
+			60px var(--black-a3), 0 12px 32px -16px var(--gray-a5);
+		--shadow-6:
+			0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%), 0 12px
+			60px var(--black-a3), 0 16px 64px var(--gray-a2), 0 16px 36px -20px
 			var(--gray-a7);
 		--base-card-surface-box-shadow: 0 0 0 1px
 			color-mix(in oklab, var(--gray-a5), var(--gray-5) 25%);
@@ -4847,13 +4860,16 @@
 			0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%), 0 2px 3px -2px var(
 				--black-a3
 			), 0 3px 8px -2px var(--black-a6), 0 4px 12px -4px var(--black-a7);
-		--shadow-4: 0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%),
-			0 8px 40px var(--black-a3), 0 12px 32px -16px var(--black-a5);
-		--shadow-5: 0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%),
-			0 12px 60px var(--black-a5), 0 12px 32px -16px var(--black-a7);
-		--shadow-6: 0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%),
-			0 12px 60px var(--black-a4), 0 16px 64px var(--black-a6), 0 16px 36px
-			-20px var(--black-a11);
+		--shadow-4:
+			0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%), 0 8px
+			40px var(--black-a3), 0 12px 32px -16px var(--black-a5);
+		--shadow-5:
+			0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%), 0 12px
+			60px var(--black-a5), 0 12px 32px -16px var(--black-a7);
+		--shadow-6:
+			0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%), 0 12px
+			60px var(--black-a4), 0 16px 64px var(--black-a6), 0 16px 36px -20px
+			var(--black-a11);
 		--base-card-classic-border-color: color-mix(
 			in oklab,
 			var(--gray-a6),
@@ -5123,9 +5139,7 @@
 	) {
 	all: unset;
 	display: block;
-	width: -webkit-fill-available;
-	width: -moz-available;
-	width: stretch;
+	width: -moz-available -webkit-fill-available stretch;
 	font-weight: normal;
 	font-style: normal;
 	text-align: start;
@@ -5203,9 +5217,7 @@
 .rt-reset:where(iframe) {
 	display: block;
 	border: none;
-	width: -webkit-fill-available;
-	width: -moz-available;
-	width: stretch;
+	width: -webkit-fill-available -moz-available stretch;
 }
 
 .rt-reset:where(ins, u) {
@@ -5249,9 +5261,7 @@
 
 .rt-reset:where(video) {
 	display: block;
-	width: -webkit-fill-available;
-	width: -moz-available;
-	width: stretch;
+	width: -webkit-fill-available -moz-available stretch;
 }
 
 .rt-reset:where(:any-link) {
@@ -6207,7 +6217,6 @@
 	--inset-padding-bottom: var(--dialog-content-padding);
 	--inset-padding-left: var(--dialog-content-padding);
 	padding: var(--dialog-content-padding);
-	box-sizing: border-box;
 	background-color: var(--color-panel-solid);
 	box-shadow: var(--shadow-6);
 	outline: none;
@@ -6886,8 +6895,7 @@
 	font-style: normal;
 	flex-shrink: 0;
 	line-height: 1;
-	height: -moz-fit-content;
-	height: fit-content;
+	height: -moz-fit-content fit-content;
 }
 
 .rt-Badge:where(.rt-r-size-1) {
@@ -7107,7 +7115,9 @@
 }
 
 .rt-Badge:where(.rt-variant-outline):where(.rt-high-contrast) {
-	box-shadow: inset 0 0 0 1px var(--accent-a7), inset 0 0 0 1px var(--gray-a11);
+	box-shadow:
+		inset 0 0 0 1px var(--accent-a7),
+		inset 0 0 0 1px var(--gray-a11);
 	color: var(--accent-12);
 }
 
@@ -7144,8 +7154,7 @@
 
 .rt-BaseButton:where(.rt-variant-ghost) {
 	box-sizing: content-box;
-	height: -moz-fit-content;
-	height: fit-content;
+	height: -moz-fit-content fit-content;
 }
 
 .rt-BaseButton:where(.rt-r-size-1) {
@@ -7307,10 +7316,13 @@
 	color: var(--accent-contrast);
 	position: relative;
 	z-index: 0;
-	background-image: linear-gradient(to bottom, transparent 50%, var(--gray-a4)),
+	background-image:
+		linear-gradient(to bottom, transparent 50%, var(--gray-a4)),
 		linear-gradient(to bottom, transparent 50%, var(--accent-9) 80%);
-	box-shadow: var(--base-button-classic-box-shadow-top), inset 0 0 0 1px
-		var(--accent-9), var(--base-button-classic-box-shadow-bottom);
+	box-shadow:
+		var(--base-button-classic-box-shadow-top),
+		inset 0 0 0 1px var(--accent-9),
+		var(--base-button-classic-box-shadow-bottom);
 }
 
 .rt-BaseButton:where(.rt-variant-classic)::after {
@@ -7334,10 +7346,13 @@
 .rt-BaseButton:where(.rt-variant-classic):where(.rt-high-contrast) {
 	background-color: var(--accent-12);
 	color: var(--gray-1);
-	background-image: linear-gradient(to bottom, transparent 50%, var(--gray-a4)),
+	background-image:
+		linear-gradient(to bottom, transparent 50%, var(--gray-a4)),
 		linear-gradient(to bottom, transparent 50%, var(--accent-12) 80%);
-	box-shadow: var(--base-button-classic-box-shadow-top), inset 0 0 0 1px
-		var(--accent-12), var(--base-button-classic-box-shadow-bottom);
+	box-shadow:
+		var(--base-button-classic-box-shadow-top),
+		inset 0 0 0 1px var(--accent-12),
+		var(--base-button-classic-box-shadow-bottom);
 }
 
 .rt-BaseButton:where(.rt-variant-classic):where(.rt-high-contrast)::after {
@@ -7423,11 +7438,13 @@
 	background-image: linear-gradient(var(--black-a1), transparent);
 	padding-top: var(--base-button-classic-active-padding-top);
 	box-shadow:
-		inset 0 4px 2px -2px var(--gray-a4), inset 0 1px 1px var(--gray-a7), inset 0 0 0 1px var(
-			--gray-a5
-		), inset 0 0 0 1px var(--accent-9), inset 0 3px 2px var(--gray-a3), inset 0 0 0 1px var(
-			--white-a7
-		), inset 0 -2px 1px var(--white-a5);
+		inset 0 4px 2px -2px var(--gray-a4),
+		inset 0 1px 1px var(--gray-a7),
+		inset 0 0 0 1px var(--gray-a5),
+		inset 0 0 0 1px var(--accent-9),
+		inset 0 3px 2px var(--gray-a3),
+		inset 0 0 0 1px var(--white-a7),
+		inset 0 -2px 1px var(--white-a5);
 }
 
 .rt-BaseButton:where(.rt-variant-classic):where(
@@ -7447,8 +7464,9 @@
 	):where(.rt-high-contrast) {
 	background-color: var(--accent-12);
 	filter: var(--base-button-classic-high-contrast-active-filter);
-	box-shadow: var(--base-button__classic-active__shadow-front-layer), inset 0 0
-		0 1px var(--accent-12),
+	box-shadow:
+		var(--base-button__classic-active__shadow-front-layer),
+		inset 0 0 0 1px var(--accent-12),
 		var(--base-button__classic-active__shadow-bottom-layer);
 }
 
@@ -7650,7 +7668,9 @@
 }
 
 .rt-BaseButton:where(.rt-variant-outline):where(.rt-high-contrast) {
-	box-shadow: inset 0 0 0 1px var(--accent-a7), inset 0 0 0 1px var(--gray-a11);
+	box-shadow:
+		inset 0 0 0 1px var(--accent-a7),
+		inset 0 0 0 1px var(--gray-a11);
 	color: var(--accent-12);
 }
 
@@ -8965,7 +8985,9 @@
 		[data-state="unchecked"]
 	)::before {
 	background-color: var(--color-surface);
-	box-shadow: inset 0 0 0 1px var(--gray-a3), var(--shadow-1);
+	box-shadow:
+		inset 0 0 0 1px var(--gray-a3),
+		var(--shadow-1);
 }
 
 .rt-BaseCheckboxRoot:where(.rt-variant-classic):where(
@@ -8979,8 +9001,9 @@
 		transparent,
 		var(--black-a1)
 	);
-	box-shadow: inset 0 0.5px 0.5px var(--white-a4), inset 0 -0.5px 0.5px
-		var(--black-a4);
+	box-shadow:
+		inset 0 0.5px 0.5px var(--white-a4),
+		inset 0 -0.5px 0.5px var(--black-a4);
 }
 
 .rt-BaseCheckboxRoot:where(.rt-variant-classic):where(
@@ -9377,8 +9400,7 @@
 .rt-CheckboxGroupItem {
 	display: flex;
 	gap: 0.5em;
-	width: -moz-fit-content;
-	width: fit-content;
+	width: -moz-fit-content fit-content;
 }
 
 .rt-CheckboxGroupItemCheckbox:where(:focus-visible)::before {
@@ -9428,8 +9450,7 @@
 	padding-left: var(--code-padding-left);
 	padding-bottom: var(--code-padding-bottom);
 	padding-right: var(--code-padding-right);
-	height: -moz-fit-content;
-	height: fit-content;
+	height: -moz-fit-content fit-content;
 }
 
 .rt-Code :where(.rt-Code) {
@@ -9853,8 +9874,9 @@
 }
 
 .rt-Code:where(.rt-variant-outline):where(.rt-high-contrast) {
-	box-shadow: inset 0 0 0 max(1px, 0.033em) var(--accent-a7), inset 0 0 0
-		max(1px, 0.033em) var(--gray-a11);
+	box-shadow:
+		inset 0 0 0 max(1px, 0.033em) var(--accent-a7),
+		inset 0 0 0 max(1px, 0.033em) var(--gray-a11);
 	color: var(--accent-12);
 }
 
@@ -10697,8 +10719,7 @@
 		--data-list-last-item-value-trim-end
 	);
 	display: grid;
-	grid-template-columns: inherit;
-	grid-template-columns: subgrid;
+	grid-template-columns: inherit subgrid;
 	gap: inherit;
 	grid-column: span 2;
 	align-items: baseline;
@@ -10746,8 +10767,7 @@
 			--data-list-last-item-value-trim-end
 		);
 		display: grid;
-		grid-template-columns: inherit;
-		grid-template-columns: subgrid;
+		grid-template-columns: inherit subgrid;
 		gap: inherit;
 		grid-column: span 2;
 		align-items: baseline;
@@ -10797,8 +10817,7 @@
 			--data-list-last-item-value-trim-end
 		);
 		display: grid;
-		grid-template-columns: inherit;
-		grid-template-columns: subgrid;
+		grid-template-columns: inherit subgrid;
 		gap: inherit;
 		grid-column: span 2;
 		align-items: baseline;
@@ -10848,8 +10867,7 @@
 			--data-list-last-item-value-trim-end
 		);
 		display: grid;
-		grid-template-columns: inherit;
-		grid-template-columns: subgrid;
+		grid-template-columns: inherit subgrid;
 		gap: inherit;
 		grid-column: span 2;
 		align-items: baseline;
@@ -10899,8 +10917,7 @@
 			--data-list-last-item-value-trim-end
 		);
 		display: grid;
-		grid-template-columns: inherit;
-		grid-template-columns: subgrid;
+		grid-template-columns: inherit subgrid;
 		gap: inherit;
 		grid-column: span 2;
 		align-items: baseline;
@@ -10950,8 +10967,7 @@
 			--data-list-last-item-value-trim-end
 		);
 		display: grid;
-		grid-template-columns: inherit;
-		grid-template-columns: subgrid;
+		grid-template-columns: inherit subgrid;
 		gap: inherit;
 		grid-column: span 2;
 		align-items: baseline;
@@ -13091,26 +13107,31 @@
 	word-spacing: -0.1em;
 	border-radius: calc(var(--radius-factor) * 0.35em);
 	letter-spacing: var(--letter-spacing, var(--default-letter-spacing));
-	height: -moz-fit-content;
-	height: fit-content;
+	height: -moz-fit-content fit-content;
 	color: var(--gray-12);
 	background-color: var(--gray-1);
 	box-shadow: var(--kbd-box-shadow);
-	transition: box-shadow 120ms, background-color 120ms;
+	transition:
+		box-shadow 120ms,
+		background-color 120ms;
 }
 
 @media (hover: hover) {
 	.rt-Kbd:where(:any-link, button):where(:hover) {
 		transition-duration: 40ms, 40ms;
 		background-color: var(--color-background);
-		box-shadow: var(--kbd-box-shadow), 0 0 0 0.05em var(--gray-a5);
+		box-shadow:
+			var(--kbd-box-shadow),
+			0 0 0 0.05em var(--gray-a5);
 	}
 }
 
 .rt-Kbd:where(:any-link, button):where([data-state="open"]) {
 	transition-duration: 40ms, 40ms;
 	background-color: var(--color-background);
-	box-shadow: var(--kbd-box-shadow), 0 0 0 0.05em var(--gray-a5);
+	box-shadow:
+		var(--kbd-box-shadow),
+		0 0 0 0.05em var(--gray-a5);
 }
 
 .rt-Kbd:where(:any-link, button):where(:active:not([data-state="open"])) {
@@ -13118,7 +13139,9 @@
 	padding-bottom: 0;
 	transition-duration: 40ms, 40ms;
 	background-color: var(--gray-2);
-	box-shadow: inset 0 0.05em var(--black-a3), 0 0 0 0.05em var(--gray-a7);
+	box-shadow:
+		inset 0 0.05em var(--black-a3),
+		0 0 0 0.05em var(--gray-a7);
 }
 
 .rt-Kbd:where(:any-link, button):where(:focus-visible) {
@@ -13668,10 +13691,12 @@
 }
 
 .rt-ProgressIndicator:where([data-state="indeterminate"]) {
-	animation-name: rt-progress-indicator-indeterminate-grow,
+	animation-name:
+		rt-progress-indicator-indeterminate-grow,
 		var(--progress-indicator-indeterminate-animation-start),
 		var(--progress-indicator-indeterminate-animation-repeat);
-	animation-delay: 0s, calc(var(--progress-duration) + 5s),
+	animation-delay:
+		0s, calc(var(--progress-duration) + 5s),
 		calc(var(--progress-duration) + 7.5s);
 	animation-duration: var(--progress-duration), 2.5s, 5s;
 	animation-iteration-count: 1, 1, infinite;
@@ -14255,8 +14280,7 @@
 .rt-RadioGroupItem {
 	display: flex;
 	gap: 0.5em;
-	width: -moz-fit-content;
-	width: fit-content;
+	width: -moz-fit-content fit-content;
 }
 
 .rt-RadioGroupItemInner {
@@ -14439,7 +14463,9 @@
 		[data-state="unchecked"]
 	)::before {
 	background-color: var(--color-surface);
-	box-shadow: inset 0 0 0 1px var(--gray-7), var(--shadow-1);
+	box-shadow:
+		inset 0 0 0 1px var(--gray-7),
+		var(--shadow-1);
 }
 
 .rt-BaseRadioRoot:where(.rt-variant-classic):where(
@@ -14453,8 +14479,9 @@
 		transparent,
 		var(--black-a3)
 	);
-	box-shadow: inset 0 0.5px 0.5px var(--white-a4), inset 0 -0.5px 0.5px
-		var(--black-a4);
+	box-shadow:
+		inset 0 0.5px 0.5px var(--white-a4),
+		inset 0 -0.5px 0.5px var(--black-a4);
 }
 
 .rt-BaseRadioRoot:where(.rt-variant-classic)::after {
@@ -14550,8 +14577,7 @@
 
 .rt-ScrollAreaViewport > * {
 	display: block !important;
-	width: -moz-fit-content;
-	width: fit-content;
+	width: -moz-fit-content fit-content;
 	flex-grow: 1;
 }
 
@@ -15395,8 +15421,7 @@
 
 .rt-SelectTrigger:where(.rt-variant-ghost) {
 	box-sizing: content-box;
-	height: -moz-fit-content;
-	height: fit-content;
+	height: -moz-fit-content fit-content;
 	padding: var(--select-trigger-ghost-padding-y)
 		var(--select-trigger-ghost-padding-x);
 	--margin-top: 0px;
@@ -16281,41 +16306,37 @@
 	background-clip: content-box;
 	border-radius: inherit;
 	pointer-events: none;
-	background-image: linear-gradient(
-			var(--black-a1) -20%,
-			transparent,
-			var(--white-a1) 130%
-		), linear-gradient(var(--color-surface), transparent);
+	background-image:
+		linear-gradient(var(--black-a1) -20%, transparent, var(--white-a1) 130%),
+		linear-gradient(var(--color-surface), transparent);
 }
 
 @media (hover: hover) {
 	.rt-SelectTrigger:where(.rt-variant-classic):where(:hover) {
-		box-shadow: inset 0 0 0 1px var(--gray-a3),
+		box-shadow:
+			inset 0 0 0 1px var(--gray-a3),
 			var(--select-trigger-classic-box-shadow);
 	}
 
 	.rt-SelectTrigger:where(.rt-variant-classic):where(:hover)::before {
-		background-image: linear-gradient(
-				var(--black-a1) -15%,
-				transparent,
-				var(--white-a1) 120%
-			), linear-gradient(var(--gray-2), var(--gray-1));
+		background-image:
+			linear-gradient(var(--black-a1) -15%, transparent, var(--white-a1) 120%),
+			linear-gradient(var(--gray-2), var(--gray-1));
 	}
 }
 
 .rt-SelectTrigger:where(.rt-variant-classic):where([data-state="open"]) {
-	box-shadow: inset 0 0 0 1px var(--gray-a3),
+	box-shadow:
+		inset 0 0 0 1px var(--gray-a3),
 		var(--select-trigger-classic-box-shadow);
 }
 
 .rt-SelectTrigger:where(.rt-variant-classic):where(
 		[data-state="open"]
 	)::before {
-	background-image: linear-gradient(
-			var(--black-a1) -15%,
-			transparent,
-			var(--white-a1) 120%
-		), linear-gradient(var(--gray-2), var(--gray-1));
+	background-image:
+		linear-gradient(var(--black-a1) -15%, transparent, var(--white-a1) 120%),
+		linear-gradient(var(--gray-2), var(--gray-1));
 }
 
 .rt-SelectTrigger:where(.rt-variant-classic):where(:disabled) {
@@ -16623,16 +16644,12 @@
 }
 
 .rt-SliderRoot:where([data-orientation="horizontal"]) {
-	width: -webkit-fill-available;
-	width: -moz-available;
-	width: stretch;
+	width: -webkit-fill-available -moz-available stretch;
 	height: var(--slider-track-size);
 }
 
 .rt-SliderRoot:where([data-orientation="vertical"]) {
-	height: -webkit-fill-available;
-	height: -moz-available;
-	height: stretch;
+	height: -webkit-fill-available -moz-available stretch;
 	flex-direction: column;
 	width: var(--slider-track-size);
 }
@@ -16694,8 +16711,10 @@
 }
 
 .rt-SliderThumb:where(:focus-visible)::after {
-	box-shadow: var(--slider-thumb-box-shadow), 0 0 0 3px var(--accent-3), 0 0 0
-		5px var(--focus-8);
+	box-shadow:
+		var(--slider-thumb-box-shadow),
+		0 0 0 3px var(--accent-3),
+		0 0 0 5px var(--focus-8);
 }
 
 .rt-SliderThumb:where(:active) {
@@ -16832,20 +16851,24 @@
 	background-color: var(--accent-track);
 	background-image: var(--slider-range-high-contrast-background-image);
 	box-shadow:
-		inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--accent-a4), inset 0 0 0 1px var(
-			--black-a1
-		), inset 0 1.5px 2px 0 var(--black-a2);
+		inset 0 0 0 1px var(--gray-a3),
+		inset 0 0 0 1px var(--accent-a4),
+		inset 0 0 0 1px var(--black-a1),
+		inset 0 1.5px 2px 0 var(--black-a2);
 }
 
 .rt-SliderRoot:where(.rt-variant-classic)
 	:where(.rt-SliderRange):where(.rt-high-contrast) {
-	box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--black-a2),
+	box-shadow:
+		inset 0 0 0 1px var(--gray-a3),
+		inset 0 0 0 1px var(--black-a2),
 		inset 0 1.5px 2px 0 var(--black-a2);
 }
 
 .rt-SliderRoot:where(.rt-variant-classic) :where(.rt-SliderThumb) {
-	--slider-thumb-box-shadow: 0 0 0 1px var(--black-a3), 0 1px 3px
-		var(--black-a1), 0 2px 4px -1px var(--black-a1);
+	--slider-thumb-box-shadow:
+		0 0 0 1px var(--black-a3), 0 1px 3px var(--black-a1), 0 2px 4px -1px
+		var(--black-a1);
 }
 
 .rt-SliderRoot:where(.rt-variant-classic)
@@ -16866,7 +16889,8 @@
 }
 
 .rt-SliderRoot:where(.rt-variant-soft) :where(.rt-SliderRange) {
-	background-image: linear-gradient(var(--accent-a5), var(--accent-a5)),
+	background-image:
+		linear-gradient(var(--accent-a5), var(--accent-a5)),
 		var(--slider-range-high-contrast-background-image);
 	background-color: var(--accent-6);
 }
@@ -17157,8 +17181,9 @@
 	width: var(--switch-thumb-size);
 	height: var(--switch-thumb-size);
 	border-radius: calc(var(--switch-border-radius) - var(--switch-thumb-inset));
-	transition: transform 140ms cubic-bezier(0.45, 0.05, 0.55, 0.95), box-shadow
-		140ms ease-in-out;
+	transition:
+		transform 140ms cubic-bezier(0.45, 0.05, 0.55, 0.95),
+		box-shadow 140ms ease-in-out;
 }
 
 .rt-SwitchThumb:where([data-state="checked"]) {
@@ -17286,7 +17311,8 @@
 }
 
 .rt-SwitchRoot:where(.rt-variant-surface):where(.rt-high-contrast)::before {
-	background-image: linear-gradient(
+	background-image:
+		linear-gradient(
 			to right,
 			var(--switch-high-contrast-checked-color-overlay) 40%,
 			transparent 60%
@@ -17312,30 +17338,39 @@
 
 .rt-SwitchRoot:where(.rt-variant-surface)
 	:where(.rt-SwitchThumb):where([data-state="unchecked"]) {
-	box-shadow: 0 0 1px 1px var(--black-a2), 0 1px 1px var(--black-a1), 0 2px 4px
-		-1px var(--black-a1);
+	box-shadow:
+		0 0 1px 1px var(--black-a2),
+		0 1px 1px var(--black-a1),
+		0 2px 4px -1px var(--black-a1);
 }
 
 .rt-SwitchRoot:where(.rt-variant-surface)
 	:where(.rt-SwitchThumb):where([data-state="checked"]) {
 	box-shadow:
-		0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0 1px var(
-			--black-a1
-		), 0 0 0 1px var(--accent-a4), -1px 0 1px var(--black-a2);
+		0 1px 3px var(--black-a2),
+		0 2px 4px -1px var(--black-a1),
+		0 0 0 1px var(--black-a1),
+		0 0 0 1px var(--accent-a4),
+		-1px 0 1px var(--black-a2);
 }
 
 .rt-SwitchRoot:where(.rt-variant-surface)
 	:where(.rt-SwitchThumb):where([data-state="checked"]):where(
 		.rt-high-contrast
 	) {
-	box-shadow: 0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0
-		1px var(--black-a2), -1px 0 1px var(--black-a2);
+	box-shadow:
+		0 1px 3px var(--black-a2),
+		0 2px 4px -1px var(--black-a1),
+		0 0 0 1px var(--black-a2),
+		-1px 0 1px var(--black-a2);
 }
 
 .rt-SwitchRoot:where(.rt-variant-surface)
 	:where(.rt-SwitchThumb):where([data-disabled]) {
 	background-color: var(--gray-2);
-	box-shadow: 0 0 0 1px var(--gray-a2), 0 1px 3px var(--black-a1);
+	box-shadow:
+		0 0 0 1px var(--gray-a2),
+		0 1px 3px var(--black-a1);
 	transition: none;
 }
 
@@ -17359,9 +17394,10 @@
 		[data-state="checked"]
 	)::before {
 	box-shadow:
-		inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--accent-a4), inset 0 0 0 1px var(
-			--black-a1
-		), inset 0 1.5px 2px 0 var(--black-a2);
+		inset 0 0 0 1px var(--gray-a3),
+		inset 0 0 0 1px var(--accent-a4),
+		inset 0 0 0 1px var(--black-a1),
+		inset 0 1.5px 2px 0 var(--black-a2);
 }
 
 .rt-SwitchRoot:where(.rt-variant-classic):where(
@@ -17371,9 +17407,12 @@
 }
 
 .rt-SwitchRoot:where(.rt-variant-classic):where(.rt-high-contrast)::before {
-	box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--black-a2),
+	box-shadow:
+		inset 0 0 0 1px var(--gray-a3),
+		inset 0 0 0 1px var(--black-a2),
 		inset 0 1.5px 2px 0 var(--black-a2);
-	background-image: linear-gradient(
+	background-image:
+		linear-gradient(
 			to right,
 			var(--switch-high-contrast-checked-color-overlay) 40%,
 			transparent 60%
@@ -17400,39 +17439,46 @@
 
 .rt-SwitchRoot:where(.rt-variant-classic)
 	:where(.rt-SwitchThumb):where([data-state="unchecked"]) {
-	box-shadow: 0 1px 3px var(--black-a3), 0 2px 4px -1px var(--black-a1), 0 0 0
-		1px var(--black-a2);
+	box-shadow:
+		0 1px 3px var(--black-a3),
+		0 2px 4px -1px var(--black-a1),
+		0 0 0 1px var(--black-a2);
 }
 
 .rt-SwitchRoot:where(.rt-variant-classic)
 	:where(.rt-SwitchThumb):where([data-state="checked"]) {
 	box-shadow:
-		0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0 1px var(
-			--black-a1
-		), 0 0 0 1px var(--accent-a4), -1px 0 1px var(--black-a2);
+		0 1px 3px var(--black-a2),
+		0 2px 4px -1px var(--black-a1),
+		0 0 0 1px var(--black-a1),
+		0 0 0 1px var(--accent-a4),
+		-1px 0 1px var(--black-a2);
 }
 
 .rt-SwitchRoot:where(.rt-variant-classic)
 	:where(.rt-SwitchThumb):where([data-state="checked"]):where(
 		.rt-high-contrast
 	) {
-	box-shadow: 0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0
-		1px var(--black-a2), -1px 0 1px var(--black-a2);
+	box-shadow:
+		0 1px 3px var(--black-a2),
+		0 2px 4px -1px var(--black-a1),
+		0 0 0 1px var(--black-a2),
+		-1px 0 1px var(--black-a2);
 }
 
 .rt-SwitchRoot:where(.rt-variant-classic)
 	:where(.rt-SwitchThumb):where([data-disabled]) {
 	background-color: var(--gray-2);
-	box-shadow: 0 0 0 1px var(--gray-a2), 0 1px 3px var(--black-a1);
+	box-shadow:
+		0 0 0 1px var(--gray-a2),
+		0 1px 3px var(--black-a1);
 	transition: none;
 }
 
 .rt-SwitchRoot:where(.rt-variant-soft)::before {
-	background-image: linear-gradient(
-			to right,
-			var(--accent-a4) 40%,
-			transparent 60%
-		), linear-gradient(to right, var(--accent-a4) 40%, transparent 60%),
+	background-image:
+		linear-gradient(to right, var(--accent-a4) 40%, transparent 60%),
+		linear-gradient(to right, var(--accent-a4) 40%, transparent 60%),
 		linear-gradient(to right, var(--accent-a4) 40%, var(--white-a1) 60%),
 		linear-gradient(to right, var(--gray-a2) 40%, var(--gray-a3) 60%);
 }
@@ -17446,7 +17492,8 @@
 }
 
 .rt-SwitchRoot:where(.rt-variant-soft):where(.rt-high-contrast)::before {
-	background-image: linear-gradient(
+	background-image:
+		linear-gradient(
 			to right,
 			var(--switch-high-contrast-checked-color-overlay) 40%,
 			transparent 60%
@@ -17478,21 +17525,29 @@
 
 .rt-SwitchRoot:where(.rt-variant-soft)
 	:where(.rt-SwitchThumb):where([data-state="unchecked"]) {
-	box-shadow: 0 0 0 1px var(--black-a1), 0 1px 3px var(--black-a1), 0 1px 3px
-		var(--black-a1), 0 2px 4px -1px var(--black-a1);
+	box-shadow:
+		0 0 0 1px var(--black-a1),
+		0 1px 3px var(--black-a1),
+		0 1px 3px var(--black-a1),
+		0 2px 4px -1px var(--black-a1);
 }
 
 .rt-SwitchRoot:where(.rt-variant-soft)
 	:where(.rt-SwitchThumb):where([data-state="checked"]) {
-	box-shadow: 0 0 0 1px var(--black-a1), 0 1px 3px var(--black-a2), 0 1px 3px
-		var(--accent-a3), 0 2px 4px -1px var(--accent-a3);
+	box-shadow:
+		0 0 0 1px var(--black-a1),
+		0 1px 3px var(--black-a2),
+		0 1px 3px var(--accent-a3),
+		0 2px 4px -1px var(--accent-a3);
 }
 
 .rt-SwitchRoot:where(.rt-variant-soft)
 	:where(.rt-SwitchThumb):where([data-disabled]) {
 	filter: none;
 	background-color: var(--gray-2);
-	box-shadow: 0 0 0 1px var(--gray-a2), 0 1px 3px var(--black-a1);
+	box-shadow:
+		0 0 0 1px var(--gray-a2),
+		0 1px 3px var(--black-a1);
 	transition: none;
 }
 
@@ -18105,7 +18160,6 @@
 	padding: var(--text-area-border-width);
 	display: flex;
 	flex-direction: column;
-	box-sizing: border-box;
 	font-family: var(--default-font-family);
 	font-weight: var(--font-weight-regular);
 	font-style: normal;
@@ -18437,7 +18491,9 @@
 			)
 	) {
 	background-image: linear-gradient(var(--focus-a2), var(--focus-a2));
-	box-shadow: inset 0 0 0 1px var(--focus-a5), inset 0 0 0 1px var(--gray-a5);
+	box-shadow:
+		inset 0 0 0 1px var(--focus-a5),
+		inset 0 0 0 1px var(--gray-a5);
 }
 
 .rt-TextAreaRoot:where(.rt-variant-surface):where(
@@ -18449,7 +18505,9 @@
 			)
 	) {
 	background-image: linear-gradient(var(--focus-a2), var(--focus-a2));
-	box-shadow: inset 0 0 0 1px var(--focus-a5), inset 0 0 0 1px var(--gray-a5);
+	box-shadow:
+		inset 0 0 0 1px var(--focus-a5),
+		inset 0 0 0 1px var(--gray-a5);
 }
 
 .rt-TextAreaRoot:where(.rt-variant-surface):where(
@@ -18481,7 +18539,9 @@
 			)
 	) {
 	background-image: linear-gradient(var(--focus-a2), var(--focus-a2));
-	box-shadow: inset 0 0 0 1px var(--focus-a5), inset 0 0 0 1px var(--gray-a5);
+	box-shadow:
+		inset 0 0 0 1px var(--focus-a5),
+		inset 0 0 0 1px var(--gray-a5);
 }
 
 .rt-TextAreaRoot:where(.rt-variant-classic):where(
@@ -18493,7 +18553,9 @@
 			)
 	) {
 	background-image: linear-gradient(var(--focus-a2), var(--focus-a2));
-	box-shadow: inset 0 0 0 1px var(--focus-a5), inset 0 0 0 1px var(--gray-a5);
+	box-shadow:
+		inset 0 0 0 1px var(--focus-a5),
+		inset 0 0 0 1px var(--gray-a5);
 }
 
 .rt-TextAreaRoot:where(.rt-variant-classic):where(
@@ -18530,7 +18592,9 @@
 					):not(:disabled, :read-only)
 			)
 	) {
-	box-shadow: inset 0 0 0 1px var(--accent-a5), inset 0 0 0 1px var(--gray-a4);
+	box-shadow:
+		inset 0 0 0 1px var(--accent-a5),
+		inset 0 0 0 1px var(--gray-a4);
 }
 
 .rt-TextAreaRoot:where(.rt-variant-soft):where(
@@ -18541,7 +18605,9 @@
 					)
 			)
 	) {
-	box-shadow: inset 0 0 0 1px var(--accent-a5), inset 0 0 0 1px var(--gray-a4);
+	box-shadow:
+		inset 0 0 0 1px var(--accent-a5),
+		inset 0 0 0 1px var(--gray-a4);
 }
 
 .rt-TextAreaRoot:where(.rt-variant-soft):where(
@@ -19257,7 +19323,9 @@
 			)
 	) {
 	background-image: linear-gradient(var(--focus-a2), var(--focus-a2));
-	box-shadow: inset 0 0 0 1px var(--focus-a5), inset 0 0 0 1px var(--gray-a5);
+	box-shadow:
+		inset 0 0 0 1px var(--focus-a5),
+		inset 0 0 0 1px var(--gray-a5);
 }
 
 .rt-TextFieldRoot:where(.rt-variant-surface):where(
@@ -19269,7 +19337,9 @@
 			)
 	) {
 	background-image: linear-gradient(var(--focus-a2), var(--focus-a2));
-	box-shadow: inset 0 0 0 1px var(--focus-a5), inset 0 0 0 1px var(--gray-a5);
+	box-shadow:
+		inset 0 0 0 1px var(--focus-a5),
+		inset 0 0 0 1px var(--gray-a5);
 }
 
 .rt-TextFieldRoot:where(.rt-variant-surface):where(
@@ -19312,7 +19382,9 @@
 			)
 	) {
 	background-image: linear-gradient(var(--focus-a2), var(--focus-a2));
-	box-shadow: inset 0 0 0 1px var(--focus-a5), inset 0 0 0 1px var(--gray-a5);
+	box-shadow:
+		inset 0 0 0 1px var(--focus-a5),
+		inset 0 0 0 1px var(--gray-a5);
 }
 
 .rt-TextFieldRoot:where(.rt-variant-classic):where(
@@ -19324,7 +19396,9 @@
 			)
 	) {
 	background-image: linear-gradient(var(--focus-a2), var(--focus-a2));
-	box-shadow: inset 0 0 0 1px var(--focus-a5), inset 0 0 0 1px var(--gray-a5);
+	box-shadow:
+		inset 0 0 0 1px var(--focus-a5),
+		inset 0 0 0 1px var(--gray-a5);
 }
 
 .rt-TextFieldRoot:where(.rt-variant-classic):where(
@@ -19364,7 +19438,9 @@
 					):not(:disabled, :read-only)
 			)
 	) {
-	box-shadow: inset 0 0 0 1px var(--accent-a5), inset 0 0 0 1px var(--gray-a4);
+	box-shadow:
+		inset 0 0 0 1px var(--accent-a5),
+		inset 0 0 0 1px var(--gray-a4);
 }
 
 .rt-TextFieldRoot:where(.rt-variant-soft):where(
@@ -19375,7 +19451,9 @@
 					)
 			)
 	) {
-	box-shadow: inset 0 0 0 1px var(--accent-a5), inset 0 0 0 1px var(--gray-a4);
+	box-shadow:
+		inset 0 0 0 1px var(--accent-a5),
+		inset 0 0 0 1px var(--gray-a4);
 }
 
 .rt-TextFieldRoot:where(.rt-variant-soft):where(
