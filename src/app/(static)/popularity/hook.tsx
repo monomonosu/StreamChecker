@@ -16,7 +16,7 @@ export default function usePopularity() {
 
 		if (res.status.code !== 200) {
 			setHasMore(false);
-			return [];
+			return;
 		}
 
 		return res.data?.albums.items;
