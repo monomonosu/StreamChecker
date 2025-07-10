@@ -5,6 +5,7 @@ import { getNewReleases } from "@/app/_fetchers/getNewReleases";
 import { getPopularityAlbums } from "@/app/_fetchers/getPopularityAlbums";
 
 import { Section, Slider } from "@/app/_styles/components/blocks";
+import { LinkText } from "@/app/_styles/components/texts";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
 
 import { genres } from "@/app/(static)/_utils/_constants";
@@ -21,6 +22,7 @@ export default async function Home() {
 		<PageWrapper>
 			<Section>
 				<h1>新着</h1>
+
 				<Slider>
 					{newReleaseData.albums.items.map((item) => (
 						<div style={{ width: "200px" }} key={item.id}>
@@ -39,10 +41,13 @@ export default async function Home() {
 						</div>
 					))}
 				</Slider>
+
+				<LinkText href={PATH.NEW}>▶︎ ReadMoreNewAlbums...</LinkText>
 			</Section>
 
 			<Section>
 				<h1>人気</h1>
+
 				<Slider>
 					{popularityData.albums.items.map((item) => (
 						<div style={{ width: "200px" }} key={item.id}>
@@ -61,6 +66,8 @@ export default async function Home() {
 						</div>
 					))}
 				</Slider>
+
+				<LinkText href={PATH.POPULARITY}>▶︎ ReadMorePopularAlbums...</LinkText>
 			</Section>
 
 			<Section>
