@@ -3,13 +3,12 @@
 import { Cross1Icon } from "@radix-ui/react-icons";
 import { Button, Theme } from "@radix-ui/themes";
 import Image from "next/image";
-import React from "react";
+
+import style from "@/app/_components/client/FooterPlayer/footer-player.module.scss";
 
 import { useFooterPlayer } from "@/app/_components/client/FooterPlayer/useFooterPlayer";
 import { BasicText, LinkText } from "@/app/_styles/components/texts";
 import { GapWrapper } from "@/app/_styles/components/wrappers";
-
-import style from "@/app/_components/client/FooterPlayer/footer-player.module.scss";
 
 export const FooterPlayer = () => {
 	const { isOpenFooter, videoTitle, videoUrl, playSource, onClickClose } =

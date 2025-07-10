@@ -3,6 +3,8 @@
 import { useAtom, useAtomValue } from "jotai";
 import { useEffect, useRef, useState } from "react";
 
+import { getTopMovieBySearch } from "@/app/_fetchers/youtube/getTopMovieBySearch";
+
 import {
 	isOpenFooterAtom,
 	trackIdAtom,
@@ -11,7 +13,6 @@ import {
 	videoUrlAtom,
 } from "@/libs/stores/video";
 
-import { getTopMovieBySearch } from "@/app/_fetchers/youtube/getTopMovieBySearch";
 import { useErrorHandle } from "@/utils/hooks/useErrorHandle";
 import { usePlayIcon } from "@/utils/hooks/usePlayIcon";
 import { usePlayState } from "@/utils/hooks/usePlayState";

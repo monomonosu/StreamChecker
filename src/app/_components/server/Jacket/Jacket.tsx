@@ -1,10 +1,11 @@
 import Image, { type ImageProps } from "next/image";
 import Link from "next/link";
 
+import style from "@/app/_components/server/Jacket/jacket.module.scss";
+
 import { LinkText } from "@/app/_styles/components/texts";
 import { GapWrapper } from "@/app/_styles/components/wrappers";
 
-import style from "@/app/_components/server/Jacket/jacket.module.scss";
 import helper from "@/app/_styles/helper.module.scss";
 
 import { PATH } from "@/utils/constants/path";

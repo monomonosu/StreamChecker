@@ -1,11 +1,12 @@
-import { AlbumHeader } from "@/app/(static)/albums/[album_id]/_components/AlbumHeader";
-import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
+import { getAlbum } from "@/app/_fetchers/getAlbum";
+import { getAlbumsByArtist } from "@/app/_fetchers/getAlbumsByArtist";
 import { Section, Slider } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
 
-import { getAlbum } from "@/app/_fetchers/getAlbum";
-import { getAlbumsByArtist } from "@/app/_fetchers/getAlbumsByArtist";
+import { AlbumHeader } from "@/app/(static)/albums/[album_id]/_components/AlbumHeader";
+import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
+
 import { PATH } from "@/utils/constants/path";
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
 
@@ -34,48 +35,46 @@ export default async function Album({ params }: Props) {
 	}));
 
 	return (
-		<>
-			<PageWrapper>
-				<Section>
-					<AlbumHeader
-						id={album.id}
-						name={album.name}
-						artists={album.artists}
-						release_date={album.release_date}
-						image={{
-							url: album.image.url ? album.image.url : "/images/no-image.png",
-							width: 300,
-							height: 300,
-						}}
-					/>
-				</Section>
+		<PageWrapper>
+			<Section>
+				<AlbumHeader
+					id={album.id}
+					name={album.name}
+					artists={album.artists}
+					release_date={album.release_date}
+					image={{
+						url: album.image.url ? album.image.url : "/images/no-image.png",
+						width: 300,
+						height: 300,
+					}}
+				/>
+			</Section>
 
-				<Section>
-					<TrackArea tracks={tracks} />
-				</Section>
+			<Section>
+				<TrackArea tracks={tracks} />
+			</Section>
 
-				<Section>
-					<h2>アーティストのその他のアルバム</h2>
-					<Slider>
-						{artistAlbumsData.items.map((item) => (
-							<div style={{ width: "200px" }} key={item.id}>
-								<Jacket
-									href={PATH.ALBUMS(item.id)}
-									fill
-									priority
-									src={
-										item.images.length
-											? item.images[0].url
-											: "/images/no-image.png"
-									}
-									album={{ name: item.name, href: PATH.ALBUMS(item.id) }}
-									alt="アルバム画像"
-								/>
-							</div>
-						))}
-					</Slider>
-				</Section>
-			</PageWrapper>
-		</>
+			<Section>
+				<h2>アーティストのその他のアルバム</h2>
+				<Slider>
+					{artistAlbumsData.items.map((item) => (
+						<div style={{ width: "200px" }} key={item.id}>
+							<Jacket
+								href={PATH.ALBUMS(item.id)}
+								fill
+								priority
+								src={
+									item.images.length
+										? item.images[0].url
+										: "/images/no-image.png"
+								}
+								album={{ name: item.name, href: PATH.ALBUMS(item.id) }}
+								alt="アルバム画像"
+							/>
+						</div>
+					))}
+				</Slider>
+			</Section>
+		</PageWrapper>
 	);
 }

@@ -10,9 +10,9 @@ import { Toast } from "radix-ui";
 import { BasicText } from "@/app/_styles/components/texts";
 import { GapWrapper } from "@/app/_styles/components/wrappers";
 
-import style from "./snackbar.module.scss";
-
 import { formatStatusCategory } from "@/utils/helpers/formatStatus";
+
+import style from "./snackbar.module.scss";
 
 const STATUS_ICONS = {
 	success: <CheckCircledIcon height={24} width={24} color="var(--green-10)" />,

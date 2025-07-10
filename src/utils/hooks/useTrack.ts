@@ -1,9 +1,10 @@
+import { useSetAtom } from "jotai";
+
 import {
 	isOpenFooterAtom,
 	trackIdAtom,
 	trackQueueAtom,
 } from "@/libs/stores/video";
-import { useSetAtom } from "jotai";
 
 export const useTrack = () => {
 	const setTrackQueue = useSetAtom(trackQueueAtom);

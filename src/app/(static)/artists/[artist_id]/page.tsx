@@ -1,12 +1,15 @@
-import { ArtistHeader } from "@/app/(static)/artists/[artist_id]/_components/ArtistHeader";
-import { TopTrackList } from "@/app/(static)/artists/[artist_id]/_components/TopTrackList";
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
-import { Section, Slider } from "@/app/_styles/components/blocks";
-import { PageWrapper } from "@/app/_styles/components/wrappers";
 
 import { getAlbumsByArtist } from "@/app/_fetchers/getAlbumsByArtist";
 import { getArtist } from "@/app/_fetchers/getArtist";
 import { getTopTracksByArtist } from "@/app/_fetchers/getTopTracksByArtist";
+
+import { Section, Slider } from "@/app/_styles/components/blocks";
+import { PageWrapper } from "@/app/_styles/components/wrappers";
+
+import { ArtistHeader } from "@/app/(static)/artists/[artist_id]/_components/ArtistHeader";
+import { TopTrackList } from "@/app/(static)/artists/[artist_id]/_components/TopTrackList";
+
 import { PATH } from "@/utils/constants/path";
 
 type Props = {
