@@ -11,16 +11,21 @@ import helper from "@/app/_styles/helper.module.scss";
 import { PATH } from "@/utils/constants/path";
 
 type ArtistProps = ImageProps & {
-	href: string;
+	href?: string;
 	artist?: { name: string; href: string };
 };
 
 export const Artist = ({ href, artist, ...props }: ArtistProps) => {
 	return (
 		<GapWrapper gap={8} direction="column">
-			<Link href={href} className={style.artist}>
-				<Image className={style.artistImg} {...props} />
-			</Link>
+			{href && (
+				<Link href={href} className={style.artist}>
+					<Image className={style.artistImg} {...props} />
+				</Link>
+			)}
+
+			{!href && <Image className={style.artistImg} {...props} />}
+
 			<GapWrapper direction="column">
 				<LinkText
 					href={artist?.href || PATH[404]}
