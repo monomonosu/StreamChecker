@@ -1,18 +1,10 @@
 .artistHeader {
-    height: auto;
     position: relative;
-    background: var(--gray-3);
-}
-
-.artistImage {
-    height: 60vh;
-    object-fit: contain;
+    width: 320px;
+    height: 320px;
     margin: auto;
 }
 
 .artistText {
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
-    text-shadow: var(--gray-3) 0 0 8px;
+    text-shadow: var(--slate-6) 0 0 8px;
 }
