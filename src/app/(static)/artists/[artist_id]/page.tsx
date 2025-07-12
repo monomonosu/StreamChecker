@@ -16,7 +16,7 @@ type Props = {
 	params: Promise<{ artist_id: string }>;
 };
 
-export default async function Artist({ params }: Props) {
+export default async function ArtistPage({ params }: Props) {
 	const { artist_id } = await params;
 	const artist = await getArtist(artist_id);
 	const topTracks = await getTopTracksByArtist(artist_id);
@@ -30,8 +30,6 @@ export default async function Artist({ params }: Props) {
 						artist.images.length ? artist.images[0].url : "/images/no-image.png"
 					}
 					alt={artist.name}
-					width={640}
-					height={640}
 					artistName={artist.name}
 				/>
 			</Section>
