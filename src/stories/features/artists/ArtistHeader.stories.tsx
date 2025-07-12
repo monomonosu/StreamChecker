@@ -25,8 +25,6 @@ export const Primary: Story = {
 				<ArtistHeader
 					src="/images/no-image.png"
 					alt="artist"
-					width={600}
-					height={600}
 					artistName="artist"
 				/>
 			</div>
@@ -41,8 +39,6 @@ export const AtLightTheme: Story = {
 				<ArtistHeader
 					src="/images/no-image.png"
 					alt="artist"
-					width={600}
-					height={600}
 					artistName="artist"
 				/>
 			</div>
@@ -57,8 +53,6 @@ export const AtSP: Story = {
 				<ArtistHeader
 					src="/images/no-image.png"
 					alt="artist"
-					width={600}
-					height={600}
 					artistName="artist"
 				/>
 			</div>
