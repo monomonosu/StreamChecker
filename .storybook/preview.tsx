@@ -1,8 +1,5 @@
-import React from "react";
 import type { Preview } from "@storybook/nextjs";
-import "@/styles/reset.css";
-import "@/styles/radix-ui-styles.css";
-import "@/styles/global.css";
+import "@/styles/main.scss";
 import { Theme } from "@radix-ui/themes";
 
 const preview: Preview = {

@@ -1,0 +1,16 @@
+
+// モバイルでは非表示
+.display-none-sp {
+  @media screen and (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+// モバイルでのみ表示
+.display-only-sp {
+  display: none;
+
+  @media screen and (max-width: 768px) {
+    display: block;
+  } 
+}
