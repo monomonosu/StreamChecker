@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 
 // モバイルでは非表示
 .display-none-sp {
@@ -13,4 +14,20 @@
   @media screen and (max-width: 768px) {
     display: block;
   } 
+}
+
+// 3点リーダー
+@for $i from 1 through $ellipsisLineLength {
+	  .textEllipsis-#{$i} {
+	display: -webkit-box;
+	line-clamp: $i;
+	-webkit-line-clamp: $i;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+  }
+}
+
+// リンク文字
+.link {
+    color: var(--gray-10);
 }
