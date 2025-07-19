@@ -1,24 +1,56 @@
+@use "../../../../styles/utils/mixins" as *;
+
 .footer {
 	z-index: 1000;
 	background-color: var(--color-background);
-	display: flex;
 	position: fixed;
-	height: 20vh;
 	width: 100%;
+	height: fit-content;
 	bottom: 0;
+
+	@include mq(sm) {
+		display: flex;
+		flex-direction: column;
+	}
+
+	@include mq(md) {
+		display: flex;
+		flex-direction: row;
+		height: 20vh;
+	}
+	
 }
 
 .footerMovie {
 	width: auto;
-	min-width: 450px;
+	min-width: 375px;
 	height: 100%;
 }
 
 .footerContent {
-	white-space: wrap;
-	width: 100%;
-	padding: 16px 32px;
 	display:flex;
 	flex-direction: column;
+	white-space: wrap;
+	width: 100%;
 	gap: 16px;
+
+	@include mq(sm) {
+		padding: 8px 16px;
+	}
+
+	@include mq(md) {
+		padding: 16px 32px;
+	}
+}
+
+.buttonWrapper {
+	width: fit-content;
+
+	@include mq(sm) {
+		margin: auto;
+	}
+
+	@include mq(md) {
+		margin: 0;
+	}
 }

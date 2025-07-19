@@ -4,7 +4,6 @@ import Image from "next/image";
 
 import type { SpotifyArtistTopTracksResponse } from "@/app/_fetchers/types";
 
-import helper from "@/app/_styles/helper.module.scss";
 import style from "@/app/(static)/artists/[artist_id]/_components/top-track-list.module.scss";
 
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
@@ -73,12 +72,7 @@ export const TopTrackList = ({ topTracks }: Props) => {
 									)}
 
 									{track.id !== playingTrackId && (
-										<span
-											className={helper.textEllipsis}
-											style={{ textAlign: "center" }}
-										>
-											{track.index}
-										</span>
+										<span style={{ textAlign: "center" }}>{track.index}</span>
 									)}
 
 									<span>
@@ -90,9 +84,9 @@ export const TopTrackList = ({ topTracks }: Props) => {
 											height={40}
 										/>
 									</span>
-									<span className={helper.textEllipsis}>{track.title}</span>
-									<span className={helper.textEllipsis}>{track.album}</span>
-									<span className={helper.textEllipsis}>{track.duration}</span>
+									<span className="textEllipsis-2">{track.title}</span>
+									<span className="textEllipsis-2">{track.album}</span>
+									<span className="textEllipsis-1">{track.duration}</span>
 								</li>
 							))}
 						</ul>
