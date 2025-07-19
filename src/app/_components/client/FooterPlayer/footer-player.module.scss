@@ -32,8 +32,15 @@
 	flex-direction: column;
 	white-space: wrap;
 	width: 100%;
-	padding: 16px 32px;
 	gap: 16px;
+
+	@include mq(sm) {
+		padding: 8px 16px;
+	}
+
+	@include mq(md) {
+		padding: 16px 32px;
+	}
 }
 
 .buttonWrapper {
