@@ -4,6 +4,12 @@
   position: relative;
 }
 
+.marquee::after {
+  content: "";
+  white-space: nowrap;
+  display: inline-block;
+}
+
 .marquee > .marqueeInner {
   position: absolute;
   top: 0;
