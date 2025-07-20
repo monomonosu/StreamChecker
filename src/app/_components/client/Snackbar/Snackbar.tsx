@@ -7,7 +7,6 @@ import {
 } from "@radix-ui/react-icons";
 import { Toast } from "radix-ui";
 
-import { BasicText } from "@/app/_styles/components/texts";
 import { GapWrapper } from "@/app/_styles/components/wrappers";
 
 import { formatStatusCategory } from "@/utils/helpers/formatStatus";
@@ -15,11 +14,11 @@ import { formatStatusCategory } from "@/utils/helpers/formatStatus";
 import style from "./snackbar.module.scss";
 
 const STATUS_ICONS = {
-	success: <CheckCircledIcon height={24} width={24} color="var(--green-10)" />,
+	success: <CheckCircledIcon className={style.icon} color="var(--green-10)" />,
 	warning: (
-		<ExclamationTriangleIcon height={24} width={24} color="var(--yellow-10)" />
+		<ExclamationTriangleIcon className={style.icon} color="var(--yellow-10)" />
 	),
-	error: <CrossCircledIcon height={24} width={24} color="var(--red-10)" />,
+	error: <CrossCircledIcon className={style.icon} color="var(--red-10)" />,
 } as const;
 
 type Props = {
@@ -45,7 +44,7 @@ export const Snackbar = ({ snackbar, onOpenChange }: Props) => {
 				<Toast.Title>
 					<GapWrapper gap={8}>
 						{STATUS_ICONS[formatStatusCategory(status)]}
-						<BasicText size={16}>{title}</BasicText>
+						<p className={style.text}>{title}</p>
 					</GapWrapper>
 				</Toast.Title>
 			</Toast.Root>
