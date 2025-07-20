@@ -1,18 +1,27 @@
+@use "../../../../styles/utils/mixins" as *;
+
 .Viewport {
 	--viewport-padding: 25px;
 	position: fixed;
-	bottom: 0;
-	right: 0;
 	padding: var(--viewport-padding);
 	margin: 0;
 	z-index: 10000;
+
+	@include mq(sm) {
+		top: 25px;
+		right: 0px;
+	}
+
+	@include mq(md) {
+		bottom: 0;
+	right: 0;
+	}
 }
 
 .Root {
 	background-color: var(--color-background);
 	border-radius: 6px;
 	border: 1px solid var(--gray-5);
-	padding: 15px;
 	display: grid;
 	&[data-state="open"] {
 		animation: slideIn 150ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -29,6 +38,38 @@
 	}
 	&[data-swipe="end"] {
 		animation: swipeOut 100ms ease-out;
+	}
+
+	@include mq(sm) {
+		padding: 8px;
+	}
+
+	@include mq(md) {
+		padding: 16px;
+	}
+}
+
+.icon {
+	margin: auto;
+	
+	@include mq(sm) {
+		width: 16px;
+		height: 16px;
+	}
+
+	@include mq(md) {
+		width: 24px;
+		height: 24px;
+	}
+}
+
+.text {
+	@include mq(sm) {
+		font-size: 14px;
+	}
+
+	@include mq(md) {
+		font-size: 16px;
 	}
 }
 

@@ -76,7 +76,7 @@ export const Header = () => {
 							<TextField.Root
 								placeholder="何をお探しですか？"
 								name="query"
-								style={{ width: "300px" }}
+								className={style.textField}
 							>
 								<TextField.Slot>
 									<MagnifyingGlassIcon height="16" width="16" />
