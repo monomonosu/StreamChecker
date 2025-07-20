@@ -7,6 +7,8 @@ import { PageWrapper } from "@/app/_styles/components/wrappers";
 import { AlbumHeader } from "@/app/(static)/albums/[album_id]/_components/AlbumHeader";
 import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
 
+import style from "@/app/(static)/albums/[album_id]/index.module.scss";
+
 import { PATH } from "@/utils/constants/path";
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
 
@@ -58,7 +60,7 @@ export default async function Album({ params }: Props) {
 				<h2>アーティストのその他のアルバム</h2>
 				<Slider>
 					{artistAlbumsData.items.map((item) => (
-						<div style={{ width: "200px" }} key={item.id}>
+						<div className={style.jacketWrapper} key={item.id}>
 							<Jacket
 								href={PATH.ALBUMS(item.id)}
 								fill

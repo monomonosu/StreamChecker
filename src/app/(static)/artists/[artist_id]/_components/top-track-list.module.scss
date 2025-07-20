@@ -1,3 +1,5 @@
+@use "../../../../../styles//utils/mixins" as *;
+
 .scrollWrapper {
 	overflow: hidden;
 	overflow-x: auto;
@@ -16,8 +18,15 @@
 	background-color: var(--gray-3);
 	border-radius: var(--radius-4);
 	padding: 8px;
-	width: 45vw;
 	flex-shrink: 0;
+
+	@include mq(sm) {
+		width: 340px;
+	}
+
+	@include mq(md) {
+		width: 500px;
+	}
   }
   
   .list {

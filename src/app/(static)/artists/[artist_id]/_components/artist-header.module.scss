@@ -1,8 +1,18 @@
+@use "../../../../../styles/utils/mixins" as *;
+
 .artistHeader {
     position: relative;
-    width: 320px;
-    height: 320px;
     margin: auto;
+
+    @include mq(sm) {
+		width: 240px;
+        height: 240px;
+    }
+
+    @include mq(md) {
+		width: 320px;
+    height: 320px;
+	}
 }
 
 .artistText {

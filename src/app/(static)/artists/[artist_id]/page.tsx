@@ -10,6 +10,8 @@ import { PageWrapper } from "@/app/_styles/components/wrappers";
 import { ArtistHeader } from "@/app/(static)/artists/[artist_id]/_components/ArtistHeader";
 import { TopTrackList } from "@/app/(static)/artists/[artist_id]/_components/TopTrackList";
 
+import style from "@/app/(static)/artists/[artist_id]/index.module.scss";
+
 import { PATH } from "@/utils/constants/path";
 
 type Props = {
@@ -43,7 +45,7 @@ export default async function ArtistPage({ params }: Props) {
 				<h2>アルバム</h2>
 				<Slider>
 					{albums.items.map((item) => (
-						<div style={{ width: "200px" }} key={item.id}>
+						<div className={style.jacketWrapper} key={item.id}>
 							<Jacket
 								href={PATH.ALBUMS(item.id)}
 								fill
