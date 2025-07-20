@@ -1,0 +1,34 @@
+@use "../../../styles/utils/mixins" as *;
+
+.resultsWrapper {
+
+	@include mq(sm) {
+		width: 150px;
+	}
+
+	@include mq(md) {
+		width: 200px;
+	}
+}
+
+.artistWrapper {
+
+	@include mq(sm) {
+		width: 100px;
+	}
+
+	@include mq(md) {
+		width: 150px;
+	}
+}
+
+.jacketWrapper {
+
+	@include mq(sm) {
+		width: 100px;
+	}
+
+	@include mq(md) {
+		width: 200px;
+	}
+}

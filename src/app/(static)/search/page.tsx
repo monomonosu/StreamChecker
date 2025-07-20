@@ -8,6 +8,8 @@ import { GapWrapper, PageWrapper } from "@/app/_styles/components/wrappers";
 import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
 import { SearchForm } from "@/app/(static)/search/_components/SearchForm";
 
+import style from "@/app/(static)/search/index.module.scss";
+
 import { PATH } from "@/utils/constants/path";
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
 
@@ -67,7 +69,7 @@ export default async function Search({ searchParams }: Props) {
 							{artists?.length > 0 && (
 								<GapWrapper gap={8} direction="column">
 									<h3>アーティスト</h3>
-									<div style={{ width: "200px" }}>
+									<div className={style.resultsWrapper}>
 										<Artist
 											href={PATH.ARTISTS(artists[0].id)}
 											fill
@@ -90,7 +92,7 @@ export default async function Search({ searchParams }: Props) {
 							{albums?.length > 0 && (
 								<GapWrapper gap={8} direction="column">
 									<h3>アルバム</h3>
-									<div style={{ width: "200px" }}>
+									<div className={style.resultsWrapper}>
 										<Jacket
 											href={PATH.ALBUMS(albums[0].id)}
 											fill
@@ -124,7 +126,7 @@ export default async function Search({ searchParams }: Props) {
 							<h2>アーティスト</h2>
 							<Slider>
 								{artists.map((artist) => (
-									<div style={{ width: "150px" }} key={artist.id}>
+									<div className={style.artistWrapper} key={artist.id}>
 										<Artist
 											href={PATH.ARTISTS(artist.id)}
 											fill
@@ -151,7 +153,7 @@ export default async function Search({ searchParams }: Props) {
 							<h2>アルバム</h2>
 							<Slider>
 								{albums.map((album) => (
-									<div style={{ width: "200px" }} key={album.id}>
+									<div className={style.jacketWrapper} key={album.id}>
 										<Jacket
 											href={PATH.ALBUMS(album.id)}
 											fill

@@ -10,6 +10,8 @@ import { PageWrapper } from "@/app/_styles/components/wrappers";
 
 import { genres } from "@/app/(static)/_utils/_constants";
 
+import style from "@/app/(static)/index.module.scss";
+
 import { PATH } from "@/utils/constants/path";
 
 export default async function Home() {
@@ -20,61 +22,65 @@ export default async function Home() {
 
 	return (
 		<PageWrapper>
-			<Section>
-				<h1>新着</h1>
+			<div>
+				<Section>
+					<h1>新着</h1>
 
-				<Slider>
-					{newReleaseData.albums.items.map((item) => (
-						<div style={{ width: "200px" }} key={item.id}>
-							<Jacket
-								href={PATH.ALBUMS(item.id)}
-								fill
-								priority
-								src={item.images[0].url}
-								album={{ name: item.name, href: PATH.ALBUMS(item.id) }}
-								artist={{
-									name: item.artists[0].name,
-									href: PATH.ARTISTS(item.artists[0].id),
-								}}
-								alt="最新リリースアルバム画像"
-							/>
-						</div>
-					))}
-				</Slider>
+					<Slider>
+						{newReleaseData.albums.items.map((item) => (
+							<div className={style.jacketWrapper} key={item.id}>
+								<Jacket
+									href={PATH.ALBUMS(item.id)}
+									fill
+									priority
+									src={item.images[0].url}
+									album={{ name: item.name, href: PATH.ALBUMS(item.id) }}
+									artist={{
+										name: item.artists[0].name,
+										href: PATH.ARTISTS(item.artists[0].id),
+									}}
+									alt="最新リリースアルバム画像"
+								/>
+							</div>
+						))}
+					</Slider>
+				</Section>
 
 				<LinkText href={PATH.NEW}>▶︎ ReadMoreNewAlbums...</LinkText>
-			</Section>
+			</div>
 
-			<Section>
-				<h1>人気</h1>
+			<div>
+				<Section>
+					<h1>人気</h1>
 
-				<Slider>
-					{popularityData.albums.items.map((item) => (
-						<div style={{ width: "200px" }} key={item.id}>
-							<Jacket
-								href={PATH.ALBUMS(item.id)}
-								fill
-								priority
-								src={item.images[0].url}
-								album={{ name: item.name, href: PATH.ALBUMS(item.id) }}
-								artist={{
-									name: item.artists[0].name,
-									href: PATH.ARTISTS(item.artists[0].id),
-								}}
-								alt="国内人気アルバム画像"
-							/>
-						</div>
-					))}
-				</Slider>
+					<Slider>
+						{popularityData.albums.items.map((item) => (
+							<div className={style.jacketWrapper} key={item.id}>
+								<Jacket
+									href={PATH.ALBUMS(item.id)}
+									fill
+									priority
+									src={item.images[0].url}
+									album={{ name: item.name, href: PATH.ALBUMS(item.id) }}
+									artist={{
+										name: item.artists[0].name,
+										href: PATH.ARTISTS(item.artists[0].id),
+									}}
+									alt="国内人気アルバム画像"
+								/>
+							</div>
+						))}
+					</Slider>
+				</Section>
 
 				<LinkText href={PATH.POPULARITY}>▶︎ ReadMorePopularAlbums...</LinkText>
-			</Section>
+			</div>
 
 			<Section>
 				<h1>ジャンル</h1>
 				<Slider>
 					{genres.map((genre) => (
-						<div style={{ width: "200px" }} key={genre.id}>
+						<div className={style.jacketWrapper} key={genre.id}>
 							<Genre
 								href="/"
 								fill

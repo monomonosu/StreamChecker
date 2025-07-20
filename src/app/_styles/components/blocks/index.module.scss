@@ -1,7 +1,16 @@
+@use "../../../../styles/utils/mixins" as *;
+
 .section {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+
+    @include mq(sm) {
+        gap: 16px;
+	}
+
+    @include mq(md) {
+        gap: 24px;
+	}
 }
 
 .slider {
@@ -19,6 +28,21 @@
 
 .infiniteGrid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
     gap: 24px;
+
+    @include mq(sm) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mq(md) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mq(lg) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include mq(xl) {
+        grid-template-columns: repeat(6, 1fr);
+    }
 }

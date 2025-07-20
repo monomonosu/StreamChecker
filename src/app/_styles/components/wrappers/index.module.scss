@@ -1,5 +1,13 @@
+@use "../../../../styles/utils/mixins" as *;
+
 .pageWrapper {
     display: flex;
     flex-direction: column;
-    gap: 56px;
+
+    @include mq(sm) {
+		gap: 36px;
+    }
+    @include mq(md) {
+       gap: 56px;
+    }
 }
