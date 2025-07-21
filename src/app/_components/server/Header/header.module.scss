@@ -8,15 +8,15 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 16px 64px;
     height: 56px;
-}
 
-@media screen and (max-width: 768px) {
-    .header {
+    @include mq(sm) {
         padding: 8px 32px;
     }
-    
+
+    @include mq(md) {
+        padding: 16px 64px;
+    }
 }
 
 .link {
@@ -27,42 +27,6 @@
 
 .link:hover {
     transform: scale(1.2);
-}
-
-.logo {
-    display: inline;
-}
-
-.logoSmall {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .logo {
-        display: none;
-    }
-
-    .logoSmall {
-        display: inline;
-    }
-}
-
-.label {
-    display:block;
-}
-
-.icon {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .label {
-        display: none;
-    }
-
-    .icon {
-        display:  block;
-    }
 }
 
 .textField {

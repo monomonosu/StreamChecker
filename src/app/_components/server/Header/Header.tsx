@@ -31,16 +31,16 @@ export const Header = () => {
 					<Logo />
 				</Link>
 				<Link className={style.link} href={PATH.HOME}>
-					<span className={style.label}>ホーム</span>
-					<House className={style.icon} size="24px" />
+					<span className="display-none-sp">ホーム</span>
+					<House className="display-only-sp" size="24px" />
 				</Link>
 				<Link className={style.link} href={PATH.NEW}>
-					<span className={style.label}>新着</span>
-					<Bell className={style.icon} size="24px" />
+					<span className="display-none-sp">新着</span>
+					<Bell className="display-only-sp" size="24px" />
 				</Link>
 				<Link className={style.link} href={PATH.POPULARITY}>
-					<span className={style.label}>人気</span>
-					<ChartNoAxesCombined className={style.icon} size="24px" />
+					<span className="display-none-sp">人気</span>
+					<ChartNoAxesCombined className="display-only-sp" size="24px" />
 				</Link>
 			</GapWrapper>
 
