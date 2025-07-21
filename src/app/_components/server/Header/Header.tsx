@@ -7,9 +7,9 @@ import { IconButton, TextField } from "@radix-ui/themes";
 import { Bell, ChartNoAxesCombined, House } from "lucide-react";
 
 import Form from "next/form";
-import Image from "next/image";
 import Link from "next/link";
 
+import { Logo } from "@/app/_components/server/Header/client/Logo";
 import { ThemeToggle } from "@/app/_components/server/Header/client/ThemeToggle";
 
 import style from "@/app/_components/server/Header/header.module.scss";
@@ -28,20 +28,7 @@ export const Header = () => {
 					style={{ height: "24px" }}
 					href={PATH.HOME}
 				>
-					<Image
-						className={style.logo}
-						src="/test-logo.svg"
-						height={24}
-						alt="logo"
-						width={100}
-					/>
-					<Image
-						className={style.logoSmall}
-						src="/test-logo.svg"
-						height={24}
-						alt="logo"
-						width={24}
-					/>
+					<Logo />
 				</Link>
 				<Link className={style.link} href={PATH.HOME}>
 					<span className={style.label}>ホーム</span>
