@@ -4,6 +4,8 @@ export const PATH = {
 	POPULARITY: "/popularity",
 	SEARCH: "/search",
 
+	ABOUT: "/about",
+
 	ALBUMS: (album_id: string) => `/albums/${album_id}`,
 	ARTISTS: (artist_id: string) => `/artists/${artist_id}`,
 

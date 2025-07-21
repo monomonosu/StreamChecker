@@ -15,6 +15,7 @@ import { ThemeToggle } from "@/app/_components/server/Header/client/ThemeToggle"
 import style from "@/app/_components/server/Header/header.module.scss";
 
 import { Popup } from "@/app/_components/server/Popup/Popup";
+import { LinkText } from "@/app/_styles/components/texts";
 import { GapWrapper } from "@/app/_styles/components/wrappers";
 
 import { PATH } from "@/utils/constants/path";
@@ -95,7 +96,15 @@ export const Header = () => {
 						</IconButton>
 					}
 				>
-					<ThemeToggle />
+					<ThemeToggle className="mb-1" />
+
+					<hr style={{ borderColor: "var(--color-panel-solid)" }} />
+
+					<GapWrapper direction="column">
+						<LinkText className={style.menuLink} href={PATH.ABOUT}>
+							このサイトについて
+						</LinkText>
+					</GapWrapper>
 				</Popup>
 			</GapWrapper>
 		</div>

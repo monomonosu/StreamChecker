@@ -39,3 +39,17 @@
         width: 300px;
     }
 }
+
+.menuLink {
+    padding: 8px;
+    border-radius: 8px;
+
+    &:hover {
+	  background-color: var(--gray-5);
+	}
+
+	 &:focus {
+	  outline: 1px solid var(--gray-10)	;
+	  outline-offset: 1px;
+	 }
+}

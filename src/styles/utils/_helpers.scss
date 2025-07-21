@@ -16,6 +16,17 @@
   } 
 }
 
+// マージンのユーティリティ
+@for $i from 1 through $loopLength {
+  .mt-#{$i} {
+    margin-top: #{$i * $baseSize}px;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: #{$i * $baseSize}px;
+  }
+}
+
 // 3点リーダー
 @for $i from 1 through $ellipsisLineLength {
 	  .textEllipsis-#{$i} {
