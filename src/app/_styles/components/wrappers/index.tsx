@@ -40,3 +40,23 @@ export const GapWrapper = ({
 		</div>
 	);
 };
+
+export interface CenterWrapperProps {
+	children: React.ReactNode;
+	style?: React.CSSProperties;
+}
+
+export const CenterWrapper = ({ children, style }: CenterWrapperProps) => {
+	return (
+		<div
+			style={{
+				display: "flex",
+				justifyContent: "center",
+				alignItems: "center",
+				...style,
+			}}
+		>
+			{children}
+		</div>
+	);
+};

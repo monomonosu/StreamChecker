@@ -1,0 +1,17 @@
+
+
+.content {
+
+	ul {
+		padding-left: 16px ;
+	}
+
+	li {
+		margin-bottom: 8px;
+		list-style: none;	
+	}
+
+	ul > li > ul >li {
+		margin-top: 8px;
+	}
+}
