@@ -63,10 +63,7 @@ export default function Guide() {
 					</ul>
 				</section>
 
-				<hr
-					className="mt-3 mb-3"
-					style={{ width: "100%", borderColor: "var(--color-panel-solid)" }}
-				/>
+				<hr className={style.border} />
 
 				<section>
 					<h3>テーマカラー変更</h3>
@@ -101,10 +98,7 @@ export default function Guide() {
 					</ul>
 				</section>
 
-				<hr
-					className="mt-3 mb-3"
-					style={{ width: "100%", borderColor: "var(--color-panel-solid)" }}
-				/>
+				<hr className={style.border} />
 
 				<section>
 					<h3>検索機能</h3>
@@ -172,10 +166,7 @@ export default function Guide() {
 					</ul>
 				</section>
 
-				<hr
-					className="mt-3 mb-3"
-					style={{ width: "100%", borderColor: "var(--color-panel-solid)" }}
-				/>
+				<hr className={style.border} />
 
 				<section>
 					<h3>アルバムページ</h3>
@@ -200,10 +191,7 @@ export default function Guide() {
 					</ul>
 				</section>
 
-				<hr
-					className="mt-3 mb-3"
-					style={{ width: "100%", borderColor: "var(--color-panel-solid)" }}
-				/>
+				<hr className={style.border} />
 
 				<section>
 					<h3>アーティストページ</h3>
@@ -228,10 +216,7 @@ export default function Guide() {
 					</ul>
 				</section>
 
-				<hr
-					className="mt-3 mb-3"
-					style={{ width: "100%", borderColor: "var(--color-panel-solid)" }}
-				/>
+				<hr className={style.border} />
 
 				<section>
 					<h3>検索結果ページ</h3>
