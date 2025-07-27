@@ -1,14 +1,13 @@
 import "@/styles/main.scss";
-import { Theme } from "@radix-ui/themes";
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { cookies } from "next/headers";
 
 import { FooterPlayer } from "@/app/_components/client/FooterPlayer/FooterPlayer";
 import { Header } from "@/app/_components/server/Header/Header";
 
-import { ClientProvider } from "@/app/_providers/ClientProvider";
 import { GlobalSnackbar } from "@/app/_providers/GlobalSnackbar";
+import { ThemeProvider } from "@/app/_providers/ThemeProvider";
 
 import style from "@/app/layout.module.scss";
 
@@ -32,21 +31,17 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const cookie = await cookies();
-	const theme = cookie.get("theme")?.value === "light" ? "light" : "dark";
-
 	return (
 		<html lang="en">
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
-				<Theme appearance={theme}>
-					<ClientProvider />
+				<ThemeProvider>
 					<GlobalSnackbar />
 					<Header />
 					<div className={style.main}>
 						<div className={style["main-inner"]}>{children}</div>
 						<FooterPlayer />
 					</div>
-				</Theme>
+				</ThemeProvider>
 			</body>
 		</html>
 	);
