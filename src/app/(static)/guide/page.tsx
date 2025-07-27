@@ -161,6 +161,43 @@ export default function Guide() {
 				<hr className={style.border} />
 
 				<section>
+					<h3>新着アルバム・シングルページ／人気アルバム・シングルページ</h3>
+
+					<ul>
+						<li>
+							<h4>説明</h4>
+							<ul>
+								<li>
+									<BasicText>
+										新着アルバム・シングルページでは新しく配線されたアルバム・シングルの一覧を確認する事ができます。
+									</BasicText>
+									<BasicText>
+										人気アルバム・シングルページでは人気のアルバム・シングルの一覧を確認する事ができます。
+									</BasicText>
+									<BasicText>
+										ページは無限スクロールに対応しているため、さらに情報を確認したい場合は下部にスクロールする事で確認する事ができます。
+									</BasicText>
+									<BasicText>
+										新着アルバム・シングルページ／人気アルバム・シングルページではアルバムのジャケット画像、アーティスト名、アルバム名を確認する事ができます。
+									</BasicText>
+									<BasicText>
+										アルバムのジャケット画像、アルバム名をクリックする事でアルバムページに遷移する事ができます。
+									</BasicText>
+									<BasicText>
+										アーティスト名をクリックする事でアーティストページに遷移する事ができます。
+									</BasicText>
+									<BasicText>
+										新着アルバム・シングルページ／人気アルバム・シングルページへはヘッダーの「新着」・「人気」リンクから遷移する事ができます。
+									</BasicText>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<hr className={style.border} />
+
+				<section>
 					<h3>アルバムページ</h3>
 
 					<ul>
