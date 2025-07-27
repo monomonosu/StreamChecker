@@ -16,14 +16,10 @@ export default function Guide() {
 				</BasicText>
 			</div>
 			<div className={style.content}>
-				<CenterWrapper>
+				<CenterWrapper style={{ flexDirection: "column" }}>
 					<h2>機能</h2>
+					<hr className={style.border} style={{ width: "200px" }} />
 				</CenterWrapper>
-
-				<hr
-					className="mt-3 mb-3"
-					style={{ width: "200px", borderColor: "var(--color-panel-solid)" }}
-				/>
 
 				<section>
 					<h3>MVプレビュー機能</h3>
@@ -134,14 +130,10 @@ export default function Guide() {
 			</div>
 
 			<div className={style.content}>
-				<CenterWrapper>
+				<CenterWrapper style={{ flexDirection: "column" }}>
 					<h2>各種ページ</h2>
+					<hr className={style.border} style={{ width: "200px" }} />
 				</CenterWrapper>
-
-				<hr
-					className="mt-3 mb-3"
-					style={{ width: "200px", borderColor: "var(--color-panel-solid)" }}
-				/>
 
 				<section>
 					<h3>TOPページ</h3>
