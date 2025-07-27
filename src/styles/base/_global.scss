@@ -1,5 +1,9 @@
 @use "../utils/mixins" as *;
 
+html {
+	scroll-behavior: smooth;
+}
+
 a {
 	text-decoration: none;
 	color: unset;

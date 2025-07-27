@@ -104,6 +104,9 @@ export const Header = () => {
 						<LinkText className={style.menuLink} href={PATH.ABOUT}>
 							このサイトについて
 						</LinkText>
+						<LinkText className={style.menuLink} href={PATH.GUIDE}>
+							ガイドページ
+						</LinkText>
 					</GapWrapper>
 				</Popup>
 			</GapWrapper>
