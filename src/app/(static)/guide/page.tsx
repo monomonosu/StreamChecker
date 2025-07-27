@@ -1,4 +1,4 @@
-import { BasicText } from "@/app/_styles/components/texts";
+import { BasicText, LinkText } from "@/app/_styles/components/texts";
 import { CenterWrapper, PageWrapper } from "@/app/_styles/components/wrappers";
 
 import style from "@/app/(static)/guide/index.module.scss";
@@ -7,6 +7,58 @@ export default function Guide() {
 	return (
 		<PageWrapper>
 			<h1>ガイドページ</h1>
+
+			<div className={style.content}>
+				<CenterWrapper style={{ flexDirection: "column" }}>
+					<h2>目次</h2>
+					<hr className={style.border} style={{ width: "200px" }} />
+				</CenterWrapper>
+
+				<section>
+					<ul>
+						<li>
+							<h4>機能</h4>
+							<ul>
+								<li>
+									<div>
+										<LinkText href="#mv-preview">MVプレビュー機能</LinkText>
+									</div>
+									<div>
+										<LinkText href="#theme-toggle">テーマカラー変更</LinkText>
+									</div>
+									<div>
+										<LinkText href="#search">検索機能</LinkText>
+									</div>
+								</li>
+							</ul>
+
+							<h4>各種ページ</h4>
+							<ul>
+								<li>
+									<div>
+										<LinkText href="#top-page">TOPページ</LinkText>
+									</div>
+									<div>
+										<LinkText href="#new-popularity-page">
+											新着アルバム・シングルページ／人気アルバム・シングルページ
+										</LinkText>
+									</div>
+									<div>
+										<LinkText href="#album-page">アルバムページ</LinkText>
+									</div>
+									<div>
+										<LinkText href="#artist-page">アーティストページ</LinkText>
+									</div>
+									<div>
+										<LinkText href="#search-page">検索結果ページ</LinkText>
+									</div>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+			</div>
+
 			<div>
 				<BasicText>
 					このページでは本サイトの機能や各種ページの説明を記載しています。
@@ -21,7 +73,7 @@ export default function Guide() {
 					<hr className={style.border} style={{ width: "200px" }} />
 				</CenterWrapper>
 
-				<section>
+				<section className={style.section} id="mv-preview">
 					<h3>MVプレビュー機能</h3>
 
 					<ul>
@@ -61,7 +113,7 @@ export default function Guide() {
 
 				<hr className={style.border} />
 
-				<section>
+				<section className={style.section} id="theme-toggle">
 					<h3>テーマカラー変更</h3>
 
 					<ul>
@@ -96,7 +148,7 @@ export default function Guide() {
 
 				<hr className={style.border} />
 
-				<section>
+				<section className={style.section} id="search">
 					<h3>検索機能</h3>
 
 					<ul>
@@ -135,7 +187,7 @@ export default function Guide() {
 					<hr className={style.border} style={{ width: "200px" }} />
 				</CenterWrapper>
 
-				<section>
+				<section className={style.section} id="top-page">
 					<h3>TOPページ</h3>
 
 					<ul>
@@ -160,7 +212,7 @@ export default function Guide() {
 
 				<hr className={style.border} />
 
-				<section>
+				<section className={style.section} id="new-popularity-page">
 					<h3>新着アルバム・シングルページ／人気アルバム・シングルページ</h3>
 
 					<ul>
@@ -197,7 +249,7 @@ export default function Guide() {
 
 				<hr className={style.border} />
 
-				<section>
+				<section className={style.section} id="album-page">
 					<h3>アルバムページ</h3>
 
 					<ul>
@@ -222,7 +274,7 @@ export default function Guide() {
 
 				<hr className={style.border} />
 
-				<section>
+				<section className={style.section} id="artist-page">
 					<h3>アーティストページ</h3>
 
 					<ul>
@@ -247,7 +299,7 @@ export default function Guide() {
 
 				<hr className={style.border} />
 
-				<section>
+				<section className={style.section} id="search-page">
 					<h3>検索結果ページ</h3>
 
 					<ul>
