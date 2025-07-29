@@ -1,4 +1,3 @@
-import { Genre } from "@/app/_components/server/Genre/Genre";
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 
 import { getNewReleases } from "@/app/_fetchers/getNewReleases";
@@ -7,8 +6,6 @@ import { getPopularityAlbums } from "@/app/_fetchers/getPopularityAlbums";
 import { Section, Slider } from "@/app/_styles/components/blocks";
 import { LinkText } from "@/app/_styles/components/texts";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
-
-import { genres } from "@/app/(static)/_utils/_constants";
 
 import style from "@/app/(static)/index.module.scss";
 
@@ -75,24 +72,6 @@ export default async function Home() {
 
 				<LinkText href={PATH.POPULARITY}>▶︎ ReadMorePopularAlbums...</LinkText>
 			</div>
-
-			<Section>
-				<h1>ジャンル</h1>
-				<Slider>
-					{genres.map((genre) => (
-						<div className={style.jacketWrapper} key={genre.id}>
-							<Genre
-								href="/"
-								fill
-								priority
-								src={genre.src}
-								genreName={genre.name}
-								alt="ジャンル画像"
-							/>
-						</div>
-					))}
-				</Slider>
-			</Section>
 		</PageWrapper>
 	);
 }
