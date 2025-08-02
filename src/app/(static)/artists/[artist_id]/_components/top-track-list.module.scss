@@ -21,11 +21,11 @@
 	flex-shrink: 0;
 
 	@include mq(sm) {
-		width: 340px;
+		width: 280px;
 	}
 
 	@include mq(md) {
-		width: 600px;
+		width: 500px;
 	}
   }
   
@@ -38,7 +38,7 @@
   .row {
 	display: grid;
 	gap: 16px;
-	grid-template-columns: 24px auto 1fr 1fr auto;
+	grid-template-columns: 24px auto 1fr auto;
 	font-size: var(--font-size-2);
 	padding: 10px 12px;
 	border-radius: var(--radius-4);

@@ -4,6 +4,8 @@ import Image from "next/image";
 
 import type { SpotifyArtistTopTracksResponse } from "@/app/_fetchers/types";
 
+import { BasicText } from "@/app/_styles/components/texts";
+
 import style from "@/app/(static)/artists/[artist_id]/_components/top-track-list.module.scss";
 
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
@@ -84,9 +86,20 @@ export const TopTrackList = ({ topTracks }: Props) => {
 											height={40}
 										/>
 									</span>
-									<span className="textEllipsis-2">{track.title}</span>
-									<span className="textEllipsis-2">{track.album}</span>
-									<span className="textEllipsis-1">{track.duration}</span>
+									<span>
+										<BasicText className="textEllipsis-1">
+											{track.title}
+										</BasicText>
+										<BasicText
+											className="textEllipsis-1"
+											style={{ color: "var(--gray-10)" }}
+										>
+											{track.album}
+										</BasicText>
+									</span>
+									<span className="textEllipsis-1 display-none-sp">
+										{track.duration}
+									</span>
 								</li>
 							))}
 						</ul>
