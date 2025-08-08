@@ -1,0 +1,29 @@
+@use "../../../../../../styles/utils/mixins" as *;
+
+.skeletonImage {
+	margin:auto;
+	border-radius: 50%;
+
+	@include mq(sm) {
+		width: 240px;
+		height: 240px;
+	}
+
+	@include mq(md) {
+		width: 320px;
+		height: 320px;
+	}
+}
+
+.skeletonText {
+	width: 240px;
+	border-radius: var(--radius-4);
+
+	@include mq(sm) {
+		height: 26px;
+	}
+
+	@include mq(md) {
+		height: 35px;
+	}
+}
