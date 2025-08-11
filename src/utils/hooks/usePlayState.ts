@@ -37,7 +37,7 @@ export const usePlayState = () => {
 
 	return {
 		isPlaying: playing.isPlaying,
-		playingTrackId: playing.trackId,
+		playingTrackId: playing.trackId || null,
 		setPlay,
 		setPause,
 	};
