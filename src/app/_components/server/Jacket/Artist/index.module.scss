@@ -1,4 +1,4 @@
-@use "../../../../styles/utils/mixins" as *;
+@use "../../../../../styles/utils/mixins" as *;
 
 .jacketWrapper {
 	@include mq(sm) {

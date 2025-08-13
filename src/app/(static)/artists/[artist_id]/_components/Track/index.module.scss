@@ -1,0 +1,32 @@
+@use "../../../../../../styles//utils/mixins" as *;
+
+.row {
+	all: unset; // buttonスタイルのリセット
+	width: stretch;
+	display: grid;
+	gap: 16px;
+	grid-template-columns: 24px auto 1fr auto;
+	font-size: var(--font-size-2);
+	padding: 10px 12px;
+	border-radius: var(--radius-4);
+	transition: background-color 0.2s ease;
+	cursor: pointer;
+  
+	span {
+	  margin: auto 0;
+	}
+  
+	&:hover {
+	  background-color: var(--gray-5);
+	}
+
+	&:focus {
+	  outline: 1px solid var(--gray-10);
+	  outline-offset: 1px;
+	}
+
+  }
+
+  .image {
+	border-radius: var(--radius-2);;
+  }
