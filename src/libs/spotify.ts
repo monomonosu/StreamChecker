@@ -37,10 +37,14 @@ export async function getAccessToken(): Promise<SpotifyAuthResponse> {
  * @param {string} endpoint
  * @returns {Promise<T>}
  */
-export async function fetchSpotifyData<T>(endpoint: string): Promise<T> {
+export async function fetchSpotifyData<T>(
+	endpoint: string,
+	revalidate?: number,
+): Promise<T> {
 	const { access_token } = await getAccessToken();
 
 	const res = await fetch(`${BASE_URL}/${endpoint}`, {
+		next: { revalidate },
 		headers: {
 			Authorization: `Bearer ${access_token}`,
 		},
