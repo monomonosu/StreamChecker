@@ -1,5 +1,6 @@
 import type { SpotifyAlbumsResponse } from "@/app/_fetchers/types";
 import { fetchSpotifyData } from "@/libs/spotify";
+import { REVALIDATE_ONE_HOUR } from "@/utils/constants/revalidate";
 
 /**
  * Spotify の新着アルバムを取得
@@ -14,6 +15,7 @@ export async function getNewReleases({
 } = {}) {
 	const res = await fetchSpotifyData<SpotifyAlbumsResponse>(
 		`browse/new-releases?offset=${offset}&limit=${limit}&market=JP&language=ja-JP`,
+		REVALIDATE_ONE_HOUR,
 	);
 
 	return res;

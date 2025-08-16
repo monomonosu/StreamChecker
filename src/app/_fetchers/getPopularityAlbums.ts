@@ -1,5 +1,6 @@
 import type { SpotifyAlbumsResponse } from "@/app/_fetchers/types";
 import { fetchSpotifyData } from "@/libs/spotify";
+import { REVALIDATE_ONE_HOUR } from "@/utils/constants/revalidate";
 
 /**
  * 日本国内での人気アルバムを取得
@@ -14,5 +15,6 @@ export const getPopularityAlbums = async ({
 } = {}) => {
 	return fetchSpotifyData<SpotifyAlbumsResponse>(
 		`search?q=album&type=album&limit=${limit}&offset=${offset}&sort=popularity&language=ja-JP&market=JP`,
+		REVALIDATE_ONE_HOUR,
 	);
 };
