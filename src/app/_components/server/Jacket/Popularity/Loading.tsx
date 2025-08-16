@@ -8,10 +8,12 @@ export const Loading = () => {
 		<>
 			{[...Array(12).keys()].map((i) => (
 				<GapWrapper key={i} direction="column" gap={8}>
-					<Skeleton key={i} className={style.skeletonImage} />
+					<Skeleton key={i} className={`${style.skeletonImage} radius-1`} />
 					<div>
-						<Skeleton className={`${style.skeletonText} ${style["-small"]}`} />
-						<Skeleton className={style.skeletonText} />
+						<Skeleton
+							className={`${style.skeletonText} ${style["-small"]} radius-1`}
+						/>
+						<Skeleton className={`${style.skeletonText} radius-1`} />
 					</div>
 				</GapWrapper>
 			))}
