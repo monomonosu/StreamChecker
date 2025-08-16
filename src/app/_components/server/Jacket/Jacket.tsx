@@ -18,7 +18,7 @@ export const Jacket = ({ href, album, artist, ...props }: JacketProps) => {
 	return (
 		<GapWrapper gap={8} direction="column">
 			<Link href={href} className={style.jacket}>
-				<Image className={style.jacketImg} {...props} />
+				<Image className={style.jacketImg} {...props} unoptimized />
 			</Link>
 			<GapWrapper direction="column">
 				<LinkText
