@@ -6,8 +6,8 @@ import style from "./loading.module.scss";
 export const Loading = () => {
 	return (
 		<GapWrapper direction="column" gap={24}>
-			<Skeleton className={style.skeletonImage} />
-			<Skeleton className={style.skeletonText} />
+			<Skeleton className={`${style.skeletonImage} radius-full`} />
+			<Skeleton className={`${style.skeletonText} radius-3`} />
 		</GapWrapper>
 	);
 };
