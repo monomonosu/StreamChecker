@@ -27,6 +27,17 @@
   }
 }
 
+// 丸みのユーティリティ
+@for $i from 1 through $loopLength {
+  .radius-#{$i} {
+    border-radius: #{$i * $baseSize}px;
+  }
+}
+
+.radius-full {
+  border-radius: 50%;
+}
+
 // 3点リーダー
 @for $i from 1 through $ellipsisLineLength {
 	  .textEllipsis-#{$i} {

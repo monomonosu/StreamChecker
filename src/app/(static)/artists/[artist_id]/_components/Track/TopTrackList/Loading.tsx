@@ -7,7 +7,7 @@ export const Loading = () => {
 		<div className={style.skeletonWrapper}>
 			<div className={style.skeletonContainer}>
 				{[...Array(3).keys()].map((i) => (
-					<Skeleton key={i} className={style.skeletonColumn} />
+					<Skeleton key={i} className={`${style.skeletonColumn} radius-1`} />
 				))}
 			</div>
 		</div>

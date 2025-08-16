@@ -2,7 +2,6 @@
 
 .skeletonImage {
 	margin:auto;
-	border-radius: 50%;
 
 	@include mq(sm) {
 		width: 240px;
@@ -17,7 +16,6 @@
 
 .skeletonText {
 	width: 240px;
-	border-radius: var(--radius-4);
 
 	@include mq(sm) {
 		height: 26px;

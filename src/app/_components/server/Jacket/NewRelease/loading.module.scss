@@ -1,7 +1,6 @@
 @use "../../../../../styles/utils/mixins" as *;
 
 .skeletonImage {
-  border-radius: var(--radius-4);
 
   @include mq(sm) {
 	width: 100px;
@@ -17,7 +16,6 @@
 .skeletonText {
   height: 14px;
   margin: 4px 0;
-  border-radius: var(--radius-4);
 
   @include mq(sm) {
 	width: 100px;
