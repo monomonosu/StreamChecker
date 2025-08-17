@@ -18,7 +18,7 @@ export const Artist = ({ href, artist, ...props }: ArtistProps) => {
 		<GapWrapper gap={8} direction="column">
 			{href && (
 				<Link href={href} className={style.artist}>
-					<Image className={style.artistImg} {...props} />
+					<Image className={style.artistImg} {...props} unoptimized />
 				</Link>
 			)}
 
