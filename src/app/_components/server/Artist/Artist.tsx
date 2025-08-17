@@ -22,7 +22,7 @@ export const Artist = ({ href, artist, ...props }: ArtistProps) => {
 				</Link>
 			)}
 
-			{!href && <Image className={style.artistImg} {...props} />}
+			{!href && <Image className={style.artistImg} {...props} unoptimized />}
 
 			<GapWrapper direction="column">
 				<LinkText href={artist?.href || PATH[404]} className="textEllipsis-2">

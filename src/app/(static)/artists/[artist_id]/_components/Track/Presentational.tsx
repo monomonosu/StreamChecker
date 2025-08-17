@@ -41,6 +41,7 @@ export const Presentational = (props: Props) => {
 
 			<span>
 				<Image
+					unoptimized
 					className={style.image}
 					src={track.image || ""}
 					alt="トラック画像"
