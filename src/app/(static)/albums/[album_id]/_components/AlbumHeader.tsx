@@ -12,6 +12,7 @@ export const AlbumHeader = ({ name, artists, release_date, image }: Props) => {
 	return (
 		<GapWrapper gap={16}>
 			<Image
+				unoptimized
 				style={{ borderRadius: "var(--radius-4)" }}
 				src={image.url}
 				alt={name}

@@ -18,11 +18,11 @@ export const Artist = ({ href, artist, ...props }: ArtistProps) => {
 		<GapWrapper gap={8} direction="column">
 			{href && (
 				<Link href={href} className={style.artist}>
-					<Image className={style.artistImg} {...props} />
+					<Image className={style.artistImg} {...props} unoptimized />
 				</Link>
 			)}
 
-			{!href && <Image className={style.artistImg} {...props} />}
+			{!href && <Image className={style.artistImg} {...props} unoptimized />}
 
 			<GapWrapper direction="column">
 				<LinkText href={artist?.href || PATH[404]} className="textEllipsis-2">
