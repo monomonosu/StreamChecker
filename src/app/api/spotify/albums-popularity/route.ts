@@ -16,6 +16,9 @@ export async function GET(request: Request) {
 	});
 	const data: SpotifyAlbumsResponse = await res;
 
+	// Vercelログ監視
+	console.log(`[Spotify Popularity Albums] offset: ${offset}, limit: ${limit}`);
+
 	try {
 		if (!data.albums || data.albums.items.length === 0) {
 			return createResponse(
