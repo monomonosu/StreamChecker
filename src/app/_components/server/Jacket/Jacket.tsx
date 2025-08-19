@@ -17,7 +17,7 @@ type JacketProps = ImageProps & {
 export const Jacket = ({ href, album, artist, ...props }: JacketProps) => {
 	return (
 		<GapWrapper gap={8} direction="column">
-			<Link href={href} className={style.jacket}>
+			<Link href={href} className={style.jacket} prefetch={false}>
 				<Image className={style.jacketImg} {...props} unoptimized />
 			</Link>
 			<GapWrapper direction="column">
@@ -25,10 +25,13 @@ export const Jacket = ({ href, album, artist, ...props }: JacketProps) => {
 					href={album?.href || PATH[404]}
 					className="textEllipsis-2"
 					color="var(--slate-12)"
+					prefetch={false}
 				>
 					{album?.name}
 				</LinkText>
-				<LinkText href={artist?.href || PATH[404]}>{artist?.name}</LinkText>
+				<LinkText href={artist?.href || PATH[404]} prefetch={false}>
+					{artist?.name}
+				</LinkText>
 			</GapWrapper>
 		</GapWrapper>
 	);

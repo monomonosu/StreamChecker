@@ -26,7 +26,7 @@ export const AlbumHeader = ({ name, artists, release_date, image }: Props) => {
 					<GapWrapper direction="row">
 						{artists.map((artist, index) => (
 							<Fragment key={artist.id}>
-								<LinkText href={PATH.ARTISTS(artist.id)}>
+								<LinkText href={PATH.ARTISTS(artist.id)} prefetch={false}>
 									{artist.name}
 								</LinkText>
 								{index < artists.length - 1 && <BasicText>,</BasicText>}
