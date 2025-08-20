@@ -1,10 +1,10 @@
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 import { getAlbum } from "@/app/_fetchers/getAlbum";
 import { getAlbumsByArtist } from "@/app/_fetchers/getAlbumsByArtist";
+
 import { Section, Slider } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
-
-import { AlbumHeader } from "@/app/(static)/albums/[album_id]/_components/AlbumHeader";
+import { Container as AlbumHeaderContainer } from "@/app/(static)/albums/[album_id]/_components/AlbumHeader/Container";
 import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
 
 import style from "@/app/(static)/albums/[album_id]/index.module.scss";
@@ -21,14 +21,6 @@ export default async function Album({ params }: Props) {
 	const data = await getAlbum(album_id);
 	const artistAlbumsData = await getAlbumsByArtist(data.artists[0].id);
 
-	const album: Album = {
-		id: data.id,
-		name: data.name,
-		artists: data.artists,
-		image: data.images[1],
-		release_date: data.release_date,
-	};
-
 	const tracks = data.tracks.items.map((track) => ({
 		id: track.id,
 		title: track.name,
@@ -39,17 +31,7 @@ export default async function Album({ params }: Props) {
 	return (
 		<PageWrapper>
 			<Section>
-				<AlbumHeader
-					id={album.id}
-					name={album.name}
-					artists={album.artists}
-					release_date={album.release_date}
-					image={{
-						url: album.image.url ? album.image.url : "/images/no-image.png",
-						width: 300,
-						height: 300,
-					}}
-				/>
+				<AlbumHeaderContainer album_id={album_id} />
 			</Section>
 
 			<Section>
