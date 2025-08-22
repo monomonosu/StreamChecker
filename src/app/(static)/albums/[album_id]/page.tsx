@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 import { getAlbum } from "@/app/_fetchers/getAlbum";
 import { getAlbumsByArtist } from "@/app/_fetchers/getAlbumsByArtist";
@@ -5,6 +6,7 @@ import { getAlbumsByArtist } from "@/app/_fetchers/getAlbumsByArtist";
 import { Section, Slider } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
 import { Container as AlbumHeaderContainer } from "@/app/(static)/albums/[album_id]/_components/AlbumHeader/Container";
+import { Loading as AlbumHeaderLoading } from "@/app/(static)/albums/[album_id]/_components/AlbumHeader/Loading";
 import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
 
 import style from "@/app/(static)/albums/[album_id]/index.module.scss";
@@ -31,7 +33,9 @@ export default async function Album({ params }: Props) {
 	return (
 		<PageWrapper>
 			<Section>
-				<AlbumHeaderContainer album_id={album_id} />
+				<Suspense fallback={<AlbumHeaderLoading />}>
+					<AlbumHeaderContainer album_id={album_id} />
+				</Suspense>
 			</Section>
 
 			<Section>
