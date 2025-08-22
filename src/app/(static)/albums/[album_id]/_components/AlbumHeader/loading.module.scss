@@ -1,0 +1,23 @@
+@use "../../../../../../styles/utils/mixins" as *;
+
+.skeletonImage {
+	width: 300px;
+	height: 300px;
+}
+
+.skeletonAlbumName {
+	width: 320px;
+
+	@include mq(sm) {
+		height: 26px;
+	}
+
+	@include mq(md) {
+		height: 35px;
+	}
+}
+
+.skeletonText {
+	width: 240px;
+	height: 17px;
+}
