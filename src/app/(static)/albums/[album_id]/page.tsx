@@ -1,18 +1,19 @@
 import { Suspense } from "react";
+
+import { Container as TrackListContainer } from "@/app/_components/client/Track/TrackList/Container";
+import { Loading as TrackListLoading } from "@/app/_components/client/Track/TrackList/Loading";
+
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 import { getAlbum } from "@/app/_fetchers/getAlbum";
 import { getAlbumsByArtist } from "@/app/_fetchers/getAlbumsByArtist";
-
 import { Section, Slider } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
+
 import { Container as AlbumHeaderContainer } from "@/app/(static)/albums/[album_id]/_components/AlbumHeader/Container";
 import { Loading as AlbumHeaderLoading } from "@/app/(static)/albums/[album_id]/_components/AlbumHeader/Loading";
-import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
 
 import style from "@/app/(static)/albums/[album_id]/index.module.scss";
-
 import { PATH } from "@/utils/constants/path";
-import { formatMsToMinSec } from "@/utils/helpers/formatDate";
 
 type Props = {
 	params: Promise<{ album_id: string }>;
@@ -23,13 +24,6 @@ export default async function Album({ params }: Props) {
 	const data = await getAlbum(album_id);
 	const artistAlbumsData = await getAlbumsByArtist(data.artists[0].id);
 
-	const tracks = data.tracks.items.map((track) => ({
-		id: track.id,
-		title: track.name,
-		artist: track.artists[0].name,
-		duration: formatMsToMinSec(track.duration_ms),
-	}));
-
 	return (
 		<PageWrapper>
 			<Section>
@@ -39,7 +33,9 @@ export default async function Album({ params }: Props) {
 			</Section>
 
 			<Section>
-				<TrackArea tracks={tracks} />
+				<Suspense fallback={<TrackListLoading />}>
+					<TrackListContainer album_id={album_id} />
+				</Suspense>
 			</Section>
 
 			<Section>
