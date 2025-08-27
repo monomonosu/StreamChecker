@@ -1,0 +1,12 @@
+@use "../../../../../styles/utils/mixins" as *;
+
+.resultsWrapper {
+
+	@include mq(sm) {
+		width: 150px;
+	}
+
+	@include mq(md) {
+		width: 200px;
+	}
+}
