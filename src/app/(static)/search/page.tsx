@@ -1,15 +1,14 @@
+import { Suspense } from "react";
 import { Artist } from "@/app/_components/server/Artist/Artist";
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
-
 import { getSearchItems } from "@/app/_fetchers/getSearchItems";
-
 import { Section, Slider } from "@/app/_styles/components/blocks";
-import { GapWrapper, PageWrapper } from "@/app/_styles/components/wrappers";
+import { PageWrapper } from "@/app/_styles/components/wrappers";
 import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
+import { Container as ResultTopContainer } from "@/app/(static)/search/_components/ResultTop/Container";
+import { Loading } from "@/app/(static)/search/_components/ResultTop/Loading";
 import { SearchForm } from "@/app/(static)/search/_components/SearchForm";
-
 import style from "@/app/(static)/search/index.module.scss";
-
 import { PATH } from "@/utils/constants/path";
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
 
@@ -62,64 +61,9 @@ export default async function Search({ searchParams }: Props) {
 						<h1>次の検索結果を表示しています："{query}"</h1>
 					</Section>
 
-					<Section>
-						<h2>上位の検索結果</h2>
-
-						<GapWrapper gap={40} direction="row">
-							{artists?.length > 0 && (
-								<GapWrapper gap={8} direction="column">
-									<h3>アーティスト</h3>
-									<div className={style.resultsWrapper}>
-										<Artist
-											href={PATH.ARTISTS(artists[0].id)}
-											fill
-											priority
-											src={
-												artists[0].images.length
-													? artists[0].images[0].url
-													: "/images/no-image.png"
-											}
-											artist={{
-												name: artists[0].name,
-												href: PATH.ARTISTS(artists[0].id),
-											}}
-											alt="アーティスト画像"
-										/>
-									</div>
-								</GapWrapper>
-							)}
-
-							{albums?.length > 0 && (
-								<GapWrapper gap={8} direction="column">
-									<h3>アルバム</h3>
-									<div className={style.resultsWrapper}>
-										<Jacket
-											href={PATH.ALBUMS(albums[0].id)}
-											fill
-											priority
-											src={
-												albums[0].images.length
-													? albums[0].images[0].url
-													: "/images/no-image.png"
-											}
-											album={{
-												name: albums[0].name,
-												href: PATH.ALBUMS(albums[0].id),
-											}}
-											alt="アルバム画像"
-										/>
-									</div>
-								</GapWrapper>
-							)}
-
-							{tracks.length > 0 && (
-								<GapWrapper gap={8} direction="column">
-									<h3>トラック</h3>
-									<TrackArea tracks={tracks.slice(0, 5)} />
-								</GapWrapper>
-							)}
-						</GapWrapper>
-					</Section>
+					<Suspense fallback={<Loading />}>
+						<ResultTopContainer query={query} />
+					</Suspense>
 
 					{artists.length > 0 && (
 						<Section>
