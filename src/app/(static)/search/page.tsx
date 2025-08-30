@@ -4,9 +4,12 @@ import { getSearchItems } from "@/app/_fetchers/getSearchItems";
 import { Section, Slider } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
 import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
+
 import { Container as ResultArtistsContainer } from "@/app/(static)/search/_components/ResultArtist/Container";
+import { Loading as ResultArtistsLoading } from "@/app/(static)/search/_components/ResultArtist/Loading";
 import { Container as ResultTopContainer } from "@/app/(static)/search/_components/ResultTop/Container";
-import { Loading } from "@/app/(static)/search/_components/ResultTop/Loading";
+import { Loading as ResultTopLoading } from "@/app/(static)/search/_components/ResultTop/Loading";
+
 import { SearchForm } from "@/app/(static)/search/_components/SearchForm";
 import style from "@/app/(static)/search/index.module.scss";
 import { PATH } from "@/utils/constants/path";
@@ -60,11 +63,13 @@ export default async function Search({ searchParams }: Props) {
 						<h1>次の検索結果を表示しています："{query}"</h1>
 					</Section>
 
-					<Suspense fallback={<Loading />}>
+					<Suspense fallback={<ResultTopLoading />}>
 						<ResultTopContainer query={query} />
 					</Suspense>
 
-					<ResultArtistsContainer query={query} />
+					<Suspense fallback={<ResultArtistsLoading />}>
+						<ResultArtistsContainer query={query} />
+					</Suspense>
 
 					{albums.length > 0 && (
 						<Section>
