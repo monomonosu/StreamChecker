@@ -1,18 +1,15 @@
 import { Suspense } from "react";
-import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 import { getSearchItems } from "@/app/_fetchers/getSearchItems";
-import { Section, Slider } from "@/app/_styles/components/blocks";
+import { Section } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
 import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
-
+import { Container as ResultAlbumsContainer } from "@/app/(static)/search/_components/ResultAlbum/Container";
+import { Loading as ResultAlbumsLoading } from "@/app/(static)/search/_components/ResultAlbum/Loading";
 import { Container as ResultArtistsContainer } from "@/app/(static)/search/_components/ResultArtist/Container";
 import { Loading as ResultArtistsLoading } from "@/app/(static)/search/_components/ResultArtist/Loading";
 import { Container as ResultTopContainer } from "@/app/(static)/search/_components/ResultTop/Container";
 import { Loading as ResultTopLoading } from "@/app/(static)/search/_components/ResultTop/Loading";
-
 import { SearchForm } from "@/app/(static)/search/_components/SearchForm";
-import style from "@/app/(static)/search/index.module.scss";
-import { PATH } from "@/utils/constants/path";
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
 
 type Props = {
@@ -47,7 +44,6 @@ export default async function Search({ searchParams }: Props) {
 		);
 	}
 
-	const albums = data.albums.items;
 	const tracks = data.tracks.items.map((track) => ({
 		id: track.id,
 		title: track.name,
@@ -71,29 +67,9 @@ export default async function Search({ searchParams }: Props) {
 						<ResultArtistsContainer query={query} />
 					</Suspense>
 
-					{albums.length > 0 && (
-						<Section>
-							<h2>アルバム</h2>
-							<Slider>
-								{albums.map((album) => (
-									<div className={style.jacketWrapper} key={album.id}>
-										<Jacket
-											href={PATH.ALBUMS(album.id)}
-											fill
-											priority
-											src={
-												album.images.length
-													? album.images[0].url
-													: "/images/no-image.png"
-											}
-											album={{ name: album.name, href: PATH.ALBUMS(album.id) }}
-											alt="アルバム画像"
-										/>
-									</div>
-								))}
-							</Slider>
-						</Section>
-					)}
+					<Suspense fallback={<ResultAlbumsLoading />}>
+						<ResultAlbumsContainer query={query} />
+					</Suspense>
 
 					{tracks.length > 0 && (
 						<Section>
