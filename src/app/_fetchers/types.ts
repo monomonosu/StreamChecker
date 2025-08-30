@@ -30,7 +30,7 @@ type SpotifyTrackItem = {
 /**
  * アーティストの情報
  */
-type SpotifyArtistItem = {
+export type SpotifyArtistItem = {
 	id: string;
 	name: string;
 	images: { url: string; width: number; height: number }[];

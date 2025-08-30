@@ -1,10 +1,10 @@
 import { Suspense } from "react";
-import { Artist } from "@/app/_components/server/Artist/Artist";
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 import { getSearchItems } from "@/app/_fetchers/getSearchItems";
 import { Section, Slider } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
 import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
+import { Container as ResultArtistsContainer } from "@/app/(static)/search/_components/ResultArtist/Container";
 import { Container as ResultTopContainer } from "@/app/(static)/search/_components/ResultTop/Container";
 import { Loading } from "@/app/(static)/search/_components/ResultTop/Loading";
 import { SearchForm } from "@/app/(static)/search/_components/SearchForm";
@@ -44,7 +44,6 @@ export default async function Search({ searchParams }: Props) {
 		);
 	}
 
-	const artists = data.artists.items;
 	const albums = data.albums.items;
 	const tracks = data.tracks.items.map((track) => ({
 		id: track.id,
@@ -65,32 +64,7 @@ export default async function Search({ searchParams }: Props) {
 						<ResultTopContainer query={query} />
 					</Suspense>
 
-					{artists.length > 0 && (
-						<Section>
-							<h2>アーティスト</h2>
-							<Slider>
-								{artists.map((artist) => (
-									<div className={style.artistWrapper} key={artist.id}>
-										<Artist
-											href={PATH.ARTISTS(artist.id)}
-											fill
-											priority
-											src={
-												artist.images.length
-													? artist.images[0].url
-													: "/images/no-image.png"
-											}
-											artist={{
-												name: artist.name,
-												href: PATH.ARTISTS(artist.id),
-											}}
-											alt="アーティスト画像"
-										/>
-									</div>
-								))}
-							</Slider>
-						</Section>
-					)}
+					<ResultArtistsContainer query={query} />
 
 					{albums.length > 0 && (
 						<Section>
