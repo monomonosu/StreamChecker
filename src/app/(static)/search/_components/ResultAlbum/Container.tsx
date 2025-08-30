@@ -1,5 +1,5 @@
 import { getSearchItems } from "@/app/_fetchers/getSearchItems";
-import { Presentational } from "@/app/(static)/search/_components/ResultArtist/Presentational";
+import { Presentational } from "@/app/(static)/search/_components/ResultAlbum/Presentational";
 
 type Props = {
 	query: string;
@@ -9,13 +9,13 @@ export const Container = async (props: Props) => {
 	const { query } = props;
 	const data = query ? await getSearchItems(query) : null;
 
-	const artists = data?.artists.items || [];
+	const albums = data?.albums.items || [];
 
 	return (
 		<>
-			{artists && <Presentational artists={artists} />}
+			{albums && <Presentational albums={albums} />}
 
-			{!artists && null}
+			{!albums && null}
 		</>
 	);
 };

@@ -5,7 +5,7 @@
 /**
  * アルバムの情報
  */
-type SpotifyAlbumItem = {
+export type SpotifyAlbumItem = {
 	id: string;
 	name: string;
 	artists: { id: string; name: string }[];
