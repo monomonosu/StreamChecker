@@ -37,6 +37,8 @@ export const Presentational = (props: Props) => {
 					</Slider>
 				</Section>
 			)}
+
+			{!albums && null}
 		</>
 	);
 };
