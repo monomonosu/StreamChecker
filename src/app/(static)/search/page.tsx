@@ -2,15 +2,15 @@ import { Suspense } from "react";
 import { getSearchItems } from "@/app/_fetchers/getSearchItems";
 import { Section } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
-import { TrackArea } from "@/app/(static)/albums/[album_id]/_components/TrackArea";
 import { Container as ResultAlbumsContainer } from "@/app/(static)/search/_components/ResultAlbum/Container";
 import { Loading as ResultAlbumsLoading } from "@/app/(static)/search/_components/ResultAlbum/Loading";
 import { Container as ResultArtistsContainer } from "@/app/(static)/search/_components/ResultArtist/Container";
 import { Loading as ResultArtistsLoading } from "@/app/(static)/search/_components/ResultArtist/Loading";
 import { Container as ResultTopContainer } from "@/app/(static)/search/_components/ResultTop/Container";
 import { Loading as ResultTopLoading } from "@/app/(static)/search/_components/ResultTop/Loading";
+import { Container as ResultTrackContainer } from "@/app/(static)/search/_components/ResultTrack/Container";
+import { Loading as ResultTrackLoading } from "@/app/(static)/search/_components/ResultTrack/Loading";
 import { SearchForm } from "@/app/(static)/search/_components/SearchForm";
-import { formatMsToMinSec } from "@/utils/helpers/formatDate";
 
 type Props = {
 	searchParams: Promise<{ query?: string }>;
@@ -44,13 +44,6 @@ export default async function Search({ searchParams }: Props) {
 		);
 	}
 
-	const tracks = data.tracks.items.map((track) => ({
-		id: track.id,
-		title: track.name,
-		artist: track.artists[0].name,
-		duration: formatMsToMinSec(track.duration_ms),
-	}));
-
 	return (
 		<PageWrapper>
 			{query && (
@@ -71,12 +64,9 @@ export default async function Search({ searchParams }: Props) {
 						<ResultAlbumsContainer query={query} />
 					</Suspense>
 
-					{tracks.length > 0 && (
-						<Section>
-							<h2>トラック</h2>
-							<TrackArea tracks={tracks} />
-						</Section>
-					)}
+					<Suspense fallback={<ResultTrackLoading />}>
+						<ResultTrackContainer query={query} />
+					</Suspense>
 				</>
 			)}
 		</PageWrapper>
