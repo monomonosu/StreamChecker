@@ -1,7 +1,4 @@
 import { Suspense } from "react";
-
-import { Container as TrackListContainer } from "@/app/_components/client/Track/TrackList/Container";
-import { Loading as TrackListLoading } from "@/app/_components/client/Track/TrackList/Loading";
 import { Container as ArtistAlbumContainer } from "@/app/_components/server/Jacket/Artist/Container";
 import { Loading as ArtistAlbumLoading } from "@/app/_components/server/Jacket/Artist/Loading";
 import { getAlbum } from "@/app/_fetchers/getAlbum";
@@ -9,6 +6,8 @@ import { Section, Slider } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
 import { Container as AlbumHeaderContainer } from "@/app/(static)/albums/[album_id]/_components/AlbumHeader/Container";
 import { Loading as AlbumHeaderLoading } from "@/app/(static)/albums/[album_id]/_components/AlbumHeader/Loading";
+import { Container as TrackListContainer } from "@/app/(static)/albums/[album_id]/_components/AlbumTrackList/Container";
+import { Loading as TrackListLoading } from "@/app/(static)/albums/[album_id]/_components/AlbumTrackList/Loading";
 
 type Props = {
 	params: Promise<{ album_id: string }>;

@@ -1,0 +1,18 @@
+@use "../../../../../styles/utils/mixins" as *;
+
+.resultsWrapper {
+
+	@include mq(sm) {
+		width: 150px;
+	}
+
+	@include mq(md) {
+		width: 200px;
+	}
+}
+
+.column {
+	background-color: var(--gray-3);
+	border-radius: var(--radius-4);;
+	padding: 8px;
+}

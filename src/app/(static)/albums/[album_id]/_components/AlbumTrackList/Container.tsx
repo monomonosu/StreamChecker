@@ -1,5 +1,5 @@
-import { Presentational } from "@/app/_components/client/Track/TrackList/Presentational";
 import { getAlbum } from "@/app/_fetchers/getAlbum";
+import { Presentational } from "@/app/(static)/albums/[album_id]/_components/AlbumTrackList/Presentational";
 import { formatMsToMinSec } from "@/utils/helpers/formatDate";
 
 type Props = {
