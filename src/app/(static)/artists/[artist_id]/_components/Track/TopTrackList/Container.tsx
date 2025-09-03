@@ -21,8 +21,8 @@ export const Container = async (props: Props) => {
 	}));
 
 	const chunkedTracks = await Array.from(
-		{ length: Math.ceil(topTracks.length / 3) },
-		(_, i) => topTracks.slice(i * 3, i * 3 + 3),
+		{ length: Math.ceil(topTracks.length / 2) },
+		(_, i) => topTracks.slice(i * 2, i * 2 + 2),
 	);
 
 	return <Presentational tracks={topTracks} trackGroups={chunkedTracks} />;
