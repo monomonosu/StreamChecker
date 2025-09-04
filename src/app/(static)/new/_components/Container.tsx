@@ -2,11 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import useSWRInfinite from "swr/infinite";
-
 import type { SpotifyAlbumsResponse } from "@/app/_fetchers/types";
+import { Presentational } from "@/app/(static)/new/_components/Presentational";
 import type { CustomResponse } from "@/app/api/type";
 
-export const useNewRelease = () => {
+export const Container = () => {
 	const [hasMore, setHasMore] = useState(true);
 	const lastElementRef = useRef<HTMLDivElement>(null);
 
@@ -45,9 +45,11 @@ export const useNewRelease = () => {
 		};
 	}, [isValidating, setSize, hasMore, size]);
 
-	return {
-		data,
-		isValidating,
-		lastElementRef,
-	};
+	return (
+		<Presentational
+			albums={data}
+			isValidation={isValidating}
+			lastElementRef={lastElementRef}
+		/>
+	);
 };
