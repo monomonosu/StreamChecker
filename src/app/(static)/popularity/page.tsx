@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-
 import { Section } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
 
