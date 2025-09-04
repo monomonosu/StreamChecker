@@ -20,7 +20,8 @@ export const Jacket = ({ href, album, artist, ...props }: JacketProps) => {
 			<Link href={href} className={style.jacket} prefetch={false}>
 				<Image className={style.jacketImg} {...props} unoptimized />
 			</Link>
-			<GapWrapper direction="column">
+
+			<GapWrapper direction="column" style={{ wordBreak: "break-word" }}>
 				<LinkText
 					href={album?.href || PATH[404]}
 					className="textEllipsis-2"
@@ -29,7 +30,11 @@ export const Jacket = ({ href, album, artist, ...props }: JacketProps) => {
 				>
 					{album?.name}
 				</LinkText>
-				<LinkText href={artist?.href || PATH[404]} prefetch={false}>
+				<LinkText
+					href={artist?.href || PATH[404]}
+					className="textEllipsis-2"
+					prefetch={false}
+				>
 					{artist?.name}
 				</LinkText>
 			</GapWrapper>
