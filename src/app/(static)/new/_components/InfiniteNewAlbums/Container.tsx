@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import useSWRInfinite from "swr/infinite";
 import type { SpotifyAlbumsResponse } from "@/app/_fetchers/types";
-import { Presentational } from "@/app/(static)/new/_components/Presentational";
+import { Presentational } from "@/app/(static)/new/_components/InfiniteNewAlbums/Presentational";
 import type { CustomResponse } from "@/app/api/type";
 
 export const Container = () => {

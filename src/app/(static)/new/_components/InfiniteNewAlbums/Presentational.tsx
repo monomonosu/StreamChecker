@@ -4,7 +4,7 @@ import React from "react";
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 import type { SpotifyAlbumItem } from "@/app/_fetchers/types";
 import { InfiniteGrid } from "@/app/_styles/components/blocks";
-import { Loading } from "@/app/(static)/new/_components/Loading";
+import { Loading } from "@/app/(static)/new/_components/InfiniteNewAlbums/Loading";
 import { PATH } from "@/utils/constants/path";
 
 type Props = {
