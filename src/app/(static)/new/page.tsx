@@ -2,7 +2,7 @@
 
 import { Section } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
-import { Container } from "@/app/(static)/new/_components/Container";
+import { Container } from "@/app/(static)/new/_components/InfiniteNewAlbums/Container";
 
 export default function New() {
 	return (

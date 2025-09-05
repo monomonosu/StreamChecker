@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import useSWRInfinite from "swr/infinite";
 import type { SpotifyAlbumsResponse } from "@/app/_fetchers/types";
-import { Presentational } from "@/app/(static)/new/_components/Presentational";
+import { Presentational } from "@/app/(static)/popularity/_components/InfinitePopularityAlbums/Presentational";
 import type { CustomResponse } from "@/app/api/type";
 
 export const Container = () => {
@@ -23,7 +23,7 @@ export const Container = () => {
 	};
 
 	const getKey = (page: number) => {
-		return `/api/spotify/new-release?offset=${page * 24}&limit=24`;
+		return `/api/spotify/albums-popularity?offset=${page * 24}&limit=24`;
 	};
 
 	const { data, size, setSize, isValidating } = useSWRInfinite(getKey, fetcher);

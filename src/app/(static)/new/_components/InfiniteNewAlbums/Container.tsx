@@ -2,11 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import useSWRInfinite from "swr/infinite";
-
 import type { SpotifyAlbumsResponse } from "@/app/_fetchers/types";
+import { Presentational } from "@/app/(static)/new/_components/InfiniteNewAlbums/Presentational";
 import type { CustomResponse } from "@/app/api/type";
 
-export default function usePopularity() {
+export const Container = () => {
 	const [hasMore, setHasMore] = useState(true);
 	const lastElementRef = useRef<HTMLDivElement>(null);
 
@@ -23,7 +23,7 @@ export default function usePopularity() {
 	};
 
 	const getKey = (page: number) => {
-		return `/api/spotify/albums-popularity?offset=${page * 24}&limit=24`;
+		return `/api/spotify/new-release?offset=${page * 24}&limit=24`;
 	};
 
 	const { data, size, setSize, isValidating } = useSWRInfinite(getKey, fetcher);
@@ -45,9 +45,11 @@ export default function usePopularity() {
 		};
 	}, [isValidating, setSize, hasMore, size]);
 
-	return {
-		data,
-		isValidating,
-		lastElementRef,
-	};
-}
+	return (
+		<Presentational
+			albums={data}
+			isValidation={isValidating}
+			lastElementRef={lastElementRef}
+		/>
+	);
+};
