@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
-import Loading from "@/app/(static)/loading";
+import Loading from "@/app/_components/server/Loading/loading";
 
 const meta = {
 	title: "Layouts/Loading",
