@@ -1,6 +1,12 @@
 .loadingWrapper {
-  display: grid;
-  place-items: center;
+  position: relative;
+}
+
+.loadingInner {
+  position: absolute;
+  top: calc(100vh / 2 - (56px / 2) - (48px / 2) - (248px / 2));
+  left: 0;
+  right: 0;
 }
 
 .loading {
@@ -28,6 +34,7 @@
 .bar:nth-child(5) { animation-delay: 0.8s; }
 
 .loadingText {
+  text-align: center;
   font-size: 1.2rem;
   font-weight: bold;
   color: var(--gray-10);

@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Loading from "@/app/_components/server/Loading/loading";
 import { Section } from "@/app/_styles/components/blocks";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
 import { Container as NonResultContainer } from "@/app/(static)/search/_components/NonResult/Container";
@@ -20,39 +21,41 @@ export default async function Search({ searchParams }: Props) {
 	const { query } = await searchParams;
 
 	return (
-		<PageWrapper>
-			{!query && (
-				<Section>
-					<h1>お気に入りのアーティスト・曲・アルバムを探しましょう！</h1>
-					<SearchForm />
-				</Section>
-			)}
-
-			{query && (
-				<>
+		<Suspense fallback={<Loading />}>
+			<PageWrapper>
+				{!query && (
 					<Section>
-						<h1>次の検索結果を表示しています："{query}"</h1>
+						<h1>お気に入りのアーティスト・曲・アルバムを探しましょう！</h1>
+						<SearchForm />
 					</Section>
+				)}
 
-					<Suspense fallback={<ResultTopLoading />}>
-						<ResultTopContainer query={query} />
-					</Suspense>
+				{query && (
+					<>
+						<Section>
+							<h1>次の検索結果を表示しています："{query}"</h1>
+						</Section>
 
-					<Suspense fallback={<ResultArtistsLoading />}>
-						<ResultArtistsContainer query={query} />
-					</Suspense>
+						<Suspense fallback={<ResultTopLoading />}>
+							<ResultTopContainer query={query} />
+						</Suspense>
 
-					<Suspense fallback={<ResultAlbumsLoading />}>
-						<ResultAlbumsContainer query={query} />
-					</Suspense>
+						<Suspense fallback={<ResultArtistsLoading />}>
+							<ResultArtistsContainer query={query} />
+						</Suspense>
 
-					<Suspense fallback={<ResultTrackLoading />}>
-						<ResultTrackContainer query={query} />
-					</Suspense>
+						<Suspense fallback={<ResultAlbumsLoading />}>
+							<ResultAlbumsContainer query={query} />
+						</Suspense>
 
-					<NonResultContainer query={query} />
-				</>
-			)}
-		</PageWrapper>
+						<Suspense fallback={<ResultTrackLoading />}>
+							<ResultTrackContainer query={query} />
+						</Suspense>
+
+						<NonResultContainer query={query} />
+					</>
+				)}
+			</PageWrapper>
+		</Suspense>
 	);
 }
