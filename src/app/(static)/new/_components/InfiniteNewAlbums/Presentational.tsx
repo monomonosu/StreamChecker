@@ -38,13 +38,9 @@ export const Presentational = (props: Props) => {
 						))}
 					</React.Fragment>
 				))}
-			</InfiniteGrid>
 
-			{isValidation && (
-				<InfiniteGrid>
-					<Loading />
-				</InfiniteGrid>
-			)}
+				{isValidation && <Loading />}
+			</InfiniteGrid>
 
 			<div ref={lastElementRef} />
 		</>
