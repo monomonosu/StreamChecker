@@ -9,6 +9,7 @@ export const PATH = {
 
 	ALBUMS: (album_id: string) => `/albums/${album_id}`,
 	ARTISTS: (artist_id: string) => `/artists/${artist_id}`,
+	ARTIST_ALBUM: (artist_id: string) => `/artists/${artist_id}/albums`,
 
 	404: "/404",
 } as const;
