@@ -1,10 +1,8 @@
-"use client";
-
 import React from "react";
 import { Jacket } from "@/app/_components/server/Jacket/Jacket";
 import type { SpotifyAlbumItem } from "@/app/_fetchers/types";
 import { InfiniteGrid } from "@/app/_styles/components/blocks";
-import { Loading } from "@/app/(static)/new/_components/InfiniteNewAlbums/Loading";
+import { Loading } from "@/app/(static)/artists/[artist_id]/albums/_components/Albums/Loading";
 import { PATH } from "@/utils/constants/path";
 
 type Props = {
@@ -29,10 +27,6 @@ export const Presentational = (props: Props) => {
 								priority
 								src={item.images[0].url}
 								album={{ name: item.name, href: PATH.ALBUMS(item.id) }}
-								artist={{
-									name: item.artists[0].name,
-									href: PATH.ARTISTS(item.artists[0].id),
-								}}
 								alt="最新リリースアルバム画像"
 							/>
 						))}

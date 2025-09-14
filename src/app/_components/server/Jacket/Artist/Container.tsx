@@ -7,7 +7,7 @@ type Props = {
 
 export const Container = async (props: Props) => {
 	const { artist_id } = props;
-	const artistAlbums = await getAlbumsByArtist(artist_id);
+	const artistAlbums = await getAlbumsByArtist({ artist_id });
 
 	return <Presentational artistAlbums={artistAlbums} />;
 };
