@@ -7,7 +7,7 @@ import { Loading as ArtistAlbumLoading } from "@/app/_components/server/Jacket/A
 
 import { Section, Slider } from "@/app/_styles/components/blocks";
 import { LinkText } from "@/app/_styles/components/texts";
-import { PageWrapper } from "@/app/_styles/components/wrappers";
+import { BetweenWrapper, PageWrapper } from "@/app/_styles/components/wrappers";
 import { Container as ArtistHeaderContainer } from "@/app/(static)/artists/[artist_id]/_components/ArtistHeader/Container";
 import { Loading as ArtistHeaderLoading } from "@/app/(static)/artists/[artist_id]/_components/ArtistHeader/Loading";
 import { Container as TopTracksContainer } from "@/app/(static)/artists/[artist_id]/_components/Track/TopTrackList/Container";
@@ -38,17 +38,18 @@ export default async function ArtistPage({ params }: Props) {
 
 			<div>
 				<Section>
-					<h2>アルバム</h2>
+					<BetweenWrapper style={{ alignItems: "end" }}>
+						<h2>アルバム</h2>
+						<LinkText href={PATH.ARTIST_ALBUM(artist_id)}>
+							▶︎ ReadMore...
+						</LinkText>
+					</BetweenWrapper>
 
 					<Slider>
 						<Suspense fallback={<ArtistAlbumLoading />}>
 							<ArtistAlbumContainer artist_id={artist_id} />
 						</Suspense>
 					</Slider>
-
-					<LinkText href={PATH.ARTIST_ALBUM(artist_id)}>
-						▶︎ ReadMoreAlbums...
-					</LinkText>
 				</Section>
 			</div>
 		</PageWrapper>
