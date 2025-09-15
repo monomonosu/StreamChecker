@@ -34,3 +34,8 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 機能紹介
+
+アプリの機能に関してはデプロイ済みのページにて紹介しています。
+URL：https://stream-checker.vercel.app/guide
