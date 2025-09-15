@@ -1,8 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## このアプリについて
+
+StreamCheckerはSpotify、AppleMusic、YouTubeMusic等の音楽ストリーミングサービスの配信状況をチェックする事を目標に作成しているアプリケーションです。
+
+現在はSpotifyで配信中であるアルバム・シングルの曲のチェック、アーティストがリリースしたアルバムの一覧、最新リリース・人気曲のチェックが可能です。
+また、それ以外の機能として本アプリケーションでリストアップされている楽曲リストからミュージックビデオを試聴する事もできます。
+（YouTubeDataAPIに検索クエリを投げて動画情報を取得しているため全く関係のない動画が再生される場合もあるのでその辺はご了承のほどよろしくお願いします🥺）
+
+## デプロイ情報
+このアプリケーションはVercelを使用してデプロイしております。
+URL：https://stream-checker.vercel.app/
+
+ローカルでの動作を確認する場合はGetting Startedを参照の上立ち上げお願いします。
 
 ## Getting Started
 
-First, run the development server:
+```
+// .env.local
+YOUTUBE_API_KEY={YoutubeDataAPI用のGoogleAPIKey}
+YOUTUBE_API_BASE_URL={YoutubeDataAPIのBaseURL}
+SPOTIFY_CLIENT_ID={SpotifyAPIのClientId}
+SPOTIFY_CLIENT_SECRET={SpotifyAPIのClientSecret}
+SPOTIFY_API_BASE_URL={SpotifyAPIのBaseURL}
+```
 
 ```bash
 npm run dev
@@ -15,22 +34,3 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
