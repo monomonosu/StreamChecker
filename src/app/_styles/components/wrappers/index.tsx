@@ -60,3 +60,22 @@ export const CenterWrapper = ({ children, style }: CenterWrapperProps) => {
 		</div>
 	);
 };
+
+export interface BetweenWrapperProps {
+	children: React.ReactNode;
+	style?: React.CSSProperties;
+}
+
+export const BetweenWrapper = ({ children, style }: BetweenWrapperProps) => {
+	return (
+		<div
+			style={{
+				display: "flex",
+				justifyContent: "space-between",
+				...style,
+			}}
+		>
+			{children}
+		</div>
+	);
+};
