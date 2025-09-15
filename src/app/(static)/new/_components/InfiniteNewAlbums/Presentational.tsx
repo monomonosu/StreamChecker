@@ -19,8 +19,10 @@ export const Presentational = (props: Props) => {
 	return (
 		<>
 			<InfiniteGrid>
-				{albums?.map((items) => (
-					<React.Fragment key={items ? `parent-${items[0].id}` : "no-items"}>
+				{albums?.map((items, index) => (
+					<React.Fragment
+						key={items ? `parent-${items[0].id}` : `no-items-${index}`}
+					>
 						{items?.map((item) => (
 							<Jacket
 								key={item.id}
@@ -42,7 +44,7 @@ export const Presentational = (props: Props) => {
 				{isValidation && <Loading />}
 			</InfiniteGrid>
 
-			<div ref={lastElementRef} />
+			{!isValidation && <div ref={lastElementRef} />}
 		</>
 	);
 };
