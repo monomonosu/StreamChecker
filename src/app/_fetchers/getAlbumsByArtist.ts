@@ -15,7 +15,7 @@ export async function getAlbumsByArtist({
 	limit?: number;
 }) {
 	const res = await fetchSpotifyData<SpotifyArtistAlbumsResponse>(
-		`artists/${artist_id}/albums?offset=${offset}&limit=${limit}`,
+		`artists/${artist_id}/albums?include_groups=album,single,appears_on,compilation&offset=${offset}&limit=${limit}`,
 	);
 	return res;
 }
