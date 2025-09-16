@@ -15,7 +15,11 @@ export const Presentational = (props: Props) => {
 				<Artist
 					fill
 					priority
-					src={artistData.images[0].url}
+					src={
+						artistData.images.length > 0
+							? artistData.images[0].url
+							: "/images/no-image.png"
+					}
 					alt={`${artistData.name}の画像`}
 					style={{ boxShadow: "var(--slate-2) 0 10px 25px" }}
 				/>
