@@ -1,11 +1,10 @@
-@use "../styles/utils/mixins" as *;
+@use "../../styles/utils/mixins" as *;
 
 .main {
     padding-top: 56px;
 }
 
 .main-inner {
-
     @include mq(sm) {
         padding: 24px 16px 248px;
     }

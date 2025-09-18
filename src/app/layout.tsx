@@ -9,8 +9,6 @@ import { Header } from "@/app/_components/server/Header/Header";
 import { GlobalSnackbar } from "@/app/_providers/GlobalSnackbar";
 import { ThemeProvider } from "@/app/_providers/ThemeProvider";
 
-import style from "@/app/layout.module.scss";
-
 const geistSans = Geist({
 	variable: "--font-geist-sans",
 	subsets: ["latin"],
@@ -37,10 +35,8 @@ export default async function RootLayout({
 				<ThemeProvider>
 					<GlobalSnackbar />
 					<Header />
-					<div className={style.main}>
-						<div className={style["main-inner"]}>{children}</div>
-						<FooterPlayer />
-					</div>
+					{children}
+					<FooterPlayer />
 				</ThemeProvider>
 			</body>
 		</html>
