@@ -1,12 +1,12 @@
-import { Rabbit } from "lucide-react";
+import { Ghost } from "lucide-react";
 import { BasicText, LinkText } from "@/app/_styles/components/texts";
-import style from "./not-found.module.scss";
+import style from "./style.module.scss";
 
-export default function NotFound() {
+export default function NotFoundPage() {
 	return (
 		<div className={style.wrapper}>
 			<div className={style.inner}>
-				<Rabbit size={96} />
+				<Ghost size={96} />
 
 				<div className={style.content}>
 					<h1>404 Not Found</h1>
