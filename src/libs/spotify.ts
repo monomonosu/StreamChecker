@@ -19,6 +19,7 @@ export async function getAccessToken(): Promise<SpotifyAuthResponse> {
 		headers: {
 			"Content-Type": "application/x-www-form-urlencoded",
 			Authorization: `Basic ${Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString("base64")}`,
+			"Accept-Language": "ja-JP,ja;q=0.9",
 		},
 		body: new URLSearchParams({
 			grant_type: "client_credentials",
