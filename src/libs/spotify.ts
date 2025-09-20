@@ -47,6 +47,7 @@ export async function fetchSpotifyData<T>(
 		next: { revalidate },
 		headers: {
 			Authorization: `Bearer ${access_token}`,
+			"Accept-Language": "ja-JP,ja;q=0.9",
 		},
 	});
 
