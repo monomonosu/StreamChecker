@@ -14,7 +14,7 @@ export const getPopularityAlbums = async ({
 	limit?: number;
 } = {}) => {
 	return fetchSpotifyData<SpotifyAlbumsResponse>(
-		`search?q=album&type=album&limit=${limit}&offset=${offset}&sort=popularity&language=ja-JP&market=JP`,
+		`search?q=album&type=album&limit=${limit}&offset=${offset}&market=JP`,
 		REVALIDATE_ONE_HOUR,
 	);
 };
