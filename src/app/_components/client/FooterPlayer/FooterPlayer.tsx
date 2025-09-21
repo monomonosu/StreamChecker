@@ -16,10 +16,7 @@ export const FooterPlayer = () => {
 		useFooterPlayer();
 
 	return (
-		<Theme
-			className={style.footer}
-			style={{ visibility: isOpenFooter ? "visible" : "hidden" }}
-		>
+		<Theme className={`${style.footer} ${!isOpenFooter && style.footerClose}`}>
 			<div className={style.footerMovie} id="youtube-player" />
 
 			<div className={style.footerContent}>
