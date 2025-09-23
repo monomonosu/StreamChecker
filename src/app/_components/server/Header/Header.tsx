@@ -3,7 +3,7 @@ import {
 	MagnifyingGlassIcon,
 	PaperPlaneIcon,
 } from "@radix-ui/react-icons";
-import { IconButton, TextField } from "@radix-ui/themes";
+import { IconButton, Popover, TextField } from "@radix-ui/themes";
 import { Bell, ChartNoAxesCombined, House } from "lucide-react";
 
 import Form from "next/form";
@@ -71,14 +71,16 @@ export const Header = () => {
 								</TextField.Slot>
 							</TextField.Root>
 
-							<IconButton
-								type="submit"
-								color="gray"
-								variant="solid"
-								highContrast
-							>
-								<PaperPlaneIcon width={16} height={16} />
-							</IconButton>
+							<Popover.Close>
+								<IconButton
+									type="submit"
+									color="gray"
+									variant="solid"
+									highContrast
+								>
+									<PaperPlaneIcon width={16} height={16} />
+								</IconButton>
+							</Popover.Close>
 						</GapWrapper>
 					</Form>
 				</Popup>
