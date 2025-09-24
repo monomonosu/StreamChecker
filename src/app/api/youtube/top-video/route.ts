@@ -35,6 +35,8 @@ export async function GET(request: Request) {
 	});
 	const searchData: YouTubeSearchResponse = await searchRes.json();
 
+	console.log("searchData:", searchData);
+
 	try {
 		if (searchData.items.length === 0)
 			return createResponse(

@@ -28,6 +28,8 @@ export async function getTopMovieBySearch(
 			errorHandling(res);
 		}
 
+		console.log("res", res);
+
 		if (!res.data) return null;
 		if (!res.data?.videoId) return null;
 
