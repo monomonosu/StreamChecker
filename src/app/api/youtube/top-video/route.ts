@@ -28,7 +28,7 @@ export async function GET(request: Request) {
 		);
 	}
 
-	const searchUrl = `${BASE_URL}/search?part=snippet&q=${encodeURIComponent(query)}&key=${API_KEY}&type=video&maxResults=1`;
+	const searchUrl = `${BASE_URL}/search?part=snippet&q=${encodeURIComponent(query)}&key=${API_KEY}&type=video&maxResults=1&videoEmbeddable=true&safeSearch=moderate`;
 
 	const searchRes = await fetch(searchUrl, {
 		next: { revalidate: REVALIDATE_ONE_MONTH },
