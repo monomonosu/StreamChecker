@@ -1,19 +1,21 @@
 "use client";
 
-import { useAtom, useAtomValue } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { useEffect, useRef, useState } from "react";
 
 import { getTopMovieBySearch } from "@/app/_fetchers/youtube/getTopMovieBySearch";
 
 import {
-	currentVideoIndex,
+	currentVideoIndexAtom,
 	isOpenFooterAtom,
-	totalVideoCount,
+	totalVideoCountAtom,
 	trackIdAtom,
 	trackQueueAtom,
 	videoTitleAtom,
 	videoUrlAtom,
 } from "@/libs/stores/video";
+
+import { useSetPlayList } from "@/libs/youtube/setPlayList";
 import { useSetUpPlayer } from "@/libs/youtube/setUpPlayer";
 import { useErrorHandle } from "@/utils/hooks/useErrorHandle";
 import { usePlayIcon } from "@/utils/hooks/usePlayIcon";
@@ -52,64 +54,19 @@ export const useFooterPlayer = () => {
 
 	// プレイヤーiframeのセットアップ・イベント設定
 	useSetUpPlayer({ playerRef, currentTrackIdRef });
+	// プレイリスト管理
+	useSetPlayList({
+		currentTrackIdRef,
+		videoListRef,
+		playerRef,
+		beforeTrackIdRef,
+	});
 
 	const videoTitle = useAtomValue(videoTitleAtom);
 	const videoUrl = useAtomValue(videoUrlAtom);
 	// TODO: currentIndex->currentVideoIndex,totalVideos->totalVideoCountに命名を変更する
-	const [currentIndex, setCurrentIndex] = useAtom(currentVideoIndex);
-	const [totalVideos, setTotalVideos] = useAtom(totalVideoCount);
-
-	// プレイリストの動画が終了した時に次の動画を追加する
-	// biome-ignore lint/correctness/useExhaustiveDependencies: 無限レンダリング防止のため
-	useEffect(() => {
-		const addPlaylist = async () => {
-			if (currentIndex && currentIndex + 1 === totalVideos) {
-				setPlay(currentTrackIdRef.current);
-				const currentTrackIndex = trackQueue.findIndex(
-					(track) => track.id === currentTrackIdRef.current,
-				);
-				const nextTrack = trackQueue[currentTrackIndex + 1];
-
-				if (!nextTrack) return;
-
-				// 次の動画のVideoIdをセット
-				const res = await getTopMovieBySearch(
-					`${nextTrack.artist} ${nextTrack.title}`,
-					errorHandling,
-				);
-
-				if (!res) return;
-
-				currentTrackIdRef.current = nextTrack.id;
-				videoListRef.current.push(res.videoId);
-				playerRef.current?.loadPlaylist(videoListRef.current, currentIndex);
-			}
-
-			if (currentIndex === 0) {
-				const currentTrackIndex = trackQueue.findIndex(
-					(track) => track.id === beforeTrackIdRef.current,
-				);
-				const prevTrack = trackQueue[currentTrackIndex - 1];
-
-				if (!prevTrack) return;
-
-				// 次の動画のVideoIdをセット
-				const res = await getTopMovieBySearch(
-					`${prevTrack.artist} ${prevTrack.title}`,
-					errorHandling,
-				);
-
-				if (!res) return;
-
-				beforeTrackIdRef.current = prevTrack.id;
-				videoListRef.current.unshift(res.videoId);
-				playerRef.current?.loadPlaylist(videoListRef.current, 1);
-				setCurrentIndex(1);
-			}
-		};
-
-		addPlaylist();
-	}, [trackQueue, currentIndex, totalVideos]);
+	const setCurrentIndex = useSetAtom(currentVideoIndexAtom);
+	const setTotalVideos = useSetAtom(totalVideoCountAtom);
 
 	// ------------------------------ 動画セットアップ ------------------------------
 	// 初回再生時
