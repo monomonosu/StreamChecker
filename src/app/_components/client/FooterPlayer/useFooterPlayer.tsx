@@ -6,13 +6,15 @@ import { useEffect, useRef, useState } from "react";
 import { getTopMovieBySearch } from "@/app/_fetchers/youtube/getTopMovieBySearch";
 
 import {
+	currentVideoIndex,
 	isOpenFooterAtom,
+	totalVideoCount,
 	trackIdAtom,
 	trackQueueAtom,
 	videoTitleAtom,
 	videoUrlAtom,
 } from "@/libs/stores/video";
-
+import { useSetUpPlayer } from "@/libs/youtube/setUpPlayer";
 import { useErrorHandle } from "@/utils/hooks/useErrorHandle";
 import { usePlayIcon } from "@/utils/hooks/usePlayIcon";
 import { usePlayState } from "@/utils/hooks/usePlayState";
@@ -34,7 +36,7 @@ declare global {
 
 export const useFooterPlayer = () => {
 	const { errorHandling } = useErrorHandle();
-	const { setPlay, setPause } = usePlayState();
+	const { setPlay } = usePlayState();
 	const { getPlaySource } = usePlayIcon();
 
 	const trackQueue = useAtomValue(trackQueueAtom);
@@ -48,82 +50,14 @@ export const useFooterPlayer = () => {
 	const playerRef = useRef<YT.Player | null>(null);
 	const videoListRef = useRef<string[]>([]);
 
-	const [videoTitle, setVideoTitle] = useAtom(videoTitleAtom);
-	const [videoUrl, setVideoUrl] = useAtom(videoUrlAtom);
+	// プレイヤーiframeのセットアップ・イベント設定
+	useSetUpPlayer({ playerRef, currentTrackIdRef });
 
-	const [currentIndex, setCurrentIndex] = useState<number | null>();
-	const [totalVideos, setTotalVideos] = useState<number>(0);
-
-	// NOTE:既にスクリプトがある場合は再追加しない
-	useEffect(() => {
-		if (window && !window.YT) {
-			const tag = document.createElement("script");
-			tag.id = "youtube-iframe-api";
-			tag.src = "https://www.youtube.com/iframe_api";
-			document.body.appendChild(tag);
-		}
-
-		window.onYouTubeIframeAPIReady = () => {
-			playerRef.current = new window.YT.Player("youtube-player", {
-				playerVars: {
-					autoplay: 1,
-				},
-				events: {
-					onStateChange: (event: YT.OnStateChangeEvent) => {
-						const player = event.target as YTPlayerWithVideoData;
-						const currentIndex = player.getPlaylistIndex();
-						const totalVideos = player.getPlaylist()?.length ?? 0;
-						const playVideoData = player.getVideoData();
-
-						setVideoTitle(playVideoData.title);
-						setVideoUrl(
-							`https://www.youtube.com/watch?v=${playVideoData.video_id}`,
-						);
-						console.log("📺 状態:", event.data);
-
-						switch (event.data) {
-							case window.YT.PlayerState.UNSTARTED: {
-								if (!currentTrackIdRef.current && currentIndex !== 0) return;
-
-								// 次の動画のストックがない場合（nextTack）
-								if (currentIndex + 1 === totalVideos) {
-									setCurrentIndex(currentIndex);
-									setTotalVideos(totalVideos);
-									return;
-								}
-
-								if (currentIndex === 0) {
-									setCurrentIndex(currentIndex);
-									return;
-								}
-
-								break;
-							}
-							case window.YT.PlayerState.ENDED: {
-								setPause();
-								break;
-							}
-							case window.YT.PlayerState.PLAYING: {
-								if (!currentTrackIdRef.current) return;
-								setPlay();
-								break;
-							}
-							case window.YT.PlayerState.PAUSED: {
-								if (!currentTrackIdRef.current) return;
-								setPause();
-								break;
-							}
-							case window.YT.PlayerState.BUFFERING: {
-								if (!currentTrackIdRef.current) return;
-								setPause();
-								break;
-							}
-						}
-					},
-				},
-			});
-		};
-	}, [setVideoTitle, setVideoUrl, setPlay, setPause]);
+	const videoTitle = useAtomValue(videoTitleAtom);
+	const videoUrl = useAtomValue(videoUrlAtom);
+	// TODO: currentIndex->currentVideoIndex,totalVideos->totalVideoCountに命名を変更する
+	const [currentIndex, setCurrentIndex] = useAtom(currentVideoIndex);
+	const [totalVideos, setTotalVideos] = useAtom(totalVideoCount);
 
 	// プレイリストの動画が終了した時に次の動画を追加する
 	// biome-ignore lint/correctness/useExhaustiveDependencies: 無限レンダリング防止のため
