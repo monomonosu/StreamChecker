@@ -1,8 +1,8 @@
 import { useSetAtom } from "jotai";
 import { type RefObject, useEffect } from "react";
 import {
-	currentVideoIndex,
-	totalVideoCount,
+	currentVideoIndexAtom,
+	totalVideoCountAtom,
 	videoTitleAtom,
 	videoUrlAtom,
 } from "@/libs/stores/video";
@@ -18,8 +18,8 @@ export const useSetUpPlayer = (props: Props) => {
 
 	const setVideoTitle = useSetAtom(videoTitleAtom);
 	const setVideoUrl = useSetAtom(videoUrlAtom);
-	const setCurrentVideoIndex = useSetAtom(currentVideoIndex);
-	const setTotalVideoCount = useSetAtom(totalVideoCount);
+	const setCurrentVideoIndex = useSetAtom(currentVideoIndexAtom);
+	const setTotalVideoCount = useSetAtom(totalVideoCountAtom);
 
 	const { setPlay, setPause } = usePlayState();
 
