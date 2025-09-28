@@ -40,6 +40,12 @@ export const currentVideoIndexAtom = atom<number | null>(null);
 export const totalVideoCountAtom = atom<number>(0);
 
 /**
+ * 初回動画読み込み完了フラグ
+ * @type {boolean}
+ */
+export const isInitVideoLoadAtom = atom<boolean>(false);
+
+/**
  * 再生中の動画情報
  * @type {PlayingState}
  * @property {boolean} isPlaying - 動画が再生中かどうか
