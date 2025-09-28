@@ -1,7 +1,7 @@
 "use client";
 
-import { useAtom, useAtomValue } from "jotai";
-import { useEffect, useRef } from "react";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useRef } from "react";
 
 import {
 	isInitVideoLoadAtom,
@@ -11,6 +11,7 @@ import {
 	videoUrlAtom,
 } from "@/libs/stores/video";
 import { useInitPlayList } from "@/libs/youtube/initPlayList";
+import { useSetInitPlayList } from "@/libs/youtube/setInitPlayList";
 import { useSetPlayList } from "@/libs/youtube/setPlayList";
 import { useSetUpPlayer } from "@/libs/youtube/setUpPlayer";
 import { usePlayIcon } from "@/utils/hooks/usePlayIcon";
@@ -33,8 +34,8 @@ declare global {
 export const useFooterPlayer = () => {
 	const { getPlaySource } = usePlayIcon();
 
-	const [_trackId, setTrackId] = useAtom(trackIdAtom);
 	const [isOpenFooter, setIsOpenFooter] = useAtom(isOpenFooterAtom);
+	const setTrackId = useSetAtom(trackIdAtom);
 	const isInitVideoLoad = useAtomValue(isInitVideoLoadAtom);
 	const videoTitle = useAtomValue(videoTitleAtom);
 	const videoUrl = useAtomValue(videoUrlAtom);
@@ -54,6 +55,14 @@ export const useFooterPlayer = () => {
 		videoListRef,
 	});
 
+	// 初回再生時(TrackQueueセット時)のプレイリストをセット
+	useSetInitPlayList({
+		isInitVideoLoad,
+		playerRef,
+		videoListRef,
+		currentTrackIdRef,
+	});
+
 	// プレイリスト管理
 	useSetPlayList({
 		currentTrackIdRef,
@@ -61,17 +70,6 @@ export const useFooterPlayer = () => {
 		playerRef,
 		beforeTrackIdRef,
 	});
-
-	// 初回再生分のプレイリストをセット
-	useEffect(() => {
-		if (!isInitVideoLoad || !playerRef.current) return;
-
-		// trackQueueの先頭のインデックスが選択された時・それ以外のインデックスが選択された時の考慮
-		playerRef.current.loadPlaylist(
-			videoListRef.current,
-			videoListRef.current.length > 2 || !currentTrackIdRef.current ? 1 : 0,
-		);
-	}, [isInitVideoLoad]);
 
 	// NOTE: Footerを閉じた時は動画を停止
 	const onClickClose = () => {
