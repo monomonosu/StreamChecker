@@ -11,13 +11,13 @@ import { usePlayState } from "@/utils/hooks/usePlayState";
 
 type Props = {
 	currentTrackIdRef: RefObject<string | undefined>;
-	videoListRef: RefObject<string[]>;
-	playerRef: RefObject<YT.Player | null>;
 	beforeTrackIdRef: RefObject<string | undefined>;
+	playerRef: RefObject<YT.Player | null>;
+	videoListRef: RefObject<string[]>;
 };
 
 export const useSetPlayList = (props: Props) => {
-	const { currentTrackIdRef, playerRef, videoListRef, beforeTrackIdRef } =
+	const { currentTrackIdRef, beforeTrackIdRef, playerRef, videoListRef } =
 		props;
 
 	const [currentVideoIndex, setCurrentVideoIndex] = useAtom(

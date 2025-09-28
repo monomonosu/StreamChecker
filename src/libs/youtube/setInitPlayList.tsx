@@ -1,14 +1,17 @@
+import { useAtomValue } from "jotai";
 import { useEffect } from "react";
+import { isInitVideoLoadAtom } from "@/libs/stores/video";
 
 type Props = {
-	isInitVideoLoad: boolean;
+	currentTrackIdRef: React.RefObject<string | undefined>;
 	playerRef: React.RefObject<YT.Player | null>;
 	videoListRef: React.RefObject<string[]>;
-	currentTrackIdRef: React.RefObject<string | undefined>;
 };
 
 export const useSetInitPlayList = (props: Props) => {
-	const { isInitVideoLoad, playerRef, videoListRef, currentTrackIdRef } = props;
+	const { currentTrackIdRef, playerRef, videoListRef } = props;
+
+	const isInitVideoLoad = useAtomValue(isInitVideoLoadAtom);
 
 	useEffect(() => {
 		if (!isInitVideoLoad || !playerRef.current) return;

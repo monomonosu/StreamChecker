@@ -4,7 +4,6 @@ import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { useRef } from "react";
 
 import {
-	isInitVideoLoadAtom,
 	isOpenFooterAtom,
 	trackIdAtom,
 	videoTitleAtom,
@@ -36,7 +35,6 @@ export const useFooterPlayer = () => {
 
 	const [isOpenFooter, setIsOpenFooter] = useAtom(isOpenFooterAtom);
 	const setTrackId = useSetAtom(trackIdAtom);
-	const isInitVideoLoad = useAtomValue(isInitVideoLoadAtom);
 	const videoTitle = useAtomValue(videoTitleAtom);
 	const videoUrl = useAtomValue(videoUrlAtom);
 
@@ -46,7 +44,7 @@ export const useFooterPlayer = () => {
 	const videoListRef = useRef<string[]>([]);
 
 	// プレイヤーiframeのセットアップ・イベント設定
-	useSetUpPlayer({ playerRef, currentTrackIdRef });
+	useSetUpPlayer({ currentTrackIdRef, playerRef });
 
 	// 初回再生時(TrackQueueセット時)のプレイリスト生成
 	useInitPlayList({
@@ -57,18 +55,17 @@ export const useFooterPlayer = () => {
 
 	// 初回再生時(TrackQueueセット時)のプレイリストをセット
 	useSetInitPlayList({
-		isInitVideoLoad,
+		currentTrackIdRef,
 		playerRef,
 		videoListRef,
-		currentTrackIdRef,
 	});
 
 	// プレイリスト管理
 	useSetPlayList({
 		currentTrackIdRef,
-		videoListRef,
-		playerRef,
 		beforeTrackIdRef,
+		playerRef,
+		videoListRef,
 	});
 
 	// NOTE: Footerを閉じた時は動画を停止

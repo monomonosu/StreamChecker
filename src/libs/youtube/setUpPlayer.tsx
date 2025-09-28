@@ -9,12 +9,12 @@ import {
 import { usePlayState } from "@/utils/hooks/usePlayState";
 
 type Props = {
-	playerRef: RefObject<YT.Player | null>;
 	currentTrackIdRef: RefObject<string | undefined>;
+	playerRef: RefObject<YT.Player | null>;
 };
 
 export const useSetUpPlayer = (props: Props) => {
-	const { playerRef, currentTrackIdRef } = props;
+	const { currentTrackIdRef, playerRef } = props;
 
 	const setVideoTitle = useSetAtom(videoTitleAtom);
 	const setVideoUrl = useSetAtom(videoUrlAtom);
