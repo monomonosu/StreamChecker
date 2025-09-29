@@ -28,6 +28,24 @@ export const isOpenFooterAtom = atom<boolean>(false);
 export const trackIdAtom = atom<string | null>(null);
 
 /**
+ * 連続再生動画キューの再生中インデックス
+ * @type {number | null}
+ */
+export const currentVideoIndexAtom = atom<number | null>(null);
+
+/**
+ * 連続再生動画キューの総動画数
+ * @type {number}
+ */
+export const totalVideoCountAtom = atom<number>(0);
+
+/**
+ * 初回動画読み込み完了フラグ
+ * @type {boolean}
+ */
+export const isInitVideoLoadAtom = atom<boolean>(false);
+
+/**
  * 再生中の動画情報
  * @type {PlayingState}
  * @property {boolean} isPlaying - 動画が再生中かどうか
