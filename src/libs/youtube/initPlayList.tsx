@@ -15,10 +15,16 @@ type Props = {
 	currentTrackIdRef: RefObject<string | undefined>;
 	beforeTrackIdRef: RefObject<string | undefined>;
 	videoListRef: RefObject<string[]>;
+	videoTrackQueueRef: RefObject<{ trackId: string; videoId: string }[]>;
 };
 
 export const useInitPlayList = (props: Props) => {
-	const { currentTrackIdRef, beforeTrackIdRef, videoListRef } = props;
+	const {
+		currentTrackIdRef,
+		beforeTrackIdRef,
+		videoListRef,
+		videoTrackQueueRef,
+	} = props;
 
 	const [trackId, setTrackId] = useAtom(trackIdAtom);
 	const trackQueue = useAtomValue(trackQueueAtom);
@@ -64,6 +70,10 @@ export const useInitPlayList = (props: Props) => {
 			if (!res) return;
 
 			videoListRef.current.push(res.videoId);
+			videoTrackQueueRef.current.push({
+				trackId: currentTrack.id,
+				videoId: res.videoId,
+			});
 
 			if (nextTrack) {
 				currentTrackIdRef.current = nextTrack.id;
@@ -72,8 +82,14 @@ export const useInitPlayList = (props: Props) => {
 					`${nextTrack.artist} ${nextTrack.title}`,
 					errorHandling,
 				);
+
 				if (!res) return;
+
 				videoListRef.current.push(res.videoId);
+				videoTrackQueueRef.current.push({
+					trackId: nextTrack.id,
+					videoId: res.videoId,
+				});
 			}
 
 			if (prevTrack) {
@@ -83,8 +99,14 @@ export const useInitPlayList = (props: Props) => {
 					`${prevTrack.artist} ${prevTrack.title}`,
 					errorHandling,
 				);
+
 				if (!res) return;
+
 				videoListRef.current.unshift(res.videoId);
+				videoTrackQueueRef.current.unshift({
+					trackId: prevTrack.id,
+					videoId: res.videoId,
+				});
 			}
 
 			setIsInitLoad(true);

@@ -11,10 +11,11 @@ import { usePlayState } from "@/utils/hooks/usePlayState";
 type Props = {
 	currentTrackIdRef: RefObject<string | undefined>;
 	playerRef: RefObject<YT.Player | null>;
+	videoTrackQueueRef: RefObject<{ trackId: string; videoId: string }[]>;
 };
 
 export const useSetUpPlayer = (props: Props) => {
-	const { currentTrackIdRef, playerRef } = props;
+	const { currentTrackIdRef, playerRef, videoTrackQueueRef } = props;
 
 	const setVideoTitle = useSetAtom(videoTitleAtom);
 	const setVideoUrl = useSetAtom(videoUrlAtom);
@@ -43,10 +44,16 @@ export const useSetUpPlayer = (props: Props) => {
 						const totalVideos = player.getPlaylist()?.length ?? 0;
 						const playVideoData = player.getVideoData();
 
+						const currentVideoTrack = videoTrackQueueRef.current.find(
+							(v) => v.videoId === playVideoData.video_id,
+						);
+
 						setVideoTitle(playVideoData.title);
 						setVideoUrl(
 							`https://www.youtube.com/watch?v=${playVideoData.video_id}`,
 						);
+
+						setPlay(currentVideoTrack?.trackId);
 
 						switch (event.data) {
 							case window.YT.PlayerState.UNSTARTED: {
@@ -98,6 +105,7 @@ export const useSetUpPlayer = (props: Props) => {
 		setPlay,
 		setPause,
 		currentTrackIdRef.current,
+		videoTrackQueueRef.current.find,
 		playerRef,
 	]);
 };

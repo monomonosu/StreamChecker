@@ -42,15 +42,17 @@ export const useFooterPlayer = () => {
 	const beforeTrackIdRef = useRef<string>(undefined);
 	const playerRef = useRef<YT.Player | null>(null);
 	const videoListRef = useRef<string[]>([]);
+	const videoTrackQueueRef = useRef<{ trackId: string; videoId: string }[]>([]);
 
 	// プレイヤーiframeのセットアップ・イベント設定
-	useSetUpPlayer({ currentTrackIdRef, playerRef });
+	useSetUpPlayer({ currentTrackIdRef, playerRef, videoTrackQueueRef });
 
 	// 初回再生時(TrackQueueセット時)のプレイリスト生成
 	useInitPlayList({
 		currentTrackIdRef,
 		beforeTrackIdRef,
 		videoListRef,
+		videoTrackQueueRef,
 	});
 
 	// 初回再生時(TrackQueueセット時)のプレイリストをセット
