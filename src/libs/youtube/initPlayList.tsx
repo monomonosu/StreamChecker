@@ -1,5 +1,6 @@
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { type RefObject, useEffect } from "react";
+import type { VideoTrack } from "@/app/_components/client/FooterPlayer/useFooterPlayer";
 import { getTopMovieBySearch } from "@/app/_fetchers/youtube/getTopMovieBySearch";
 import {
 	currentVideoIndexAtom,
@@ -15,7 +16,7 @@ type Props = {
 	currentTrackIdRef: RefObject<string | undefined>;
 	beforeTrackIdRef: RefObject<string | undefined>;
 	videoListRef: RefObject<string[]>;
-	videoTrackQueueRef: RefObject<{ trackId: string; videoId: string }[]>;
+	videoTrackQueueRef: RefObject<VideoTrack[]>;
 };
 
 export const useInitPlayList = (props: Props) => {

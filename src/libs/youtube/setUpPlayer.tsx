@@ -1,5 +1,6 @@
 import { useSetAtom } from "jotai";
 import { type RefObject, useEffect } from "react";
+import type { VideoTrack } from "@/app/_components/client/FooterPlayer/useFooterPlayer";
 import {
 	currentVideoIndexAtom,
 	totalVideoCountAtom,
@@ -11,7 +12,7 @@ import { usePlayState } from "@/utils/hooks/usePlayState";
 type Props = {
 	currentTrackIdRef: RefObject<string | undefined>;
 	playerRef: RefObject<YT.Player | null>;
-	videoTrackQueueRef: RefObject<{ trackId: string; videoId: string }[]>;
+	videoTrackQueueRef: RefObject<VideoTrack[]>;
 };
 
 export const useSetUpPlayer = (props: Props) => {

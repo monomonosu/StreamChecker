@@ -30,6 +30,11 @@ declare global {
 	}
 }
 
+export type VideoTrack = {
+	trackId: string;
+	videoId: string;
+};
+
 export const useFooterPlayer = () => {
 	const { getPlaySource } = usePlayIcon();
 
@@ -42,7 +47,7 @@ export const useFooterPlayer = () => {
 	const beforeTrackIdRef = useRef<string>(undefined);
 	const playerRef = useRef<YT.Player | null>(null);
 	const videoListRef = useRef<string[]>([]);
-	const videoTrackQueueRef = useRef<{ trackId: string; videoId: string }[]>([]);
+	const videoTrackQueueRef = useRef<VideoTrack[]>([]);
 
 	// プレイヤーiframeのセットアップ・イベント設定
 	useSetUpPlayer({ currentTrackIdRef, playerRef, videoTrackQueueRef });
