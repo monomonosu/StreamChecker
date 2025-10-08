@@ -73,6 +73,7 @@ export const useFooterPlayer = () => {
 		beforeTrackIdRef,
 		playerRef,
 		videoListRef,
+		videoTrackQueueRef,
 	});
 
 	// NOTE: Footerを閉じた時は動画を停止
