@@ -42,6 +42,7 @@ export const useInitPlayList = (props: Props) => {
 		currentTrackIdRef.current = undefined;
 		beforeTrackIdRef.current = undefined;
 		videoListRef.current = [];
+		videoTrackQueueRef.current = [];
 		setCurrentVideoIndex(null);
 		setTotalVideoCount(0);
 	};
