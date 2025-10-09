@@ -1,5 +1,6 @@
 import { useAtom, useAtomValue } from "jotai";
 import { type RefObject, useEffect } from "react";
+import type { VideoTrack } from "@/app/_components/client/FooterPlayer/useFooterPlayer";
 import { getTopMovieBySearch } from "@/app/_fetchers/youtube/getTopMovieBySearch";
 import {
 	currentVideoIndexAtom,
@@ -14,11 +15,17 @@ type Props = {
 	beforeTrackIdRef: RefObject<string | undefined>;
 	playerRef: RefObject<YT.Player | null>;
 	videoListRef: RefObject<string[]>;
+	videoTrackQueueRef: RefObject<VideoTrack[]>;
 };
 
 export const useSetPlayList = (props: Props) => {
-	const { currentTrackIdRef, beforeTrackIdRef, playerRef, videoListRef } =
-		props;
+	const {
+		currentTrackIdRef,
+		beforeTrackIdRef,
+		playerRef,
+		videoListRef,
+		videoTrackQueueRef,
+	} = props;
 
 	const [currentVideoIndex, setCurrentVideoIndex] = useAtom(
 		currentVideoIndexAtom,
@@ -55,6 +62,10 @@ export const useSetPlayList = (props: Props) => {
 					videoListRef.current,
 					currentVideoIndex,
 				);
+				videoTrackQueueRef.current.push({
+					trackId: nextTrack.id,
+					videoId: res.videoId,
+				});
 			}
 
 			if (currentVideoIndex === 0) {
@@ -76,6 +87,10 @@ export const useSetPlayList = (props: Props) => {
 				beforeTrackIdRef.current = prevTrack.id;
 				videoListRef.current.unshift(res.videoId);
 				playerRef.current?.loadPlaylist(videoListRef.current, 1);
+				videoTrackQueueRef.current.unshift({
+					trackId: prevTrack.id,
+					videoId: res.videoId,
+				});
 				setCurrentVideoIndex(1);
 			}
 		};
