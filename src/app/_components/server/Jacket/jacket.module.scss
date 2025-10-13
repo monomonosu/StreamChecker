@@ -22,13 +22,23 @@
     content: "";
     background: #fff;
     opacity: 0.2;
-    top: -30px;
-    left: -190px;
-    width: 300px;
-    height: 30px;
     transform: rotate(315deg);
     filter: blur(6px);
-    transition: all 350ms 
+    transition: all 350ms ;
+
+    @include mq(sm) {
+        top: -5px;
+        left: -80px;
+        width: 150px;
+        height: 10px;
+    }
+    
+    @include mq(md) {
+        top: -30px;
+        left: -190px;
+        width: 300px;
+        height: 30px;
+    }
 }
 
 .jacketImg {
@@ -40,7 +50,14 @@
 }
 
 .jacketLink:hover::after {
-    top: 170px;
-    left: 40px;
-    transition: all 350ms 
+
+    @include mq(sm) {
+        top: 90px;
+        left: 15px;
+    }
+
+    @include mq(md) {
+        top: 170px;
+        left: 40px;
+    }
 }
