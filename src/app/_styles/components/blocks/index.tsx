@@ -1,19 +1,25 @@
-import style from "@/app/_styles/components/blocks/index.module.scss";
+import styled from "@/app/_styles/components/blocks/index.module.scss";
 
 interface SectionProps {
 	children: React.ReactNode;
 }
 
 export const Section = ({ children }: SectionProps) => {
-	return <section className={style.section}>{children}</section>;
+	return <section className={styled.section}>{children}</section>;
 };
 
-interface SliderProps {
+interface SliderProps extends React.HTMLAttributes<HTMLDivElement> {
 	children: React.ReactNode;
+	className?: string;
+	style?: React.CSSProperties;
 }
 
-export const Slider = ({ children }: SliderProps) => {
-	return <div className={style.slider}>{children}</div>;
+export const Slider = ({ children, className, style }: SliderProps) => {
+	return (
+		<div className={`${className} ${styled.slider}`} style={style}>
+			{children}
+		</div>
+	);
 };
 
 interface InfiniteGridProps {
@@ -21,5 +27,5 @@ interface InfiniteGridProps {
 }
 
 export const InfiniteGrid = ({ children }: InfiniteGridProps) => {
-	return <div className={style.infiniteGrid}>{children}</div>;
+	return <div className={styled.infiniteGrid}>{children}</div>;
 };
