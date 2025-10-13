@@ -20,7 +20,7 @@ export default function Home() {
 					<LinkText href={PATH.NEW}>▶︎ ReadMore...</LinkText>
 				</BetweenWrapper>
 
-				<Slider>
+				<Slider className="pr-1 pl-1" style={{ margin: "0 -8px" }}>
 					<Suspense fallback={<NewReleaseLoading />}>
 						<NewReleaseContainer />
 					</Suspense>

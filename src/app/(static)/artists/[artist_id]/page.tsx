@@ -45,7 +45,7 @@ export default async function ArtistPage({ params }: Props) {
 						</LinkText>
 					</BetweenWrapper>
 
-					<Slider>
+					<Slider className="pr-1 pl-1" style={{ margin: "0 -8px" }}>
 						<Suspense fallback={<ArtistAlbumLoading />}>
 							<ArtistAlbumContainer artist_id={artist_id} />
 						</Suspense>
