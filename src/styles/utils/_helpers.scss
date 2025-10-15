@@ -25,7 +25,35 @@
   .mb-#{$i} {
     margin-bottom: #{$i * $baseSize}px;
   }
+
+  .ml-#{$i} {
+    margin-left: #{$i * $baseSize}px;
+  }
+
+  .mr-#{$i} {
+    margin-right: #{$i * $baseSize}px;
+  }
 }
+
+// パディングのユーティリティ
+@for $i from 1 through $loopLength {
+  .pt-#{$i} {
+    padding-top: #{$i * $baseSize}px;
+  }
+
+  .pb-#{$i} {
+    padding-bottom: #{$i * $baseSize}px;
+  }
+
+  .pl-#{$i} {
+    padding-left: #{$i * $baseSize}px;
+  }
+  
+  .pr-#{$i} {
+    padding-right: #{$i * $baseSize}px;
+  }
+}
+
 
 // 丸みのユーティリティ
 @for $i from 1 through $loopLength {
