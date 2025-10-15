@@ -17,7 +17,7 @@ export const Presentational = (props: Props) => {
 				<Section>
 					<h2>アルバム</h2>
 
-					<Slider>
+					<Slider className="pr-1 pl-1" style={{ margin: "0 -8px" }}>
 						{albums.map((album) => (
 							<div className={style.jacketWrapper} key={album.id}>
 								<Jacket

@@ -30,6 +30,11 @@ declare global {
 	}
 }
 
+export type VideoTrack = {
+	trackId: string;
+	videoId: string;
+};
+
 export const useFooterPlayer = () => {
 	const { getPlaySource } = usePlayIcon();
 
@@ -42,15 +47,17 @@ export const useFooterPlayer = () => {
 	const beforeTrackIdRef = useRef<string>(undefined);
 	const playerRef = useRef<YT.Player | null>(null);
 	const videoListRef = useRef<string[]>([]);
+	const videoTrackQueueRef = useRef<VideoTrack[]>([]);
 
 	// プレイヤーiframeのセットアップ・イベント設定
-	useSetUpPlayer({ currentTrackIdRef, playerRef });
+	useSetUpPlayer({ currentTrackIdRef, playerRef, videoTrackQueueRef });
 
 	// 初回再生時(TrackQueueセット時)のプレイリスト生成
 	useInitPlayList({
 		currentTrackIdRef,
 		beforeTrackIdRef,
 		videoListRef,
+		videoTrackQueueRef,
 	});
 
 	// 初回再生時(TrackQueueセット時)のプレイリストをセット
@@ -66,6 +73,7 @@ export const useFooterPlayer = () => {
 		beforeTrackIdRef,
 		playerRef,
 		videoListRef,
+		videoTrackQueueRef,
 	});
 
 	// NOTE: Footerを閉じた時は動画を停止
