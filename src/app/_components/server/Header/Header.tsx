@@ -110,6 +110,14 @@ export const Header = () => {
 							ガイドページ
 						</LinkText>
 					</GapWrapper>
+
+					<hr style={{ borderColor: "var(--color-panel-solid)" }} />
+
+					<GapWrapper direction="column">
+						<LinkText className={style.menuLink} href={PATH.TERMS_OF_USE}>
+							利用規約
+						</LinkText>
+					</GapWrapper>
 				</Popup>
 			</GapWrapper>
 		</div>
