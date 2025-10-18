@@ -2,6 +2,7 @@ import { Section } from "@/app/_styles/components/blocks";
 import { BasicText, LinkText } from "@/app/_styles/components/texts";
 import { PageWrapper } from "@/app/_styles/components/wrappers";
 import "./style.scss";
+import { PATH } from "@/utils/constants/path";
 
 export default function TermsOfUsePage() {
 	return (
@@ -167,7 +168,9 @@ export default function TermsOfUsePage() {
 				{/* TODO:プライバシーポリシーページ出来次第リンクを追加 */}
 				<h2>第7条（個人情報の取り扱い）</h2>
 				<BasicText>
-					利用者の個人情報の取り扱いについては、別途定めるプライバシーポリシーに従います。
+					利用者の個人情報の取り扱いについては、別途定める
+					<LinkText href={PATH.PRIVACY_POLICY}>プライバシーポリシー</LinkText>
+					に従います。
 				</BasicText>
 
 				<h2>第8条（準拠法および裁判管轄）</h2>
