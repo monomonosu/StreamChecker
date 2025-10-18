@@ -17,7 +17,7 @@
 }
 
 // マージンのユーティリティ
-@for $i from 1 through $loopLength {
+@for $i from 0 through $loopLength {
   .mt-#{$i} {
     margin-top: #{$i * $baseSize}px;
   }
@@ -36,7 +36,7 @@
 }
 
 // パディングのユーティリティ
-@for $i from 1 through $loopLength {
+@for $i from 0 through $loopLength {
   .pt-#{$i} {
     padding-top: #{$i * $baseSize}px;
   }
