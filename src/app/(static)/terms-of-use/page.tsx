@@ -165,7 +165,6 @@ export default function TermsOfUsePage() {
 					</ul>
 				</div>
 
-				{/* TODO:プライバシーポリシーページ出来次第リンクを追加 */}
 				<h2>第7条（個人情報の取り扱い）</h2>
 				<BasicText>
 					利用者の個人情報の取り扱いについては、別途定める
