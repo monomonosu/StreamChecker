@@ -48,7 +48,7 @@
     "typescript": "^5"
   },
   "volta": {
-    "node": "22.20.0"
+    "node": "22.21.0"
   },
   "overrides": {
     "storybook": "$storybook"
