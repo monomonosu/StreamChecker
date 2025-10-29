@@ -258,6 +258,16 @@ export default function PrivacyPolicyPage() {
 								@MONOMONOSU
 							</LinkText>
 						</li>
+						<li>
+							Email：
+							<LinkText
+								href="mailto:muramasa239@gmail.com"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								muramasa239@gmail.com
+							</LinkText>
+						</li>
 					</ul>
 				</div>
 
