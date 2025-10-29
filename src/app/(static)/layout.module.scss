@@ -6,10 +6,10 @@
 
 .main-inner {
     @include mq(sm) {
-        padding: 24px 16px calc(48px + 150px + 40px + 32px);
+        padding: 24px 16px calc(48px + 200px + 40px + 32px);
     }
 
     @include mq(md) {
-        padding: 48px 64px calc(48px + 150px);
+        padding: 48px 64px calc(48px + 200px);
     }
 }
