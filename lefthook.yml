@@ -38,10 +38,16 @@ pre-commit:
   commands:
     check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: npx biome check --no-errors-on-unmatched --files-ignore-unknown=true ./src && git update-index --again
+      exclude: "^(package-lock\\.json)$"
+      run: npx biome format --write --files-ignore-unknown=true {staged_files}
+        && npx biome check --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+        && git update-index --again
+      stage_fixed: true
 
 pre-push:
   commands:
     check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: npx biome check --no-errors-on-unmatched --files-ignore-unknown=true ./src
+      exclude: "^(package-lock\\.json)$"
+      run: npx biome format --write --files-ignore-unknown=true {staged_files}
+        && npx biome check --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
