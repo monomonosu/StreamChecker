@@ -1,5 +1,6 @@
 import "@/styles/main.scss";
 
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
@@ -29,9 +30,13 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const gaId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
+
 	return (
 		<html lang="en">
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
+				{gaId && <GoogleAnalytics gaId={gaId} />}
+
 				<ThemeProvider>
 					<GlobalSnackbar />
 					<Header />
