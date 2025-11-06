@@ -7,6 +7,9 @@ export default function robots(): MetadataRoute.Robots {
 				userAgent: "ClaudeBot",
 				disallow: "/",
 			},
+			{ userAgent: "Claude-SearchBot", disallow: "/" },
+			{ userAgent: "Claude-Web", disallow: "/" },
+			{ userAgent: "Claude-User", disallow: "/" },
 		],
 	};
 }
