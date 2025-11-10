@@ -37,7 +37,7 @@
 		"@storybook/addon-onboarding": "^9.0.10",
 		"@storybook/nextjs": "^9.0.10",
 		"@types/js-cookie": "^3.0.6",
-		"@types/node": "^22.0.0",
+		"@types/node": "^24.0.0",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
 		"@types/youtube": "^0.1.0",
@@ -49,7 +49,7 @@
 		"typescript": "^5"
 	},
 	"volta": {
-		"node": "22.21.1"
+		"node": "24.11.0"
 	},
 	"overrides": {
 		"storybook": "$storybook"
