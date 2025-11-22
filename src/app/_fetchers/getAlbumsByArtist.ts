@@ -1,5 +1,6 @@
 import type { SpotifyArtistAlbumsResponse } from "@/app/_fetchers/types";
 import { fetchSpotifyData } from "@/libs/spotify";
+import { REVALIDATE_ONE_DAY } from "@/utils/constants/revalidate";
 
 /**
  * Spotify のアーティストのアルバム情報を取得
@@ -16,6 +17,7 @@ export async function getAlbumsByArtist({
 }) {
 	const res = await fetchSpotifyData<SpotifyArtistAlbumsResponse>(
 		`artists/${artist_id}/albums?include_groups=album,single,appears_on,compilation&offset=${offset}&limit=${limit}`,
+		REVALIDATE_ONE_DAY,
 	);
 	return res;
 }
