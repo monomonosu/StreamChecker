@@ -41,7 +41,7 @@
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
 		"@types/youtube": "^0.1.0",
-		"chokidar": "^4.0.3",
+		"chokidar": "^5.0.0",
 		"happy-css-modules": "^4.0.0",
 		"lefthook": "^2.0.0",
 		"sass": "^1.83.4",
