@@ -49,7 +49,7 @@
 		"typescript": "^5"
 	},
 	"volta": {
-		"node": "24.11.1"
+		"node": "24.12.0"
 	},
 	"overrides": {
 		"storybook": "$storybook"
