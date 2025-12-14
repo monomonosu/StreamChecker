@@ -46,5 +46,4 @@ pre-push:
   commands:
     check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: npx biome format --write --files-ignore-unknown=true {staged_files}
-        && npx biome check --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+      run: npx biome check --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
