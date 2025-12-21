@@ -39,28 +39,10 @@ export const Slider = ({ children, className, style }: SliderProps) => {
 		// 初期状態のボタン表示を更新
 		updateButtonVisibility();
 
-		const handleWheel = (e: WheelEvent) => {
-			// 横スクロールの場合はそのまま
-			if (e.deltaX !== 0) {
-				return;
-			}
-
-			// 縦スクロールの場合、横スクロールに変換
-			if (e.deltaY !== 0) {
-				e.preventDefault();
-				// scrollByを使ってスムーズに
-				slider.scrollBy({
-					left: e.deltaY,
-					behavior: "auto", // ホイール操作は即座に反映
-				});
-			}
-		};
-
 		const handleScroll = () => {
 			updateButtonVisibility();
 		};
 
-		slider.addEventListener("wheel", handleWheel, { passive: false });
 		slider.addEventListener("scroll", handleScroll);
 
 		// リサイズ時もボタンの表示を更新
@@ -70,7 +52,6 @@ export const Slider = ({ children, className, style }: SliderProps) => {
 		resizeObserver.observe(slider);
 
 		return () => {
-			slider.removeEventListener("wheel", handleWheel);
 			slider.removeEventListener("scroll", handleScroll);
 			resizeObserver.disconnect();
 		};
