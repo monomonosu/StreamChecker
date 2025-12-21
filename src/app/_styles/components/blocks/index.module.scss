@@ -13,6 +13,10 @@
 	}
 }
 
+.sliderContainer {
+    position: relative;
+}
+
 .slider {
     display: -webkit-box;
     overflow-x: scroll;
@@ -24,7 +28,49 @@
 
 .slider::-webkit-scrollbar {
     display: none; /* Chrome, Safariでスクロールバーを非表示 */
-  }
+}
+
+.navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(6, 13, 23, 0.9);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+    &:hover {
+        background: rgba(6, 13, 23, 1);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    &:active {
+        transform: translateY(-50%) scale(0.95);
+    }
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.navButtonLeft {
+    left: 8px;
+}
+
+.navButtonRight {
+    right: 8px;
+}
 
 .infiniteGrid {
     display: grid;
