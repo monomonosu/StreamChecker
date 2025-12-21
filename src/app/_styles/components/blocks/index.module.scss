@@ -24,7 +24,6 @@
     scrollbar-width: none; /* Firefoxでスクロールバーを非表示 */
     -ms-overflow-style: none; /* IE・Edgeでスクロールバーを非表示 */
     mask-image: linear-gradient(90deg, #060d17 90%, transparent);
-    scroll-behavior: smooth;
 }
 
 .slider::-webkit-scrollbar {
