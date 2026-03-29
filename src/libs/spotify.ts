@@ -86,7 +86,11 @@ export async function fetchSpotifyData<T>(
 	});
 
 	if (!res.ok) {
-		throw new Error(`Failed to fetch data from Spotify API: ${res.status}`);
+		const errorBody = await res.text();
+		console.error(`Spotify API error: ${res.status}`, errorBody);
+		throw new Error(
+			`Failed to fetch data from Spotify API: ${res.status} - ${errorBody}`,
+		);
 	}
 
 	return res.json();
